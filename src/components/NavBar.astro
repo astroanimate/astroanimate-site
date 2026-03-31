@@ -1,0 +1,96 @@
+---
+import "../styles/Global.css";
+const { pathname } = Astro.url;
+---
+
+<nav class="nav" aria-label="Main navigation">
+    <div class="nav-item nav-logo">
+        <img
+            src="/images/Logo.png"
+            alt="AstroAnimate logo"
+            class="logo-icon"
+            width="24"
+            height="24"
+            loading="eager"
+        />
+        <span class="version">
+            VER 1.0
+            <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg
+            >
+        </span>
+    </div>
+
+    <!-- TOGGLE FOR MOBILE -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden />
+    <label for="nav-toggle" class="hamburger" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <div class="nav-content">
+        <div class="nav-item nav-empty-left"></div>
+
+        <a
+            href="/"
+            class:list={["nav-item nav-link", { active: pathname === "/" }]}
+            aria-current={pathname === "/" ? "page" : undefined}>HOME</a
+        >
+        <a href="#" class="nav-item nav-link">DOCS</a>
+        <a
+            href="/playground"
+            class:list={[
+                "nav-item nav-link",
+                { active: pathname === "/playground" },
+            ]}
+            aria-current={pathname === "/playground" ? "page" : undefined}
+            >PLAYGROUND</a
+        >
+        <a href="#" class="nav-item nav-link">PRICING</a>
+        <a
+            href="/Blog"
+            class:list={["nav-item nav-link", { active: pathname === "/Blog" }]}
+            aria-current={pathname === "/Blog" ? "page" : undefined}>BLOG</a
+        >
+
+        <div class="nav-item nav-empty-right"></div>
+
+        <div class="nav-social-wrap">
+            <div class="nav-item nav-social">
+                <img
+                    class="icon"
+                    src="/images/github.png"
+                    alt="GitHub"
+                    width="18"
+                    height="18"
+                    loading="lazy"
+                    decoding="async"
+                />
+                <span class="social-count">1.5K</span>
+            </div>
+            <div class="nav-item nav-social border-none">
+                <img
+                    class="icon"
+                    src="/images/twitter.png"
+                    alt="X (Twitter)"
+                    width="18"
+                    height="18"
+                    loading="lazy"
+                    decoding="async"
+                />
+                <span class="social-count">1.5K</span>
+            </div>
+        </div>
+
+        <button class="nav-item install">INSTALL</button>
+    </div>
+</nav>

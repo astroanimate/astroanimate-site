@@ -1,0 +1,134 @@
+---
+import InstallCard from "./InstallCard.astro";
+---
+
+<section class="cta-section">
+    <!-- REVERSED GLOW -->
+    <div class="cta-video-wrap">
+        <video
+            src="/videos/wb-hole-oppo.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            width="1200"
+            height="600"
+            class="cta-video"></video>
+    </div>
+
+    <div class="cta-container">
+        <div class="cta-box">
+            <!-- LEFT CONTENT -->
+            <div class="cta-content">
+                <!-- DECORATIVE ARCS -->
+                <div class="cta-arcs">
+                    <!-- <svg width="100" height="100" viewBox="0 0 100 100">
+                        <circle
+                            cx="100"
+                            cy="0"
+                            r="40"
+                            fill="none"
+                            stroke="#FF7F1F"
+                            stroke-width="1"
+                            opacity="0.3"></circle>
+                        <circle
+                            cx="100"
+                            cy="0"
+                            r="60"
+                            fill="none"
+                            stroke="#FF7F1F"
+                            stroke-width="1"
+                            opacity="0.2"></circle>
+                        <circle
+                            cx="100"
+                            cy="0"
+                            r="80"
+                            fill="none"
+                            stroke="#FF7F1F"
+                            stroke-width="1"
+                            opacity="0.1"></circle>
+                    </svg> -->
+                    <img
+                        src="/images/curve.png"
+                        alt="Decorative curve background"
+                        class="curve"
+                        width="160"
+                        height="40"
+                        loading="lazy"
+                    />
+                </div>
+
+                <h2>
+                    <span>Install <span class="dim">and</span></span>
+                    <span>Start Animating</span>
+                </h2>
+
+                <div class="cta-desc-box">
+                    <p>
+                        Install AstroAnimate and apply motion to your Astro
+                        components.
+                    </p>
+                </div>
+
+                <div class="cta-buttons">
+                    <button class="btn-primary-cta">INSTALL VIA NPM</button>
+                    <button class="btn-secondary-cta">
+                        VIEW DOCUMENTATION
+                        <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><path
+                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                            ></path><polyline points="14 2 14 8 20 8"
+                            ></polyline></svg
+                        >
+                    </button>
+                </div>
+            </div>
+
+            <!-- RIGHT TERMINAL -->
+            <div class="cta-terminal">
+                <div class="terminal-label">
+                    <span class="orange-sq"></span>
+                    INSTALL COMMAND
+                </div>
+
+                <!-- <div class="terminal-mock">
+                    <div class="term-dots">
+                        <span class="dot green"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot red"></span>
+                    </div>
+                    <div class="term-body">
+                        <code>$ npm install @astroanimate/core</code>
+                        <svg
+                            class="copy-icon"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><rect
+                                x="9"
+                                y="9"
+                                width="13"
+                                height="13"
+                                rx="2"
+                                ry="2"></rect><path
+                                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                            ></path></svg
+                        >
+                    </div> -->
+                <div class="cta-right-card">
+                    <InstallCard title="NPM" />
+                    <!-- <InstallCard title="INSTALL COMMAND" variant="terminal" /> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

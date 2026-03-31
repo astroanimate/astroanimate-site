@@ -1,0 +1,66 @@
+---
+import InstallCard from "./InstallCard.astro";
+---
+
+<section class="hero">
+    <!-- LEFT -->
+    <div class="hero-left">
+        <p class="status">// SYSTEM ONLINE <span></span></p>
+
+        <h1>
+            Astro Animation Library <br />
+            <span>Built for Astro users.</span>
+        </h1>
+
+        <div class="description-wrap">
+            <p class="description">
+                Add CSS and Web Animations API–based transitions to Astro
+                components. JavaScript is only added when explicitly enabled.
+                Optimized for Astro Islands architecture and compatible with the
+                View Transitions API.
+            </p>
+        </div>
+
+        <ul class="features">
+            <li>Designed for Astro Islands architecture</li>
+            <li>No runtime JavaScript unless opt-in</li>
+            <li>Respects prefers-reduced-motion and accessibility standards</li>
+        </ul>
+
+        <div class="actions">
+            <button
+                class="btn-primary"
+                aria-label="Install AstroAnimate via NPM"
+                >INSTALL VIA NPM</button
+            >
+            <button
+                class="btn-secondary"
+                aria-label="Open documentation for AstroAnimate library"
+            >
+                VIEW DOCUMENTATION
+                <img src="/images/documentation.png" alt="Documentation" height="20px" width="20px"/>
+            </button>
+        </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-right">
+        <InstallCard title="NPM" />
+        <!-- <InstallCard title="INSTALL COMMAND" variant="terminal" /> -->
+    </div>
+
+    <!-- GLOW VIDEO -->
+    <div class="hero-video-wrap">
+        <video
+            src="/videos/hole-wb-2.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            aria-hidden="true"
+            title="AstroAnimate hero glow background"
+            width="1200"
+            height="600"
+            class="hero-video"></video>
+    </div>
+</section>

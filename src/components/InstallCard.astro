@@ -1,0 +1,79 @@
+---
+const { title, variant } = Astro.props;
+---
+
+<div class={`card ${variant === "terminal" ? "terminal" : ""}`}>
+    {
+        variant === "terminal" ? (
+            <div class="card-header terminal-header">
+                <div class="dots">
+                    <span class="dot green" />
+                    <span class="dot yellow" />
+                    <span class="dot red" />
+                </div>
+                <span class="header-title">{title}</span>
+            </div>
+        ) : (
+            <div class="card-header default-header">
+                <span class="header-title">{title}</span>
+            </div>
+        )
+    }
+
+    <div class="card-body">
+        <div class="code-wrapper">
+            <span class="code-prefix">$</span>
+            <span class="code-text">npm install @astroanimate/core</span>
+        </div>
+        <svg
+            class="copy-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+            ></path>
+        </svg>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll<SVGSVGElement>(".copy-icon").forEach((icon) => {
+        icon.style.cursor = "pointer";
+        icon.addEventListener("click", async () => {
+            const card = icon.closest(".card");
+            const text =
+                card?.querySelector<HTMLElement>(".code-text")?.innerText ?? "";
+
+            try {
+                await navigator.clipboard.writeText(text);
+            } catch {
+                // Fallback for non-secure contexts
+                const ta = document.createElement("textarea");
+                ta.value = text;
+                ta.style.position = "fixed";
+                ta.style.opacity = "0";
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand("copy");
+                document.body.removeChild(ta);
+            }
+
+            // Swap to checkmark icon
+            const originalHTML = icon.innerHTML;
+            icon.innerHTML = `<polyline points="20 6 9 17 4 12"></polyline>`;
+            icon.classList.add("copied");
+
+            setTimeout(() => {
+                icon.innerHTML = originalHTML;
+                icon.classList.remove("copied");
+            }, 1500);
+        });
+    });
+</script>

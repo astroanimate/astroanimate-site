@@ -1,0 +1,182 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/Global.css";
+---
+
+<Layout title="AstroAnimate Blog - Motion Design & Web Performance">
+    <NavBar />
+
+    <main class="blog-container">
+        <!-- HEADER -->
+        <header class="blog-header">
+            <div class="header-overlay"></div>
+            <div class="badge-top">BLOG</div>
+            <!-- <div class="corner t-l"></div>
+            <div class="corner t-r"></div> -->
+        </header>
+
+        <!-- FEATURED SECTION -->
+        <section class="featured-grid">
+            <!-- BIG FEATURED -->
+            <div class="main-featured">
+                <div class="featured-image">
+                </div>
+                <div class="featured-content">
+                    <span class="blog-tag">// Blog</span>
+                    <h2>
+                        Why Astro Needs a Dedicated Animation Library (And How
+                        AstroAnimate Solves It)
+                    </h2>
+                    <p>
+                        Discover why Astro needs a dedicated Astro animation
+                        library and how AstroAnimate delivers zero-JS,
+                        performance-first animation built for Islands
+                        Architecture.
+                    </p>
+                    </div>
+                      <div class="featured-footer">
+                        <span class="read-time">(4min read)</span>
+                        <div class="author">
+                            <div class="author-left">
+                        
+                            <img
+                                src="/images/Logo.png"
+                                alt="Author"
+                                class="author-img"
+                            />
+                            <span>Prashanth ks</span>
+                                </div>
+                                 <div class="meta">
+                            <span>MAR 25, 2026</span>
+                        </div>
+                        </div>
+                </div>
+            </div>
+
+            <!-- SIDE FEATURED -->
+            <div class="side-featured">
+                <div class="side-card">
+                    <div class="side-image"></div>
+                    <div class="side-content">
+                        <span class="blog-tag">// Guide</span>
+                        <h3>
+                            How to add AstroAnimate Animations to your astro
+                            projects
+                        </h3>
+                        <div class="side-footer">
+                            <span>MAR 25, 2026</span>
+                            <span class="read-time">(4min read)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="side-card">
+                    <div class="side-image"></div>
+                    <div class="side-content">
+                                                <span class="blog-tag">// Guide</span>
+
+                        <h3>Announcing AstroAnimate Templates</h3>
+                        <div class="side-footer">
+                            <span>MAR 26, 2026</span>
+                            <span class="read-time">(4min read)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEARCH & CATEGORIES -->
+        <section class="filter-section">
+            <div class="filter-header">
+                <h2>All Blogs</h2>
+                <div class="categories-wrap">
+                    <span class="label">// Categories</span>
+                    <div class="category-buttons">
+                        <button class="active">All</button>
+                        <button>Guide</button>
+                        <button>Animations</button>
+                        <button>Updates</button>
+                        <button>Announcements</button>
+                    </div>
+                </div>
+            </div>
+            <div class="search-wrap">
+                <div class="search-input">
+                    <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        ><circle cx="11" cy="11" r="8"></circle><line
+                            x1="21"
+                            y1="21"
+                            x2="16.65"
+                            y2="16.65"></line></svg
+                    >
+                    <input type="text" placeholder="Search" />
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG LIST -->
+        <section class="blog-list">
+            <article class="blog-item">
+                <div class="item-image-box">
+                    <div class="item-image"></div>
+                </div>
+                <div class="item-content">
+                    <div class="item-header">
+                        <span class="blog-tag">// Blog</span>
+                        <div class="item-meta">
+                            <span>MAR 25, 2026</span>
+                            <span class="read-time">(4min read)</span>
+                        </div>
+                    </div>
+                    <h3>
+                        Why Astro Needs a Dedicated Animation Library (And How
+                        AstroAnimate Solves It)
+                    </h3>
+                    <div class="author-simple">
+                        <div class="author-avatar"></div>
+                        <span>Prashanth ks</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-item">
+                <div class="item-image-box">
+                    <div class="item-image"></div>
+                </div>
+                <div class="item-content">
+                    <div class="item-header">
+                        <span class="blog-tag">// Guide</span>
+                        <div class="item-meta">
+                            <span>MAR 25, 2026</span>
+                            <span class="read-time">(4min read)</span>
+                        </div>
+                    </div>
+                    <h3>
+                        How to add AstroAnimate Animations to your astro
+                        projects
+                    </h3>
+                    <div class="author-simple">
+                        <div class="author-avatar"></div>
+                        <span>Prashanth ks</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+<!-- 
+        <div class="corner b-l"></div>
+        <div class="corner b-r"></div> -->
+    </main>
+
+    <Footer />
+</Layout>
+
+<style>
+  
+</style>

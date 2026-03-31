@@ -1,0 +1,661 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/Global.css";
+---
+
+<Layout title="AstroAnimate Playground - Build Your Animations">
+    <NavBar />
+
+    <main class="playground-main" id="playground">
+        <div class="playground-header">
+            <div class="badge">INTERACTIVE PLAYGROUND</div>
+            <h1>Animation <span>Studio</span></h1>
+            <p>
+                Tweak parameters and see live results. Get the code instantly.
+            </p>
+        </div>
+
+        <section class="studio-container">
+            <!-- SIDEBAR CONTROLS -->
+            <div class="controls-sidebar">
+                <div class="control-group">
+                    <label>ANIMATION TYPE</label>
+                    <div class="radio-buttons">
+                        <label class="radio-btn">
+                            <input
+                                type="radio"
+                                name="animType"
+                                value="fade"
+                                checked
+                            />
+                            <span>FADE</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="animType" value="slide" />
+                            <span>SLIDE</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="animType" value="scale" />
+                            <span>SCALE</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input
+                                type="radio"
+                                name="animType"
+                                value="bounce"
+                            />
+                            <span>BOUNCE</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="animType" value="blur" />
+                            <span>BLUR</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="animType" value="rotate" />
+                            <span>ROTATE</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="animType" value="flip" />
+                            <span>FLIP</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="animType" value="shake" />
+                            <span>SHAKE</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="animType" value="pulse" />
+                            <span>PULSE</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="animType" value="glitch" />
+                            <span>GLITCH</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="animType" value="float" />
+                            <span>FLOAT</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="animType" value="swing" />
+                            <span>SWING</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="animType" value="wobble" />
+                            <span>WOBBLE</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>EASING FUNCTION</label>
+                    <select id="easingSelect">
+                        <option value="linear">Linear</option>
+                        <option value="ease" selected>Ease</option>
+                        <option value="ease-in">Ease In</option>
+                        <option value="ease-out">Ease Out</option>
+                        <option value="cubic-bezier(0.34, 1.56, 0.64, 1)"
+                            >Back Out (Pop)</option
+                        >
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <div class="label-row">
+                        <label>DURATION (MS)</label>
+                        <span id="durationValue">600ms</span>
+                    </div>
+                    <input
+                        type="range"
+                        id="durationRange"
+                        min="200"
+                        max="2000"
+                        step="50"
+                        value="600"
+                    />
+                </div>
+
+                <div class="control-group">
+                    <div class="label-row">
+                        <label>DELAY (MS)</label>
+                        <span id="delayValue">0ms</span>
+                    </div>
+                    <input
+                        type="range"
+                        id="delayRange"
+                        min="0"
+                        max="1000"
+                        step="50"
+                        value="0"
+                    />
+                </div>
+
+                <button id="playBtn" class="play-button">
+                    <span>PLAY ANIMATION</span>
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        ><polygon points="5 3 19 12 5 21 5 3"></polygon></svg
+                    >
+                </button>
+            </div>
+
+            <!-- PREVIEW AREA -->
+            <div class="preview-area">
+                <div class="canvas">
+                    <div id="animateObject" class="animated-box">
+                        <img
+                            src="/images/Logo.png"
+                            alt="AstroAnimate logo"
+                            width="80"
+                            height="80"
+                        />
+                    </div>
+                </div>
+
+                <div class="code-output">
+                    <div class="code-header">
+                        <span>/// GENERATED_CODE</span>
+                        <button id="copyBtn">COPY</button>
+                    </div>
+                    <pre><code id="codeBlock" contenteditable="true" spellcheck="false">
+                        </code></pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</Layout>
+
+<script>
+    const box = document.getElementById("animateObject");
+    const playBtn = document.getElementById("playBtn");
+    const easingSelect = document.getElementById(
+        "easingSelect",
+    ) as HTMLSelectElement;
+    const durationRange = document.getElementById(
+        "durationRange",
+    ) as HTMLInputElement;
+    const delayRange = document.getElementById(
+        "delayRange",
+    ) as HTMLInputElement;
+    const durationValue = document.getElementById("durationValue");
+    const delayValue = document.getElementById("delayValue");
+    const codeBlock = document.getElementById("codeBlock");
+    const copyBtn = document.getElementById("copyBtn");
+
+    const getAnimType = () => {
+        const radios = document.getElementsByName(
+            "animType",
+        ) as NodeListOf<HTMLInputElement>;
+        for (const r of radios) {
+            if (r.checked) return r.value;
+        }
+        return "fade";
+    };
+
+    const updateCode = () => {
+        const type = getAnimType();
+        const duration = durationRange.value;
+        const easing = easingSelect.value;
+        const delay = delayRange.value;
+
+        if (codeBlock) {
+            codeBlock.textContent = `transition: {
+  type: "${type}",
+  duration: ${duration},
+  easing: "${easing}",
+  delay: ${delay}
+}`;
+        }
+    };
+
+    const play = () => {
+        if (!box) return;
+
+        const type = getAnimType();
+        const duration = parseInt(durationRange.value);
+        const easing = easingSelect.value;
+        const delay = parseInt(delayRange.value);
+
+        let keyframes: Keyframe[] = [];
+
+        switch (type) {
+            case "fade":
+                keyframes = [{ opacity: 0 }, { opacity: 1 }];
+                break;
+            case "slide":
+                keyframes = [
+                    { opacity: 0, transform: "translateX(-50px)" },
+                    { opacity: 1, transform: "translateX(0)" },
+                ];
+                break;
+            case "scale":
+                keyframes = [
+                    { opacity: 0, transform: "scale(0.5)" },
+                    { opacity: 1, transform: "scale(1)" },
+                ];
+                break;
+            case "bounce":
+                keyframes = [
+                    { opacity: 0, transform: "scale(0.3)" },
+                    { opacity: 1, transform: "scale(1.1)" },
+                    { transform: "scale(1)" },
+                ];
+                break;
+            case "blur":
+                keyframes = [
+                    { opacity: 0, filter: "blur(20px)", transform: "scale(1.1)" },
+                    { opacity: 1, filter: "blur(0)", transform: "scale(1)" },
+                ];
+                break;
+            case "rotate":
+                keyframes = [
+                    { opacity: 0, transform: "rotate(-180deg) scale(0.5)" },
+                    { opacity: 1, transform: "rotate(0) scale(1)" },
+                ];
+                break;
+            case "flip":
+                keyframes = [
+                    { opacity: 0, transform: "perspective(400px) rotateY(90deg)" },
+                    { opacity: 1, transform: "perspective(400px) rotateY(0)" },
+                ];
+                break;
+            case "shake":
+                keyframes = [
+                    { transform: "translateX(0)" },
+                    { transform: "translateX(-10px)" },
+                    { transform: "translateX(10px)" },
+                    { transform: "translateX(-10px)" },
+                    { transform: "translateX(10px)" },
+                    { transform: "translateX(0)" },
+                ];
+                break;
+            case "pulse":
+                keyframes = [
+                    { transform: "scale(1)", opacity: 1 },
+                    { transform: "scale(1.1)", opacity: 0.8 },
+                    { transform: "scale(1)", opacity: 1 },
+                ];
+                break;
+            case "glitch":
+                keyframes = [
+                    { transform: "translate(0)", clipPath: "inset(0 0 0 0)" },
+                    { transform: "translate(-5px, 2px)", clipPath: "inset(10% 0 30% 0)" },
+                    { transform: "translate(5px, -2px)", clipPath: "inset(40% 0 10% 0)" },
+                    { transform: "translate(-2px, 5px)", clipPath: "inset(70% 0 5% 0)" },
+                    { transform: "translate(0)", clipPath: "inset(0 0 0 0)" },
+                ];
+                break;
+            case "float":
+                keyframes = [
+                    { transform: "translateY(0)" },
+                    { transform: "translateY(-20px)" },
+                    { transform: "translateY(0)" },
+                ];
+                break;
+            case "swing":
+                keyframes = [
+                    { transform: "rotate(0)" },
+                    { transform: "rotate(15deg)" },
+                    { transform: "rotate(-10deg)" },
+                    { transform: "rotate(5deg)" },
+                    { transform: "rotate(-5deg)" },
+                    { transform: "rotate(0)" },
+                ];
+                break;
+            case "wobble":
+                keyframes = [
+                    { transform: "translateX(0) rotate(0)" },
+                    { transform: "translateX(-20%) rotate(-5deg)" },
+                    { transform: "translateX(15%) rotate(3deg)" },
+                    { transform: "translateX(-10%) rotate(-3deg)" },
+                    { transform: "translateX(5%) rotate(2deg)" },
+                    { transform: "translateX(0) rotate(0)" },
+                ];
+                break;
+        }
+
+        box.animate(keyframes, {
+            duration,
+            easing,
+            delay,
+            fill: "forwards",
+        });
+    };
+
+    // Listeners
+    playBtn?.addEventListener("click", play);
+    durationRange?.addEventListener("input", () => {
+        if (durationValue)
+            durationValue.textContent = `${durationRange.value}ms`;
+        updateCode();
+    });
+    delayRange?.addEventListener("input", () => {
+        if (delayValue) delayValue.textContent = `${delayRange.value}ms`;
+        updateCode();
+    });
+    easingSelect?.addEventListener("change", updateCode);
+    document
+        .getElementsByName("animType")
+        .forEach((r) => r.addEventListener("change", updateCode));
+
+    codeBlock?.addEventListener("input", () => {
+        // Try to update UI based on manual code edits
+        const text = codeBlock.textContent || "";
+        try {
+            // Very basic parser for the simple string format
+            const typeMatch = text.match(/type:\s*"([^"]+)"/);
+            const durationMatch = text.match(/duration:\s*(\d+)/);
+            const easingMatch = text.match(/easing:\s*"([^"]+)"/);
+            const delayMatch = text.match(/delay:\s*(\d+)/);
+
+            if (typeMatch) {
+                const radios = document.getElementsByName("animType") as NodeListOf<HTMLInputElement>;
+                radios.forEach(r => {
+                    if (r.value === typeMatch[1]) r.checked = true;
+                });
+            }
+            if (durationMatch) {
+                durationRange.value = durationMatch[1];
+                if (durationValue) durationValue.textContent = `${durationMatch[1]}ms`;
+            }
+            if (easingMatch) {
+                easingSelect.value = easingMatch[1];
+            }
+            if (delayMatch) {
+                delayRange.value = delayMatch[1];
+                if (delayValue) delayValue.textContent = `${delayMatch[1]}ms`;
+            }
+        } catch (e) {
+            // Ignore parse errors while typing
+        }
+    });
+
+    copyBtn?.addEventListener("click", () => {
+        if (codeBlock) {
+            navigator.clipboard.writeText(codeBlock.textContent || "");
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = "COPIED!";
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+            }, 1000);
+        }
+    });
+
+    // Initial code
+    updateCode();
+</script>
+
+<style>
+    .playground-main {
+        padding: 100px var(--side-padding);
+        min-height: calc(100vh - 128px);
+        background: #000;
+        color: #fff;
+    }
+
+    .playground-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .playground-header h1 {
+        font-size: 56px;
+        font-family: "Inter", sans-serif;
+        font-weight: 300;
+        margin-top: 20px;
+        letter-spacing: -2px;
+    }
+
+    .playground-header h1 span {
+        color: #ff7f1f;
+    }
+
+    .playground-header p {
+        color: #8b93a7;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .studio-container {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 32px;
+        border: 1px solid #1f2937;
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .controls-sidebar {
+        padding: 40px;
+        border-right: 1px solid #1f2937;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .control-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .control-group label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: #8b93a7;
+        letter-spacing: 1px;
+    }
+
+    .label-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .label-row span {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: #ff7f1f;
+    }
+
+    /* CUSTOM RADIOS */
+    .radio-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+    }
+
+    .radio-btn {
+        position: relative;
+        cursor: pointer;
+    }
+
+    .radio-btn input {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .radio-btn span {
+        display: flex;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #1f2937;
+        font-size: 11px;
+        font-family: "JetBrains Mono", monospace;
+        color: #8b93a7;
+        transition: all 0.2s ease;
+    }
+
+    .radio-btn input:checked + span {
+        border-color: #ff7f1f;
+        color: #ff7f1f;
+        background: rgba(255, 127, 31, 0.05);
+    }
+
+    /* SELECT */
+    select {
+        background: #000;
+        border: 1px solid #1f2937;
+        padding: 12px;
+        color: #fff;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        outline: none;
+    }
+
+    /* RANGE */
+    input[type="range"] {
+        appearance: none;
+        background: #1f2937;
+        height: 2px;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        background: #ff7f1f;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .play-button {
+        margin-top: 20px;
+        background: #ff7f1f;
+        color: #000;
+        border: none;
+        padding: 16px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.3s ease;
+    }
+
+    .play-button:hover {
+        background: #ff913d;
+        transform: translateY(-2px);
+    }
+
+    /* PREVIEW AREA */
+    .preview-area {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .canvas {
+        flex: 1;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at center, #111 0%, #000 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Grid lines for canvas */
+    .canvas::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0.02) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.02) 1px,
+                transparent 1px
+            );
+        background-size: 40px 40px;
+    }
+
+    .animated-box {
+        position: relative;
+        z-index: 5;
+    }
+
+    .code-output {
+        border-top: 1px solid #1f2937;
+        padding: 30px;
+        background: #050505;
+    }
+
+    .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    .code-header span {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: #8b93a7;
+    }
+
+    .code-header button {
+        background: transparent;
+        border: 1px solid #1f2937;
+        color: #ff7f1f;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        padding: 4px 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .code-header button:hover {
+        background: rgba(255, 127, 31, 0.1);
+        border-color: #ff7f1f;
+    }
+
+    pre {
+        margin: 0;
+        color: #60a5fa;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 1024px) {
+        .studio-container {
+            grid-template-columns: 1fr;
+        }
+        .controls-sidebar {
+            border-right: none;
+            border-bottom: 1px solid #1f2937;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .playground-main {
+            padding-top: 60px;
+        }
+        .playground-header h1 {
+            font-size: 40px;
+        }
+    pre code:focus {
+        outline: none;
+        background: rgba(255, 127, 31, 0.05);
+        display: block;
+        border-radius: 4px;
+        box-shadow: 0 0 0 1px rgba(255, 127, 31, 0.3);
+    }
+</style>

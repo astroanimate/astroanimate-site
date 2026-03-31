@@ -1,0 +1,114 @@
+---
+const features = [
+    {
+        number: "01",
+        title: "Framework-Specific Structure",
+        desc: "Components integrate with Islands and View Transitions. Designed to align with Astro's rendering and routing model.",
+        highlight: "Cleaner integration in Astro projects.",
+        icon: "/images/framework.png"
+    },
+    {
+        number: "02",
+        title: "CSS-First Animations",
+        desc: "Core animations run without runtime JavaScript.JavaScript is added only when required.",
+        highlight: "Animations render without adding client-side JavaScript unless explicitly enabled.",
+        icon: "/images/css.png"
+    },
+    {
+        number: "03",
+        title: "Hydration-Aware Motion",
+        desc: "Animations do not force unnecessary hydration.Works with partial client rendering.",
+        highlight: "Better control over performance boundaries.",
+        icon: "/images/hydration.png"
+    },
+    {
+        number: "04",
+        title: "Engine Extensible",
+        desc: "Supports CSS-only motion and optional JavaScript engines.Architecture does not restrict animation strategy.",
+        highlight: "Supports incremental adoption without changing architecture.",
+        icon: "/images/engine.png"
+    },
+];
+---
+
+<section class="features-section">
+    <!-- BADGE -->
+    <div class="badge">DIFFERENTIATION</div>
+
+    <!-- HEADER -->
+    <div class="features-header differentiation-header">
+        <p class="mini">// DIFFERENTIATION</p>
+
+        <h2>
+            How Does AstroAnimate Align with <br />
+            <span>Astro's Architecture?</span>
+        </h2>
+
+        <ul class="points">
+            <li>
+                <img
+                    class="check-icon"
+                    src="/images/checkmark.png"
+                    alt=""
+                    width="16"
+                    height="16"
+                    loading="lazy"
+                    decoding="async"
+                />
+                Astro prioritizes static rendering and selective hydration.
+            </li>
+            <li>
+                <img
+                    class="check-icon"
+                    src="/images/checkmark.png"
+                    alt=""
+                    width="16"
+                    height="16"
+                    loading="lazy"
+                    decoding="async"
+                />
+                Many animation libraries are client-first.
+            </li>
+            <li>
+                <img
+                    class="check-icon"
+                    src="/images/checkmark.png"
+                    alt=""
+                    width="16"
+                    height="16"
+                    loading="lazy"
+                    decoding="async"
+                />
+                AstroAnimate aligns with Astro’s rendering model.
+            </li>
+        </ul>
+    </div>
+
+    <!-- GRID -->
+    <div class="grid">
+        {
+            features.map((f) => (
+                <div class="feature-card">
+                    <div class="top">
+                        <span class="num">{f.number}</span>
+                        <img 
+                            src={f.icon} 
+                            alt="" 
+                            class="feature-icon"
+                            width="24"
+                            height="24"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+
+                    <h3>{f.title}</h3>
+                    <p>{f.desc}</p>
+
+                    <span class="highlight">• {f.highlight}</span>
+                </div>
+            ))
+        }
+    </div>
+    <div class="bottom-separator"></div>
+</section>
