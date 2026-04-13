@@ -45,7 +45,11 @@ const { pathname } = Astro.url;
             class:list={["nav-item nav-link", { active: pathname === "/" }]}
             aria-current={pathname === "/" ? "page" : undefined}>HOME</a
         >
-        <a href="#" class="nav-item nav-link">DOCS</a>
+        <a
+            href="/docs"
+            class:list={["nav-item nav-link", { active: pathname === "/docs" }]}
+            >DOCS</a
+        >
         <a
             href="/playground"
             class:list={[
@@ -74,6 +78,7 @@ const { pathname } = Astro.url;
                     height="18"
                     loading="lazy"
                     decoding="async"
+                    fetchpriority="low"
                 />
                 <span class="social-count">1.5K</span>
             </div>
@@ -86,6 +91,7 @@ const { pathname } = Astro.url;
                     height="18"
                     loading="lazy"
                     decoding="async"
+                    fetchpriority="low"
                 />
                 <span class="social-count">1.5K</span>
             </div>

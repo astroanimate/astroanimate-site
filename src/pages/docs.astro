@@ -1,0 +1,202 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar.astro";
+import "../styles/Global.css";
+
+const { pathname } = Astro.url;
+---
+
+<Layout title="Documentation - AstroAnimate">
+  <NavBar />
+
+  <div class="docs-container">
+    <!-- SIDEBAR -->
+    <aside class="docs-sidebar">
+      <!-- Section: FOLLOW FOR UPDATES -->
+      <details class="sidebar-category" open>
+        <summary>
+          <div class="sidebar-nav-item">
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            >
+            FOLLOW FOR UPDATES
+          </div>
+        </summary>
+        <div class="subcategory-list">
+          <div class="sidebar-sub-item">Twitter</div>
+          <div class="sidebar-sub-item">GitHub</div>
+          <div class="sidebar-sub-item">Discord Community</div>
+        </div>
+      </details>
+
+      <!-- Section: GETTING STARTED -->
+      <details class="sidebar-category">
+        <summary>
+          <div class="sidebar-nav-item">
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            >
+            GETTING STARTED
+          </div>
+        </summary>
+        <div class="subcategory-list">
+          <div class="sidebar-sub-item">Intro</div>
+          <div class="sidebar-sub-item">Installation</div>
+        </div>
+      </details>
+
+      <!-- Section: ANIMATION COMPONENTS -->
+      <details class="sidebar-category" open>
+        <summary>
+          <div class="sidebar-nav-item active">
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            >
+            ANIMATION COMPONENTS
+          </div>
+        </summary>
+
+        <div class="subcategory-list">
+          <!-- Background & Effects -->
+          <details open>
+            <summary class="sidebar-sub-item active">
+              Background & Effects
+            </summary>
+            <div class="component-list">
+              <div class="sidebar-comp-item active">Sparkles</div>
+              <div class="sidebar-comp-item">Background Gradient</div>
+              <div class="sidebar-comp-item">Wavy Background</div>
+              <div class="sidebar-comp-item">Spotlight</div>
+              <div class="sidebar-comp-item">Wavy Background</div>
+            </div>
+          </details>
+
+          <!-- Card Components -->
+          <details>
+            <summary class="sidebar-sub-item">
+              Card Components
+            </summary>
+            <div class="component-list">
+              <div class="sidebar-comp-item">3D Card Effect</div>
+              <div class="sidebar-comp-item">Card Stack</div>
+              <div class="sidebar-comp-item">Card Hover Effect</div>
+              <div class="sidebar-comp-item">Expandable Card</div>
+              <div class="sidebar-comp-item">Animated Card</div>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <!-- Section: SECTIONS AND BLOCKS -->
+      <details class="sidebar-category">
+        <summary>
+          <div class="sidebar-nav-item">
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            >
+            SECTIONS AND BLOCKS
+          </div>
+        </summary>
+        <div class="subcategory-list">
+          <div class="sidebar-sub-item">Bento grids</div>
+          <div class="sidebar-sub-item">Contact pages</div>
+          <div class="sidebar-sub-item">Hero Sections</div>
+        </div>
+      </details>
+
+      <!-- Section: UI COMPONENTS -->
+      <details class="sidebar-category">
+        <summary>
+          <div class="sidebar-nav-item">
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            >
+            UI COMPONENTS
+          </div>
+        </summary>
+        <div class="subcategory-list">
+          <div class="sidebar-sub-item">Avatar</div>
+          <div class="sidebar-sub-item">Cards</div>
+          <div class="sidebar-sub-item">Tool tips</div>
+        </div>
+      </details>
+
+      <!-- Section: TEMPLATES -->
+      <details class="sidebar-category">
+        <summary>
+          <div class="sidebar-nav-item">
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            >
+            TEMPLATES
+          </div>
+        </summary>
+        <div class="subcategory-list">
+          <div class="sidebar-sub-item">AI SaaS template</div>
+          <div class="sidebar-sub-item">Minimal portfolio template</div>
+          <div class="sidebar-sub-item">Start-up landing page template</div>
+        </div>
+      </details>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="docs-content">
+      <div class="blog-featured-image" style="margin-bottom: 40px;">
+        <img src="/images/blog-1.png" alt="AstroAnimate" />
+      </div>
+      <!-- Content Placeholder -->
+      <section style="margin-top: 60px;">
+        <h1 style="font-size: 40px; margin-bottom: 24px;">Sparkles</h1>
+        <p
+          style="color: #9CA3AF; font-size: 18px; max-width: 700px; line-height: 1.6;"
+        >
+          A high-performance sparkle effect component built with the Web
+          Animations API. Perfect for adding a touch of magic to your Hero
+          sections or background elements.
+        </p>
+      </section>
+    </main>
+  </div>
+</Layout>

@@ -10,24 +10,29 @@ import "../styles/Global.css";
 
     <main class="blog-container">
         <!-- HEADER -->
-        <header class="blog-header">
+        <header class="standard-header">
+            <!-- <div class="badge-border"></div> -->
             <div class="header-overlay"></div>
             <div class="badge-top">BLOG</div>
-            <!-- <div class="corner t-l"></div>
-            <div class="corner t-r"></div> -->
+            <!-- <div class="corner t-l"></div> -->
+            <!-- <div class="corner t-r"></div> -->
         </header>
 
         <!-- FEATURED SECTION -->
         <section class="featured-grid">
+            <div class="page-separator-line"></div>
             <!-- BIG FEATURED -->
             <div class="main-featured">
                 <div class="featured-image">
+                    <img src="/images/blog-1.png" alt="Astro Needs a Dedicated Animation Library" />
                 </div>
                 <div class="featured-content">
-                    <span class="blog-tag">// Blog</span>
+                    <span class="category-tag">// Blog</span>
                     <h2>
-                        Why Astro Needs a Dedicated Animation Library (And How
-                        AstroAnimate Solves It)
+                        <a href="/blog/why-astro-animate" style="color: inherit; text-decoration: none;">
+                            Why Astro Needs a Dedicated Animation Library (And How
+                            AstroAnimate Solves It)
+                        </a>
                     </h2>
                     <p>
                         Discover why Astro needs a dedicated Astro animation
@@ -42,7 +47,7 @@ import "../styles/Global.css";
                             <div class="author-left">
                         
                             <img
-                                src="/images/Logo.png"
+                                src="/images/prashanth.png"
                                 alt="Author"
                                 class="author-img"
                             />
@@ -60,7 +65,7 @@ import "../styles/Global.css";
                 <div class="side-card">
                     <div class="side-image"></div>
                     <div class="side-content">
-                        <span class="blog-tag">// Guide</span>
+                        <span class="category-tag">// Guide</span>
                         <h3>
                             How to add AstroAnimate Animations to your astro
                             projects
@@ -74,7 +79,7 @@ import "../styles/Global.css";
                 <div class="side-card">
                     <div class="side-image"></div>
                     <div class="side-content">
-                                                <span class="blog-tag">// Guide</span>
+                                                <span class="category-tag">// Guide</span>
 
                         <h3>Announcing AstroAnimate Templates</h3>
                         <div class="side-footer">
@@ -84,14 +89,17 @@ import "../styles/Global.css";
                     </div>
                 </div>
             </div>
+            <!-- <div class="corner b-l"></div>
+            <div class="corner b-r"></div> -->
         </section>
 
         <!-- SEARCH & CATEGORIES -->
         <section class="filter-section">
+            
             <div class="filter-header">
                 <h2>All Blogs</h2>
                 <div class="categories-wrap">
-                    <span class="label">// Categories</span>
+                    <span class="blog-label">// Categories</span>
                     <div class="category-buttons">
                         <button class="active">All</button>
                         <button>Guide</button>
@@ -125,19 +133,23 @@ import "../styles/Global.css";
         <section class="blog-list">
             <article class="blog-item">
                 <div class="item-image-box">
-                    <div class="item-image"></div>
+                    <div class="item-image">
+                        <img src="/images/blog-1.png" alt="Astro Needs a Dedicated Animation Library" />
+                    </div>
                 </div>
                 <div class="item-content">
                     <div class="item-header">
-                        <span class="blog-tag">// Blog</span>
+                        <span class="category-tag">// Blog</span>
                         <div class="item-meta">
                             <span>MAR 25, 2026</span>
                             <span class="read-time">(4min read)</span>
                         </div>
                     </div>
                     <h3>
-                        Why Astro Needs a Dedicated Animation Library (And How
-                        AstroAnimate Solves It)
+                        <a href="/blog/why-astro-animate" style="color: inherit; text-decoration: none;">
+                            Why Astro Needs a Dedicated Animation Library (And How
+                            AstroAnimate Solves It)
+                        </a>
                     </h3>
                     <div class="author-simple">
                         <div class="author-avatar"></div>
@@ -152,7 +164,7 @@ import "../styles/Global.css";
                 </div>
                 <div class="item-content">
                     <div class="item-header">
-                        <span class="blog-tag">// Guide</span>
+                        <span class="category-tag">// Guide</span>
                         <div class="item-meta">
                             <span>MAR 25, 2026</span>
                             <span class="read-time">(4min read)</span>

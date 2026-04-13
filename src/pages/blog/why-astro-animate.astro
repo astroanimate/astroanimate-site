@@ -1,0 +1,323 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import NavBar from "../../components/NavBar.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles/Global.css";
+---
+
+<Layout
+    title="Why Astro Needs a Dedicated Animation Library (And How AstroAnimate Solves It)"
+>
+    <NavBar />
+
+    <main class="article-container">
+        <!-- BLOG HEADER -->
+        <header class="article-header">
+            <div class="blog-nav">
+                <a href="/Blog" class="back-link">← Go Back</a>
+                <a href="#" class="next-link">Next Post →</a>
+            </div>
+
+            <div class="article-title-section">
+                <span class="article-category-tag">// Blog</span>
+
+                <div class="article-title-wrapper">
+                    <div class="blog-title-left">
+                        <h1 class="blog-title">
+                            Why Astro Needs a Dedicated Animation Library (And
+                            How AstroAnimate Solves It)
+                        </h1>
+
+                        <div class="article-meta-wrapper">
+                            <div class="article-meta">
+                                <span class="blog-date">MAR 25, 2006</span>
+                                <span class="blog-read-time">4 MIN READ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-title-image">
+                        <div class="blog-featured-image">
+                            <img src="/images/blog-1.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="article-author-section">
+                    <div class="author-info">
+                        <img
+                            src="/images/prashanth.png"
+                            alt="Prashanth ks"
+                            class="author-avatar"
+                        />
+                        <span class="author-name">Prashanth ks</span>
+                    </div>
+                    <button class="copy-link-btn">Copy Link</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- BLOG CONTENT -->
+        <div class="article-layout">
+            <!-- TABLE OF CONTENTS -->
+            <aside class="table-of-contents">
+                <nav class="toc-nav">
+                    <!-- <h3 class="toc-title">Table of Contents</h3> -->
+                    <ul class="toc-list">
+                        <li class="toc-item">
+                            <a href="#core-problem" class="toc-link active"
+                                >The Core Problem: Astro Wasn't...</a
+                            >
+                        </li>
+                        <li class="toc-item">
+                            <a href="#generic-libraries" class="toc-link"
+                                >Why Generic Animation Libraries...</a
+                            >
+                        </li>
+                        <li class="toc-item">
+                            <a href="#astro-needs" class="toc-link"
+                                >What Astro Actually Needs From...</a
+                            >
+                        </li>
+                        <li class="toc-item">
+                            <a href="#what-is-astroanimate" class="toc-link"
+                                >What is AstroAnimate?</a
+                            >
+                        </li>
+                        <li class="toc-item">
+                            <a href="#architecture" class="toc-link"
+                                >How AstroAnimate Differs Architectur...</a
+                            >
+                        </li>
+                        <li class="toc-item">
+                            <a href="#css-first" class="toc-link"
+                                >CSS-First Design: Why It Matters</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <article class="article-body">
+                <section id="core-problem" class="content-section">
+                    <h2>
+                        Why Astro Needs a Dedicated Animation Library (And How
+                        AstroAnimate Solves It)
+                    </h2>
+
+                    <h3>
+                        The Core Problem: Astro Wasn't Designed for Client-Heavy
+                        Animation
+                    </h3>
+                    <p>
+                        Astro's architecture is fundamentally built around
+                        server-side rendering and minimal client-side
+                        JavaScript. While this approach delivers exceptional
+                        performance, it creates unique challenges for animation
+                        libraries that traditionally rely heavily on runtime
+                        JavaScript.
+                    </p>
+
+                    <ul class="content-list">
+                        <li>
+                                            <span class="diamond"></span>
+
+                            Server-side first rendering conflicts with
+                            traditional animation timing
+                        </li>
+                        <li>
+                                            <span class="diamond"></span>
+
+                            Islands architecture requires careful JavaScript
+                            boundary management
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            View Transitions API integration needs specialized
+                            handling
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Performance optimization requires zero-JS by default
+                            approach
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="generic-libraries" class="content-section">
+                    <h3>
+                        Why Generic Animation Libraries Don't Fit Astro Cleanly
+                    </h3>
+                    <p>
+                        Popular animation libraries like GSAP, Framer Motion, or
+                        Anime.js were designed for traditional SPA
+                        architectures. They assume persistent client-side
+                        JavaScript runtime, which conflicts with Astro's core
+                        principles.
+                    </p>
+
+                    <ul class="content-list">
+                        <li>
+                            <span class="diamond"></span>
+                            Heavy JavaScript footprint contradicts Astro's
+                            performance goals
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Lack of native View Transitions API support
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Poor integration with Islands architecture
+                            boundaries
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            No consideration for server-side rendering
+                            constraints
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="astro-needs" class="content-section">
+                    <h3>What Astro Actually Needs From Animation</h3>
+                    <p>
+                        Astro requires an animation approach that respects its
+                        architectural principles while still providing powerful
+                        animation capabilities. This means rethinking how
+                        animations are implemented from the ground up.
+                    </p>
+
+                    <ul class="content-list">
+                        <li>
+                            <span class="diamond"></span>
+                            CSS-first approach with JavaScript as progressive
+                            enhancement
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Native View Transitions API integration
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Islands-aware animation boundaries
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Server-side rendering compatibility
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Zero JavaScript by default, opt-in when needed
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="what-is-astroanimate" class="content-section">
+                    <h3>What is AstroAnimate?</h3>
+                    <p>
+                        AstroAnimate is a purpose-built animation library
+                        designed specifically for Astro's unique architecture.
+                        It provides powerful animation capabilities while
+                        respecting Astro's core principles of performance and
+                        minimal JavaScript.
+                    </p>
+
+                    <ul class="content-list">
+                        <li>
+                            <span class="diamond"></span>
+                            CSS and Web Animations API based transitions
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Zero runtime JavaScript unless explicitly enabled
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Built for Islands architecture
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Native View Transitions API support
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Server-side rendering compatible
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="architecture" class="content-section">
+                    <h3>How AstroAnimate Differs Architecturally</h3>
+                    <p>
+                        Unlike traditional animation libraries, AstroAnimate is
+                        built around Astro's architectural patterns. It
+                        understands Islands boundaries, respects server-side
+                        rendering, and provides progressive enhancement.
+                    </p>
+
+                    <ul class="content-list">
+                        <li>
+                            <span class="diamond"></span>
+                            Component-scoped animations that respect Island
+                            boundaries
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            CSS-based animations with JavaScript enhancement
+                            layers
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            View Transitions API as first-class citizen
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Server-side animation state management
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Progressive enhancement approach
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="css-first" class="content-section">
+                    <h3>CSS-First Design: Why It Matters</h3>
+                    <p>
+                        The CSS-first approach is fundamental to AstroAnimate's
+                        design. By prioritizing CSS animations and using
+                        JavaScript only when necessary, we maintain Astro's
+                        performance benefits while still providing rich
+                        animation capabilities.
+                    </p>
+
+                    <ul class="content-list">
+                        <li>
+                            <span class="diamond"></span>
+                            Better performance with CSS-only animations
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Reduced JavaScript bundle size
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Improved accessibility with reduced motion support
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Server-side rendering compatibility
+                        </li>
+                        <li>
+                            <span class="diamond"></span>
+                            Progressive enhancement capabilities
+                        </li>
+                    </ul>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <Footer />
+</Layout>

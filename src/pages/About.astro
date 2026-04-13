@@ -1,0 +1,316 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/Global.css";
+---
+
+<Layout title="Terms of Service - AstroAnimate">
+  <NavBar />
+
+  <main class="page-container">
+    <!-- HEADER -->
+    <header class="standard-header">
+      <!-- <div class="badge-border"></div> -->
+      <div class="header-overlay"></div>
+      <div class="badge-top">about us</div>
+      <!-- <div class="corner t-l"></div> -->
+      <!-- <div class="corner t-r"></div> -->
+    </header>
+
+    <!-- CONTENT -->
+    <div class="page-separator-line"></div>
+
+    <section class="page-content">
+      <!-- <div class="content-header">
+                
+                <span class="content-meta">// Effective date: March 27, 2026</span
+                >
+                <p>
+                    These Terms of Service govern your access to and use of
+                    AstroAnimate, including the library, website, documentation,
+                    and repository. By accessing or using any of these
+                    resources, you agree to be bound by these terms.
+                </p>
+            </div> -->
+
+      <div class="content-row about-section">
+        <h2>AstroAnimate is Built for Astro. By Astro Developers.</h2>
+        <p>
+          AstroAnimate is an open-source animation library for the Astro
+          framework designed to work without runtime JavaScript, respect Islands
+          Architecture, and ship accessible, performant animations by default.
+        </p>
+        <div class="highlight-wrap">
+          <p class="highlight-text">
+            We got tired of copying the same animation setup into every Astro
+            project. So we built the library we always wanted.
+          </p>
+        </div>
+      </div>
+
+      <span class="content-meta about-date"
+        >// Effective date: March 27, 2026</span
+      >
+
+      <div class="content-row about-section about-project-section">
+        <h2>Every Astro project started the same way.</h2>
+        <p>
+          Find a tutorial. Manually integrate Motion or GSAP. Debug View
+          Transitions compatibility. Rebuild the same fade-in for the fifth
+          time.
+        </p>
+        <p>
+          There was no dedicated animation library for Astro. No single source
+          of truth. No components that understood Islands Architecture or
+          respected zero-JS defaults.
+        </p>
+        <p>
+          So in January 2026 shortly after major developments in the Astro
+          ecosystem, we started building AstroAnimate. It's one of the first
+          animation libraries built specifically for Astro's architecture.
+        </p>
+      </div>
+      <img src="/images/dash.png" alt="" class="about-dash" />
+      <span class="content-meta about-date">// Who We Are</span>
+
+      <div class="content-row about-section about-team-section">
+        <h2>A small team with a clear focus.</h2>
+        <p>
+          We're three developers based in India, building the animation layer
+          the Astro ecosystem was missing.
+        </p>
+        <section class="team-section">
+          <div class="team-grid">
+            <div class="about-card active">
+              <div class="about-card-header">
+                <img
+                  src="/images/prashanth.png"
+                  alt="Prashanth"
+                  class="avatar"
+                />
+                <div class="title-wrap">
+                  <h3 class="name">Prashanth</h3>
+                  <p class="role">// FOUNDER & CEO</p>
+                </div>
+              </div>
+              <p class="team-description">
+                Lead UI/UX designer, SEO strategist, and the person who makes
+                sure AstroAnimate looks as good as it performs. Sai obsesses
+                over developer experience from the first impression to the last
+                pixel.
+              </p>
+              <div class="social-bar">
+                <img src="/images/twitter2.png" alt="X" class="icon orange" />
+                <img src="/images/github2.png" alt="GitHub" class="icon" />
+                <img src="/images/linkedin.png" alt="LinkedIn" class="icon" />
+              </div>
+            </div>
+
+            <div class="about-card">
+              <div class="about-card-header">
+                <div class="avatar-placeholder"></div>
+                <div class="title-wrap">
+                  <h3 class="name">Vipin</h3>
+                  <p class="role">// Co-Founder & CTO</p>
+                </div>
+              </div>
+              <p class="team-description">
+                Full-stack developer and AI engineer responsible for the
+                technical architecture of AstroAnimate. Vipin wrote the
+                compliance framework, the component system, and every line of
+                the core library.
+              </p>
+              <div class="social-bar">
+                <img src="/images/twitter2.png" alt="X" class="icon orange" />
+                <img src="/images/github2.png" alt="GitHub" class="icon" />
+                <img src="/images/linkedin.png" alt="LinkedIn" class="icon" />
+              </div>
+            </div>
+
+            <div class="about-card">
+              <div class="about-card-header">
+                <img src="/images/barsan.jpeg" alt="Barsan" class="avatar" />
+                <div class="title-wrap">
+                  <h3 class="name">Barsan</h3>
+                  <p class="role">// R&D & Frontend Developer</p>
+                </div>
+              </div>
+              <p class="team-description">
+                R&D engineer and frontend specialist. Barsan researches emerging
+                animation patterns, tests browser compatibility, and pushes the
+                boundaries of what's possible with CSS-first animation.
+              </p>
+              <div class="social-bar">
+                <img src="/images/twitter2.png" alt="X" class="icon orange" />
+                <img src="/images/github2.png" alt="GitHub" class="icon" />
+                <img src="/images/linkedin.png" alt="LinkedIn" class="icon" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <img src="/images/dash.png" alt="" class="about-dash" />
+
+        <span class="content-meta about-date">// What We Believe</span>
+
+        <div class="content-row about-section">
+          <h2>Our principles, not our pitch.</h2>
+          <div class="principles-container">
+            <div class="principle-item">
+              <h3 class="principle-title">1. Zero-JS by default.</h3>
+              <p class="principle-desc">
+                Animations should not require JavaScript unless you explicitly
+                opt in. Every AstroAnimate component is meaningful without a
+                single line of runtime JS.
+              </p>
+            </div>
+            <div class="principle-item">
+              <h3 class="principle-title">2. Performance is non-negotiable.</h3>
+              <p class="principle-desc">
+                Designed to meet Lighthouse 90+ performance targets on every
+                component. Bundle size under 50KB gzipped. If it slows your site
+                down, it doesn't ship.
+              </p>
+            </div>
+            <div class="principle-item">
+              <h3 class="principle-title">3. Accessibility first.</h3>
+              <p class="principle-desc">
+                Every component respects <code>'prefers-reduced-motion'</code>.
+                Keyboard navigation works. Screen readers are considered.
+                Animation should never come at the cost of usability.
+              </p>
+            </div>
+            <div class="principle-item">
+              <h3 class="principle-title">4. Honest documentation.</h3>
+              <p class="principle-desc">
+                We tell you what AstroAnimate does. We also tell you what it
+                doesn't do. If GSAP is a better fit for your use case, we'll say
+                so.
+              </p>
+            </div>
+            <div class="principle-item">
+              <h3 class="principle-title">5. Open source at the core.</h3>
+              <p class="principle-desc">
+                The core library is MIT licensed and always will be. We build in
+                public, accept contributions, and share everything we learn.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-extra-section">
+        <span class="content-meta about-date">// WHY NOW</span>
+        <h2 class="about-title">The timing is not a coincidence.</h2>
+        <p>
+          Astro was acquired by Cloudflare in January 2026. Webflow AI now
+          generates Astro code by default. Astro adoption continues to grow
+          among developers building content-focused websites.
+        </p>
+        <p>
+          The Astro ecosystem needed an animation library. There were no
+          dedicated options. We saw the gap and moved fast.
+        </p>
+        <p>
+          AstroAnimate is built on the premise that Astro continues to grow as a
+          framework for content-focused websites and that those sites deserve
+          reliable animation tooling without the complexity.
+        </p>
+      </div>
+
+      <div class="about-border-top"></div>
+      <div class="about-extra-section">
+        <span class="content-meta about-date">// WHERE WE'RE HEADED</span>
+        <h2 class="about-title">April 2026 and beyond.</h2>
+        <p>
+          We're launching with 50+ production-ready components covering scroll
+          animations, text effects, UI primitives, and full page sections. After
+          launch, we're building templates, a visual playground, and agency
+          tooling.
+        </p>
+        <p>
+          The long-term goal is simple: when someone says "I'm building an Astro
+          site," AstroAnimate is the first animation tool they reach for.
+        </p>
+      </div>
+
+      <div class="about-border-top"></div>
+      <div class="about-extra-section">
+        <span class="content-meta about-date">// CALL TO ACTION</span>
+        <h2 class="about-title">Want to follow along?</h2>
+        <p>
+          We build in public. You can watch every decision, every component, and
+          every mistake in real time.
+        </p>
+
+        <div class="cta-grid-about">
+          <a href="https://github.com/astroanimate" class="cta-card-about">
+            <div class="cta-icon-box active">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-star"
+                ><polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                ></polygon></svg
+              >
+            </div>
+            <h3>Star us on GitHub ↗</h3>
+            <p>Follow the build, contribute, or just keep track of progress.</p>
+          </a>
+
+          <a href="https://discord.gg/astroanimate" class="cta-card-about">
+            <div class="cta-icon-box">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-message-square"
+                ><path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                ></path></svg
+              >
+            </div>
+            <h3>Join Discord</h3>
+            <p>Ask questions, share feedback, and talk to the team directly.</p>
+          </a>
+
+          <a href="/docs" class="cta-card-about">
+            <div class="cta-icon-box">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-book-open"
+                ><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path
+                  d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg
+              >
+            </div>
+            <h3>Read the docs</h3>
+            <p>see exactly what AstroAnimate does and how to integrate it.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+    <div class="about-round-img-container">
+      <img src="/images/round.png" alt="" class="about-round-img" />
+    </div>
+  </main>
+  <Footer />
+</Layout>

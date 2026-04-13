@@ -1,0 +1,91 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/Global.css";
+---
+
+<Layout title="Privacy Policy - AstroAnimate">
+    <NavBar />
+    
+    <main class="page-container contact-container">
+        <!-- HEADER -->
+        <header class="standard-header">
+            <!-- <div class="badge-border"></div> -->
+            <div class="header-overlay"></div>
+            <div class="badge-top">Contact us</div>
+            <!-- <div class="corner t-l"></div> -->
+            <!-- <div class="corner t-r"></div> -->
+        </header>
+
+        <!-- CONTENT -->            <div class="page-separator-line"></div>
+
+        <section class="page-content contact-content">
+
+            <div class="content-header contact-header">
+         
+                <p>
+Have a question? Found a bug? Want to partner with us? Use the right channel below and we'll get back to you quickly.                </p>
+            </div>
+
+         <main class="contact-grid">
+        <section class="contact-item" tabindex="0">
+            <div class="category-header">
+                <span class="category-icon">🛠️</span>
+                <h2 class="category-title">General Inquiries</h2>
+            </div>
+            <a href="mailto:hello@astroanimate.com" class="email-address">hello@astroanimate.com</a>
+            <p class="contact-description">For partnership requests, press inquiries, and anything that doesn't fit another category.</p>
+        </section>
+
+        <section class="contact-item" tabindex="0">
+            <div class="category-header">
+                <span class="category-icon">💰</span>
+                <h2 class="category-title">Sales & Licensing</h2>
+            </div>
+            <a href="mailto:sales@astroanimate.com" class="email-address">sales@astroanimate.com</a>
+            <p class="contact-description">For agency licensing, team plans, enterprise inquiries, and pricing questions.</p>
+        </section>
+
+        <section class="contact-item" tabindex="0">
+            <div class="category-header">
+                <span class="category-icon">💬</span>
+                <h2 class="category-title">Technical Support</h2>
+            </div>
+            <a href="mailto:support@astroanimate.com" class="email-address">support@astroanimate.com</a>
+            <p class="contact-description">For bugs, implementation questions, and help with AstroAnimate components. Check the docs first for faster answers.</p>
+        </section>
+
+        <section class="contact-item" tabindex="0">
+            <div class="category-header">
+                <span class="category-icon">🔒</span>
+                <h2 class="category-title">Security</h2>
+            </div>
+            <a href="mailto:hello@astroanimate.com" class="email-address">hello@astroanimate.com</a>
+            <p class="contact-description">To responsibly disclose a vulnerability. Please do not open a public GitHub issue for security concerns. We'll acknowledge within 48 hours.</p>
+        </section>
+
+        <section class="contact-item" tabindex="0">
+            <div class="category-header">
+                <span class="category-icon">⚖️</span>
+                <h2 class="category-title">Legal & Privacy</h2>
+            </div>
+            <a href="mailto:admin@astroanimate.com" class="email-address">admin@astroanimate.com</a>
+            <p class="contact-description">For legal inquiries, DMCA requests, licensing clarifications, and data privacy or GDPR questions.</p>
+        </section>
+
+        <section class="contact-item" tabindex="0">
+            <div class="category-header">
+                <span class="category-icon">🤝</span>
+                <h2 class="category-title">Community & Events</h2>
+            </div>
+            <a href="mailto:hello@astroanimate.com" class="email-address">hello@astroanimate.com</a>
+            <p class="contact-description">For hackathon sponsorships, community collaborations, and event requests. We'll follow up if it's a good fit.</p>
+        </section>
+    </main>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</Layout>
