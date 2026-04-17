@@ -1,0 +1,434 @@
+---
+import DocLayout from "../../layouts/DocLayout.astro";
+import "../../styles/Global.css";
+---
+
+<DocLayout title="Quick Start">
+    <section id="quick-start">
+        <h1 class="docs-title">Quick Start (Usage Guide)</h1>
+
+        <div class="docs-intro-section" id="achieve">
+            <h2 class="docs-subtitle">What You’ll Achieve</h2>
+            <p class="docs-paragraph">
+                If you just installed AstroAnimate and want to make it work
+                immediately, this quick start solves that exact task.
+            </p>
+            <p class="docs-paragraph">By the end of this page, you will:</p>
+            <ul class="docs-list">
+                <li>Build a working Astro page with AstroAnimate components</li>
+                <li>Understand the recommended import pattern</li>
+                <li>Use both CSS-first and opt-in enhancement patterns</li>
+                <li>Verify behavior in development quickly</li>
+                <li>Know what to do next for API-level adoption</li>
+            </ul>
+            <p class="docs-paragraph">
+                This page focuses on practical implementation, not theory.
+            </p>
+        </div>
+
+        <div class="docs-intro-section" id="prerequisites">
+            <h2 class="docs-subtitle">Prerequisites / Requirements</h2>
+            <p class="docs-paragraph">
+                Before starting this AstroAnimate quick start:
+            </p>
+            <p class="docs-paragraph">
+                AstroAnimate is installed in your project:
+            </p>
+            <div class="docs-code-block">
+                <div class="code-header">
+                    <span>bash</span>
+                </div>
+                <div class="code-wrapper">
+                    <pre><code><span class="keyword">npm</span> install <span class="string">@astroanimate/core</span></code></pre>
+                    <button class="copy-btn-icon" aria-label="Copy code">
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><rect
+                                x="9"
+                                y="9"
+                                width="13"
+                                height="13"
+                                rx="2"
+                                ry="2"></rect><path
+                                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                            ></path></svg
+                        >
+                    </button>
+                </div>
+            </div>
+            <ul class="docs-list">
+                <li>
+                    Your Astro version is compatible ('<span class="keyword"
+                        >^4.0.0 || ^5.0.0</span
+                    >')
+                </li>
+                <li>You can run your project locally with npm scripts</li>
+                <li>
+                    You have a page ready to edit, such as '<span
+                        class="component">src/pages/index.astro</span
+                    >'
+                </li>
+            </ul>
+            <p class="docs-paragraph">
+                If installation is not done yet, complete '<span
+                    class="component">/docs/installation/</span
+                >' first.
+            </p>
+        </div>
+
+        <div class="docs-intro-section" id="step-by-step">
+            <h2 class="docs-subtitle">Step-by-Step Guide</h2>
+
+            <div class="steps-container">
+                <!-- STEP 1 -->
+                <div class="step-item" id="qs-step-1">
+                    <h3 class="step-title">
+                        Step 1: Create a minimal working page
+                    </h3>
+                    <p class="docs-paragraph">
+                        Open src/pages/index.astro and add:
+                    </p>
+                    <div class="docs-code-block">
+                        <pre><code><span class="comment">---</span>
+<span class="component">import</span> &#123; FadeIn, SlideIn, TextRotate &#125; <span class="component">from</span> <span class="string">"@astroanimate/core"</span>;
+<span class="component">import</span> <span>SlideIn</span> <span class="component">from</span> <span class="string">"@astroanimate/core/SlideIn"</span>;
+<span class="component">import</span> <span>TextRotate</span> <span class="component">from</span> <span class="string">"@astroanimate/core/TextRotate"</span>;
+<span class="comment">---</span>
+
+&lt;<span class="brand">main</span>&gt;
+  &lt;<span class="brand">div</span> <span class="string">class</span>=<span class="component">"container"</span>&gt;
+    &lt;<span class="brand">FadeIn</span> <span class="string">advance</span> <span class="string">direction</span>=<span class="component">"up"</span> <span class="string">distance</span>={<span class="number">{20}</span>} <span class="string">once</span>&gt;
+      &lt;<span class="brand">h1</span>&gt;
+        AstroAnimate is installed
+      &lt;/<span class="brand">h1</span>&gt;
+    &lt;/<span class="brand">FadeIn</span>&gt;
+
+    &lt;<span class="brand">SlideIn</span> <span class="string">enter</span> <span class="string">direction</span>=<span class="component">"left"</span> <span class="string">delay</span>={<span class="number">{0.2}</span>} <span class="string">threshold</span>={<span class="number">{0.5}</span>}&gt;
+      &lt;<span class="brand">p</span>&gt;Welcome to the usage guide.&lt;/<span class="brand">p</span>&gt;
+    &lt;/<span class="brand">SlideIn</span>&gt;
+
+    &lt;<span class="brand">TextRotate</span> <span class="string">items</span>={<span class="number">["Fast", "Modern", "Dynamic"]</span>} /&gt;
+  &lt;/<span class="brand">div</span>&gt;
+&lt;/<span class="brand">main</span>&gt;</code></pre>
+                    </div>
+                    <p class="docs-paragraph">Why this code:</p>
+                    <ul class="docs-list">
+                        <li>It validates real component imports.</li>
+                        <li>
+                            It demonstrates three common usage patterns:
+                            <ul
+                                class="docs-list"
+                                style="margin-top: 12px; margin-bottom: 0;"
+                            >
+                                <li>rotating text</li>
+                                <li>fade-in entry</li>
+                                <li>reveal-on-scroll</li>
+                            </ul>
+                        </li>
+                        <li>It matches the project’s example style.</li>
+                    </ul>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="step-item" id="qs-step-2">
+                    <h3 class="step-title">
+                        Step 2: Understand the component responsiveness
+                    </h3>
+                    <p class="docs-paragraph">
+                        Use a direct component import for a clear first
+                        validation:
+                    </p>
+                    <div class="docs-code-block">
+                        <pre><code><span class="comment">---</span>
+<span class="component">import</span> <span>FadeIn</span> <span class="component">from</span> <span class="string">"@astroanimate/core/FadeIn"</span>;
+<span class="comment">---</span>
+
+&lt;<span class="brand">main</span>&gt;
+  &lt;<span class="brand">FadeIn</span> <span class="string">advance</span> <span class="string">direction</span>=<span class="component">"up"</span> <span class="string">distance</span>={<span class="number">{20}</span>} <span class="string">once</span>&gt;
+    &lt;<span class="brand">h1</span>&gt;AstroAnimate is installed&lt;/<span class="brand">h1</span>&gt;
+  &lt;/<span class="brand">FadeIn</span>&gt;
+&lt;/<span class="brand">main</span>&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="step-item" id="qs-step-3">
+                    <h3 class="step-title">
+                        Step 3: Optional: import from root exports
+                    </h3>
+                    <p class="docs-paragraph">
+                        AstroAnimate components generally follow:
+                    </p>
+                    <ol class="docs-numbered-list">
+                        <li>
+                            Render baseline content first
+                            <span class="docs-paragraph"
+                                >(visible HTML/CSS output)
+                            </span>
+                        </li>
+                        <li>
+                            Enable optional enhancement
+                            <span class="docs-paragraph"
+                                >when needed with props like '<span
+                                    class="string">enhance</span
+                                >'
+                            </span>
+                        </li>
+                        <li>
+                            Tune behavior with component props
+                            <span class="docs-paragraph"
+                                >('<span class="string">direction</span>', ' <span
+                                    class="string">distance</span
+                                >', '<span class="string">delay</span>', etc.)
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="docs-paragraph">
+                        This gives a practical balance between performance and
+                        interaction.
+                    </p>
+                </div>
+
+                <!-- STEP 4 -->
+                <div class="step-item" id="qs-step-4">
+                    <h3 class="step-title">Step 4: Run and verify</h3>
+                    <p class="docs-paragraph">Start dev server:</p>
+                    <div class="docs-code-block dark-bg">
+                        <!-- <div class="code-header">
+                            <span>bash</span>
+                        </div> -->
+                        <div class="code-wrapper">
+                            <pre><code>npm run dev</code></pre>
+                        </div>
+                    </div>
+                    <p class="docs-paragraph">Then verify:</p>
+                    <ul class="docs-list">
+                        <li>Page renders without import/module errors</li>
+                        <li>
+                            `<span class="string">TextRotate</span>` cycles
+                            through the `<span class="string">texts</span
+                            >` array
+                        </li>
+                        <li>
+                            `<span class="string">FadeIn</span>` and `<span
+                                class="string">Reveal</span
+                            >` animate when enhancement conditions are met
+                        </li>
+                        <li>
+                            Content remains usable if enhancements are disabled
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="docs-intro-section" id="notes">
+            <h2 class="docs-subtitle">Notes</h2>
+            <div class="steps-list">
+                <div class="step-item">
+                    <ul class="docs-list">
+                        <li>
+                            Use the exact package namespace: @astroanimate/core.
+                        </li>
+                        <li>
+                            Prefer explicit component imports for clarity when
+                            onboarding teams.
+                        </li>
+                        <li>
+                            Some interactions are enhancement-based; test in
+                            real browser conditions.
+                        </li>
+                        <li>
+                            Respect reduced-motion preferences during QA for
+                            accessibility behavior.
+                        </li>
+                        <li>
+                            For advanced timeline choreography, consider whether
+                            additional motion tooling is needed.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="docs-intro-section" id="related-resources">
+            <h2 class="docs-subtitle">Related Resources</h2>
+            <ul class="docs-list docs-resource-links">
+                <li>→ <a href="/docs">Introduction</a></li>
+                <li>→ <a href="/docs/installation">Installation</a></li>
+                <li>→ <a href="/docs/components">Supported Components</a></li>
+            </ul>
+        </div>
+
+        <div class="docs-intro-section" id="faq">
+            <h2 class="docs-subtitle">FAQ (Developer Questions)</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary
+                        >Is AstroAnimate only for Astro? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">Yes. It is fully built for.</div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >How do I use AstroAnimate in a real Astro page quickly? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Install @astroanimate/core, import 1–3 components
+                        into src/pages/index.astro, and validate behavior
+                        with npm run dev.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >Should I create a separate usage page if I already have
+                        quick start? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Yes. Use Quick Start for first successful
+                        implementation. Use Component API pages for
+                        component-by-component patterns, props, and advanced
+                        examples.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >Is enhance required for all AstroAnimate components? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        No. Usage depends on component behavior. Some components
+                        are CSS-first by default, while others expose optional
+                        enhancement for interactive scenarios.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >What is the best first component to try? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Use FadeIn for first validation because it is easy to
+                        inspect visually and simple to configure.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >How do I know my setup is production-safe?<svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Run build, typecheck, lint, and test scripts before
+                        rollout. Then verify behavior in your target browsers
+                        and devices.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="docs-footer-nav">
+            <a href="/docs/installation" class="prev-link">
+                <span class="label">PREVIOUS</span>
+                <span class="title">
+                    <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        style="transform: rotate(180deg);"
+                        ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                            points="12 5 19 12 12 19"></polyline></svg
+                    >
+                    Installation
+                </span>
+            </a>
+            <a href="/docs/supported-platforms" class="next-link">
+                <span class="label">NEXT</span>
+                <span class="title">
+                    Supported Platforms
+                    <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                            points="12 5 19 12 12 19"></polyline></svg
+                    >
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <Fragment slot="toc">
+        <div class="toc-header">IN THIS PAGE</div>
+        <nav class="toc-nav">
+            <a href="#achieve" class="active">What You'll Achieve</a>
+            <a href="#prerequisites">Prerequisites</a>
+            <a href="#step-by-step">Step-by-Step Guide</a>
+            <a href="#qs-step-1" class="toc-sub">Step 1: Minimal working page</a
+            >
+            <a href="#qs-step-2" class="toc-sub"
+                >Step 2: Understand responsiveness</a
+            >
+            <a href="#qs-step-3" class="toc-sub">Step 3: Root exports</a>
+            <a href="#qs-step-4" class="toc-sub">Step 4: Run and verify</a>
+            <a href="#notes">Notes</a>
+            <a href="#faq">FAQ</a>
+            <a href="#related-resources">Related Resources</a>
+        </nav>
+    </Fragment>
+</DocLayout>

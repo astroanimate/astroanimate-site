@@ -1,202 +1,428 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import NavBar from "../components/NavBar.astro";
+import DocLayout from "../layouts/DocLayout.astro";
 import "../styles/Global.css";
-
-const { pathname } = Astro.url;
 ---
 
-<Layout title="Documentation - AstroAnimate">
-  <NavBar />
+<DocLayout title="Introduction">
+    <section id="introduction">
+        <h1 class="docs-title">Introduction</h1>
 
-  <div class="docs-container">
-    <!-- SIDEBAR -->
-    <aside class="docs-sidebar">
-      <!-- Section: FOLLOW FOR UPDATES -->
-      <details class="sidebar-category" open>
-        <summary>
-          <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
-            >
-            FOLLOW FOR UPDATES
-          </div>
-        </summary>
-        <div class="subcategory-list">
-          <div class="sidebar-sub-item">Twitter</div>
-          <div class="sidebar-sub-item">GitHub</div>
-          <div class="sidebar-sub-item">Discord Community</div>
+        <div class="docs-intro-section" id="what-is-astroanimate">
+            <h2 class="docs-subtitle">What is AstroAnimate?</h2>
+            <p class="docs-paragraph">
+                AstroAnimate is an <span class="docs-para-highlight"
+                    >Astro animation library</span
+                > designed for adding animations to Astro components without requiring
+                runtime JavaScript by default.
+            </p>
+            <p class="docs-paragraph">It focuses on:</p>
+            <ul class="docs-list">
+                <li>
+                    Component-level animations (entry, reveal, transitions, and
+                    rotating text state changes)
+                </li>
+                <li>Performance-first implementation using CSS</li>
+                <li>
+                    Compatibility with Astro’s rendering model (SSR + islands)
+                </li>
+            </ul>
+            <p class="docs-paragraph">
+                Unlike traditional animation libraries that rely heavily on
+                JavaScript,<span class="docs-para-highlight">
+                    AstroAnimate uses CSS-driven animations as the default</span
+                >, with optional JavaScript enhancements when needed.
+            </p>
         </div>
-      </details>
 
-      <!-- Section: GETTING STARTED -->
-      <details class="sidebar-category">
-        <summary>
-          <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
-            >
-            GETTING STARTED
-          </div>
-        </summary>
-        <div class="subcategory-list">
-          <div class="sidebar-sub-item">Intro</div>
-          <div class="sidebar-sub-item">Installation</div>
+        <div class="docs-intro-section" id="what-youll-achieve">
+            <h2 class="docs-subtitle">What You'll Achieve</h2>
+            <p class="docs-paragraph">By the end of this page, you will:</p>
+            <ul class="docs-list">
+                <li>Understand what AstroAnimate is and how it works</li>
+                <li>Know when it fits your project</li>
+                <li>See how it differs from traditional animation libraries</li>
+                <li>Decide whether to install it in your Astro project</li>
+            </ul>
         </div>
-      </details>
 
-      <!-- Section: ANIMATION COMPONENTS -->
-      <details class="sidebar-category" open>
-        <summary>
-          <div class="sidebar-nav-item active">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
-            >
-            ANIMATION COMPONENTS
-          </div>
-        </summary>
+        <div class="docs-intro-section" id="why-astroanimate-exists">
+            <h2 class="docs-subtitle">Why AstroAnimate Exists</h2>
+            <p class="docs-paragraph">
+                Animating UI in Astro often involves trade-offs:
+            </p>
+            <ul class="docs-list">
+                <li>Adding JavaScript for simple animations</li>
+                <li>Mixing multiple libraries (CSS + JS + frameworks)</li>
+                <li>Losing performance benefits of Astro</li>
+            </ul>
+            <p class="docs-paragraph">
+                AstroAnimate is designed to reduce that friction by providing:
+            </p>
+            <ul class="docs-list">
+                <li>A consistent animation API for Astro components</li>
+                <li>
+                    A CSS-first approach with optional JavaScript enhancements
+                </li>
+                <li>Pre-built, reusable animation primitives</li>
+            </ul>
+        </div>
 
-        <div class="subcategory-list">
-          <!-- Background & Effects -->
-          <details open>
-            <summary class="sidebar-sub-item active">
-              Background & Effects
-            </summary>
-            <div class="component-list">
-              <div class="sidebar-comp-item active">Sparkles</div>
-              <div class="sidebar-comp-item">Background Gradient</div>
-              <div class="sidebar-comp-item">Wavy Background</div>
-              <div class="sidebar-comp-item">Spotlight</div>
-              <div class="sidebar-comp-item">Wavy Background</div>
+        <div class="docs-intro-section" id="what-problem-does-it-solve">
+            <h2 class="docs-subtitle">What Problem Does It Solve?</h2>
+
+            <div class="comparison-section">
+                <!-- WITHOUT -->
+                <div class="comparison-group">
+                    <h3 class="comparison-title">Without AstroAnimate</h3>
+                    <ul class="comparison-list">
+                        <li>
+                            <img src="/images/icon-cross-rounded.png" alt="" />
+                            <span
+                                >You write custom CSS animations repeatedly</span
+                            >
+                        </li>
+                        <li>
+                            <img src="/images/icon-cross-rounded.png" alt="" />
+                            <span
+                                >You integrate external libraries (GSAP, Motion)
+                                for simple effects</span
+                            >
+                        </li>
+                        <li>
+                            <img src="/images/icon-cross-rounded.png" alt="" />
+                            <span>You manage performance manually</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- WITH -->
+                <div class="comparison-group">
+                    <h3 class="comparison-title">With AstroAnimate</h3>
+                    <ul class="comparison-list">
+                        <li>
+                            <img src="/images/icon-check-rounded.png" alt="" />
+                            <span
+                                >You use ready-to-use animation components</span
+                            >
+                        </li>
+                        <li>
+                            <img src="/images/icon-check-rounded.png" alt="" />
+                            <span>You keep JavaScript minimal or optional</span>
+                        </li>
+                        <li>
+                            <img src="/images/icon-check-rounded.png" alt="" />
+                            <span
+                                >You follow a consistent pattern across your
+                                project</span
+                            >
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </details>
+        </div>
 
-          <!-- Card Components -->
-          <details>
-            <summary class="sidebar-sub-item">
-              Card Components
-            </summary>
-            <div class="component-list">
-              <div class="sidebar-comp-item">3D Card Effect</div>
-              <div class="sidebar-comp-item">Card Stack</div>
-              <div class="sidebar-comp-item">Card Hover Effect</div>
-              <div class="sidebar-comp-item">Expandable Card</div>
-              <div class="sidebar-comp-item">Animated Card</div>
+        <div class="docs-intro-section" id="when-to-use-astroanimate">
+            <h2 class="docs-subtitle">When to Use AstroAnimate</h2>
+            <p class="docs-paragraph">AstroAnimate works best for:</p>
+            <ul class="docs-list">
+                <li>Component animations (fade, slide, scale)</li>
+                <li>Page transitions in Astro projects</li>
+                <li>UI micro-interactions (hover, reveal, entry effects)</li>
+                <li>
+                    <span class="docs-para-highlight"
+                        >Performance-sensitive websites (Landing pages, Blogs,
+                        SaaS)</span
+                    >
+                </li>
+            </ul>
+        </div>
+
+        <div class="docs-intro-section" id="when-not-to-use-astroanimate">
+            <h2 class="docs-subtitle">When NOT to Use AstroAnimate</h2>
+            <p class="docs-paragraph">AstroAnimate is not designed for:</p>
+            <ul class="docs-list">
+                <li>Complex animation timelines</li>
+                <li>Physics-based motion systems</li>
+                <li>Advanced sequencing or choreography</li>
+            </ul>
+            <p class="docs-paragraph">For those use cases, consider:</p>
+            <ul class="docs-list">
+                <li>GSAP</li>
+                <li>Motion Libraries</li>
+            </ul>
+
+            <div class="info-alert">
+                <div class="info-icon">🚀</div>
+                <p>
+                    AstroAnimate works side-by-side with GSAP and Three.js if
+                    you need high-end complex animations.
+                </p>
             </div>
-          </details>
         </div>
-      </details>
 
-      <!-- Section: SECTIONS AND BLOCKS -->
-      <details class="sidebar-category">
-        <summary>
-          <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
+        <div class="docs-intro-section" id="how-astroanimate-works">
+            <h2 class="docs-subtitle">How AstroAnimate Works</h2>
+            <p class="docs-paragraph">AstroAnimate is not designed for:</p>
+            <div class="steps-list">
+                <div class="step-item">
+                    <h3>1. CSS-First Animations</h3>
+                    <ul class="docs-list">
+                        <li>
+                            Uses <code class="docs-code">@keyframes</code>
+                            and CSS properties
+                        </li>
+                        <li>
+                            No runtime JavaScript required for baseline
+                            animations
+                        </li>
+                        <li>Works with Astro SSR out of the box</li>
+                    </ul>
+                </div>
+                <div class="step-item">
+                    <h3>2. Optional JavaScript Enhancements</h3>
+                    <ul class="docs-list">
+                        <li>
+                            For advanced use cases (scroll triggers,
+                            interactions)
+                        </li>
+                        <li>
+                            Loaded only when needed (progressive enhancement)
+                        </li>
+                    </ul>
+                </div>
+                <div class="step-item">
+                    <h3>3. Native Astro Integration</h3>
+                    <ul class="docs-list">
+                        <li>
+                            Works directly inside <code class="docs-code"
+                                >.astro</code
+                            > components
+                        </li>
+                        <li>
+                            Designed to work directly inside Astro components
+                            and SSR rendering patterns.
+                        </li>
+                        <li>Supports island architecture</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="docs-intro-section" id="example">
+            <h2 class="docs-subtitle">Example (What It Looks Like)</h2>
+            <div class="docs-code-block">
+                <pre><code><span class="comment">---</span>
+<span class="keyword">import</span> <span class="component-name">FadeIn</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/FadeIn"</span>;
+<span class="comment">---</span>
+
+&lt;<span class="component">FadeIn</span>&gt;
+    &lt;<span class="tag">h1</span>&gt;Hello AstroAnimate&lt;/<span class="tag">h1</span>&gt;
+&lt;/<span class="component">FadeIn</span>&gt;</code></pre>
+            </div>
+            <p class="docs-paragraph">
+                This applies a fade-in animation without adding runtime
+                JavaScript.
+            </p>
+        </div>
+
+        <div class="docs-intro-section" id="what-makes-astroanimate-different">
+            <h2 class="docs-subtitle">What Makes AstroAnimate Different</h2>
+            <div class="table-wrapper">
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>AstroAnimate</th>
+                            <th>Traditional Libraries</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Default behavior</td>
+                            <td>CSS-based</td>
+                            <td class="status-error">JavaScript-heavy</td>
+                        </tr>
+                        <tr>
+                            <td>Performance</td>
+                            <td class="status-success">High (no runtime JS)</td>
+                            <td class="status-error">Depends on usage</td>
+                        </tr>
+                        <tr>
+                            <td>Astro integration</td>
+                            <td class="status-warning">Native</td>
+                            <td class="status-error">Requires setup</td>
+                        </tr>
+                        <tr>
+                            <td>Use case</td>
+                            <td>UI animations</td>
+                            <td>Full animation systems</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="docs-paragraph">
+                This applies a fade-in animation without adding runtime
+                JavaScript.
+            </p>
+        </div>
+
+        <div class="docs-intro-section" id="notes-caveats">
+            <h2 class="docs-subtitle">Notes / Caveats</h2>
+            <ul class="docs-list">
+                <li>
+                    AstroAnimate prioritizes <span class="docs-para-highlight"
+                        >simplicity and performance</span
+                    > over complexity
+                </li>
+                <li>
+                    Advanced animation scenarios may require external libraries
+                </li>
+                <li>
+                    Some features depend on browser support for CSS animations
+                </li>
+            </ul>
+        </div>
+
+        <div class="docs-intro-section" id="related-resources">
+            <h2 class="docs-subtitle">Related Resources</h2>
+            <ul class="docs-list docs-list-links">
+                <li>→ /docs/installation/</li>
+                <li>→ /docs/quick-start/</li>
+            </ul>
+        </div>
+
+        <div class="docs-intro-section" id="faq">
+            <h2 class="docs-subtitle">FAQ (Developer Questions)</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary
+                        >Is AstroAnimate only for Astro? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Yes. AstroAnimate is built specifically for the Astro
+                        framework and is optimized for its rendering model.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >Is AstroAnimate safe for SEO? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Yes, because it's CSS-based, search engines can see all
+                        content immediately without executing JS.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >Do I need JavaScript to use AstroAnimate? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        No. Most animations work using CSS only. JavaScript is
+                        optional for advanced use cases.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >Is AstroAnimate production-ready? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Yes, AstroAnimate is suitable for UI animations covered
+                        by current components. Validate in your project
+                        environment and use quality checks before production
+                        rollout.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >Can I combine AstroAnimate with GSAP or Motion? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Yes. AstroAnimate can be used alongside other animation
+                        libraries when needed.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="docs-footer-nav">
+            <a href="/docs/installation" class="next-link">
+                <span class="label">NEXT</span>
+                <span class="title"
+                    >Installation <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                            points="12 5 19 12 12 19"></polyline></svg
+                    ></span
+                >
+            </a>
+        </div>
+    </section>
+
+    <Fragment slot="toc">
+        <div class="toc-header">IN THIS PAGE</div>
+        <nav class="toc-nav">
+            <a href="#what-is-astroanimate" class="active"
+                >What is AstroAnimate?</a
             >
-            SECTIONS AND BLOCKS
-          </div>
-        </summary>
-        <div class="subcategory-list">
-          <div class="sidebar-sub-item">Bento grids</div>
-          <div class="sidebar-sub-item">Contact pages</div>
-          <div class="sidebar-sub-item">Hero Sections</div>
-        </div>
-      </details>
-
-      <!-- Section: UI COMPONENTS -->
-      <details class="sidebar-category">
-        <summary>
-          <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            <a href="#what-youll-achieve">What You'll Achieve</a>
+            <a href="#why-astroanimate-exists">Why AstroAnimate Exists</a>
+            <a href="#what-problem-does-it-solve">What Problem Does It Solve?</a
             >
-            UI COMPONENTS
-          </div>
-        </summary>
-        <div class="subcategory-list">
-          <div class="sidebar-sub-item">Avatar</div>
-          <div class="sidebar-sub-item">Cards</div>
-          <div class="sidebar-sub-item">Tool tips</div>
-        </div>
-      </details>
-
-      <!-- Section: TEMPLATES -->
-      <details class="sidebar-category">
-        <summary>
-          <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            <a href="#when-to-use-astroanimate">When to Use AstroAnimate</a>
+            <a href="#when-not-to-use-astroanimate"
+                >When NOT to Use AstroAnimate</a
             >
-            TEMPLATES
-          </div>
-        </summary>
-        <div class="subcategory-list">
-          <div class="sidebar-sub-item">AI SaaS template</div>
-          <div class="sidebar-sub-item">Minimal portfolio template</div>
-          <div class="sidebar-sub-item">Start-up landing page template</div>
-        </div>
-      </details>
-    </aside>
-
-    <!-- MAIN CONTENT AREA -->
-    <main class="docs-content">
-      <div class="blog-featured-image" style="margin-bottom: 40px;">
-        <img src="/images/blog-1.png" alt="AstroAnimate" />
-      </div>
-      <!-- Content Placeholder -->
-      <section style="margin-top: 60px;">
-        <h1 style="font-size: 40px; margin-bottom: 24px;">Sparkles</h1>
-        <p
-          style="color: #9CA3AF; font-size: 18px; max-width: 700px; line-height: 1.6;"
-        >
-          A high-performance sparkle effect component built with the Web
-          Animations API. Perfect for adding a touch of magic to your Hero
-          sections or background elements.
-        </p>
-      </section>
-    </main>
-  </div>
-</Layout>
+            <a href="#how-astroanimate-works">How AstroAnimate Works</a>
+            <a href="#example">Example (What It Looks Like)</a>
+            <a href="#what-makes-astroanimate-different"
+                >What Makes AstroAnimate Different</a
+            >
+            <a href="#notes-caveats">Notes / Caveats</a>
+            <a href="#faq">FAQ</a>
+            <a href="#related-resources">Related Resources</a>
+            <a href="#next">Next</a>
+        </nav>
+    </Fragment>
+</DocLayout>

@@ -1,0 +1,306 @@
+---
+import DocLayout from "../../layouts/DocLayout.astro";
+import "../../styles/Global.css";
+---
+
+<DocLayout title="Example Projects">
+    <section id="example-projects">
+        <h1 class="docs-title">Example Projects</h1>
+
+        <div class="docs-intro-section" id="achieve">
+            <h2 class="docs-subtitle">What You’ll Achieve</h2>
+            <p class="docs-paragraph">
+                This page helps you learn AstroAnimate by running practical
+                example code.
+            </p>
+            <p class="docs-paragraph">By the end of this page, you will:</p>
+            <ul class="docs-list">
+                <li>Find official example project locations</li>
+                <li>Understand what each example demonstrates</li>
+                <li>Reuse proven implementation patterns in your app</li>
+                <li>Validate setup before broader rollout</li>
+            </ul>
+        </div>
+
+        <div class="docs-intro-section" id="prerequisites">
+            <h2 class="docs-subtitle">Prerequisites / Requirements</h2>
+            <p class="docs-paragraph">Before using example projects:</p>
+            <div class="docs-code-block">
+                <div class="code-header">
+                    <span>bash</span>
+                </div>
+                <div class="code-wrapper">
+                    <pre><code><span class="keyword">npm</span> install <span class="string">@astroanimate/core</span></code></pre>
+                    <button class="copy-btn-icon" aria-label="Copy code">
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><rect
+                                x="9"
+                                y="9"
+                                width="13"
+                                height="13"
+                                rx="2"
+                                ry="2"></rect><path
+                                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                            ></path></svg
+                        >
+                    </button>
+                </div>
+            </div>
+            <ul class="docs-list">
+                <li>
+                    You completed:
+                    <ul
+                        class="docs-list"
+                        style="margin-top: 12px; margin-bottom: 0;"
+                    >
+                        <li>/docs/installation/</li>
+                        <li>/docs/quick-start/</li>
+                    </ul>
+                </li>
+                <li>Your Astro version is compatible (^4.0.0 || ^5.0.0)</li>
+            </ul>
+        </div>
+
+        <div class="docs-intro-section" id="step-by-step">
+            <h2 class="docs-subtitle">Step-by-Step Guide</h2>
+
+            <div class="steps-container">
+                <!-- STEP 1 -->
+                <div class="step-item" id="ex-step-1">
+                    <h3 class="step-title">
+                        Step 1: Start with the official basic example
+                    </h3>
+                    <p class="docs-paragraph">
+                        Use the project example located at:
+                    </p>
+                    <p class="docs-paragraph">
+                        → <span class="component"
+                            >astroanimate/examples/basic/src/pages/index.astro</span
+                        >
+                    </p>
+                    <p class="docs-paragraph">This example demonstrates:</p>
+                    <ul class="docs-list">
+                        <li>TextRotate with enhancement</li>
+                        <li>FadeIn with entry props</li>
+                        <li>Reveal with opt-in enhancement</li>
+                    </ul>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="step-item" id="ex-step-2">
+                    <h3 class="step-title">
+                        Step 2: Reproduce the same pattern in your app
+                    </h3>
+                    <p class="docs-paragraph">
+                        Create or edit your local page:
+                    </p>
+                    <div class="docs-code-block">
+                        <pre><code><span class="comment">---</span>
+<span class="component">import</span> FadeIn <span class="component">from</span> <span class="string">"@astroanimate/core/FadeIn"</span>;
+<span class="component">import</span> Reveal <span class="component">from</span> <span class="string">"@astroanimate/core/Reveal"</span>;
+<span class="component">import</span> TextRotate <span class="component">from</span> <span class="string">"@astroanimate/core/TextRotate"</span>;
+<span class="comment">---</span>
+
+&lt;<span class="brand">main</span>&gt;
+  &lt;<span class="brand">h1</span>&gt;
+    &lt;<span class="brand">TextRotate</span>
+      <span class="string">texts</span>={<span class="number">["Astro-native", "Progressively enhanced", "Motion-aware"]</span>}
+      <span class="string">enhance</span>
+    /&gt;
+  &lt;/<span class="brand">h1</span>&gt;
+
+  &lt;<span class="brand">FadeIn</span> <span class="string">advance</span> <span class="string">direction</span>=<span class="component">"up"</span> <span class="string">distance</span>={<span class="number">{20}</span>}&gt;
+    &lt;<span class="brand">p</span>&gt;FadeIn stays visible without JavaScript and enhances when active (v2.x.y)&lt;/<span class="brand">p</span>&gt;
+  &lt;/<span class="brand">FadeIn</span>&gt;
+
+  &lt;<span class="brand">Reveal</span> <span class="string">advance</span> <span class="string">effect</span>=<span class="component">"fade-up"</span> <span class="string">delay</span>={<span class="number">{200}</span>}&gt;
+    &lt;<span class="brand">p</span>&gt;Reveal follows the same opt-in enhancement pattern.&lt;/<span class="brand">p</span>&gt;
+  &lt;/<span class="brand">Reveal</span>&gt;
+&lt;/<span class="brand">main</span>&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="step-item" id="ex-step-3">
+                    <h3 class="step-title">
+                        Step 3: Validate expected outcome
+                    </h3>
+                    <p class="docs-paragraph">Run:</p>
+                    <div class="docs-code-block dark-bg">
+                        <!-- <div class="code-header">
+                            <span>bash</span>
+                        </div> -->
+                        <div class="code-wrapper">
+                            <pre><code>npm run dev</code></pre>
+                        </div>
+                    </div>
+                    <p class="docs-paragraph">Expected result:</p>
+                    <ul class="docs-list">
+                        <li>page renders without import errors</li>
+                        <li>rotating text updates as configured</li>
+                        <li>
+                            reveal/fade effects respond to enhancement behavior
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="docs-intro-section" id="related-resources">
+            <h2 class="docs-subtitle">Related Resources</h2>
+            <ul class="docs-list docs-resource-links">
+                <li>→ <a href="/docs">Introduction</a></li>
+                <li>→ <a href="/docs/installation">Installation</a></li>
+                <li>→ <a href="/docs/quick-start">Quick Start</a></li>
+                <li>→ <a href="/docs/components">Supported Components</a></li>
+            </ul>
+        </div>
+
+        <div class="docs-intro-section" id="faq">
+            <h2 class="docs-subtitle">FAQ (Developer Questions)</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary
+                        >Is AstroAnimate only for Astro? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Yes. It is fully built for the Astro ecosystem.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >How many official examples are available right now? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        At minimum, a basic official example is present and
+                        suitable for initial onboarding.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >Should I copy the example code as-is?<svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Use it as a baseline, then adapt spacing, content, and
+                        props to your product context.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >Is this page meant to replace API docs?<svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        No. This page is for runnable usage patterns; API
+                        details should live in component/API docs.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >What should I do after running the basic example?<svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Move to API/component docs and establish team-level
+                        reusable patterns.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="docs-footer-nav" style="justify-content: space-between;">
+            <a href="/docs/supported-platforms" class="prev-link">
+                <span class="label">PREVIOUS</span>
+                <span class="title">
+                    <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        style="transform: rotate(180deg);"
+                        ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                            points="12 5 19 12 12 19"></polyline></svg
+                    >
+                    Supported Platforms
+                </span>
+            </a>
+            <a href="/docs/faq" class="next-link">
+                <span class="label">NEXT</span>
+                <span class="title">
+                    FAQ
+                    <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                            points="12 5 19 12 12 19"></polyline></svg
+                    >
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <Fragment slot="toc">
+        <div class="toc-header">IN THIS PAGE</div>
+        <nav class="toc-nav">
+            <a href="#achieve" class="active">What You'll Achieve</a>
+            <a href="#prerequisites">Prerequisites</a>
+            <a href="#step-by-step">Step-by-Step Guide</a>
+            <a href="#ex-step-1" class="toc-sub">Step 1: Basic example</a>
+            <a href="#ex-step-2" class="toc-sub">Step 2: Reproduce pattern</a>
+            <a href="#ex-step-3" class="toc-sub">Step 3: Validate outcome</a>
+            <a href="#faq">FAQ</a>
+            <a href="#related-resources">Related Resources</a>
+        </nav>
+    </Fragment>
+</DocLayout>

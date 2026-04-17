@@ -1,0 +1,436 @@
+---
+import DocLayout from "../../layouts/DocLayout.astro";
+import "../../styles/Global.css";
+---
+
+<DocLayout title="Installation">
+    <section id="installation">
+        <h1 class="docs-title">Installation</h1>
+
+        <div class="docs-intro-section" id="achieve">
+            <h2 class="docs-subtitle">What You’ll Achieve</h2>
+            <p class="docs-paragraph">
+                If you are searching for an <span class="docs-para-highlight"
+                    >AstroAnimate installation guide</span
+                > , this page solves the exact setup task: install AstroAnimate correctly,
+                confirm compatibility, and run a working first import in your Astro
+                app.
+            </p>
+            <p class="docs-paragraph">By the end of this page, you will:</p>
+            <ul class="docs-list">
+                <li>Install AstroAnimate using the correct package name</li>
+                <li>
+                    Verify Astro version compatibility before implementation
+                </li>
+                <li>Add a component import in a real `.astro` page</li>
+                <li>Run checks to validate install quality before shipping</li>
+                <li>Fix common install-time errors quickly</li>
+            </ul>
+        </div>
+
+        <div class="docs-intro-section" id="prerequisites">
+            <h2 class="docs-subtitle">Prerequisites / Requirements</h2>
+            <p class="docs-paragraph">
+                Before installing, confirm the following:
+            </p>
+            <ul class="docs-list">
+                <li>You already have an Astro project.</li>
+                <li>
+                    Your project uses a compatible Astro version (` <span
+                        class="component">^4.0.0 || ^5.0.0</span
+                    >`).
+                </li>
+                <li>You can run npm commands from your project root.</li>
+                <li>
+                    You have write access to '<span class="component"
+                        >package.json</span
+                    >' and lockfile updates.
+                </li>
+            </ul>
+        </div>
+
+        <div class="docs-intro-section" id="step-by-step">
+            <h2 class="docs-subtitle">Step-by-Step Guide</h2>
+
+            <div class="steps-container">
+                <!-- STEP 1 -->
+                <div class="step-item" id="step-1">
+                    <h3 class="step-title">Step 1: Install the package</h3>
+                    <p class="docs-paragraph">
+                        Run this command from your Astro project root:
+                    </p>
+                    <div class="docs-code-block">
+                        <div class="code-header">
+                            <span>bash</span>
+                        </div>
+                        <div class="code-wrapper">
+                            <pre><code><span class="keyword">npm</span> install <span class="string">@astroanimate/core</span></code></pre>
+                            <button
+                                class="copy-btn-icon"
+                                aria-label="Copy code"
+                            >
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    ><rect
+                                        x="9"
+                                        y="9"
+                                        width="13"
+                                        height="13"
+                                        rx="2"
+                                        ry="2"></rect><path
+                                        d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                                    ></path></svg
+                                >
+                            </button>
+                        </div>
+                    </div>
+                    <p class="docs-paragraph">
+                        This installs the official AstroAnimate package.
+                    </p>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="step-item" id="step-2">
+                    <h3 class="step-title">
+                        Step 2: Import your first component
+                    </h3>
+                    <p class="docs-paragraph">
+                        Use a direct component import for a clear first
+                        validation:
+                    </p>
+                    <div class="docs-code-block">
+                        <pre><code><span class="comment">---</span>
+<span class="component">import</span> <span>FadeIn</span> <span class="component">from</span> <span class="string">"@astroanimate/core/FadeIn"</span>;
+<span class="comment">---</span>
+
+&lt;<span class="brand">main</span>&gt;
+  &lt;<span class="brand">FadeIn</span> <span class="string">enhance</span> <span class="string">direction</span>=<span class="component">"up"</span> <span class="string">distance</span>={<span class="number">{20}</span>} <span class="string">once</span>&gt;
+    &lt;<span class="brand">h1</span>&gt;AstroAnimate is installed&lt;/<span class="brand">h1</span>&gt;
+  &lt;/<span class="brand">FadeIn</span>&gt;
+&lt;/<span class="brand">main</span>&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="step-item" id="step-3">
+                    <h3 class="step-title">
+                        Step 3: Optional: import from root exports
+                    </h3>
+                    <p class="docs-paragraph">
+                        AstroAnimate also exposes root exports. If your team
+                        prefers grouped imports:
+                    </p>
+                    <div class="docs-code-block">
+                        <pre><code style="color: #F9FAFB;">---
+import &#123; FadeIn, SlideIn, TextRotate &#125; from "@astroanimate/core";
+---</code></pre>
+                    </div>
+                    <p class="docs-paragraph">
+                        Use this style when you want centralized imports in
+                        shared UI files.
+                    </p>
+                </div>
+
+                <!-- STEP 4 -->
+                <div class="step-item" id="step-4">
+                    <h3 class="step-title">
+                        Step 4: Run install quality checks
+                    </h3>
+                    <p class="docs-paragraph">
+                        After installation, run these checks:
+                    </p>
+                    <div class="docs-code-block">
+                        <div class="code-wrapper">
+                            <pre><code>npm run build
+npm run typecheck
+npm run lint
+npm run test</code></pre>
+                        </div>
+                    </div>
+                    <p class="docs-paragraph">Why this matters:</p>
+                    <ul class="docs-list">
+                        <li>Build confirms bundling integrity.</li>
+                        <li>
+                            Typecheck catches integration and TS issues early.
+                        </li>
+                        <li>Lint keeps implementation consistent.</li>
+                        <li>Tests reduce regression risk before release.</li>
+                    </ul>
+                    <p class="docs-callout">
+                        Expected result: all checks pass before you proceed to
+                        larger adoption in your app.
+                    </p>
+                </div>
+
+                <!-- STEP 5 -->
+                <div class="step-item" id="step-5">
+                    <h3 class="step-title">
+                        Step 5: Verify in development mode
+                    </h3>
+                    <p class="docs-paragraph">
+                        Run your local dev server and open your page:
+                    </p>
+                    <div class="docs-code-block dark-bg">
+                        <div class="code-wrapper">
+                            <pre><code>npm run dev</code></pre>
+                        </div>
+                    </div>
+                    <p class="docs-paragraph">Validation checklist:</p>
+                    <ul class="docs-list">
+                        <li>
+                            The page renders with no module resolution errors.
+                        </li>
+                        <li>Imported component appears correctly.</li>
+                        <li>
+                            If `<span class="string">enhance</span>` is used,
+                            behavior is visible in browser (unless
+                            reduced-motion preferences suppress animations).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="docs-intro-section" id="troubleshooting">
+            <h2 class="docs-subtitle">Notes</h2>
+
+            <ul class="docs-list">
+                <li>
+                    AstroAnimate is an Astro-native component library; use it
+                    inside <span class="string">.astro</span> workflows.
+                </li>
+                <li>
+                    Use the exact package name <span class="string"
+                        >@astroanimate/core</span
+                    >.
+                </li>
+                <li>
+                    Keep import paths consistent across your codebase (subpath
+                    or root-export style).
+                </li>
+                <li>
+                    Some behavior is enhancement-based. If expected interaction
+                    is not visible, confirm component props and reduced-motion
+                    settings.
+                </li>
+                <li>
+                    For production rollout, run quality checks in CI, not only
+                    locally.
+                </li>
+            </ul>
+        </div>
+
+        <div class="docs-intro-section" id="related-resources">
+            <h2 class="docs-subtitle">Related Resources</h2>
+            <p class="docs-paragraph">Use these internal docs to continue:</p>
+            <ul class="docs-list docs-list-links">
+                <li>
+                    → [Read AstroAnimate
+                    Introduction](https://www.notion.so/docs/introduction/)
+                </li>
+                <li>
+                    → [Continue to Quick
+                    Start](https://www.notion.so/docs/quick-start/)
+                </li>
+            </ul>
+            <p class="docs-paragraph">
+                Suggested next step: complete <span class="docs-para-highlight"
+                    >Quick Start
+                </span> after this page so your team standardizes first-use patterns.
+            </p>
+        </div>
+
+        <div class="docs-intro-section" id="faq">
+            <h2 class="docs-subtitle">FAQ (Developer Questions)</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary
+                        >Is AstroAnimate only for Astro? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Yes. It is fully built for the Astro ecosystem.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >How do I install AstroAnimate in Astro? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Run: <span class="keyword"
+                            >npm install @astroanimate/core</span
+                        >. Then import a component in an .astro file and run
+                        your app.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >Which Astro versions are supported by AstroAnimate?<svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        AstroAnimate supports Astro ^4.0.0 || ^5.0.0.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >Should I use subpath imports or root imports?<svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Both are supported. Use subpath imports (for example
+                        @astroanimate/core/FadeIn) for explicit per-component
+                        usage, or root imports (@astroanimate/core) for grouped
+                        style conventions.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary
+                        >Why does my component render but not animate as
+                        expected?<svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        <p class="docs-paragraph">Common causes:</p>
+                        <ul class="docs-list">
+                            <li>
+                                Enhancement-based behavior not enabled (when
+                                required by component usage)
+                            </li>
+                            <li>Reduced-motion OS/browser setting active</li>
+                            <li>
+                                Incorrect props or test condition (for example,
+                                scroll-trigger behavior not yet in viewport)
+                            </li>
+                        </ul>
+                        <p class="docs-paragraph">
+                            Start by validating one known working example, then
+                            scale.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary
+                        >Can I ship AstroAnimate to production immediately after
+                        install?<svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Yes, if your use case matches current components and
+                        your quality checks pass. Recommended flow: install →
+                        first render → run checks → QA in target
+                        browsers/devices → deploy.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="docs-footer-nav" style="justify-content: space-between;">
+            <a href="/docs" class="prev-link">
+                <span class="label">PREVIOUS</span>
+                <span class="title">
+                    <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        style="transform: rotate(180deg);"
+                        ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                            points="12 5 19 12 12 19"></polyline></svg
+                    >
+                    Introduction
+                </span>
+            </a>
+            <a href="/docs/quick-start" class="next-link">
+                <span class="label">NEXT</span>
+                <span class="title">
+                    Quick Start
+                    <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                            points="12 5 19 12 12 19"></polyline></svg
+                    >
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <Fragment slot="toc">
+        <div class="toc-header">IN THIS PAGE</div>
+        <nav class="toc-nav">
+            <a href="#achieve" class="active">What You'll Achieve</a>
+            <a href="#prerequisites">Prerequisites</a>
+            <a href="#step-by-step">Step-by-Step Guide</a>
+            <a href="#step-1" class="toc-sub">Step 1: Install the package</a>
+            <a href="#step-2" class="toc-sub"
+                >Step 2: Import your first component</a
+            >
+            <a href="#step-3" class="toc-sub">Step 3: Optional: root imports</a>
+            <a href="#step-4" class="toc-sub"
+                >Step 4: Run install quality checks</a
+            >
+            <a href="#step-5" class="toc-sub"
+                >Step 5: Verify in development mode</a
+            >
+            <a href="#faq">FAQ</a>
+            <a href="#related-resources">Related Resources</a>
+        </nav>
+    </Fragment>
+</DocLayout>

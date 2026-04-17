@@ -1,0 +1,294 @@
+---
+import Layout from "./Layout.astro";
+import NavBar from "../components/NavBar.astro";
+import "../styles/Global.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const { pathname } = Astro.url;
+const isDocsLanding = pathname === "/docs" || pathname === "/docs/";
+
+// Map path to title if needed, or just capitalize the last segment
+const pathSegments = pathname.split("/").filter(Boolean);
+const currentPage = pathSegments[pathSegments.length - 1] || "docs";
+
+// Format title: e.g., 'introduction' -> 'Introduction'
+const pageTitle =
+  currentPage.charAt(0).toUpperCase() + currentPage.slice(1).replace(/-/g, " ");
+---
+
+<Layout title={`${title} - AstroAnimate`}>
+  <NavBar />
+
+  <div class="docs-container">
+    <!-- SIDEBAR -->
+    <aside class="docs-sidebar">
+      <!-- Search Bar -->
+      <div class="sidebar-search">
+        <div class="search-input-wrapper">
+          <img src="/images/search.png" alt="" height="20" width="20" />
+          <input type="text" placeholder="Search" />
+        </div>
+      </div>
+
+      <!-- Section: FOLLOW FOR UPDATES -->
+      <details class="sidebar-category" open>
+        <summary>
+          <div class="sidebar-nav-item">
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            >
+            FOLLOW FOR UPDATES
+          </div>
+        </summary>
+        <div class="subcategory-list no-side-bullets">
+          <div class="sidebar-sub-item">Twitter</div>
+          <div class="sidebar-sub-item">GitHub</div>
+          <div class="sidebar-sub-item">Discord Community</div>
+        </div>
+      </details>
+
+      <!-- Section: GETTING STARTED -->
+      <details class="sidebar-category" open>
+        <summary>
+          <div class="sidebar-nav-item">
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            >
+            GETTING STARTED
+          </div>
+        </summary>
+        <div class="subcategory-list no-side-bullets">
+          <a
+            href="/docs"
+            class:list={[
+              "sidebar-sub-item",
+              { active: pathname === "/docs" || pathname === "/docs/" },
+            ]}>Introduction</a
+          >
+          <a
+            href="/docs/installation"
+            class:list={[
+              "sidebar-sub-item",
+              { active: pathname === "/docs/installation" },
+            ]}>Installation</a
+          >
+
+          <a
+            href="/docs/quick-start"
+            class:list={[
+              "sidebar-sub-item",
+              { active: pathname === "/docs/quick-start" },
+            ]}>Quick Start</a
+          >
+          <a
+            href="/docs/components"
+            class:list={[
+              "sidebar-sub-item",
+              { active: pathname === "/docs/components" },
+            ]}>Supported Components</a
+          >
+          <a
+            href="/docs/supported-platforms"
+            class:list={[
+              "sidebar-sub-item",
+              { active: pathname === "/docs/supported-platforms" },
+            ]}>Supported Platforms</a
+          >
+          <a
+            href="/docs/example-projects"
+            class:list={[
+              "sidebar-sub-item",
+              { active: pathname === "/docs/example-projects" },
+            ]}>Example Projects</a
+          >
+          <a
+            href="/docs/support"
+            class:list={[
+              "sidebar-sub-item",
+              { active: pathname === "/docs/support" },
+            ]}>Support</a
+          >
+          <div class="sidebar-sub-item">llm.txt</div>
+        </div>
+      </details>
+
+      <!-- Section: ANIMATION COMPONENTS -->
+      <details class="sidebar-category" open>
+        <summary>
+          <div class="sidebar-nav-item">
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            >
+            ANIMATION
+          </div>
+        </summary>
+
+        <div class="subcategory-list">
+          <!-- Text Animations -->
+          <details open>
+            <summary class="sidebar-sub-item subtitle">
+              Text Animations
+            </summary>
+            <div class="component-list">
+              <div class="sidebar-comp-item">Text Reveal</div>
+              <div class="sidebar-comp-item">Count Up</div>
+              <div class="sidebar-comp-item">HighlightText</div>
+              <div class="sidebar-comp-item">Scrambler Text</div>
+              <div class="sidebar-comp-item">ScrollRevealText</div>
+              <div class="sidebar-comp-item">SlidingTextButton</div>
+              <div class="sidebar-comp-item">TextFlip</div>
+              <div class="sidebar-comp-item">TypewriterText</div>
+            </div>
+          </details>
+
+          <!-- Card Components -->
+          <details>
+            <summary class="sidebar-sub-item subtitle">
+              Card Components
+            </summary>
+            <div class="component-list">
+              <div class="sidebar-comp-item">3D Card Effect</div>
+              <div class="sidebar-comp-item">Card Stack</div>
+              <div class="sidebar-comp-item">Card Hover Effect</div>
+              <div class="sidebar-comp-item">Expandable Card</div>
+              <div class="sidebar-comp-item">Animated Card</div>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <!-- Section: SECTIONS AND BLOCKS -->
+      <details class="sidebar-category">
+        <summary>
+          <div class="sidebar-nav-item">
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            >
+            SECTIONS AND BLOCKS
+          </div>
+        </summary>
+        <div class="subcategory-list">
+          <div class="sidebar-sub-item">Bento grids</div>
+          <div class="sidebar-sub-item">Contact pages</div>
+          <div class="sidebar-sub-item">Hero Sections</div>
+        </div>
+      </details>
+
+      <!-- Section: UI COMPONENTS -->
+      <details class="sidebar-category">
+        <summary>
+          <div class="sidebar-nav-item">
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            >
+            UI COMPONENTS
+          </div>
+        </summary>
+        <div class="subcategory-list">
+          <div class="sidebar-sub-item">Avatar</div>
+          <div class="sidebar-sub-item">Cards</div>
+          <div class="sidebar-sub-item">Tool tips</div>
+        </div>
+      </details>
+
+      <!-- Section: TEMPLATES -->
+      <details class="sidebar-category">
+        <summary>
+          <div class="sidebar-nav-item">
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            >
+            TEMPLATES
+          </div>
+        </summary>
+        <div class="subcategory-list">
+          <div class="sidebar-sub-item">AI SaaS template</div>
+          <div class="sidebar-sub-item">Minimal portfolio template</div>
+          <div class="sidebar-sub-item">Start-up landing page template</div>
+        </div>
+      </details>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="docs-content">
+      <div class="docs-content-inner">
+        <!-- Breadcrumbs -->
+        <nav class="docs-breadcrumbs">
+          {
+            isDocsLanding ? (
+              <span class="active">Docs</span>
+            ) : (
+              <>
+                <a href="/docs">Docs</a>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+                <span class="active">{pageTitle}</span>
+              </>
+            )
+          }
+        </nav>
+
+        <slot />
+      </div>
+    </main>
+
+    <!-- RIGHT TOC SIDEBAR -->
+    <aside class="docs-toc">
+      <slot name="toc" />
+    </aside>
+  </div>
+</Layout>

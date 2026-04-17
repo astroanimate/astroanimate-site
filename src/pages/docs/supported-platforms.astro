@@ -1,0 +1,336 @@
+---
+import DocLayout from "../../layouts/DocLayout.astro";
+import "../../styles/Global.css";
+---
+
+<DocLayout title="Supported Platforms">
+    <section id="supported-platforms">
+        <h1 class="docs-title">Supported Platforms</h1>
+
+        <div class="docs-intro-section" id="achieve">
+            <h2 class="docs-subtitle">What You’ll Achieve</h2>
+            <p class="docs-paragraph">
+                This page helps you answer one practical question quickly:
+            </p>
+            <p class="docs-paragraph">
+                “Is my project platform compatible with AstroAnimate?”
+            </p>
+            <p class="docs-paragraph">By the end of this page, you will:</p>
+            <ul class="docs-list">
+                <li>
+                    Know which platform compatibility is currently documented
+                </li>
+                <li>Understand what is officially supported today</li>
+                <li>
+                    Avoid relying on unstated or assumed compatibility claims
+                </li>
+                <li>Know how to validate your own environment safely</li>
+            </ul>
+        </div>
+
+        <div class="docs-intro-section" id="prerequisites">
+            <h2 class="docs-subtitle">Prerequisites / Requirements</h2>
+            <p class="docs-paragraph">Before using this compatibility page:</p>
+            <ul class="docs-list">
+                <li>You have reviewed /docs/installation/</li>
+                <li>You have reviewed /docs/quick-start/</li>
+                <li>
+                    You can confirm your Astro version in your project setup
+                </li>
+            </ul>
+        </div>
+
+        <div class="docs-intro-section" id="step-by-step">
+            <h2 class="docs-subtitle">Step-by-Step Guide</h2>
+
+            <div class="steps-container">
+                <!-- STEP 1 -->
+                <div class="step-item" id="plt-step-1">
+                    <h3 class="step-title">
+                        Step 1: Check official compatibility baseline
+                    </h3>
+                    <p class="docs-paragraph">
+                        Current documented compatibility baseline:
+                    </p>
+                    <ul class="docs-list">
+                        <li>
+                            Astro: <span class="keyword">^4.0.0</span> | <span
+                                class="keyword">^5.0.0</span
+                            >
+                        </li>
+                    </ul>
+                    <p class="docs-paragraph">
+                        This is the explicit peer dependency range for
+                        AstroAnimate and should be treated as the primary
+                        support contract.
+                    </p>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="step-item" id="plt-step-2">
+                    <h3 class="step-title">
+                        Step 2: Validate your environment
+                    </h3>
+                    <p class="docs-paragraph">In your project, confirm:</p>
+                    <ol class="docs-paragraph">
+                        <li>
+                            Your Astro version is within the supported range
+                        </li>
+                        <li>
+                            AstroAnimate is installed with the correct package
+                            name
+                        </li>
+                        <li>A basic component import renders successfully</li>
+                    </ol>
+                    <p class="docs-paragraph">Recommended first test:</p>
+                    <ul class="docs-list">
+                        <li>Import FadeIn or Reveal into a test page</li>
+                        <li>Run your project locally</li>
+                        <li>
+                            Confirm expected behavior in your target browser
+                            environment
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="step-item" id="plt-step-3">
+                    <h3 class="step-title">
+                        Step 3: Use compatibility labels in planning
+                    </h3>
+                    <p class="docs-paragraph">
+                        Use the following interpretation:
+                    </p>
+                    <ul class="docs-list">
+                        <li>
+                            ✅ Supported: Explicitly documented in package
+                            compatibility
+                        </li>
+                        <li>
+                            ⚠️ Not yet documented: May work, but not declared as
+                            official support
+                        </li>
+                        <li>
+                            ⚪ Needs verification: Environment-specific behavior
+                            that should be tested in your own stack
+                        </li>
+                    </ul>
+                    <p class="docs-paragraph">
+                        This approach keeps rollout decisions predictable and
+                        reduces production surprises.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="docs-intro-section" id="platforms-current">
+            <h2 class="docs-subtitle">Supported Platforms (Current)</h2>
+            <div class="table-wrapper">
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Platform Area</th>
+                            <th>Status</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Astro Framework</td>
+                            <td>Supported</td>
+                            <td>`^4.0.0</td>
+                        </tr>
+                        <tr>
+                            <td>Package import via npm</td>
+                            <td>Supported</td>
+                            <td>@astroanimate/core</td>
+                        </tr>
+                        <tr>
+                            <td>Additional framework/platform matrices</td>
+                            <td>Needs verification</td>
+                            <td>To be documented as support policy expands</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="docs-paragraph">
+                This applies a fade-in animation without adding runtime
+                JavaScript.
+            </p>
+        </div>
+
+        <div class="docs-intro-section" id="related-resources">
+            <h2 class="docs-subtitle">Related Resources</h2>
+            <ul class="docs-list docs-resource-links">
+                <li>→ <a href="/docs">Introduction</a></li>
+                <li>→ <a href="/docs/installation">Installation</a></li>
+                <li>→ <a href="/docs/quick-start">Quick Start</a></li>
+                <li>→ <a href="/docs/components">Supported Components</a></li>
+            </ul>
+        </div>
+
+        <div class="docs-intro-section" id="faq">
+            <h2 class="docs-subtitle">FAQ (Developer Questions)</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary
+                        >Is AstroAnimate only for Astro? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Yes. Treat compatibility outside the documented range as
+                        unverified until formally stated.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >Which Astro versions are supported by AstroAnimate?<svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        AstroAnimate currently supports Astro ^4.0.0 || ^5.0.0.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >Is compatibility guaranteed outside the documented
+                        Astro range? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        No. Treat compatibility outside the documented range as
+                        unverified until formally stated.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >Does this page include full browser-by-browser support
+                        today? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Not yet. At this stage, use your project-level testing
+                        matrix for browser/device validation.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >How should teams use this page during rollout? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Use it as the official baseline for framework
+                        compatibility, then add project-specific validation for
+                        your target environments.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary
+                        >When should this page be expanded? <svg
+                            class="chevron"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><polyline points="6 9 12 15 18 9"></polyline></svg
+                        ></summary
+                    >
+                    <div class="faq-content">
+                        Expand it as support policy matures (for example,
+                        explicit browser matrices, runtime targets, and tested
+                        environment tables).
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="docs-footer-nav" style="justify-content: space-between;">
+            <a href="/docs/components" class="prev-link">
+                <span class="label">PREVIOUS</span>
+                <span class="title">
+                    <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        style="transform: rotate(180deg);"
+                        ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                            points="12 5 19 12 12 19"></polyline></svg
+                    >
+                    Supported Components
+                </span>
+            </a>
+            <a href="/docs/example-projects" class="next-link">
+                <span class="label">NEXT</span>
+                <span class="title">
+                    Example Projects
+                    <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                            points="12 5 19 12 12 19"></polyline></svg
+                    >
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <Fragment slot="toc">
+        <div class="toc-header">IN THIS PAGE</div>
+        <nav class="toc-nav">
+            <a href="#achieve" class="active">What You'll Achieve</a>
+            <a href="#prerequisites">Prerequisites</a>
+            <a href="#step-by-step">Step-by-Step Guide</a>
+            <a href="#plt-step-1" class="toc-sub"
+                >Step 1: Compatibility baseline</a
+            >
+            <a href="#plt-step-2" class="toc-sub"
+                >Step 2: Validate environment</a
+            >
+            <a href="#plt-step-3" class="toc-sub">Step 3: Planning labels</a>
+            <a href="#platforms-current">Current Platforms</a>
+            <a href="#faq">FAQ</a>
+            <a href="#related-resources">Related Resources</a>
+        </nav>
+    </Fragment>
+</DocLayout>
