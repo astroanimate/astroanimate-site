@@ -4124,6 +4124,12 @@ h2 span {
     top: 64px;
 }
 
+/* @media (min-width: 1025px) {
+    .docs-sidebar {
+        padding: 80px 0;
+    }
+} */
+
 /* Custom Scrollbar for Sidebar */
 .docs-sidebar::-webkit-scrollbar {
     width: 3px;
@@ -4200,6 +4206,12 @@ h2 span {
     /* Removed horizontal padding */
     overflow-y: auto;
     border-right: 1px solid #1F2937;
+}
+
+@media (min-width: 1025px) {
+    .docs-content {
+        padding: 80px 0;
+    }
 }
 
 .sidebar-label {
@@ -4437,6 +4449,12 @@ details[open] .sidebar-nav-item .chevron {
     padding: 0 40px;
     /* Reduced from 60px for better fit in constrained container */
 }
+
+/* @media (min-width: 1025px) {
+    .docs-content-inner {
+        padding: 0 80px;
+    }
+} */
 
 .docs-title,
 .docs-subtitle,
@@ -5066,6 +5084,12 @@ details[open] .sidebar-nav-item .chevron {
     top: 64px;
     flex-shrink: 0;
 }
+
+/* @media (min-width: 1025px) {
+    .docs-toc {
+        padding: 80px 20px;
+    }
+} */
 
 .toc-header {
     color: #F9FAFB;
