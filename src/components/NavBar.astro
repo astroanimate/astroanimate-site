@@ -57,14 +57,12 @@ const { pathname } = Astro.url;
                 { active: pathname === "/playground" },
             ]}
             aria-current={pathname === "/playground" ? "page" : undefined}
-            >PLAYGROUND</a
-        >
-        <a href="#" class="nav-item nav-link">PRICING</a>
+            >PLAYGROUND</a>
+        <a href="/pricing" class="nav-item nav-link">PRICING</a>
         <a
             href="/Blog"
             class:list={["nav-item nav-link", { active: pathname === "/Blog" }]}
-            aria-current={pathname === "/Blog" ? "page" : undefined}>BLOG</a
-        >
+            aria-current={pathname === "/Blog" ? "page" : undefined}>BLOG</a>
 
         <div class="nav-item nav-empty-right"></div>
 

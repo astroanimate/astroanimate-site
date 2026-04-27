@@ -34,30 +34,6 @@ const pageTitle =
         </div>
       </div>
 
-      <!-- Section: FOLLOW FOR UPDATES -->
-      <details class="sidebar-category" open>
-        <summary>
-          <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
-            >
-            FOLLOW FOR UPDATES
-          </div>
-        </summary>
-        <div class="subcategory-list no-side-bullets">
-          <div class="sidebar-sub-item">Twitter</div>
-          <div class="sidebar-sub-item">GitHub</div>
-          <div class="sidebar-sub-item">Discord Community</div>
-        </div>
-      </details>
-
       <!-- Section: GETTING STARTED -->
       <details class="sidebar-category" open>
         <summary>
@@ -162,28 +138,58 @@ const pageTitle =
               <div class="sidebar-comp-item">ScrollRevealText</div>
               <div class="sidebar-comp-item">SlidingTextButton</div>
               <div class="sidebar-comp-item">TextFlip</div>
-              <div class="sidebar-comp-item">TypewriterText</div>
+              <a
+                href="/docs/TypewriterText"
+                class:list={[
+                  "sidebar-comp-item",
+                  { active: pathname === "/docs/TypewriterText" },
+                ]}>TypewriterText</a
+              >
             </div>
           </details>
 
           <!-- Card Components -->
-          <details>
+          <details open>
             <summary class="sidebar-sub-item subtitle">
-              Card Components
+              Core Animations
             </summary>
             <div class="component-list">
-              <div class="sidebar-comp-item">3D Card Effect</div>
-              <div class="sidebar-comp-item">Card Stack</div>
-              <div class="sidebar-comp-item">Card Hover Effect</div>
-              <div class="sidebar-comp-item">Expandable Card</div>
-              <div class="sidebar-comp-item">Animated Card</div>
+              <div class="sidebar-comp-item">Fade In</div>
+              <div class="sidebar-comp-item">Slide In</div>
+              <div class="sidebar-comp-item">Scale In</div>
+              <div class="sidebar-comp-item">Stagger</div>
+              <div class="sidebar-comp-item">Text Fade Up</div>
+              <div class="sidebar-comp-item">Reveal</div>
+            </div>
+          </details>
+
+            <details open>
+            <summary class="sidebar-sub-item subtitle">
+             Scroll & Parallax
+            </summary>
+            <div class="component-list">
+              <div class="sidebar-comp-item">Infinite Scroll</div>
+              <div class="sidebar-comp-item">Parallax</div>
+              <div class="sidebar-comp-item">Reveal On Scroll</div>
+            </div>
+          </details>
+
+
+            <details open>
+            <summary class="sidebar-sub-item subtitle">
+             Background Effects
+            </summary>
+            <div class="component-list">
+              <div class="sidebar-comp-item">Glow Effect</div>
+              <div class="sidebar-comp-item">Gradient Background</div>
+              <div class="sidebar-comp-item">Grid Dots Background</div>
             </div>
           </details>
         </div>
       </details>
 
-      <!-- Section: SECTIONS AND BLOCKS -->
-      <details class="sidebar-category">
+      <!-- Section: UI COMPONENTS -->
+   <details class="sidebar-category" open>
         <summary>
           <div class="sidebar-nav-item">
             <svg
@@ -196,18 +202,99 @@ const pageTitle =
               stroke-linejoin="round"
               ><polyline points="9 18 15 12 9 6"></polyline></svg
             >
-            SECTIONS AND BLOCKS
+            UI Components
           </div>
         </summary>
+
         <div class="subcategory-list">
-          <div class="sidebar-sub-item">Bento grids</div>
-          <div class="sidebar-sub-item">Contact pages</div>
-          <div class="sidebar-sub-item">Hero Sections</div>
+          <!-- Text Animations -->
+          <details open>
+            <summary class="sidebar-sub-item subtitle">
+             Cards
+            </summary>
+            <div class="component-list">
+              <div class="sidebar-comp-item">Card Stack</div>
+              <div class="sidebar-comp-item">Expandable Card</div>
+              <a
+                href="/docs/AnimatedCard"
+                class:list={[
+                  "sidebar-comp-item",
+                  { active: pathname === "/docs/AnimatedCard" },
+                ]}>Animated Card</a
+              >
+              <div class="sidebar-comp-item">Expandable Card</div>
+              <div class="sidebar-comp-item">Glass Card</div>
+              <div class="sidebar-comp-item">Liquid Glass card</div>
+            </div>
+          </details>
+
+          <!-- Card Components -->
+          <details open>
+            <summary class="sidebar-sub-item subtitle">
+            Loaders & Feedback
+            </summary>
+            <div class="component-list">
+              <div class="sidebar-comp-item">Loader</div>
+              <div class="sidebar-comp-item">Progress Bar</div>
+              <div class="sidebar-comp-item">Skeleton</div>
+            </div>
+          </details>
+
+            <details open>
+            <summary class="sidebar-sub-item subtitle">
+             Navigation
+            </summary>
+            <div class="component-list">
+              <div class="sidebar-comp-item">Dock</div>
+              <div class="sidebar-comp-item">Animated Tabs</div>
+              <div class="sidebar-comp-item">Dropdown</div>
+            </div>
+          </details>
+
+
+            <details open>
+            <summary class="sidebar-sub-item subtitle">
+            Buttons
+            </summary>
+            <div class="component-list">
+              <a
+                href="/docs/Sec-AnimatedButton"
+                class:list={[
+                  "sidebar-comp-item",
+                  { active: pathname === "/docs/Sec-AnimatedButton" },
+                ]}>Animated Button</a
+              >
+                            <div class="sidebar-comp-item">Sliding Text Button</div>
+              <div class="sidebar-comp-item">Social Button</div>
+            </div>
+          </details>
+
+            <details open>
+            <summary class="sidebar-sub-item subtitle">
+            OverLays & popovers
+            </summary>
+            <div class="component-list">
+              <div class="sidebar-comp-item">Toast</div>
+              <div class="sidebar-comp-item">Tool Tip</div>
+                        </div>
+          </details>
+
+            <details open>
+            <summary class="sidebar-sub-item subtitle">
+            Data display
+            </summary>
+            <div class="component-list">
+              <div class="sidebar-comp-item">Count Up</div>
+              <div class="sidebar-comp-item">Infinite Marquee</div>
+              <div class="sidebar-comp-item">Page Transition</div>
+            </div>
+          </details>
         </div>
       </details>
 
-      <!-- Section: UI COMPONENTS -->
-      <details class="sidebar-category">
+<!-- Section: Advance UI -->
+     
+ <details class="sidebar-category" open>
         <summary>
           <div class="sidebar-nav-item">
             <svg
@@ -220,14 +307,60 @@ const pageTitle =
               stroke-linejoin="round"
               ><polyline points="9 18 15 12 9 6"></polyline></svg
             >
-            UI COMPONENTS
+            Advance ui
           </div>
         </summary>
+
         <div class="subcategory-list">
-          <div class="sidebar-sub-item">Avatar</div>
-          <div class="sidebar-sub-item">Cards</div>
-          <div class="sidebar-sub-item">Tool tips</div>
-        </div>
+          <!-- Text Animations -->
+          <details open>
+            <summary class="sidebar-sub-item subtitle">
+             interaction animations
+            </summary>
+            <div class="component-list">
+              <div class="sidebar-comp-item">Magnetic blob cursor</div>
+            </div>
+          </details>
+      </details>
+
+
+
+<!-- Section: sections & blocks -->
+     
+ <details class="sidebar-category" open>
+        <summary>
+          <div class="sidebar-nav-item">
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            >
+          sections & blocks
+          </div>
+        </summary>
+
+        <div class="subcategory-list">
+          <!-- Text Animations -->
+          <details open>
+            <summary class="sidebar-sub-item subtitle">
+             Page Sections
+            </summary>
+            <div class="component-list">
+              <div class="sidebar-comp-item">Hero Section</div>
+              <div class="sidebar-comp-item">Features Section</div>
+              <div class="sidebar-comp-item">Testimonials Section</div>
+              <div class="sidebar-comp-item">CTA Section</div>  
+              <div class="sidebar-comp-item">Pricing Section</div>  
+              <div class="sidebar-comp-item">Contact Section</div>  
+              <div class="sidebar-comp-item">Blog Section</div>  
+              <div class="sidebar-comp-item">Footer Section</div>  
+            </div>
+          </details>
       </details>
 
       <!-- Section: TEMPLATES -->
@@ -247,10 +380,9 @@ const pageTitle =
             TEMPLATES
           </div>
         </summary>
-        <div class="subcategory-list">
-          <div class="sidebar-sub-item">AI SaaS template</div>
-          <div class="sidebar-sub-item">Minimal portfolio template</div>
-          <div class="sidebar-sub-item">Start-up landing page template</div>
+        <div class="subcategory-list no-side-bullets">
+          <div class="sidebar-sub-item">Basics - Portfolio</div>
+          <div class="sidebar-sub-item">MonoGraph - Blog template</div>
         </div>
       </details>
     </aside>
@@ -283,6 +415,55 @@ const pageTitle =
         </nav>
 
         <slot />
+        
+        <div class="global-docs-footer">
+            <a href="/" class="global-footer-logo-link">
+                <img
+                    src="/images/astro-text-logo.png"
+                    alt="astro-text-logo"
+                    class="global-footer-logo"
+                />
+            </a>
+            <div class="global-footer-social">
+                <p class="global-footer-follow-text">
+                    Follow us:
+                </p>
+                <div class="global-footer-icons">
+                    <a href="https://x.com" class="global-follow-icon">
+                        <img
+                            src="/images/twitter2.png"
+                            alt="twitter"
+                            height="24"
+                            width="24"
+                        />
+                    </a>
+                    <a href="https://github.com" class="global-follow-icon">
+                        <img
+                            src="/images/github2.png"
+                            alt="github"
+                            height="24"
+                            width="24"
+                        />
+                    </a>
+                    <a href="https://discord.com" class="global-follow-icon">
+                        <img
+                            src="/images/discord.png"
+                            alt="discord"
+                            height="24"
+                            width="24"
+                        />
+                    </a>
+                    <a href="https://linkedin.com" class="global-follow-icon">
+                        <img
+                            src="/images/linkedin.png"
+                            alt="linkedin"
+                            height="24"
+                            width="24"
+                        />
+                    </a>
+                </div>
+            </div>
+        </div>
       </div>
     </main>
 
@@ -291,4 +472,56 @@ const pageTitle =
       <slot name="toc" />
     </aside>
   </div>
+
+  <script>
+    function initTocObserver() {
+      const tocLinks = document.querySelectorAll('.toc-nav a');
+      if (!tocLinks.length) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Remove active class from all links
+              tocLinks.forEach((link) => link.classList.remove('active'));
+              
+              // Add active class to corresponding link
+              const activeLink = Array.from(tocLinks).find(
+                (link) => link.getAttribute('href') === `#${entry.target.id}`
+              );
+              if (activeLink) {
+                activeLink.classList.add('active');
+              }
+            }
+          });
+        },
+        // Trigger earlier: offset for sticky header, and fire when element crosses the middle
+        { rootMargin: '-100px 0px -60% 0px' }
+      );
+
+      // Observe each target section defined in TOC
+      tocLinks.forEach((link) => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          const target = document.getElementById(href.substring(1));
+          if (target) {
+            observer.observe(target);
+          }
+        }
+      });
+      
+      // Optionally handle manual clicks
+      tocLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          tocLinks.forEach((l) => l.classList.remove('active'));
+          link.classList.add('active');
+        });
+      });
+    }
+
+    // Run on standard load
+    document.addEventListener('DOMContentLoaded', initTocObserver);
+    // Support Astro view transitions if used
+    document.addEventListener('astro:page-load', initTocObserver);
+  </script>
 </Layout>
