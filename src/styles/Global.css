@@ -4530,22 +4530,11 @@ details[open] .sidebar-nav-item .chevron {
 /* --- MAIN CONTENT TYPOGRAPHY --- */
 
 .docs-content-inner {
-    max-width: 900px;
+    max-width: 1200px;
     padding: 40px;
-    /* Reduced from 60px for better fit in constrained container */
+    /* Increased from 900px to better utilize available space */
 }
 
-.docs-title,
-.docs-subtitle,
-.docs-paragraph,
-.docs-list,
-.docs-code-block,
-.comparison-section,
-.steps-list,
-.table-wrapper,
-.faq-container {
-    /* max-width is now handled by parent .docs-content-inner */
-}
 
 .docs-breadcrumbs {
     display: flex;
