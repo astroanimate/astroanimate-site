@@ -34,6 +34,51 @@ const pageTitle =
         </div>
       </div>
 
+      <!-- Section: FOLLOW FOR UPDATES -->
+      <details class="sidebar-category" open>
+        <summary>
+          <div class="sidebar-nav-item">
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="9 18 15 12 9 6"></polyline></svg
+            >
+            FOLLOW FOR UPDATES
+          </div>
+        </summary>
+        <div class="subcategory-list no-side-bullets">
+          <a
+            href="https://twitter.com/astroanimate"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sidebar-sub-item"
+          >
+            Twitter
+          </a>
+          <a
+            href="https://github.com/astroanimate"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sidebar-sub-item"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://discord.gg/astroanimate"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sidebar-sub-item"
+          >
+            Discord
+          </a>
+        </div>
+      </details>
+
       <!-- Section: GETTING STARTED -->
       <details class="sidebar-category" open>
         <summary>
@@ -131,13 +176,13 @@ const pageTitle =
               Text Animations
             </summary>
             <div class="component-list">
-              <div class="sidebar-comp-item">Text Reveal</div>
+              <!-- <div class="sidebar-comp-item">Text Reveal</div>
               <div class="sidebar-comp-item">Count Up</div>
               <div class="sidebar-comp-item">HighlightText</div>
               <div class="sidebar-comp-item">Scrambler Text</div>
-              <div class="sidebar-comp-item">ScrollRevealText</div>
-              <div class="sidebar-comp-item">SlidingTextButton</div>
-              <div class="sidebar-comp-item">TextFlip</div>
+              <div class="sidebar-comp-item">ScrollRevealText</div> -->
+              <!-- <div class="sidebar-comp-item">SlidingTextButton</div>
+              <div class="sidebar-comp-item">TextFlip</div> -->
               <a
                 href="/docs/TypewriterText"
                 class:list={[
@@ -154,27 +199,41 @@ const pageTitle =
               Core Animations
             </summary>
             <div class="component-list">
-              <div class="sidebar-comp-item">Fade In</div>
-              <div class="sidebar-comp-item">Slide In</div>
-              <div class="sidebar-comp-item">Scale In</div>
-              <div class="sidebar-comp-item">Stagger</div>
+              <!-- <div class="sidebar-comp-item">Fade In</div>
+             <div class="sidebar-comp-item">Slide In</div> -->
+              <a
+                href="/docs/Sec-ScaleIn"
+                class:list={[
+                  "sidebar-comp-item",
+                  { active: pathname === "/docs/Sec-ScaleIn" },
+                ]}>Scale In</a
+              >
+              <a
+                href="/docs/Sec-RevealImage"
+                class:list={[
+                  "sidebar-comp-item",
+                  { active: pathname === "/docs/Sec-RevealImage" },
+                ]}>Reveal Image</a
+              >
+
+              <!-- <div class="sidebar-comp-item">Stagger</div>
               <div class="sidebar-comp-item">Text Fade Up</div>
-              <div class="sidebar-comp-item">Reveal</div>
+              <div class="sidebar-comp-item">Reveal</div> -->
             </div>
           </details>
-
+          <!-- 
             <details open>
             <summary class="sidebar-sub-item subtitle">
              Scroll & Parallax
             </summary>
             <div class="component-list">
-              <div class="sidebar-comp-item">Infinite Scroll</div>
+             <div class="sidebar-comp-item">Infinite Scroll</div>
               <div class="sidebar-comp-item">Parallax</div>
               <div class="sidebar-comp-item">Reveal On Scroll</div>
             </div>
-          </details>
+          </details> -->
 
-
+          <!-- 
             <details open>
             <summary class="sidebar-sub-item subtitle">
              Background Effects
@@ -184,12 +243,12 @@ const pageTitle =
               <div class="sidebar-comp-item">Gradient Background</div>
               <div class="sidebar-comp-item">Grid Dots Background</div>
             </div>
-          </details>
+          </details> -->
         </div>
       </details>
 
       <!-- Section: UI COMPONENTS -->
-   <details class="sidebar-category" open>
+      <details class="sidebar-category" open>
         <summary>
           <div class="sidebar-nav-item">
             <svg
@@ -209,12 +268,16 @@ const pageTitle =
         <div class="subcategory-list">
           <!-- Text Animations -->
           <details open>
-            <summary class="sidebar-sub-item subtitle">
-             Cards
-            </summary>
+            <summary class="sidebar-sub-item subtitle"> Cards </summary>
             <div class="component-list">
-              <div class="sidebar-comp-item">Card Stack</div>
-              <div class="sidebar-comp-item">Expandable Card</div>
+              <!-- <div class="sidebar-comp-item">Card Stack</div> -->
+              <a
+                href="/docs/Sec-ExpandableCard"
+                class:list={[
+                  "sidebar-comp-item",
+                  { active: pathname === "/docs/Sec-ExpandableCard" },
+                ]}>Expandable Card</a
+              >
               <a
                 href="/docs/AnimatedCard"
                 class:list={[
@@ -222,25 +285,43 @@ const pageTitle =
                   { active: pathname === "/docs/AnimatedCard" },
                 ]}>Animated Card</a
               >
-              <div class="sidebar-comp-item">Expandable Card</div>
-              <div class="sidebar-comp-item">Glass Card</div>
-              <div class="sidebar-comp-item">Liquid Glass card</div>
+              <!-- <div class="sidebar-comp-item">Expandable Card</div> -->
+              <a
+                href="/docs/Sec-GlassCard"
+                class:list={[
+                  "sidebar-comp-item",
+                  { active: pathname === "/docs/Sec-GlassCard" },
+                ]}>Glass Card</a
+              >
+              <!-- <div class="sidebar-comp-item">Liquid Glass card</div> -->
             </div>
           </details>
 
           <!-- Card Components -->
           <details open>
             <summary class="sidebar-sub-item subtitle">
-            Loaders & Feedback
+              Loaders & Feedback
             </summary>
             <div class="component-list">
-              <div class="sidebar-comp-item">Loader</div>
-              <div class="sidebar-comp-item">Progress Bar</div>
-              <div class="sidebar-comp-item">Skeleton</div>
+              <a
+                href="/docs/Sec-Loader"
+                class:list={[
+                  "sidebar-comp-item",
+                  { active: pathname === "/docs/Sec-Loader" },
+                ]}>Loader</a
+              >
+              <a
+                href="/docs/Sec-ProgressBar"
+                class:list={[
+                  "sidebar-comp-item",
+                  { active: pathname === "/docs/Sec-ProgressBar" },
+                ]}>Progress Bar</a
+              >
+              <!-- <div class="sidebar-comp-item">Skeleton</div> -->
             </div>
           </details>
 
-            <details open>
+          <!-- <details open>
             <summary class="sidebar-sub-item subtitle">
              Navigation
             </summary>
@@ -249,13 +330,10 @@ const pageTitle =
               <div class="sidebar-comp-item">Animated Tabs</div>
               <div class="sidebar-comp-item">Dropdown</div>
             </div>
-          </details>
+          </details> -->
 
-
-            <details open>
-            <summary class="sidebar-sub-item subtitle">
-            Buttons
-            </summary>
+          <details open>
+            <summary class="sidebar-sub-item subtitle"> Buttons </summary>
             <div class="component-list">
               <a
                 href="/docs/Sec-AnimatedButton"
@@ -264,22 +342,28 @@ const pageTitle =
                   { active: pathname === "/docs/Sec-AnimatedButton" },
                 ]}>Animated Button</a
               >
-                            <div class="sidebar-comp-item">Sliding Text Button</div>
-              <div class="sidebar-comp-item">Social Button</div>
+              <!-- <div class="sidebar-comp-item">Sliding Text Button</div> -->
+              <!-- <div class="sidebar-comp-item">Social Button</div> -->
             </div>
           </details>
 
-            <details open>
+          <details open>
             <summary class="sidebar-sub-item subtitle">
-            OverLays & popovers
+              OverLays & popovers
             </summary>
             <div class="component-list">
-              <div class="sidebar-comp-item">Toast</div>
-              <div class="sidebar-comp-item">Tool Tip</div>
-                        </div>
+              <!-- <div class="sidebar-comp-item">Toast</div> -->
+              <a
+                href="/docs/Sec-Tooltip"
+                class:list={[
+                  "sidebar-comp-item",
+                  { active: pathname === "/docs/Sec-Tooltip" },
+                ]}>Tool Tip</a
+              >
+            </div>
           </details>
 
-            <details open>
+          <!-- <details open>
             <summary class="sidebar-sub-item subtitle">
             Data display
             </summary>
@@ -288,13 +372,13 @@ const pageTitle =
               <div class="sidebar-comp-item">Infinite Marquee</div>
               <div class="sidebar-comp-item">Page Transition</div>
             </div>
-          </details>
+          </details> -->
         </div>
       </details>
 
-<!-- Section: Advance UI -->
-     
- <details class="sidebar-category" open>
+      <!-- Section: Advance UI -->
+
+      <!-- <details class="sidebar-category" open>
         <summary>
           <div class="sidebar-nav-item">
             <svg
@@ -312,8 +396,8 @@ const pageTitle =
         </summary>
 
         <div class="subcategory-list">
-          <!-- Text Animations -->
-          <details open>
+       Text Animations
+           <details open>
             <summary class="sidebar-sub-item subtitle">
              interaction animations
             </summary>
@@ -321,14 +405,13 @@ const pageTitle =
               <div class="sidebar-comp-item">Magnetic blob cursor</div>
             </div>
           </details>
-      </details>
+        </div>
+      </details> -->
 
+      <!-- Section: sections & blocks -->
 
-
-<!-- Section: sections & blocks -->
-     
- <details class="sidebar-category" open>
-        <summary>
+      <!-- <details class="sidebar-category"> -->
+      <!-- <summary>
           <div class="sidebar-nav-item">
             <svg
               class="chevron"
@@ -340,13 +423,13 @@ const pageTitle =
               stroke-linejoin="round"
               ><polyline points="9 18 15 12 9 6"></polyline></svg
             >
-          sections & blocks
+            sections & blocks
           </div>
-        </summary>
+        </summary> -->
 
-        <div class="subcategory-list">
-          <!-- Text Animations -->
-          <details open>
+      <!-- <div class="subcategory-list"> -->
+      <!-- Text Animations -->
+      <!-- <details open>
             <summary class="sidebar-sub-item subtitle">
              Page Sections
             </summary>
@@ -361,10 +444,10 @@ const pageTitle =
               <div class="sidebar-comp-item">Footer Section</div>  
             </div>
           </details>
-      </details>
+      </details> -->
 
       <!-- Section: TEMPLATES -->
-      <details class="sidebar-category">
+      <!-- <details class="sidebar-category">
         <summary>
           <div class="sidebar-nav-item">
             <svg
@@ -384,7 +467,9 @@ const pageTitle =
           <div class="sidebar-sub-item">Basics - Portfolio</div>
           <div class="sidebar-sub-item">MonoGraph - Blog template</div>
         </div>
-      </details>
+      </details> -->
+      <!-- </div>
+      </details> -->
     </aside>
 
     <!-- MAIN CONTENT AREA -->
@@ -415,54 +500,52 @@ const pageTitle =
         </nav>
 
         <slot />
-        
+
         <div class="global-docs-footer">
-            <a href="/" class="global-footer-logo-link">
+          <a href="/" class="global-footer-logo-link">
+            <img
+              src="/images/astro-text-logo.png"
+              alt="astro-text-logo"
+              class="global-footer-logo"
+            />
+          </a>
+          <div class="global-footer-social">
+            <p class="global-footer-follow-text">Follow us:</p>
+            <div class="global-footer-icons">
+              <a href="https://x.com" class="global-follow-icon">
                 <img
-                    src="/images/astro-text-logo.png"
-                    alt="astro-text-logo"
-                    class="global-footer-logo"
+                  src="/images/twitter2.png"
+                  alt="twitter"
+                  height="24"
+                  width="24"
                 />
-            </a>
-            <div class="global-footer-social">
-                <p class="global-footer-follow-text">
-                    Follow us:
-                </p>
-                <div class="global-footer-icons">
-                    <a href="https://x.com" class="global-follow-icon">
-                        <img
-                            src="/images/twitter2.png"
-                            alt="twitter"
-                            height="24"
-                            width="24"
-                        />
-                    </a>
-                    <a href="https://github.com" class="global-follow-icon">
-                        <img
-                            src="/images/github2.png"
-                            alt="github"
-                            height="24"
-                            width="24"
-                        />
-                    </a>
-                    <a href="https://discord.com" class="global-follow-icon">
-                        <img
-                            src="/images/discord.png"
-                            alt="discord"
-                            height="24"
-                            width="24"
-                        />
-                    </a>
-                    <a href="https://linkedin.com" class="global-follow-icon">
-                        <img
-                            src="/images/linkedin.png"
-                            alt="linkedin"
-                            height="24"
-                            width="24"
-                        />
-                    </a>
-                </div>
+              </a>
+              <a href="https://github.com" class="global-follow-icon">
+                <img
+                  src="/images/github2.png"
+                  alt="github"
+                  height="24"
+                  width="24"
+                />
+              </a>
+              <a href="https://discord.com" class="global-follow-icon">
+                <img
+                  src="/images/discord.png"
+                  alt="discord"
+                  height="24"
+                  width="24"
+                />
+              </a>
+              <a href="https://linkedin.com" class="global-follow-icon">
+                <img
+                  src="/images/linkedin.png"
+                  alt="linkedin"
+                  height="24"
+                  width="24"
+                />
+              </a>
             </div>
+          </div>
         </div>
       </div>
     </main>
@@ -475,7 +558,7 @@ const pageTitle =
 
   <script>
     function initTocObserver() {
-      const tocLinks = document.querySelectorAll('.toc-nav a');
+      const tocLinks = document.querySelectorAll(".toc-nav a");
       if (!tocLinks.length) return;
 
       const observer = new IntersectionObserver(
@@ -483,45 +566,45 @@ const pageTitle =
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               // Remove active class from all links
-              tocLinks.forEach((link) => link.classList.remove('active'));
-              
+              tocLinks.forEach((link) => link.classList.remove("active"));
+
               // Add active class to corresponding link
               const activeLink = Array.from(tocLinks).find(
-                (link) => link.getAttribute('href') === `#${entry.target.id}`
+                (link) => link.getAttribute("href") === `#${entry.target.id}`,
               );
               if (activeLink) {
-                activeLink.classList.add('active');
+                activeLink.classList.add("active");
               }
             }
           });
         },
         // Trigger earlier: offset for sticky header, and fire when element crosses the middle
-        { rootMargin: '-100px 0px -60% 0px' }
+        { rootMargin: "-100px 0px -60% 0px" },
       );
 
       // Observe each target section defined in TOC
       tocLinks.forEach((link) => {
-        const href = link.getAttribute('href');
-        if (href && href.startsWith('#')) {
+        const href = link.getAttribute("href");
+        if (href && href.startsWith("#")) {
           const target = document.getElementById(href.substring(1));
           if (target) {
             observer.observe(target);
           }
         }
       });
-      
+
       // Optionally handle manual clicks
       tocLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-          tocLinks.forEach((l) => l.classList.remove('active'));
-          link.classList.add('active');
+        link.addEventListener("click", () => {
+          tocLinks.forEach((l) => l.classList.remove("active"));
+          link.classList.add("active");
         });
       });
     }
 
     // Run on standard load
-    document.addEventListener('DOMContentLoaded', initTocObserver);
+    document.addEventListener("DOMContentLoaded", initTocObserver);
     // Support Astro view transitions if used
-    document.addEventListener('astro:page-load', initTocObserver);
+    document.addEventListener("astro:page-load", initTocObserver);
   </script>
 </Layout>
