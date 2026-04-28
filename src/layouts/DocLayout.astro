@@ -96,18 +96,18 @@ const pageTitle =
             GETTING STARTED
           </div>
         </summary>
-        <div class="subcategory-list no-side-bullets">
+        <div class="subcategory-list no-side-bullets" style="list-style: none; display: flex; flex-direction: column; gap: 4px;">
           <a
             href="/docs"
             class:list={[
-              "sidebar-sub-item",
+              "sidebar-comp-item",
               { active: pathname === "/docs" || pathname === "/docs/" },
             ]}>Introduction</a
           >
           <a
             href="/docs/installation"
             class:list={[
-              "sidebar-sub-item",
+              "sidebar-comp-item",
               { active: pathname === "/docs/installation" },
             ]}>Installation</a
           >
@@ -115,40 +115,46 @@ const pageTitle =
           <a
             href="/docs/quick-start"
             class:list={[
-              "sidebar-sub-item",
+              "sidebar-comp-item",
               { active: pathname === "/docs/quick-start" },
             ]}>Quick Start</a
           >
           <a
             href="/docs/components"
             class:list={[
-              "sidebar-sub-item",
+              "sidebar-comp-item",
               { active: pathname === "/docs/components" },
             ]}>Supported Components</a
           >
           <a
             href="/docs/supported-platforms"
             class:list={[
-              "sidebar-sub-item",
+              "sidebar-comp-item",
               { active: pathname === "/docs/supported-platforms" },
             ]}>Supported Platforms</a
           >
           <a
             href="/docs/example-projects"
             class:list={[
-              "sidebar-sub-item",
+              "sidebar-comp-item",
               { active: pathname === "/docs/example-projects" },
             ]}>Example Projects</a
           >
           <a
             href="/docs/support"
             class:list={[
-              "sidebar-sub-item",
+              "sidebar-comp-item",
               { active: pathname === "/docs/support" },
             ]}>Support</a
           >
-          <div class="sidebar-sub-item">llm.txt</div>
-        </div>
+
+  <a
+            href="/docs/all-components"
+            class:list={[
+              "sidebar-comp-item",
+              { active: pathname === "/docs/all-components" },
+            ]}>All Components</a
+          >        </div>
       </details>
 
       <!-- Section: ANIMATION COMPONENTS -->
@@ -279,10 +285,10 @@ const pageTitle =
                 ]}>Expandable Card</a
               >
               <a
-                href="/docs/AnimatedCard"
+                href="/docs/Sec-AnimatedCard"
                 class:list={[
                   "sidebar-comp-item",
-                  { active: pathname === "/docs/AnimatedCard" },
+                  { active: pathname === "/docs/Sec-AnimatedCard" },
                 ]}>Animated Card</a
               >
               <!-- <div class="sidebar-comp-item">Expandable Card</div> -->

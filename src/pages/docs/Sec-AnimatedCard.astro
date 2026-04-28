@@ -1,16 +1,16 @@
 ---
 import DocLayout from "../../layouts/DocLayout.astro";
 import "../../styles/Global.css";
-import ExpandableCard from "@astroanimate/core/ExpandableCard";
+import AnimatedCard from "@astroanimate/core/AnimatedCard";
 ---
 
 <DocLayout title="Animated Card">
     <section id="animated-card">
-        <h1 class="docs-title">ExpandableCard – Astro animation component</h1>
+        <h1 class="docs-title">AnimatedCard – Astro animation component</h1>
 
         <div class="docs-intro-section">
             <p class="docs-paragraph">
-                Renders an expandable card with image, title, and content. Uses a progressive enhancement model where content is fully visible by default, and JavaScript enables interactive expand/collapse behavior.
+                Card component with lift, scale, shine, and flip variants.
             </p>
         </div>
 
@@ -22,23 +22,29 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
                 <div class="created-by-avatar">
                     <img src="/images/barsan.jpeg" alt="Creator" />
                 </div>
-                <span class="created-by-name">Barsan</span>
+                <span class="created-by-name">Barsan - Creator of AnimatedCard component</span>
             </div>
             <div class="playground-container">
                 <div class="playground-preview">
-                    <div style="width: 100%; max-width: 320px;">
-                        <ExpandableCard
-                            title="Astronaut in Space"
-                            subtitle="Exploration Series"
-                            image="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3"
-                            imageAlt="Astronaut"
-                            initialOpen={false}
-                            enhance={true}
-                        >
-                            <p style="color: #666; font-size: 14px; margin: 0; padding-bottom: 8px;">
-                                The universe is a vast expanse of space and time containing all of the galaxies, stars, and planets.
-                            </p>
-                        </ExpandableCard>
+                    <div style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
+                        <AnimatedCard
+                            title="Feature Name"
+                            description="Short description of the feature"
+                            variant="lift"
+                            color="rose"
+                        />
+                      <AnimatedCard
+  title="Feature Name"
+  description="Short description of the feature"
+  variant="scale"
+  color="rose"
+/>
+                        <AnimatedCard
+                            title="Shine Effect"
+                            description="Beautiful shine animation"
+                            variant="shine"
+                            color="rose"
+                        />
                     </div>
                 </div>
                 <div class="playground-code">
@@ -54,15 +60,28 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
                         </div>
                     </div>
                     <div class="code-content">
-                        <pre><code><span class="keyword">import</span> <span class="component-name">ExpandableCard</span> <span class="keyword">from</span> <span class="string">'@astroanimate/core/ExpandableCard'</span>;
+                        <pre><code><span class="keyword">import</span> <span class="component-name">AnimatedCard</span> <span class="keyword">from</span> <span class="string">'@astroanimate/core/AnimatedCard'</span>;
 
-&lt;<span class="component">ExpandableCard</span>
-  <span class="prop">title</span>=<span class="string">"Card Title"</span>
-  <span class="prop">subtitle</span>=<span class="string">"Optional subtitle"</span>
-  <span class="prop">enhance</span>
-&gt;
-  &lt;<span class="tag">p</span>&gt;Your content here&lt;/<span class="tag">p</span>&gt;
-&lt;/<span class="component">ExpandableCard</span>&gt;</code></pre>
+&lt;<span class="component">AnimatedCard</span>
+  <span class="prop">title</span>=<span class="string">"Feature Name"</span>
+  <span class="prop">description</span>=<span class="string">"Short description of the feature"</span>
+  <span class="prop">variant</span>=<span class="string">"lift"</span>
+  <span class="prop">color</span>=<span class="string">"rose"</span>
+/&gt;
+
+&lt;<span class="component">AnimatedCard</span>
+  <span class="prop">title</span>=<span class="string">"Feature Name"</span>
+  <span class="prop">description</span>=<span class="string">"Short description of the feature"</span>
+  <span class="prop">variant</span>=<span class="string">"scale"</span>
+  <span class="prop">color</span>=<span class="string">"rose"</span>
+/&gt;
+
+&lt;<span class="component">AnimatedCard</span>
+  <span class="prop">title</span>=<span class="string">"Feature Name"</span>
+  <span class="prop">description</span>=<span class="string">"Short description of the feature"</span>
+  <span class="prop">variant</span>=<span class="string">"shine"</span>
+  <span class="prop">color</span>=<span class="string">"rose"</span>
+/&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -92,24 +111,22 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
                         ></path>
                     </svg>
                 </div>
-                <pre><code><span class="keyword">npm</span> install <span class="string">@astroanimate/core</span></code></pre>
+                <pre><code><span class="keyword">npm</span> install <span class="string">@astro-animate/card</span></code></pre>
             </div>
         </div>
 
         <!-- QUICK START SECTION -->
-        <div class="docs-intro-section" id="usage">
-            <h2 class="docs-subtitle">Usage</h2>
+        <div class="docs-intro-section" id="quick-start">
+            <h2 class="docs-subtitle">Quick Start</h2>
             <div class="docs-code-block">
-                <pre><code><span class="keyword">import</span> <span class="component-name">ExpandableCard</span> <span class="keyword">from</span> <span class="string">'@astroanimate/core/ExpandableCard'</span>;
-
-&lt;<span class="component">ExpandableCard</span>
-  <span class="prop">title</span>=<span class="string">"Card Title"</span>
-  <span class="prop">subtitle</span>=<span class="string">"Optional subtitle"</span>
-  <span class="prop">image</span>=<span class="string">"https://example.com/image.jpg"</span>
-  <span class="prop">enhance</span>
-&gt;
-  &lt;<span class="tag">p</span>&gt;Your content here&lt;/<span class="tag">p</span>&gt;
-&lt;/<span class="component">ExpandableCard</span>&gt;</code></pre>
+                <pre><code><span class="keyword">import</span> <span class="component-name">AnimatedCard</span> <span class="keyword">from</span> <span class="string">'@astroanimate/core/AnimatedCard'</span>;
+---
+&lt;<span class="component">AnimatedCard</span>
+  <span class="prop">title</span>=<span class="string">"Feature Name"</span>
+  <span class="prop">description</span>=<span class="string">"Short description of the feature"</span>
+  <span class="prop">variant</span>=<span class="string">"lift"</span>
+  <span class="prop">color</span>=<span class="string">"rose"</span>
+/&gt;</code></pre>
             </div>
         </div>
 
@@ -131,73 +148,201 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
                             <td><code>title</code></td>
                             <td><code>string</code></td>
                             <td><code>-</code></td>
-                            <td>Title text rendered in the card header (required)</td>
+                            <td>Card heading (required)</td>
                         </tr>
                         <tr>
-                            <td><code>subtitle</code></td>
+                            <td><code>description</code></td>
                             <td><code>string</code></td>
-                            <td><code>""</code></td>
-                            <td>Subtitle text below the title</td>
+                            <td><code>-</code></td>
+                            <td>Card body text (required)</td>
                         </tr>
                         <tr>
-                            <td><code>image</code></td>
-                            <td><code>string</code></td>
-                            <td><code>Unsplash URL</code></td>
-                            <td>Image URL for the card header</td>
+                            <td><code>variant</code></td>
+                            <td><code>"lift" | "scale" | "flip" | "shine"</code></td>
+                            <td><code>"lift"</code></td>
+                            <td>Animation style</td>
                         </tr>
                         <tr>
-                            <td><code>imageAlt</code></td>
-                            <td><code>string</code></td>
-                            <td><code>"Card image"</code></td>
-                            <td>Alt text for the image</td>
+                            <td><code>color</code></td>
+                            <td><code>"rose" | "emerald" | "violet" | "amber"</code></td>
+                            <td><code>"rose"</code></td>
+                            <td>Theme color</td>
                         </tr>
                         <tr>
-                            <td><code>initialOpen</code></td>
+                            <td><code>selected</code></td>
                             <td><code>boolean</code></td>
                             <td><code>false</code></td>
-                            <td>Whether the card starts in the expanded state</td>
+                            <td>Shows "Selected" badge</td>
                         </tr>
                         <tr>
-                            <td><code>duration</code></td>
-                            <td><code>number</code></td>
-                            <td><code>300</code></td>
-                            <td>Transition duration in milliseconds</td>
-                        </tr>
-                        <tr>
-                            <td><code>easing</code></td>
-                            <td><code>string</code></td>
-                            <td><code>"ease"</code></td>
-                            <td>CSS easing function for transitions</td>
-                        </tr>
-                        <tr>
-                            <td><code>enhance</code></td>
+                            <td><code>selectedOnScroll</code></td>
                             <td><code>boolean</code></td>
                             <td><code>false</code></td>
-                            <td>Enable JavaScript-powered expand/collapse interaction</td>
+                            <td>Shows indicator on scroll (35% visibility threshold, -12% root margin, fires once)</td>
                         </tr>
                         <tr>
                             <td><code>class</code></td>
                             <td><code>string</code></td>
                             <td><code>""</code></td>
-                            <td>Additional class name for the root element</td>
+                            <td>CSS class name (merged with customClass)</td>
+                        </tr>
+                        <tr>
+                            <td><code>customClass</code></td>
+                            <td><code>string</code></td>
+                            <td><code>""</code></td>
+                            <td>Additional CSS class (merged with class)</td>
+                        </tr>
+                        <tr>
+                            <td><code>style</code></td>
+                            <td><code>string</code></td>
+                            <td><code>""</code></td>
+                            <td>Inline styles</td>
+                        </tr>
+                        <tr>
+                            <td><code>href</code></td>
+                            <td><code>string</code></td>
+                            <td><code>-</code></td>
+                            <td>Renders as link when provided</td>
+                        </tr>
+                        <tr>
+                            <td><code>target</code></td>
+                            <td><code>string</code></td>
+                            <td><code>-</code></td>
+                            <td>Link target attribute</td>
+                        </tr>
+                        <tr>
+                            <td><code>rel</code></td>
+                            <td><code>string</code></td>
+                            <td><code>-</code></td>
+                            <td>Link rel attribute</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- HOW IT WORKS SECTION -->
-        <div class="docs-intro-section" id="behavior">
-            <h2 class="docs-subtitle">Behavior</h2>
-            <div class="docs-content">
-                <ul class="docs-list">
-                    <li>Content is fully visible by default (no JavaScript required)</li>
-                    <li>When <code>enhance=true</code>, JavaScript enables interactive expand/collapse behavior</li>
-                    <li>JavaScript sets data-state attributes, while CSS handles all visual transitions</li>
-                    <li>Initial state is controlled via <code>initialOpen</code> and rendered server-side</li>
-                    <li>When collapsed, content height is animated using <code>grid-template-rows</code></li>
-                    <li>Trigger element becomes interactive only after JavaScript initializes</li>
-                    <li>Chevron icon is hidden without JS and shown when enhancement is active</li>
+        <!-- SLOTS SECTION -->
+        <div class="docs-intro-section" id="slots">
+            <h2 class="docs-subtitle">Slots</h2>
+            <div class="table-wrapper">
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Slot</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>icon</code></td>
+                            <td>Custom icon content</td>
+                        </tr>
+                        <tr>
+                            <td><code>back-content</code></td>
+                            <td>Custom back face content (flip variant). Note: flip-back button always renders after this slot</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- CSS CUSTOM PROPERTIES SECTION -->
+        <div class="docs-intro-section" id="css-custom-properties">
+            <h2 class="docs-subtitle">CSS Custom Properties</h2>
+            <div class="table-wrapper">
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>--animated-card-radius</code></td>
+                            <td><code>1.5rem</code></td>
+                            <td>Card border radius</td>
+                        </tr>
+                        <tr>
+                            <td><code>--animated-card-padding</code></td>
+                            <td><code>1.5rem</code></td>
+                            <td>Card padding</td>
+                        </tr>
+                        <tr>
+                            <td><code>--animated-card-shadow</code></td>
+                            <td><code>0 14px 30px rgba(2, 6, 23, 0.24), 0 2px 10px rgba(2, 6, 23, 0.2)</code></td>
+                            <td>Default box shadow</td>
+                        </tr>
+                        <tr>
+                            <td><code>--animated-card-shadow-active</code></td>
+                            <td><code>0 28px 52px rgba(2, 6, 23, 0.42), 0 0 0 1px rgba(255, 255, 255, 0.03)</code></td>
+                            <td>Active state shadow</td>
+                        </tr>
+                        <tr>
+                            <td><code>--animated-card-title-size</code></td>
+                            <td><code>1.25rem</code></td>
+                            <td>Title font size</td>
+                        </tr>
+                        <tr>
+                            <td><code>--animated-card-icon-size</code></td>
+                            <td><code>3.5rem</code></td>
+                            <td>Icon container size</td>
+                        </tr>
+                        <tr>
+                            <td><code>--animated-card-accent</code></td>
+                            <td><code>(theme-dependent)</code></td>
+                            <td>Accent color</td>
+                        </tr>
+                        <tr>
+                            <td><code>--animated-card-accent-text</code></td>
+                            <td><code>(theme-dependent)</code></td>
+                            <td>Accent text color</td>
+                        </tr>
+                        <tr>
+                            <td><code>--animated-card-border</code></td>
+                            <td><code>(theme-dependent)</code></td>
+                            <td>Border color</td>
+                        </tr>
+                        <tr>
+                            <td><code>--animated-card-soft</code></td>
+                            <td><code>(theme-dependent)</code></td>
+                            <td>Soft background color</td>
+                        </tr>
+                        <tr>
+                            <td><code>--animated-card-aura</code></td>
+                            <td><code>(theme-dependent)</code></td>
+                            <td>Ambient glow color</td>
+                        </tr>
+                        <tr>
+                            <td><code>--animated-card-surface</code></td>
+                            <td><code>(theme-dependent)</code></td>
+                            <td>Front face background</td>
+                        </tr>
+                        <tr>
+                            <td><code>--animated-card-back-surface</code></td>
+                            <td><code>(theme-dependent)</code></td>
+                            <td>Back face background</td>
+                        </tr>
+                        <tr>
+                            <td><code>--animated-card-inset</code></td>
+                            <td><code>(theme-dependent)</code></td>
+                            <td>Inner glow color</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- RESPONSIVE DESIGN SECTION -->
+        <div class="docs-intro-section" id="responsive-design">
+            <h2 class="docs-subtitle">Responsive Design</h2>
+            <div>
+<p class="docs-paragraph">At <code>max-width: 640px</code>:</p>                <ul class="docs-list">
+                    <li>Padding reduces to 1.25rem</li>
+                    <li>Border radius reduces to 1.25rem</li>
+                    <li>Title font size reduces to 1.12rem</li>
+                    <li>Description font size reduces to 0.92rem</li>
                 </ul>
             </div>
         </div>
@@ -206,10 +351,10 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
         <div class="docs-intro-section" id="use-when">
             <h2 class="docs-subtitle">Use When</h2>
             <ul class="docs-list">
-                <li>Collapsible content sections that should remain accessible without JavaScript</li>
-                <li>Progressive enhancement scenarios where interactivity is optional</li>
-                <li>Simple expand/collapse UI with smooth transitions</li>
-                <li>When keyboard-accessible toggle behavior is required</li>
+                <li>Displaying feature cards with hover effects</li>
+                <li>Creating interactive product showcases</li>
+                <li>Building navigation or selection cards</li>
+                <li>Showing expandable content with flip variant</li>
             </ul>
         </div>
 
@@ -217,56 +362,65 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
         <div class="docs-intro-section" id="avoid-when">
             <h2 class="docs-subtitle">Avoid When</h2>
             <ul class="docs-list">
-                <li>Content must be hidden by default without JavaScript (content is always visible initially)</li>
-                <li>Complex nested or multi-level accordion structures</li>
-                <li>Advanced animation choreography beyond simple expand/collapse</li>
+                <li>Simple static cards without animation needs</li>
+                <li>Content requiring complex interactive forms</li>
+                <li>Scenarios requiring zero JavaScript (flip variant)</li>
+                <li>Performance-critical pages with many cards (GPU load from multiple animated elements)</li>
+            </ul>
+        </div>
+
+        <!-- NOTES SECTION -->
+        <div class="docs-intro-section" id="notes">
+            <h2 class="docs-subtitle">Notes</h2>
+            <ul class="docs-list">
+                <li>Lift, scale, and shine variants render a meta row at the bottom showing "[variant] interaction" with a colored dot</li>
+                <li>Flip variant uses CSS 3D transforms for card flipping animation</li>
             </ul>
         </div>
 
         <!-- ACCESSIBILITY SECTION -->
         <div class="docs-intro-section" id="accessibility">
             <h2 class="docs-subtitle">Accessibility</h2>
-            <div class="docs-content">
+            <div>
                 <ul class="docs-list">
-                    <li>Respects <code>prefers-reduced-motion</code> (disables transitions)</li>
-                    <li>When <code>enhance=true</code>:
-                        <ul style="margin-left: 20px; margin-top: 8px;">
-                            <li>Adds <code>role="button"</code>, <code>tabindex="0"</code>, and <code>aria-expanded</code></li>
-                            <li>Supports keyboard interaction (Enter and Space)</li>
-                            <li>Focus-visible styles support keyboard navigation</li>
-                        </ul>
-                    </li>
-                    <li>Content remains fully accessible without JavaScript</li>
+                    <li>Respects prefers-reduced-motion media query</li>
+                    <li>Includes ARIA labels and focus-visible states</li>
+                    <li>Keyboard navigation for flip variant (Enter/Space)</li>
+                    <li>Decorative elements marked with aria-hidden</li>
                 </ul>
             </div>
         </div>
 
-        <!-- PERFORMANCE SECTION -->
-        <div class="docs-intro-section" id="performance">
-            <h2 class="docs-subtitle">Performance</h2>
-            <div class="docs-content">
+        <!-- PERFORMANCE NOTES SECTION -->
+        <div class="docs-intro-section" id="performance-notes">
+            <h2 class="docs-subtitle">Performance Notes</h2>
+            <div>
                 <ul class="docs-list">
-                    <li>CSS-first animation using <code>grid-template-rows</code> (no layout thrashing)</li>
-                    <li>JavaScript only updates attributes (data-state, ARIA)</li>
-                    <li>WeakMap prevents duplicate initialization</li>
-                    <li>MutationObserver ensures cleanup when element is removed from the DOM</li>
+                    <li>CSS-driven architecture with zero hydration for non-flip variants</li>
+                    <li>Minimal JavaScript only for flip keyboard interactions and scroll-based selection</li>
+                    <li>Uses IntersectionObserver for scroll-based indicator (passive listener)</li>
                 </ul>
             </div>
         </div>
 
-        <!-- CREDITS SECTION -->
-        <div class="docs-intro-section" id="credits">
-            <h2 class="docs-subtitle">Credits</h2>
-            <ul class="docs-list">
-                <li>
-                    Credit to <a
-                        href="https://github.com/barsan"
-                        class="credits-link">@barsan</a>
-                </li>
+        <!-- COMPONENTS API SECTION -->
+        <div class="docs-intro-section" id="components-api">
+            <h2 class="docs-subtitle">Components API</h2>
+            <ul  class="docs-list">
+                <li><a href="#typewriter-text" class="component-link">&lt;TypewriterText /&gt;</a></li>
+                <li><a href="#animated-button" class="component-link">&lt;AnimatedButton /&gt;</a></li>
+                <li><a href="#animated-card" class="component-link">&lt;AnimatedCard /&gt;</a></li>
             </ul>
         </div>
 
-        <!-- RELATED COMPONENTS SECTION -->
+        <div class="docs-intro-section" id="components-api">
+            <h2 class="docs-subtitle">Credits</h2>
+            <ul  class="docs-list">
+                <li>Credit to <a href="https://github.com/vipin" class="credits-link">@vipin</a></li>
+              
+            </ul>
+        </div>
+          <!-- RELATED COMPONENTS SECTION -->
         <div class="docs-intro-section" id="related-components">
             <h2 class="docs-subtitle">Related Components</h2>
             <div class="related-grid">
@@ -276,9 +430,10 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
                 <div class="related-card empty"></div>
             </div>
         </div>
-        
+
+                
         <div class="docs-footer-nav" style="justify-content: space-between;">
-            <a href="/docs/Sec-RevealImage" class="prev-link">
+            <a href="/docs/Sec-ExpandableCard" class="prev-link">
                 <span class="label">PREVIOUS</span>
                 <span class="title">
                     <svg
@@ -294,13 +449,13 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
                         ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
                             points="12 5 19 12 12 19"></polyline></svg
                     >
-                    Reveal Image
+                  Expandable Card
                 </span>
             </a>
-            <a href="/docs/Sec-AnimatedButton" class="next-link">
+            <a href="/docs/Sec-GlassCard" class="next-link">
                 <span class="label">NEXT</span>
                 <span class="title">
-                    Animated Button
+                   Glass Card
                     <svg
                         width="18"
                         height="18"
@@ -636,7 +791,7 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
         border-top: 1px solid #1f2937;
     }
 
-    .prev-link,
+    /* .prev-link,
     .next-link {
         display: flex;
         align-items: center;
@@ -669,7 +824,7 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
         display: flex;
         align-items: center;
         gap: 8px;
-    }
+    } */
 
     .component-link {
         color: #9ca3af;

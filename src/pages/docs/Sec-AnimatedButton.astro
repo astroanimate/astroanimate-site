@@ -30,13 +30,13 @@ import { AnimatedButton } from "@astroanimate/core";
             <div class="playground-container">
                 <div class="playground-preview">
                     <div class="button-showcase">
-                      <AnimatedButton variant="shimmer">Explore</AnimatedButton>
+                      <AnimatedButton variant="fill">Fill</AnimatedButton>
+                                            <AnimatedButton variant="shimmer">shimmer</AnimatedButton>
 
-                        <button class="demo-btn outline-btn">Outline Button</button>
-                        <button class="demo-btn shimmer-btn">Shimmer Button</button>
-                        <button class="demo-btn custom-btn">My Button</button>
-                        <button class="demo-btn hover-btn">Hover Button</button>
-                        <button class="demo-btn link-btn">Animated Link Button</button>
+<AnimatedButton variant="border">Border</AnimatedButton>
+<AnimatedButton variant="none">None</AnimatedButton>
+<AnimatedButton disabled>Disabled</AnimatedButton>
+<AnimatedButton href="/docs">Go to docs</AnimatedButton>
                     </div>
                 </div>
                 <div class="playground-code">
@@ -47,17 +47,14 @@ import { AnimatedButton } from "@astroanimate/core";
                         </div>
                     </div>
                     <div class="code-content">
-                        <pre><code><span class="code-selector">.button-container</span> &#123;
-  <span class="code-property">display</span>: <span class="code-value">grid</span>;
-  <span class="code-property">place-content</span>: <span class="code-value">center</span>;
-  <span class="code-property">gap</span>: <span class="code-value">16px</span>;
-&#125;
+                        <pre><code><span class="keyword">import</span> &#123; AnimatedButton &#125; <span class="keyword">from</span> <span class="string">'@astroanimate/core/AnimatedButton'</span>;
 
-<span class="code-selector">.shimmer-btn</span> &#123;
-  <span class="code-property">background</span>: <span class="code-value">linear-gradient(90deg, #667eea 0%, #764ba2 100%)</span>;
-  <span class="code-property">position</span>: <span class="code-value">relative</span>;
-  <span class="code-property">overflow</span>: <span class="code-value">hidden</span>;
-&#125;</code></pre>
+<span class="tag">&lt;AnimatedButton</span> <span class="attr">variant</span>=<span class="string">"fill"</span><span class="tag">&gt;</span>Fill<span class="tag">&lt;/AnimatedButton&gt;</span>
+<span class="tag">&lt;AnimatedButton</span> <span class="attr">variant</span>=<span class="string">"shimmer"</span><span class="tag">&gt;</span>Shimmer<span class="tag">&lt;/AnimatedButton&gt;</span>
+<span class="tag">&lt;AnimatedButton</span> <span class="attr">variant</span>=<span class="string">"border"</span><span class="tag">&gt;</span>Border<span class="tag">&lt;/AnimatedButton&gt;</span>
+<span class="tag">&lt;AnimatedButton</span> <span class="attr">variant</span>=<span class="string">"none"</span><span class="tag">&gt;</span>None<span class="tag">&lt;/AnimatedButton&gt;</span>
+<span class="tag">&lt;AnimatedButton</span> <span class="attr">disabled</span><span class="tag">&gt;</span>Disabled<span class="tag">&lt;/AnimatedButton&gt;</span>
+<span class="tag">&lt;AnimatedButton</span> <span class="attr">href</span>=<span class="string">"/docs"</span><span class="tag">&gt;</span>Go to docs<span class="tag">&lt;/AnimatedButton&gt;</span></code></pre>
                     </div>
                 </div>
             </div>
@@ -224,7 +221,7 @@ import { AnimatedButton } from "@astroanimate/core";
 
         
         <div class="docs-footer-nav" style="justify-content: space-between;">
-            <a href="/docs" class="prev-link">
+            <a href="/docs/Sec-ProgressBar" class="prev-link">
                 <span class="label">PREVIOUS</span>
                 <span class="title">
                     <svg
@@ -240,13 +237,13 @@ import { AnimatedButton } from "@astroanimate/core";
                         ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
                             points="12 5 19 12 12 19"></polyline></svg
                     >
-                    Introduction
+                    Progress Bar
                 </span>
             </a>
-            <a href="/docs/quick-start" class="next-link">
+            <a href="/docs/Sec-Tooltip" class="next-link">
                 <span class="label">NEXT</span>
                 <span class="title">
-                    Quick Start
+                    Tooltip
                     <svg
                         width="18"
                         height="18"
@@ -738,37 +735,7 @@ justify-content: right;
         border-top: 1px solid #1F2937;
     }
 
-    .prev-link, .next-link {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-        color: #9CA3AF;
-        font-family: 'Inter', sans-serif;
-        transition: color 0.2s ease;
-    }
-
-    .prev-link:hover, .next-link:hover {
-        color: #F9FAFB;
-    }
-
-    .prev-link svg, .next-link svg {
-        flex-shrink: 0;
-    }
-
-    .label {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 12px;
-        color: #FF7F1F;
-    }
-
-    .title {
-        font-size: 16px;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
+    
 
     .component-link {
         color: #9CA3AF;

@@ -62,6 +62,7 @@
     align-items: center;
     justify-content: center;
     border-right: 1px solid #1F2937;
+    text-decoration: none;
 }
 
 .nav-logo {
@@ -3345,6 +3346,7 @@ h2 span {
 .page-separator-line::after {
     top: 125px !important;
 } */
+ 
 
 .privacy-sub {
     color: #F9FAFB;
@@ -3496,7 +3498,7 @@ h2 span {
     font-size: 14px;
     font-family: "JetBrains Mono", monospace;
     padding: 8px 16px;
-    line-height: 2;
+    /* line-height: 2; */
 }
 
 .back-link {
@@ -5676,6 +5678,5 @@ details[open] .sidebar-nav-item .chevron {
 }
 
 .perf-cell-bundle {
-  
-    height: 360px;
+    height: 500px;
 }

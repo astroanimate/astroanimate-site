@@ -224,7 +224,7 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
         <!-- ACCESSIBILITY SECTION -->
         <div class="docs-intro-section" id="accessibility">
             <h2 class="docs-subtitle">Accessibility</h2>
-            <div class="docs-content">
+            <div>
                 <ul class="docs-list">
                     <li>
                         Uses <code class="keyword">role="progressbar"</code> with
@@ -259,7 +259,7 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
         <!-- PERFORMANCE SECTION -->
         <div class="docs-intro-section" id="performance">
             <h2 class="docs-subtitle">Performance</h2>
-            <div class="docs-content">
+            <div>
                 <ul class="docs-list">
                     <li>CSS-only width transitions (no JavaScript overhead)</li>
                     <li>Value clamping prevents layout inconsistencies</li>
@@ -293,7 +293,7 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
         </div>
 
         <div class="docs-footer-nav" style="justify-content: space-between;">
-            <a href="/docs/Sec-AnimatedCard" class="prev-link">
+            <a href="/docs/Sec-Loader" class="prev-link">
                 <span class="label">PREVIOUS</span>
                 <span class="title">
                     <svg
@@ -309,7 +309,7 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
                         ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
                             points="12 5 19 12 12 19"></polyline></svg
                     >
-                    Animated Card
+                    Loader
                 </span>
             </a>
             <a href="/docs/Sec-AnimatedButton" class="next-link">
@@ -655,40 +655,7 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
         border-top: 1px solid #1f2937;
     }
 
-    .prev-link,
-    .next-link {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-        color: #9ca3af;
-        font-family: "Inter", sans-serif;
-        transition: color 0.2s ease;
-    }
-
-    .prev-link:hover,
-    .next-link:hover {
-        color: #f9fafb;
-    }
-
-    .prev-link svg,
-    .next-link svg {
-        flex-shrink: 0;
-    }
-
-    .label {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 12px;
-        color: #ff7f1f;
-    }
-
-    .title {
-        font-size: 16px;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
+   
 
     .component-link {
         color: #9ca3af;

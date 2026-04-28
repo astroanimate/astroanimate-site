@@ -1,79 +1,169 @@
 ---
-const { title, variant } = Astro.props;
+const { title = "NPM" } = Astro.props;
 ---
 
-<div class={`card ${variant === "terminal" ? "terminal" : ""}`}>
-    {
-        variant === "terminal" ? (
-            <div class="card-header terminal-header">
-                <div class="dots">
-                    <span class="dot green" />
-                    <span class="dot yellow" />
-                    <span class="dot red" />
-                </div>
-                <span class="header-title">{title}</span>
-            </div>
-        ) : (
-            <div class="card-header default-header">
-                <span class="header-title">{title}</span>
-            </div>
-        )
-    }
+<div class="code-block-card">
+  <div class="card-header">
+    <span class="header-title">{title}</span>
+  </div>
 
-    <div class="card-body">
-        <div class="code-wrapper">
-            <span class="code-prefix">$</span>
-            <span class="code-text">npm install @astroanimate/core</span>
-        </div>
-        <svg
-            class="copy-icon"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-        >
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-            ></path>
-        </svg>
+  <div class="card-body">
+    <div class="code-content">
+      <span class="code-prefix">$</span>
+      <span class="code-text">npm install @astroanimate/core</span>
     </div>
+
+    <button class="copy-button" aria-label="Copy to clipboard">
+      <svg
+        class="copy-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.75"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <g class="icon-copy-state">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+          ></path>
+        </g>
+
+        <g class="icon-check-state" style="display: none;">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </g>
+      </svg>
+    </button>
+  </div>
 </div>
 
+<style>
+  /* 1. Core Card Styling (Matches Image) */
+  .code-block-card {
+    background-color: #121212; /* Deep black/grey background */
+    border: 1px solid #374151; /* Subtle dark border */
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+    overflow: hidden;
+    max-width: 500px; /* Adjust as needed */
+    margin: 20px auto; /* Centers the example */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  /* 2. Header Styling */
+  .card-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid #374151; /* Separator line */
+    background-color: #1a1a1a; /* Slightly lighter header */
+  }
+
+  .header-title {
+    color: #f97316; /* Vibrant Orange (matches image) */
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* 3. Body Styling */
+  .card-body {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #9CA3AF; /* Light grey text */
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .code-content {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .code-prefix {
+    color: #6b7280; /* Grey dollar sign */
+    user-select: none;
+  }
+
+  .code-text {
+    white-space: nowrap;
+  }
+
+  /* 4. Copy Button Styling */
+  .copy-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: #9ca3af; /* Light grey icon */
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .copy-button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+  }
+
+  /* State: When the button has been clicked (success) */
+  .copy-button.success {
+    color: #4ade80 !important; /* Green (Tailwind green-400) */
+  }
+</style>
+
 <script>
-    document.querySelectorAll<SVGSVGElement>(".copy-icon").forEach((icon) => {
-        icon.style.cursor = "pointer";
-        icon.addEventListener("click", async () => {
-            const card = icon.closest(".card");
-            const text =
-                card?.querySelector<HTMLElement>(".code-text")?.innerText ?? "";
+  function setupCopyFunctionality() {
+    const copyButtons = document.querySelectorAll(".copy-button");
 
-            try {
-                await navigator.clipboard.writeText(text);
-            } catch {
-                // Fallback for non-secure contexts
-                const ta = document.createElement("textarea");
-                ta.value = text;
-                ta.style.position = "fixed";
-                ta.style.opacity = "0";
-                document.body.appendChild(ta);
-                ta.select();
-                document.execCommand("copy");
-                document.body.removeChild(ta);
+    copyButtons.forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const cardBody = btn.closest(".card-body");
+        const codeText =
+          cardBody?.querySelector(".code-text")?.textContent ?? "";
+
+        // Get reference to the two states within the SVG
+        const copyState = btn.querySelector<HTMLElement>(".icon-copy-state");
+        const checkState = btn.querySelector<HTMLElement>(".icon-check-state");
+
+        try {
+          // 1. Perform the copy operation
+          await navigator.clipboard.writeText(codeText);
+
+          // 2. Visual Feedback Loop
+          btn.classList.add("success"); // Triggers green color (CSS)
+
+          if (copyState && checkState) {
+            copyState.style.display = "none"; // Hide standard icon
+            checkState.style.display = "block"; // Show checkmark
+          }
+
+          // 3. Reset after delay
+          setTimeout(() => {
+            btn.classList.remove("success");
+            if (copyState && checkState) {
+              copyState.style.display = "block";
+              checkState.style.display = "none";
             }
-
-            // Swap to checkmark icon
-            const originalHTML = icon.innerHTML;
-            icon.innerHTML = `<polyline points="20 6 9 17 4 12"></polyline>`;
-            icon.classList.add("copied");
-
-            setTimeout(() => {
-                icon.innerHTML = originalHTML;
-                icon.classList.remove("copied");
-            }, 1500);
-        });
+          }, 2000);
+        } catch (err) {
+          console.error("Failed to copy code: ", err);
+          // Optional: Add basic fallback copy here if necessary
+        }
+      });
     });
+  }
+
+  // Run on initial load
+  setupCopyFunctionality();
+
+  // Re-run after view transitions (if enabled in Astro)
+  document.addEventListener("astro:after-swap", setupCopyFunctionality);
 </script>
