@@ -606,5 +606,27 @@ const pageTitle =
     document.addEventListener("DOMContentLoaded", initTocObserver);
     // Support Astro view transitions if used
     document.addEventListener("astro:page-load", initTocObserver);
+
+    // Fix active state for sidebar navigation
+    function updateActiveState() {
+      const currentPath = window.location.pathname;
+      const sidebarLinks = document.querySelectorAll('.sidebar-comp-item');
+      
+      sidebarLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPath) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    // Update active state on page load
+    document.addEventListener("DOMContentLoaded", updateActiveState);
+    // Update active state on navigation
+    document.addEventListener("astro:page-load", updateActiveState);
+    // Also update on popstate (browser back/forward)
+    window.addEventListener("popstate", updateActiveState);
   </script>
 </Layout>
