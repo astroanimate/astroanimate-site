@@ -18,9 +18,29 @@
 
 		<!-- Preload Critical Resources -->
 		<link rel="preload" href="/styles/Global.css" as="style" />
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" as="style" />
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=optional" as="style" />
+		<link rel="preload" href="/videos/hole-wb-2.mp4" as="video" type="video/mp4" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		
+		<style>
+			/* Prevent layout shifts with aspect-ratio */
+			img {
+				aspect-ratio: attr(width) / attr(height);
+				object-fit: cover;
+			}
+			
+			/* Font display optimization */
+			@font-face {
+				font-family: 'Inter';
+				font-display: optional;
+			}
+			
+			@font-face {
+				font-family: 'JetBrains Mono';
+				font-display: optional;
+			}
+		</style>
 
 		<!-- Open Graph -->
 		<meta property="og:type" content="website" />
