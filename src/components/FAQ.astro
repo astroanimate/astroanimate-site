@@ -1,0 +1,65 @@
+---
+const faqs = [
+    {
+        question: "How does AstroAnimate impact my Lighthouse score?",
+        answer: "AstroAnimate is designed for performance. By using CSS and Web Animations API, it avoids heavy runtime JavaScript, helping you maintain a 100/100 performance score in Lighthouse."
+    },
+    {
+        question: "Does it work with Astro Islands?",
+        answer: "Yes! AstroAnimate is built specifically for the Islands architecture. It allows you to animate components without forcing hydration of the entire island."
+    },
+    {
+        question: "Is it compatible with View Transitions?",
+        answer: "Absolutely. AstroAnimate integrates natively with Astro's View Transitions API to provide seamless motion between page navigations."
+    },
+    {
+        question: "Do I need to know JavaScript to use it?",
+        answer: "While it has a powerful JS API, many animations can be implemented using just CSS-based properties, making it accessible for all levels of developers."
+    }
+];
+---
+
+<section class="features-section">
+    <div class="badge">FAQ</div>
+    <div class="features-header">
+        <p class="mini">// COMMON QUESTIONS</p>
+        <h2>Frequently Asked <span>Questions</span></h2>
+    </div>
+
+    <div class="faq-container">
+        {faqs.map((faq) => (
+            <div class="faq-item">
+                <h3 class="faq-question">{faq.question}</h3>
+                <p class="faq-answer">{faq.answer}</p>
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+    .faq-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 2rem;
+        border: 1px solid #1F2937;
+    }
+
+    .faq-item {
+        padding: 1.5rem;
+        border-bottom: 1px solid #1F2937;
+    }
+
+    .faq-question {
+        font-size: 1.25rem;
+        color: #fff;
+        margin-bottom: 1rem;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .faq-answer {
+        color: #8B93A7;
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+</style>

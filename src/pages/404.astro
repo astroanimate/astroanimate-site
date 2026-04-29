@@ -1,0 +1,100 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/Global.css";
+---
+
+<Layout title="404 - Page Not Found | AstroAnimate">
+    <NavBar />
+    <main class="error-container">
+        <div class="error-content">
+            <h1 class="error-code">404</h1>
+            <h2 class="error-title">Oops! Page not found</h2>
+            <p class="error-message">
+                The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+            </p>
+            <div class="error-actions">
+                <a href="/" class="btn-primary">Back to Home</a>
+                <a href="/docs" class="btn-secondary">View Documentation</a>
+            </div>
+        </div>
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    .error-container {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 2rem;
+        background: #000;
+        color: #fff;
+        text-align: center;
+    }
+
+    .error-content {
+        max-width: 600px;
+    }
+
+    .error-code {
+        font-size: clamp(6rem, 15vw, 10rem);
+        font-weight: 800;
+        margin: 0;
+        background: linear-gradient(135deg, #FF7F1F 0%, #e66a15 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1;
+    }
+
+    .error-title {
+        font-size: 2rem;
+        margin: 1rem 0;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .error-message {
+        color: #8B93A7;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+    }
+
+    .error-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn-primary {
+        background: #FF7F1F;
+        color: white;
+        padding: 0.8rem 2rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.2s;
+    }
+
+    .btn-primary:hover {
+        background: #e66a15;
+    }
+
+    .btn-secondary {
+        background: transparent;
+        color: white;
+        padding: 0.8rem 2rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        border: 1px solid #1F2937;
+        transition: border-color 0.2s;
+    }
+
+    .btn-secondary:hover {
+        border-color: #FF7F1F;
+    }
+</style>

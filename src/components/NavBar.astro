@@ -47,7 +47,7 @@ const { pathname } = Astro.url;
         >
         <a
             href="/docs"
-            class:list={["nav-item nav-link", { active: pathname === "/docs" }]}
+            class:list={["nav-item nav-link", { active: pathname.startsWith("/docs") }]}
             >DOCS</a
         >
         <!-- <a
@@ -58,7 +58,16 @@ const { pathname } = Astro.url;
             ]}
             aria-current={pathname === "/playground" ? "page" : undefined}
             >PLAYGROUND</a> -->
-        <a href="/pricing" class="nav-item nav-link">PRICING</a>
+
+            <a
+            href="/docs/all-components"
+            class:list={[
+                "nav-item nav-link",
+                { active: pathname === "/docs/all-components" },
+            ]}
+            aria-current={pathname === "/docs/all-components" ? "page" : undefined}
+            >ALL COMPONENTS</a>
+        <!-- <a href="/pricing" class="nav-item nav-link">PRICING</a> -->
         <a
             href="/Blog"
             class:list={["nav-item nav-link", { active: pathname === "/Blog" }]}

@@ -1,0 +1,118 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/Global.css";
+
+const benchmarks = [
+    {
+        metric: "Bundle Size",
+        astroanimate: "0.8KB (Gzipped)",
+        framer: "30KB+",
+        gsap: "25KB+"
+    },
+    {
+        metric: "Runtime JS",
+        astroanimate: "Optional",
+        framer: "Required",
+        gsap: "Required"
+    },
+    {
+        metric: "Hydration Cost",
+        astroanimate: "Zero (CSS mode)",
+        framer: "High",
+        gsap: "High"
+    }
+];
+---
+
+<Layout title="Benchmark Methodology | AstroAnimate">
+    <NavBar />
+    <main class="benchmark-container">
+        <header class="standard-header">
+            <div class="badge-top">BENCHMARKS</div>
+        </header>
+
+        <section class="content-section">
+            <h2>Performance Benchmark Methodology</h2>
+            <p>
+                To provide accurate claims, we test AstroAnimate against popular libraries in a standard Astro environment using Lighthouse and Web Vitals.
+            </p>
+
+            <div class="benchmark-table-wrap">
+                <table class="benchmark-table">
+                    <thead>
+                        <tr>
+                            <th>METRIC</th>
+                            <th>ASTROANIMATE</th>
+                            <th>TRADITIONAL LIB</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {benchmarks.map((b) => (
+                            <tr>
+                                <td>{b.metric}</td>
+                                <td class="highlight">{b.astroanimate}</td>
+                                <td class="dim">{b.framer}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Test Environment</h3>
+            <ul>
+                <li>Astro v4.0 (Static Mode)</li>
+                <li>Chrome DevTools (Mobile Emulation)</li>
+                <li>No other scripts loaded</li>
+            </ul>
+        </section>
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    .benchmark-container {
+        padding: 0 var(--side-padding);
+        background: #000;
+        color: #fff;
+    }
+
+    .content-section {
+        padding: 4rem 0;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    h2 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        color: #FF7F1F;
+    }
+
+    .benchmark-table-wrap {
+        margin: 3rem 0;
+        border: 1px solid #1F2937;
+        overflow-x: auto;
+    }
+
+    .benchmark-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .benchmark-table th, .benchmark-table td {
+        padding: 1.5rem;
+        border: 1px solid #1F2937;
+    }
+
+    .highlight {
+        color: #4ADE80;
+        font-weight: bold;
+    }
+
+    .dim {
+        color: #8B93A7;
+    }
+</style>
