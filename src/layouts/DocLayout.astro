@@ -1,6 +1,7 @@
 ---
 import Layout from "./Layout.astro";
 import NavBar from "../components/NavBar.astro";
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema.astro";
 import "../styles/Global.css";
 
 interface Props {
@@ -18,10 +19,38 @@ const currentPage = pathSegments[pathSegments.length - 1] || "docs";
 // Format title: e.g., 'introduction' -> 'Introduction'
 const pageTitle =
   currentPage.charAt(0).toUpperCase() + currentPage.slice(1).replace(/-/g, " ");
+
+const fullTitle = `${title} Documentation - AstroAnimate`;
+const description = `Learn how to use ${title} in AstroAnimate. Detailed props, usage examples, and best practices for Astro motion components.`;
+const canonical = `https://www.astroanimate.com${pathname}`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": fullTitle,
+  "description": description,
+  "url": canonical,
+  "author": {
+    "@type": "Organization",
+    "name": "AstroAnimate"
+  }
+};
 ---
 
-<Layout title={`${title} - AstroAnimate`}>
+<Layout 
+  title={fullTitle}
+  description={description}
+  canonical={canonical}
+  schema={schema}
+>
   <NavBar />
+  <BreadcrumbSchema 
+    items={[
+      { name: "Home", item: "https://www.astroanimate.com" },
+      { name: "Docs", item: "https://www.astroanimate.com/docs" },
+      { name: title, item: canonical }
+    ]}
+  />
 
   <div class="docs-container">
     <!-- SIDEBAR -->
@@ -96,7 +125,10 @@ const pageTitle =
             GETTING STARTED
           </div>
         </summary>
-        <div class="subcategory-list no-side-bullets" style="list-style: none; display: flex; flex-direction: column; gap: 4px;">
+        <div
+          class="subcategory-list no-side-bullets"
+          style="list-style: none; display: flex; flex-direction: column; gap: 4px;"
+        >
           <a
             href="/docs"
             class:list={[
@@ -148,13 +180,14 @@ const pageTitle =
             ]}>Support</a
           >
 
-  <a
+          <a
             href="/docs/all-components"
             class:list={[
               "sidebar-comp-item",
               { active: pathname === "/docs/all-components" },
             ]}>All Components</a
-          >        </div>
+          >
+        </div>
       </details>
 
       <!-- Section: ANIMATION COMPONENTS -->
@@ -189,7 +222,7 @@ const pageTitle =
               <div class="sidebar-comp-item">ScrollRevealText</div> -->
               <!-- <div class="sidebar-comp-item">SlidingTextButton</div>
               <div class="sidebar-comp-item">TextFlip</div> -->
-               <a
+              <a
                 href="/docs/Sec-FadeInText"
                 class:list={[
                   "sidebar-comp-item",
@@ -623,14 +656,14 @@ const pageTitle =
     // Fix active state for sidebar navigation
     function updateActiveState() {
       const currentPath = window.location.pathname;
-      const sidebarLinks = document.querySelectorAll('.sidebar-comp-item');
-      
-      sidebarLinks.forEach(link => {
-        const href = link.getAttribute('href');
+      const sidebarLinks = document.querySelectorAll(".sidebar-comp-item");
+
+      sidebarLinks.forEach((link) => {
+        const href = link.getAttribute("href");
         if (href === currentPath) {
-          link.classList.add('active');
+          link.classList.add("active");
         } else {
-          link.classList.remove('active');
+          link.classList.remove("active");
         }
       });
     }

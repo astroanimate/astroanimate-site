@@ -3,19 +3,32 @@ import Layout from "../layouts/Layout.astro";
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/Global.css";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "AstroAnimate Blog",
+  "description": "Motion design, web performance, and Astro development guides.",
+  "url": "https://www.astroanimate.com/blog",
+  "publisher": {
+    "@type": "Organization",
+    "name": "AstroAnimate"
+  }
+};
 ---
 
-<Layout title="AstroAnimate Blog - Motion Design & Web Performance">
+<Layout 
+    title="AstroAnimate Blog — Motion Design & Web Performance"
+    description="Motion design, web performance, and Astro development guides. Learn how to build faster, more beautiful websites with AstroAnimate."
+    schema={schema}
+>
     <NavBar />
 
     <main class="blog-container">
         <!-- HEADER -->
         <header class="standard-header">
-            <!-- <div class="badge-border"></div> -->
             <div class="header-overlay"></div>
-            <div class="badge-top">BLOG</div>
-            <!-- <div class="corner t-l"></div> -->
-            <!-- <div class="corner t-r"></div> -->
+            <h1 class="badge-top">BLOG</h1>
         </header>
 
         <!-- FEATURED SECTION -->
@@ -24,14 +37,24 @@ import "../styles/Global.css";
             <!-- BIG FEATURED -->
             <div class="main-featured">
                 <div class="featured-image">
-                    <img src="/images/blog-1.png" alt="Astro Needs a Dedicated Animation Library" loading="lazy" decoding="async" width="800" height="400" />
+                    <img
+                        src="/images/blog-1.png"
+                        alt="Astro Needs a Dedicated Animation Library"
+                        loading="lazy"
+                        decoding="async"
+                        width="800"
+                        height="400"
+                    />
                 </div>
                 <div class="featured-content">
                     <span class="category-tag">// Blog</span>
                     <h2>
-                        <a href="/blog/why-astro-animate" style="color: inherit; text-decoration: none;">
-                            Why Astro Needs a Dedicated Animation Library (And How
-                            AstroAnimate Solves It)
+                        <a
+                            href="/blog/why-astro-animate"
+                            style="color: inherit; text-decoration: none;"
+                        >
+                            Why Astro Needs a Dedicated Animation Library (And
+                            How AstroAnimate Solves It)
                         </a>
                     </h2>
                     <p>
@@ -40,12 +63,11 @@ import "../styles/Global.css";
                         performance-first animation built for Islands
                         Architecture.
                     </p>
-                    </div>
-                      <div class="featured-footer">
-                        <span class="read-time">(4min read)</span>
-                        <div class="author">
-                            <div class="author-left">
-                        
+                </div>
+                <div class="featured-footer">
+                    <span class="read-time">(4min read)</span>
+                    <div class="author">
+                        <div class="author-left">
                             <img
                                 src="/images/prashanth.png"
                                 alt="Prashanth"
@@ -56,11 +78,11 @@ import "../styles/Global.css";
                                 class="author-img"
                             />
                             <span>Prashanth ks</span>
-                                </div>
-                                 <div class="meta">
+                        </div>
+                        <div class="meta">
                             <span>MAR 25, 2026</span>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -83,7 +105,7 @@ import "../styles/Global.css";
                 <div class="side-card">
                     <div class="side-image"></div>
                     <div class="side-content">
-                                                <span class="category-tag">// Guide</span>
+                        <span class="category-tag">// Guide</span>
 
                         <h3>Announcing AstroAnimate Templates</h3>
                         <div class="side-footer">
@@ -99,7 +121,6 @@ import "../styles/Global.css";
 
         <!-- SEARCH & CATEGORIES -->
         <section class="filter-section">
-            
             <div class="filter-header">
                 <h2>All Blogs</h2>
                 <div class="categories-wrap">
@@ -128,8 +149,11 @@ import "../styles/Global.css";
                             x2="16.65"
                             y2="16.65"></line></svg
                     >
-                    <input type="text" placeholder="Search" />
+                    <input type="text" id="blog-search" placeholder="Search" />
                 </div>
+            </div>
+            <div id="blog-no-results" style="display: none; text-align: center; padding: 40px; color: #9CA3AF;">
+                No blog posts found matching your search.
             </div>
         </section>
 
@@ -138,7 +162,14 @@ import "../styles/Global.css";
             <article class="blog-item">
                 <div class="item-image-box">
                     <div class="item-image">
-                        <img src="/images/blog-1.png" alt="Astro Needs a Dedicated Animation Library" loading="lazy" decoding="async" width="800" height="400" />
+                        <img
+                            src="/images/blog-1.png"
+                            alt="Astro Needs a Dedicated Animation Library"
+                            loading="lazy"
+                            decoding="async"
+                            width="800"
+                            height="400"
+                        />
                     </div>
                 </div>
                 <div class="item-content">
@@ -150,9 +181,12 @@ import "../styles/Global.css";
                         </div>
                     </div>
                     <h3>
-                        <a href="/blog/why-astro-animate" style="color: inherit; text-decoration: none;">
-                            Why Astro Needs a Dedicated Animation Library (And How
-                            AstroAnimate Solves It)
+                        <a
+                            href="/blog/why-astro-animate"
+                            style="color: inherit; text-decoration: none;"
+                        >
+                            Why Astro Needs a Dedicated Animation Library (And
+                            How AstroAnimate Solves It)
                         </a>
                     </h3>
                     <div class="author-simple">
@@ -185,7 +219,7 @@ import "../styles/Global.css";
                 </div>
             </article>
         </section>
-<!-- 
+        <!-- 
         <div class="corner b-l"></div>
         <div class="corner b-r"></div> -->
     </main>
@@ -193,6 +227,35 @@ import "../styles/Global.css";
     <Footer />
 </Layout>
 
-<style>
-  
-</style>
+<script>
+  function initBlogSearch() {
+    const searchInput = document.getElementById("blog-search") as HTMLInputElement;
+    const blogItems = document.querySelectorAll(".blog-item, .main-featured");
+    const noResults = document.getElementById("blog-no-results");
+    
+    if (!searchInput) return;
+
+    searchInput.addEventListener("input", (e) => {
+      const query = (e.target as HTMLInputElement).value.toLowerCase().trim();
+      let hasMatch = false;
+      
+      blogItems.forEach((item) => {
+        const title = item.querySelector("h2, h3")?.textContent?.toLowerCase() || "";
+        const category = item.querySelector(".category-tag")?.textContent?.toLowerCase() || "";
+        const isMatch = title.includes(query) || category.includes(query);
+        
+        (item as HTMLElement).style.display = isMatch ? "" : "none";
+        if (isMatch) hasMatch = true;
+      });
+
+      if (noResults) {
+        noResults.style.display = hasMatch ? "none" : "block";
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", initBlogSearch);
+  document.addEventListener("astro:page-load", initBlogSearch);
+</script>
+
+<style></style>

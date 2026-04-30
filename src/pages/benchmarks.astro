@@ -24,9 +24,25 @@ const benchmarks = [
         gsap: "High"
     }
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Performance Benchmark Methodology",
+  "description": "How we test AstroAnimate against Framer Motion and GSAP for bundle size and hydration cost.",
+  "author": {
+    "@type": "Organization",
+    "name": "AstroAnimate"
+  }
+};
 ---
 
-<Layout title="Benchmark Methodology | AstroAnimate">
+<Layout 
+    title="Benchmark Methodology — Performance Comparison"
+    description="Discover how AstroAnimate compares to Framer Motion and GSAP. Zero-JS performance metrics and hydration cost benchmarks for Astro projects."
+    canonical="https://www.astroanimate.com/benchmarks"
+    schema={schema}
+>
     <NavBar />
     <main class="benchmark-container">
         <header class="standard-header">
@@ -34,7 +50,7 @@ const benchmarks = [
         </header>
 
         <section class="content-section">
-            <h2>Performance Benchmark Methodology</h2>
+            <h1>Performance Benchmark Methodology</h1>
             <p>
                 To provide accurate claims, we test AstroAnimate against popular libraries in a standard Astro environment using Lighthouse and Web Vitals.
             </p>

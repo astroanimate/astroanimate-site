@@ -1,5 +1,6 @@
 ---
 const { title = "NPM" } = Astro.props;
+import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
 ---
 
 <div class="code-block-card">
@@ -10,7 +11,14 @@ const { title = "NPM" } = Astro.props;
   <div class="card-body">
     <div class="code-content">
       <span class="code-prefix">$</span>
-      <span class="code-text">npm install @astroanimate/core</span>
+      npm install
+      <TypewriterTextComponent
+        texts={[" @astroanimate/core"]}
+        typeSpeed={90}
+        eraseSpeed={30}
+        pauseAfter={1500}
+        enhance
+      />
     </div>
 
     <button class="copy-button" aria-label="Copy to clipboard">
@@ -45,8 +53,9 @@ const { title = "NPM" } = Astro.props;
     background-color: #121212; /* Deep black/grey background */
     border: 1px solid #374151; /* Subtle dark border */
     border-radius: 6px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-      "Liberation Mono", "Courier New", monospace;
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
     overflow: hidden;
     max-width: 500px; /* Adjust as needed */
     margin: 20px auto; /* Centers the example */
@@ -74,9 +83,10 @@ const { title = "NPM" } = Astro.props;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #9CA3AF; /* Light grey text */
+    color: #9ca3af; /* Light grey text */
     font-size: 14px;
     line-height: 1.5;
+    gap: 14px;
   }
 
   .code-content {

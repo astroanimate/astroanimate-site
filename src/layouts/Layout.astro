@@ -1,3 +1,45 @@
+---
+import MetaTags from "../components/seo/MetaTags.astro";
+import JsonLd from "../components/seo/JsonLd.astro";
+
+interface Props {
+	title: string;
+	description?: string;
+	canonical?: string;
+	ogImage?: string;
+	schema?: object;
+}
+
+const {
+	title,
+	description = "AstroAnimate is a CSS and Web Animations API–based animation library built specifically for Astro. Zero runtime JS by default. Supports Islands architecture and View Transitions.",
+	canonical = "https://www.astroanimate.com/",
+	ogImage = "https://www.astroanimate.com/og-image.png",
+	schema,
+} = Astro.props;
+
+const defaultSchema = {
+	"@context": "https://schema.org",
+	"@type": "SoftwareApplication",
+	"name": "AstroAnimate",
+	"description": description,
+	"url": canonical,
+	"applicationCategory": "DeveloperApplication",
+	"operatingSystem": "Any",
+	"programmingLanguage": "JavaScript",
+	"license": "MIT",
+	"author": {
+		"@type": "Organization",
+		"name": "AstroAnimate Team"
+	},
+	"offers": {
+		"@type": "Offer",
+		"price": "0",
+		"priceCurrency": "USD"
+	}
+};
+---
+
 <!doctype html>
 <html lang="en" dir="ltr">
 	<head>
@@ -7,8 +49,18 @@
 		<link rel="icon" href="/astro-favicon.png" sizes="any" />
 		<meta name="generator" content={Astro.generator} />
 
-		<!-- Block Search Engine Crawling -->
-		<meta name="robots" content="index, follow" />
+		<meta name="robots" content="noindex, nofollow" />
+
+		<!-- SEO Components -->
+		<MetaTags
+			title={title}
+			description={description}
+			canonical={canonical}
+			ogImage={ogImage}
+		/>
+
+		<JsonLd schema={schema || defaultSchema} />
+
 		<!-- Google Analytics -->
 		<script
 			async
@@ -22,20 +74,6 @@
 			gtag("js", new Date());
 			gtag("config", "G-XXXXXXXXXX");
 		</script>
-
-		<!-- SEO -->
-		<title>
-			AstroAnimate — Astro Animation Library Built for Astro Users
-		</title>
-		<meta
-			name="description"
-			content="AstroAnimate is a CSS and Web Animations API–based animation library built specifically for Astro. Zero runtime JS by default. Supports Islands architecture and View Transitions."
-		/>
-		<meta
-			name="keywords"
-			content="Astro, animation library, CSS animations, Web Animations API, Astro Islands, View Transitions, astro components"
-		/>
-		<link rel="canonical" href="https://www.astroanimate.com/" />
 
 		<!-- Preload Critical Resources -->
 		<link rel="preload" href="/styles/Global.css" as="style" />
@@ -72,40 +110,6 @@
 			}
 		</style>
 
-		<!-- Open Graph -->
-		<meta property="og:type" content="website" />
-		<meta
-			property="og:title"
-			content="AstroAnimate — Astro Animation Library"
-		/>
-		<meta
-			property="og:description"
-			content="CSS and Web Animations API–based transitions for Astro components. No JS unless opt-in. Built for Islands architecture."
-		/>
-		<meta property="og:url" content="https://www.astroanimate.com/" />
-		<meta
-			property="og:image"
-			content="https://www.astroanimate.com/og-image.png"
-		/>
-		<meta property="og:image:width" content="1200" />
-		<meta property="og:image:height" content="630" />
-		<meta property="og:site_name" content="AstroAnimate" />
-
-		<!-- Twitter Card -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta
-			name="twitter:title"
-			content="AstroAnimate — Astro Animation Library"
-		/>
-		<meta
-			name="twitter:description"
-			content="CSS and Web Animations API–based transitions for Astro components. No JS unless opt-in."
-		/>
-		<meta
-			name="twitter:image"
-			content="https://www.astroanimate.com/og-image.png"
-		/>
-
 		<!-- Additional SEO -->
 		<link
 			rel="alternate"
@@ -113,30 +117,6 @@
 			title="AstroAnimate RSS Feed"
 			href="https://www.astroanimate.com/rss.xml"
 		/>
-
-		<!-- Structured Data -->
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "SoftwareApplication",
-				"name": "AstroAnimate",
-				"description": "CSS and Web Animations API–based animation library built specifically for Astro. Zero runtime JS by default.",
-				"url": "https://www.astroanimate.com/",
-				"applicationCategory": "DeveloperApplication",
-				"operatingSystem": "Any",
-				"programmingLanguage": "JavaScript",
-				"license": "MIT",
-				"author": {
-					"@type": "Organization",
-					"name": "AstroAnimate Team"
-				},
-				"offers": {
-					"@type": "Offer",
-					"price": "0",
-					"priceCurrency": "USD"
-				}
-			}
-		</script>
 
 		<!-- Performance: preconnect for Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />

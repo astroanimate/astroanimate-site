@@ -131,12 +131,12 @@
 
 
 
-.nav-social .icon {
+/* .nav-social .icon {
     height: 18px;
     width: 18px;
     object-fit: contain;
 
-}
+} */
 
 
 
@@ -194,13 +194,13 @@
     font-weight: 400;
 }
 
-.status span {
+/* .status span {
     display: inline-block;
     width: 6px;
     height: 6px;
     background: #4ADE80;
     border-radius: 50%;
-}
+} */
 
 h1 {
     font-family: 'Inter', sans-serif;
@@ -1165,7 +1165,7 @@ h2 span {
 
 .perf-cell {
     /* min-height: 400px; */
-    padding: 34px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -1175,6 +1175,7 @@ h2 span {
 
 .perf-cell.has-content {
     background: #000;
+    padding: 34px;
 }
 
 .perf-cell h3 {
@@ -5687,4 +5688,6 @@ details[open] .sidebar-nav-item .chevron {
 
 .perf-cell-bundle {
     height: 500px;
+    width: 100%;
+    object-fit: cover;
 }

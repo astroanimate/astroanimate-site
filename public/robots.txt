@@ -1,20 +1,4 @@
 User-agent: *
-Allow: /
+Disallow: /
 
-# Allow all crawlers
-User-agent: Googlebot
-Allow: /
 
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Googlebot-News
-Allow: /
-
-User-agent: Googlebot-Video
-Allow: /
-
-User-agent: Mediapartners-Google
-Allow: /
-
-Sitemap: https://www.astroanimate.com/sitemap.xml

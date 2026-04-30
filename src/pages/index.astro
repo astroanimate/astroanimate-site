@@ -18,9 +18,26 @@ import Footer from "../components/Footer.astro";
 import "../styles/Global.css";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+const schema = {
+	"@context": "https://schema.org",
+	"@type": "SoftwareApplication",
+	"name": "AstroAnimate",
+	"applicationCategory": "DeveloperApplication",
+	"operatingSystem": "Web",
+	"url": "https://www.astroanimate.com",
+	"description": "Add CSS-first animations and motion components to Astro projects with optional JavaScript. Built for Astro’s rendering model and compatible with View Transitions.",
+	"author": {
+		"@type": "Organization",
+		"name": "AstroAnimate"
+	}
+};
 ---
 
-<Layout title="AstroAnimate - Modern Animation Library for Astro">
+<Layout 
+	title="AstroAnimate — Animation Library for Astro"
+	description="Add CSS-first animations and motion components to Astro projects with optional JavaScript. Built for Astro’s rendering model and compatible with View Transitions."
+	schema={schema}
+>
 	<NavBar />
 	<Hero />
 	<HowItWorks />

@@ -1,15 +1,19 @@
 ---
 import InstallCard from "./InstallCard.astro";
+import Loader from "@astroanimate/core/Loader";
 ---
 
 <section class="hero">
     <!-- LEFT -->
     <div class="hero-left">
-        <p class="status">// SYSTEM ONLINE <span></span></p>
+        <div class="status">
+            // SYSTEM ONLINE
+            <Loader type="pulse" color="#4ADE80" size={14} />
+        </div>
 
         <h1>
             Astro Animation Library <br />
-            <span>Built for Astro users.</span>
+            <span>Built for Astro</span>
         </h1>
 
         <div class="description-wrap">

@@ -4,7 +4,11 @@ const { pathname } = Astro.url;
 ---
 
 <nav class="nav" aria-label="Main navigation">
-    <div class="nav-item nav-logo">
+    <a
+        href="/"
+        class="nav-item nav-logo"
+        style="text-decoration: none; color: inherit;"
+    >
         <img
             src="/images/Logo.png"
             alt="AstroAnimate logo"
@@ -27,7 +31,7 @@ const { pathname } = Astro.url;
                 aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg
             >
         </span>
-    </div>
+    </a>
 
     <!-- TOGGLE FOR MOBILE -->
     <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden />
@@ -47,8 +51,10 @@ const { pathname } = Astro.url;
         >
         <a
             href="/docs"
-            class:list={["nav-item nav-link", { active: pathname.startsWith("/docs") }]}
-            >DOCS</a
+            class:list={[
+                "nav-item nav-link",
+                { active: pathname.startsWith("/docs") },
+            ]}>DOCS</a
         >
         <!-- <a
             href="/playground"
@@ -59,49 +65,57 @@ const { pathname } = Astro.url;
             aria-current={pathname === "/playground" ? "page" : undefined}
             >PLAYGROUND</a> -->
 
-            <a
+        <a
             href="/docs/all-components"
             class:list={[
                 "nav-item nav-link",
                 { active: pathname === "/docs/all-components" },
             ]}
-            aria-current={pathname === "/docs/all-components" ? "page" : undefined}
-            >ALL COMPONENTS</a>
+            aria-current={pathname === "/docs/all-components"
+                ? "page"
+                : undefined}
+        >
+            COMPONENTS</a
+        >
         <!-- <a href="/pricing" class="nav-item nav-link">PRICING</a> -->
         <a
-            href="/Blog"
-            class:list={["nav-item nav-link", { active: pathname === "/Blog" }]}
-            aria-current={pathname === "/Blog" ? "page" : undefined}>BLOG</a>
+            href="/blog"
+            class:list={["nav-item nav-link", { active: pathname === "/blog" }]}
+            aria-current={pathname === "/blog" ? "page" : undefined}>BLOG</a
+        >
 
         <div class="nav-item nav-empty-right"></div>
 
         <div class="nav-social-wrap">
-            <a class="nav-item nav-social" href="https://github.com/astroanimate/astroanimate" target="_blank">
-
+            <a
+                class="nav-item nav-social"
+                href="https://github.com/astroanimate/astroanimate"
+                target="_blank"
+            >
                 <img
                     class="icon"
-                    src="/images/github.png"
+                    src="/images/github-og.png"
                     alt="GitHub"
-                    width="18"
-                    height="18"
+                    width="24"
+                    height="24"
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"
                 />
-                <span class="social-count">1.5K</span>
+                <!-- <span class="social-count">1.5K</span> -->
             </a>
             <a class="nav-item nav-social border-none">
                 <img
                     class="icon"
                     src="/images/twitter.png"
                     alt="X (Twitter)"
-                    width="18"
-                    height="18"
+                    width="24"
+                    height="24"
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"
                 />
-                <span class="social-count">1.5K</span>
+                <!-- <span class="social-count">1.5K</span> -->
             </a>
         </div>
 
