@@ -8,7 +8,6 @@ interface Props {
   title: string;
 }
 
-const { title } = Astro.props;
 const { pathname } = Astro.url;
 const isDocsLanding = pathname === "/docs" || pathname === "/docs/";
 
@@ -20,37 +19,60 @@ const currentPage = pathSegments[pathSegments.length - 1] || "docs";
 const pageTitle =
   currentPage.charAt(0).toUpperCase() + currentPage.slice(1).replace(/-/g, " ");
 
-const fullTitle = `${title} Documentation - AstroAnimate`;
-const description = `Learn how to use ${title} in AstroAnimate. Detailed props, usage examples, and best practices for Astro motion components.`;
+const fullTitle = `AstroAnimate Docs — Installation, Components & API`;
+const description = `Documentation for AstroAnimate, including installation guides, animation components, API references, examples, and performance considerations for Astro projects.`;
 const canonical = `https://www.astroanimate.com${pathname}`;
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": fullTitle,
-  "description": description,
-  "url": canonical,
-  "author": {
-    "@type": "Organization",
-    "name": "AstroAnimate"
-  }
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      headline: "AstroAnimate Documentation",
+      description:
+        "Documentation for AstroAnimate covering installation, components, API references, and examples.",
+      url: "https://www.astroanimate.com/docs",
+      author: {
+        "@type": "Organization",
+        name: "AstroAnimate",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "AstroAnimate",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://www.astroanimate.com/images/Logo.png",
+        },
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://www.astroanimate.com/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Docs",
+          item: "https://www.astroanimate.com/docs",
+        },
+      ],
+    },
+  ],
 };
 ---
 
-<Layout 
+<Layout
   title={fullTitle}
   description={description}
   canonical={canonical}
   schema={schema}
 >
   <NavBar />
-  <BreadcrumbSchema 
-    items={[
-      { name: "Home", item: "https://www.astroanimate.com" },
-      { name: "Docs", item: "https://www.astroanimate.com/docs" },
-      { name: title, item: canonical }
-    ]}
-  />
 
   <div class="docs-container">
     <!-- SIDEBAR -->
@@ -227,8 +249,9 @@ const schema = {
                 class:list={[
                   "sidebar-comp-item",
                   { active: pathname === "/docs/Sec-FadeInText" },
-                ]}>FadeIn </a
-              >
+                ]}
+                >FadeIn
+              </a>
               <a
                 href="/docs/TypewriterText"
                 class:list={[
@@ -670,69 +693,77 @@ const schema = {
 
     // Search functionality for docs sidebar
     function initSearch() {
-      const searchInput = document.querySelector('.sidebar-search input');
-      const allLinks = document.querySelectorAll('.sidebar-comp-item, .sidebar-sub-item');
-      const allCategories = document.querySelectorAll('.sidebar-category, .subcategory-list details');
+      const searchInput = document.querySelector(".sidebar-search input");
+      const allLinks = document.querySelectorAll(
+        ".sidebar-comp-item, .sidebar-sub-item",
+      );
+      const allCategories = document.querySelectorAll(
+        ".sidebar-category, .subcategory-list details",
+      );
 
       if (!searchInput) return;
 
       // Create no results message
-      let noResultsMsg = document.querySelector('.no-results-message');
+      let noResultsMsg = document.querySelector(".no-results-message");
       if (!noResultsMsg) {
-        noResultsMsg = document.createElement('div');
-        noResultsMsg.className = 'no-results-message';
-        noResultsMsg.textContent = 'No results found';
-        noResultsMsg.style.display = 'none';
-        noResultsMsg.style.padding = '16px';
-        noResultsMsg.style.color = '#9CA3AF';
-        noResultsMsg.style.fontSize = '14px';
-        noResultsMsg.style.textAlign = 'center';
+        noResultsMsg = document.createElement("div");
+        noResultsMsg.className = "no-results-message";
+        noResultsMsg.textContent = "No results found";
+        noResultsMsg.style.display = "none";
+        noResultsMsg.style.padding = "16px";
+        noResultsMsg.style.color = "#9CA3AF";
+        noResultsMsg.style.fontSize = "14px";
+        noResultsMsg.style.textAlign = "center";
         searchInput.parentElement.parentElement.appendChild(noResultsMsg);
       }
 
-      searchInput.addEventListener('input', (e) => {
+      searchInput.addEventListener("input", (e) => {
         const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
-        
-        if (searchTerm === '') {
+
+        if (searchTerm === "") {
           // Show all items and categories when search is empty
-          allLinks.forEach(link => {
-            (link as HTMLElement).style.display = '';
+          allLinks.forEach((link) => {
+            (link as HTMLElement).style.display = "";
           });
-          allCategories.forEach(category => {
-            (category as HTMLElement).style.display = '';
+          allCategories.forEach((category) => {
+            (category as HTMLElement).style.display = "";
           });
-          noResultsMsg.style.display = 'none';
+          noResultsMsg.style.display = "none";
           return;
         }
 
         // Hide all categories first
-        allCategories.forEach(category => {
-          (category as HTMLElement).style.display = 'none';
+        allCategories.forEach((category) => {
+          (category as HTMLElement).style.display = "none";
         });
 
         let hasResults = false;
 
         // Show matching items and their parent categories
-        allLinks.forEach(link => {
-          const text = link.textContent?.toLowerCase() || '';
+        allLinks.forEach((link) => {
+          const text = link.textContent?.toLowerCase() || "";
           if (text.includes(searchTerm)) {
-            (link as HTMLElement).style.display = '';
+            (link as HTMLElement).style.display = "";
             hasResults = true;
-            
+
             // Show parent categories
-            let parent = link.closest('.sidebar-category, .subcategory-list details');
+            let parent = link.closest(
+              ".sidebar-category, .subcategory-list details",
+            );
             while (parent) {
-              (parent as HTMLElement).style.display = '';
-              const parentElement = parent.parentElement?.closest('.sidebar-category, .subcategory-list details');
+              (parent as HTMLElement).style.display = "";
+              const parentElement = parent.parentElement?.closest(
+                ".sidebar-category, .subcategory-list details",
+              );
               parent = parentElement || null;
             }
           } else {
-            (link as HTMLElement).style.display = 'none';
+            (link as HTMLElement).style.display = "none";
           }
         });
 
         // Show or hide no results message
-        noResultsMsg.style.display = hasResults ? 'none' : 'block';
+        noResultsMsg.style.display = hasResults ? "none" : "block";
       });
     }
 
