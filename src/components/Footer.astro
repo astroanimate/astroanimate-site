@@ -1,5 +1,16 @@
 ---
+import Loader from "@astroanimate/core/Loader";
+import { execSync } from "child_process";
 
+let lastUpdated = "21-Mar-2026";
+try {
+    const gitDate = execSync('git log -1 --format=%cd --date=format:"%d-%b-%Y"')
+        .toString()
+        .trim();
+    if (gitDate) lastUpdated = gitDate;
+} catch (e) {
+    // Fallback if git is not available
+}
 ---
 
 <footer class="footer-section">
@@ -12,18 +23,28 @@
                 style="text-decoration: none; color: inherit;"
             >
                 <img
-                    src="/images/text-logo.png"
+                    src="/images/astro-footer-logo.png"
                     alt="AstroAnimate feature visualization"
                     class="logo-bolt"
                     loading="lazy"
                 />
-                <span class="logo-text"> <span>Animate</span></span>
+                <!-- <span class="logo-text"> <span>Animate</span></span> -->
             </a>
 
-            <p class="last-updated">
-                // Last Updated [<span>21-Mar-2026</span>]
-                <span class="dot"></span>
-            </p>
+            <div class="last-updated">
+                // Last Updated [<span>{lastUpdated}</span>]
+                <div class="double-pulse-container">
+                    <div class="pulse-outer"></div>
+                    <div class="pulse-inner">
+                        <Loader
+                            type="pulse"
+                            color="#4ADE80"
+                            size={10}
+                            speed={0.5}
+                        />
+                    </div>
+                </div>
+            </div>
 
             <div class="newsletter">
                 <p>Subscribe for newsletter</p>
@@ -113,8 +134,42 @@
                 ><circle cx="12" cy="12" r="10"></circle><polyline
                     points="12 6 12 12 16 14"></polyline></svg
             >
-            <span>19:56:24 UTC</span>
-            <span class="dot-green"></span>
+            <span id="utc-time-display">00:00:00 UTC</span>
+            <div class="double-pulse-container">
+                <div class="pulse-outer"></div>
+                <div class="pulse-inner">
+                    <Loader
+                        type="pulse"
+                        color="#4ADE80"
+                        size={10}
+                        speed={0.5}
+                    />
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    function updateUTCTime() {
+        const display = document.getElementById("utc-time-display");
+        if (!display) return;
+
+        const now = new Date();
+        const hours = now.getUTCHours();
+        const minutes = now.getUTCMinutes();
+        const seconds = now.getUTCSeconds();
+
+        const ampm = hours >= 12 ? "PM" : "AM";
+        const displayHours = hours % 12 || 12;
+        const displayMinutes = String(minutes).padStart(2, "0");
+        const displaySeconds = String(seconds).padStart(2, "0");
+
+        display.textContent = `${displayHours}:${displayMinutes}:${displaySeconds} ${ampm} UTC`;
+    }
+
+    // Initial update
+    updateUTCTime();
+    // Update every second
+    setInterval(updateUTCTime, 1000);
+</script>

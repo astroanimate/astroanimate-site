@@ -5,33 +5,36 @@ const features = [
         title: "Framework-Specific Structure",
         desc: "Components integrate with Islands and View Transitions. Designed to align with Astro's rendering and routing model.",
         highlight: "Cleaner integration in Astro projects.",
-        icon: "/images/framework.png"
+        icon: "/images/framework-wc.png",
     },
     {
         number: "02",
         title: "CSS-First Animations",
         desc: "Core animations run without runtime JavaScript.JavaScript is added only when required.",
-        highlight: "Animations render without adding client-side JavaScript unless explicitly enabled.",
-        icon: "/images/css.png"
+        highlight:
+            "Animations render without adding client-side JavaScript unless explicitly enabled.",
+        icon: "/images/css.png",
     },
     {
         number: "03",
         title: "Hydration-Aware Motion",
         desc: "Animations do not force unnecessary hydration.Works with partial client rendering.",
         highlight: "Better control over performance boundaries.",
-        icon: "/images/hydration.png"
+        icon: "/images/hydration.png",
     },
     {
         number: "04",
         title: "Engine Extensible",
         desc: "Supports CSS-only motion and optional JavaScript engines.Architecture does not restrict animation strategy.",
-        highlight: "Supports incremental adoption without changing architecture.",
-        icon: "/images/engine.png"
+        highlight:
+            "Supports incremental adoption without changing architecture.",
+        icon: "/images/engine.png",
     },
 ];
 ---
 
 <section class="features-section">
+    <div class="badge-border"></div>
     <!-- BADGE -->
     <div class="badge">DIFFERENTIATION</div>
 
@@ -91,9 +94,9 @@ const features = [
                 <div class="feature-card">
                     <div class="top">
                         <span class="num">{f.number}</span>
-                        <img 
-                            src={f.icon} 
-                            alt={`${f.title} icon`} 
+                        <img
+                            src={f.icon}
+                            alt={`${f.title} icon`}
                             class="feature-icon"
                             width="24"
                             height="24"
@@ -110,5 +113,4 @@ const features = [
             ))
         }
     </div>
-    <div class="bottom-separator"></div>
 </section>

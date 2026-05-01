@@ -8,7 +8,17 @@ import Loader from "@astroanimate/core/Loader";
     <div class="hero-left">
         <div class="status">
             // SYSTEM ONLINE
-            <Loader type="pulse" color="#4ADE80" size={14} />
+            <div class="double-pulse-container">
+                <div class="pulse-outer"></div>
+                <div class="pulse-inner">
+                    <Loader
+                        type="pulse"
+                        color="#4ADE80"
+                        size={10}
+                        speed={0.5}
+                    />
+                </div>
+            </div>
         </div>
 
         <h1>
@@ -37,10 +47,7 @@ import Loader from "@astroanimate/core/Loader";
                 aria-label="Install AstroAnimate via NPM"
                 >INSTALL VIA NPM</button
             >
-            <button
-                class="btn-secondary"
-                aria-label="Open documentation for AstroAnimate library"
-            >
+            <a href="/docs" class="btn-secondary">
                 VIEW DOCUMENTATION
                 <svg
                     width="18"
@@ -60,7 +67,7 @@ import Loader from "@astroanimate/core/Loader";
                     <line x1="16" y1="17" x2="8" y2="17"></line>
                     <polyline points="10 9 9 9 8 9"></polyline>
                 </svg>
-            </button>
+            </a>
         </div>
     </div>
 
@@ -80,8 +87,8 @@ import Loader from "@astroanimate/core/Loader";
             playsinline
             aria-hidden="true"
             title="AstroAnimate hero glow background"
-            width="1200"
-            height="600"
+            width="1920"
+            height="1080"
             class="hero-video"
             preload="auto"
         >

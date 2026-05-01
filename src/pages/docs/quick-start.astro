@@ -97,25 +97,26 @@ import "../../styles/Global.css";
                     </p>
                     <div class="docs-code-block">
                         <pre><code><span class="comment">---</span>
-<span class="component">import</span> &#123; FadeIn, SlideIn, TextRotate &#125; <span class="component">from</span> <span class="string">"@astroanimate/core"</span>;
-<span class="component">import</span> <span>SlideIn</span> <span class="component">from</span> <span class="string">"@astroanimate/core/SlideIn"</span>;
+<span class="component">import</span> <span>FadeIn</span> <span class="component">from</span> <span class="string">"@astroanimate/core/FadeIn"</span>;
+<span class="component">import</span> <span>Reveal</span> <span class="component">from</span> <span class="string">"@astroanimate/core/Reveal"</span>;
 <span class="component">import</span> <span>TextRotate</span> <span class="component">from</span> <span class="string">"@astroanimate/core/TextRotate"</span>;
 <span class="comment">---</span>
 
 &lt;<span class="brand">main</span>&gt;
-  &lt;<span class="brand">div</span> <span class="string">class</span>=<span class="component">"container"</span>&gt;
-    &lt;<span class="brand">FadeIn</span> <span class="string">advance</span> <span class="string">direction</span>=<span class="component">"up"</span> <span class="string">distance</span>={<span class="number">{20}</span>} <span class="string">once</span>&gt;
-      &lt;<span class="brand">h1</span>&gt;
-        AstroAnimate is installed
-      &lt;/<span class="brand">h1</span>&gt;
-    &lt;/<span class="brand">FadeIn</span>&gt;
+  &lt;<span class="brand">h1</span>&gt;
+    &lt;<span class="brand">TextRotate</span>
+      <span class="string">texts</span>=<span class="punctuation">{</span><span class="punctuation">[</span><span class="string">"Astro-native"</span><span class="punctuation">,</span> <span class="string">"Progressively enhanced"</span><span class="punctuation">,</span> <span class="string">"Motion-aware"</span><span class="punctuation">]</span><span class="punctuation">}</span>
+      <span class="string">enhance</span>
+    /&gt;
+  &lt;/<span class="brand">h1</span>&gt;
 
-    &lt;<span class="brand">SlideIn</span> <span class="string">enter</span> <span class="string">direction</span>=<span class="component">"left"</span> <span class="string">delay</span>={<span class="number">{0.2}</span>} <span class="string">threshold</span>={<span class="number">{0.5}</span>}&gt;
-      &lt;<span class="brand">p</span>&gt;Welcome to the usage guide.&lt;/<span class="brand">p</span>&gt;
-    &lt;/<span class="brand">SlideIn</span>&gt;
+  &lt;<span class="brand">FadeIn</span> <span class="string">enhance</span> <span class="string">direction</span>=<span class="component">"up"</span> <span class="string">distance</span>={<span class="number">{24}</span>}&gt;
+    &lt;<span class="brand">p</span>&gt;FadeIn stays visible without JavaScript and enhances when opted in.&lt;/<span class="brand">p</span>&gt;
+  &lt;/<span class="brand">FadeIn</span>&gt;
 
-    &lt;<span class="brand">TextRotate</span> <span class="string">items</span>={<span class="number">["Fast", "Modern", "Dynamic"]</span>} /&gt;
-  &lt;/<span class="brand">div</span>&gt;
+  &lt;<span class="brand">Reveal</span> <span class="string">enhance</span> <span class="string">effect</span>=<span class="component">"slide-up"</span> <span class="string">delay</span>={<span class="number">{120}</span>}&gt;
+    &lt;<span class="brand">p</span>&gt;Reveal follows the same opt-in enhancement pattern.&lt;/<span class="brand">p</span>&gt;
+  &lt;/<span class="brand">Reveal</span>&gt;
 &lt;/<span class="brand">main</span>&gt;</code></pre>
                     </div>
                     <p class="docs-paragraph">Why this code:</p>

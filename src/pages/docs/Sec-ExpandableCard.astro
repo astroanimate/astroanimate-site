@@ -6,7 +6,7 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
 
 <DocLayout title="Expandable Card">
     <section id="expandable-card">
-        <h1 class="docs-title">ExpandableCard – Astro animation component</h1>
+        <h1 class="docs-title">ExpandableCard</h1>
 
         <div class="docs-intro-section">
             <p class="docs-paragraph">
@@ -23,7 +23,14 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
             <div class="created-by">
                 <span class="created-by-label">Created by</span>
                 <div class="created-by-avatar">
-                    <img src="/images/barsan.jpeg" alt="Creator" loading="lazy" decoding="async" width="40" height="40" />
+                    <img
+                        src="/images/barsan.jpeg"
+                        alt="Creator"
+                        loading="lazy"
+                        decoding="async"
+                        width="40"
+                        height="40"
+                    />
                 </div>
                 <span class="created-by-name">Barsan</span>
             </div>
@@ -203,7 +210,7 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
         <!-- HOW IT WORKS SECTION -->
         <div class="docs-intro-section" id="behavior">
             <h2 class="docs-subtitle">Behavior</h2>
-            <div >
+            <div>
                 <ul class="docs-list">
                     <li>
                         Content is fully visible by default (no JavaScript
@@ -241,117 +248,118 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
             </div>
         </div>
         <!-- USE WHEN SECTION -->
-    <div class="docs-intro-section" id="use-when">
-        <h2 class="docs-subtitle">Use When</h2>
-        <ul class="docs-list">
-            <li>
-                Collapsible content sections that should remain accessible
-                without JavaScript
-            </li>
-            <li>
-                Progressive enhancement scenarios where interactivity is
-                optional
-            </li>
-            <li>Simple expand/collapse UI with smooth transitions</li>
-            <li>When keyboard-accessible toggle behavior is required</li>
-        </ul>
-    </div>
-
-    <!-- AVOID WHEN SECTION -->
-    <div class="docs-intro-section" id="avoid-when">
-        <h2 class="docs-subtitle">Avoid When</h2>
-        <ul class="docs-list">
-            <li>
-                Content must be hidden by default without JavaScript (content is
-                always visible initially)
-            </li>
-            <li>Complex nested or multi-level accordion structures</li>
-            <li>
-                Advanced animation choreography beyond simple expand/collapse
-            </li>
-        </ul>
-    </div>
-      <!-- ACCESSIBILITY SECTION -->
-    <div class="docs-intro-section" id="accessibility">
-        <h2 class="docs-subtitle">Accessibility</h2>
-        <div >
+        <div class="docs-intro-section" id="use-when">
+            <h2 class="docs-subtitle">Use When</h2>
             <ul class="docs-list">
                 <li>
-                    Respects <code class="keyword">prefers-reduced-motion</code> (disables
-                    transitions)
+                    Collapsible content sections that should remain accessible
+                    without JavaScript
                 </li>
                 <li>
-                    When <code class="keyword">enhance=true</code>:
-                    <ul
-                        class="docs-list"
-                        style="margin-left: 20px; margin-top: 8px;"
+                    Progressive enhancement scenarios where interactivity is
+                    optional
+                </li>
+                <li>Simple expand/collapse UI with smooth transitions</li>
+                <li>When keyboard-accessible toggle behavior is required</li>
+            </ul>
+        </div>
+
+        <!-- AVOID WHEN SECTION -->
+        <div class="docs-intro-section" id="avoid-when">
+            <h2 class="docs-subtitle">Avoid When</h2>
+            <ul class="docs-list">
+                <li>
+                    Content must be hidden by default without JavaScript
+                    (content is always visible initially)
+                </li>
+                <li>Complex nested or multi-level accordion structures</li>
+                <li>
+                    Advanced animation choreography beyond simple
+                    expand/collapse
+                </li>
+            </ul>
+        </div>
+        <!-- ACCESSIBILITY SECTION -->
+        <div class="docs-intro-section" id="accessibility">
+            <h2 class="docs-subtitle">Accessibility</h2>
+            <div>
+                <ul class="docs-list">
+                    <li>
+                        Respects <code class="keyword"
+                            >prefers-reduced-motion</code
+                        > (disables transitions)
+                    </li>
+                    <li>
+                        When <code class="keyword">enhance=true</code>:
+                        <ul
+                            class="docs-list"
+                            style="margin-left: 20px; margin-top: 8px;"
+                        >
+                            <li>
+                                Adds <code class="keyword">role="button"</code>, <code
+                                    class="keyword">tabindex="0"</code
+                                >, and <code class="keyword">aria-expanded</code
+                                >
+                            </li>
+                            <li>
+                                Supports keyboard interaction (Enter and Space)
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Focus-visible styles support keyboard navigation</li>
+                    <li>Content remains fully accessible without JavaScript</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PERFORMANCE SECTION -->
+        <div class="docs-intro-section" id="performance">
+            <h2 class="docs-subtitle">Performance</h2>
+            <div>
+                <ul class="docs-list">
+                    <li>
+                        CSS-first animation using <code class="keyword"
+                            >grid-template-rows</code
+                        > (no layout thrashing)
+                    </li>
+                    <li>
+                        JavaScript only updates attributes (<code
+                            class="keyword">data-state</code
+                        >, ARIA)
+                    </li>
+                    <li>WeakMap prevents duplicate initialization</li>
+                    <li>
+                        MutationObserver ensures cleanup when element is removed
+                        from the DOM
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CREDITS SECTION -->
+        <div class="docs-intro-section" id="credits">
+            <h2 class="docs-subtitle">Credits</h2>
+            <ul class="docs-list">
+                <li>
+                    Credit to <a
+                        href="https://github.com/barsan"
+                        class="credits-link">@barsan</a
                     >
-                        <li>
-                            Adds <code class="keyword">role="button"</code>, <code
-                                class="keyword">tabindex="0"</code
-                            >, and <code class="keyword">aria-expanded</code>
-                        </li>
-                        <li>Supports keyboard interaction (Enter and Space)</li>
-                    </ul>
-                </li>
-                <li>Focus-visible styles support keyboard navigation</li>
-                <li>Content remains fully accessible without JavaScript</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- PERFORMANCE SECTION -->
-    <div class="docs-intro-section" id="performance">
-        <h2 class="docs-subtitle">Performance</h2>
-        <div>
-            <ul class="docs-list">
-                <li>
-                    CSS-first animation using <code class="keyword"
-                        >grid-template-rows</code
-                    > (no layout thrashing)
-                </li>
-                <li>
-                    JavaScript only updates attributes (<code class="keyword"
-                        >data-state</code
-                    >, ARIA)
-                </li>
-                <li>WeakMap prevents duplicate initialization</li>
-                <li>
-                    MutationObserver ensures cleanup when element is removed
-                    from the DOM
                 </li>
             </ul>
         </div>
-    </div>
 
-    <!-- CREDITS SECTION -->
-    <div class="docs-intro-section" id="credits">
-        <h2 class="docs-subtitle">Credits</h2>
-        <ul class="docs-list">
-            <li>
-                Credit to <a
-                    href="https://github.com/barsan"
-                    class="credits-link">@barsan</a
-                >
-            </li>
-        </ul>
-    </div>
-
-    <!-- RELATED COMPONENTS SECTION -->
-    <div class="docs-intro-section" id="related-components">
-        <h2 class="docs-subtitle">Related Components</h2>
-        <div class="related-grid">
-            <div class="related-card empty"></div>
-            <div class="related-card empty"></div>
-            <div class="related-card empty"></div>
-            <div class="related-card empty"></div>
+        <!-- RELATED COMPONENTS SECTION -->
+        <div class="docs-intro-section" id="related-components">
+            <h2 class="docs-subtitle">Related Components</h2>
+            <div class="related-grid">
+                <div class="related-card empty"></div>
+                <div class="related-card empty"></div>
+                <div class="related-card empty"></div>
+                <div class="related-card empty"></div>
+            </div>
         </div>
-    </div>
     </section>
-
-    
-
-  
 
     <div class="docs-footer-nav" style="justify-content: space-between;">
         <a href="/docs/Sec-RevealImage" class="prev-link">
@@ -393,22 +401,22 @@ import ExpandableCard from "@astroanimate/core/ExpandableCard";
         </a>
     </div>
 
-<Fragment slot="toc">
-    <div class="toc-header">IN THIS PAGE</div>
-    <nav class="toc-nav">
-        <a href="#expandable-card" class="active">Expandable Card</a>
-        <a href="#preview-playground">Preview/Playground</a>
-        <a href="#installation">Installation</a>
-        <a href="#usage">Usage</a>
-        <a href="#props">Props</a>
-        <a href="#behavior">Behavior</a>
-        <a href="#use-when">Use When</a>
-        <a href="#avoid-when">Avoid When</a>
-        <a href="#accessibility">Accessibility</a>
-        <a href="#performance">Performance</a>
-        <a href="#credits">Credits</a>
-    </nav>
-</Fragment>
+    <Fragment slot="toc">
+        <div class="toc-header">IN THIS PAGE</div>
+        <nav class="toc-nav">
+            <a href="#expandable-card" class="active">Expandable Card</a>
+            <a href="#preview-playground">Preview/Playground</a>
+            <a href="#installation">Installation</a>
+            <a href="#usage">Usage</a>
+            <a href="#props">Props</a>
+            <a href="#behavior">Behavior</a>
+            <a href="#use-when">Use When</a>
+            <a href="#avoid-when">Avoid When</a>
+            <a href="#accessibility">Accessibility</a>
+            <a href="#performance">Performance</a>
+            <a href="#credits">Credits</a>
+        </nav>
+    </Fragment>
 </DocLayout>
 
 <style>

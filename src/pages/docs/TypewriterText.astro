@@ -6,11 +6,13 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
 
 <DocLayout title="Typewriter Text">
     <section id="typewriter-text">
-        <h1 class="docs-title">TypewriterText – Astro animation component</h1>
+        <h1 class="docs-title">TypewriterText</h1>
 
         <div class="docs-intro-section">
             <p class="docs-paragraph">
-                Renders text with a typewriter-style animation that cycles through an array of strings. Uses a JavaScript-driven typing effect with a CSS-only static fallback.
+                Renders text with a typewriter-style animation that cycles
+                through an array of strings. Uses a JavaScript-driven typing
+                effect with a CSS-only static fallback.
             </p>
         </div>
 
@@ -18,29 +20,41 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
         <div class="docs-intro-section" id="preview-playground">
             <h2 class="docs-subtitle">Preview/Playground</h2>
             <div class="created-by">
-                   <span class="created-by-label">Created by</span>
+                <span class="created-by-label">Created by</span>
                 <div class="created-by-avatar">
                     <img src="/images/barsan.jpeg" alt="Creator" />
                 </div>
-              
-                 
-                    <span class="created-by-name">Vipin</span>
-    
+
+                <span class="created-by-name">Vipin</span>
             </div>
             <div class="playground-container">
                 <div class="playground-preview">
                     <div class="typewriter-showcase">
-                      <TypewriterTextComponent texts={["Hello", "World", "Astro"]} enhance />
+                        <TypewriterTextComponent
+                            texts={["Hello", "World", "Astro"]}
+                            enhance
+                        />
 
                         <div class="demo-typewriter">
-                            <TypewriterTextComponent texts={["Fast", "Reliable", "Astro-native"]} typeSpeed={60} eraseSpeed={30} pauseAfter={1500} enhance />
+                            <TypewriterTextComponent
+                                texts={["Fast", "Reliable", "Astro-native"]}
+                                typeSpeed={60}
+                                eraseSpeed={30}
+                                pauseAfter={1500}
+                                enhance
+                            />
                         </div>
                     </div>
                 </div>
                 <div class="playground-code">
                     <div class="code-header">
                         <div class="code-header-left">
-                          <img src="/images/astro.png" alt="Astro" width="14" height="18" />
+                            <img
+                                src="/images/astro.png"
+                                alt="Astro"
+                                width="14"
+                                height="18"
+                            />
                             <span class="code-header-text">Astro</span>
                         </div>
                     </div>
@@ -62,9 +76,22 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
             <div class="installation-block">
                 <div class="installation-header">
                     <span class="bash-label">bash</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy-icon">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="copy-icon"
+                    >
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"
+                        ></rect>
+                        <path
+                            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                        ></path>
                     </svg>
                 </div>
                 <pre><code><span class="keyword">npm</span> install <span class="string">@astroanimate/core</span></code></pre>
@@ -72,7 +99,7 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
         </div>
 
         <!-- QUICK START SECTION -->
-          <div class="docs-intro-section" id="example">
+        <div class="docs-intro-section" id="example">
             <h2 class="docs-subtitle">Usage</h2>
             <div class="docs-code-block">
                 <pre><code><span class="keyword">import</span> <span class="component-name">TypewriterText</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/TypewriterText"</span>;
@@ -82,7 +109,7 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
   <span class="prop">enhance</span>
 /&gt;</code></pre>
             </div>
-          
+
             <div class="docs-code-block" style="margin-top: 16px;">
                 <pre><code>&lt;<span class="component">TypewriterText</span>
   <span class="prop">texts</span>=<span class="string">&#123;["Fast", "Reliable", "Astro-native"]&#125;</span>
@@ -93,8 +120,6 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
 /&gt;</code></pre>
             </div>
         </div>
-
-        
 
         <!-- PROPS SECTION -->
         <div class="docs-intro-section" id="props">
@@ -114,13 +139,19 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
                             <td><code>texts</code></td>
                             <td><code>string[]</code></td>
                             <td><code>(required)</code></td>
-                            <td>Array of strings to cycle through (first string used as static fallback)</td>
+                            <td
+                                >Array of strings to cycle through (first string
+                                used as static fallback)</td
+                            >
                         </tr>
                         <tr>
                             <td><code>enhance</code></td>
                             <td><code>boolean</code></td>
                             <td><code>false</code></td>
-                            <td>Enable JavaScript-powered typing animation (replaces static fallback content)</td>
+                            <td
+                                >Enable JavaScript-powered typing animation
+                                (replaces static fallback content)</td
+                            >
                         </tr>
                         <tr>
                             <td><code>typeSpeed</code></td>
@@ -138,7 +169,10 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
                             <td><code>pauseAfter</code></td>
                             <td><code>number</code></td>
                             <td><code>1800</code></td>
-                            <td>Milliseconds to pause after fully typing a string</td>
+                            <td
+                                >Milliseconds to pause after fully typing a
+                                string</td
+                            >
                         </tr>
                         <tr>
                             <td><code>pauseEmpty</code></td>
@@ -185,19 +219,42 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
         <div class="docs-intro-section" id="how-it-works">
             <h2 class="docs-subtitle">Behavior</h2>
             <ul class="docs-list">
-                <li>Displays the first string as static content by default (no JavaScript required)</li>
-                <li>When <span class="keyword">enhance=true</span>, JavaScript replaces static content with dynamic typing animation</li>
-                <li>Animation progresses through multiple phases:
-                    <ul class="docs-list" style="margin-left: 20px; margin-top: 8px;">
+                <li>
+                    Displays the first string as static content by default (no
+                    JavaScript required)
+                </li>
+                <li>
+                    When <span class="keyword">enhance=true</span>, JavaScript
+                    replaces static content with dynamic typing animation
+                </li>
+                <li>
+                    Animation progresses through multiple phases:
+                    <ul
+                        class="docs-list"
+                        style="margin-left: 20px; margin-top: 8px;"
+                    >
                         <li>Typing characters one by one</li>
                         <li>Pausing after the full string is typed</li>
-                        <li>Erasing characters (if <span class="keyword">erase=true</span>)</li>
+                        <li>
+                            Erasing characters (if <span class="keyword"
+                                >erase=true</span
+                            >)
+                        </li>
                         <li>Pausing before the next string</li>
                     </ul>
                 </li>
-                <li>When <span class="keyword">loop=false</span>, animation stops after one full cycle</li>
-                <li>When <span class="keyword">erase=false</span>, text accumulates instead of being removed</li>
-                <li>Cursor is rendered using CSS and remains visible without JavaScript</li>
+                <li>
+                    When <span class="keyword">loop=false</span>, animation
+                    stops after one full cycle
+                </li>
+                <li>
+                    When <span class="keyword">erase=false</span>, text
+                    accumulates instead of being removed
+                </li>
+                <li>
+                    Cursor is rendered using CSS and remains visible without
+                    JavaScript
+                </li>
             </ul>
         </div>
 
@@ -207,7 +264,10 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
             <ul class="docs-list">
                 <li>Displaying rotating headlines or taglines</li>
                 <li>Creating typing effects for hero sections</li>
-                <li>Showing short, dynamic text content with progressive enhancement</li>
+                <li>
+                    Showing short, dynamic text content with progressive
+                    enhancement
+                </li>
             </ul>
         </div>
 
@@ -215,7 +275,10 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
         <div class="docs-intro-section" id="avoid-when">
             <h2 class="docs-subtitle">Avoid When</h2>
             <ul class="docs-list">
-                <li>Content must always be fully visible without JavaScript (only the first string is shown)</li>
+                <li>
+                    Content must always be fully visible without JavaScript
+                    (only the first string is shown)
+                </li>
                 <li>Displaying long or complex text blocks</li>
                 <li>Precise formatting or rich text rendering is required</li>
             </ul>
@@ -224,11 +287,24 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
         <!-- ACCESSIBILITY SECTION -->
         <div class="docs-intro-section" id="accessibility">
             <h2 class="docs-subtitle">Accessibility</h2>
-           <ul class="docs-list">
-                <li>Includes <span class="keyword">aria-label</span>, <span class="keyword">aria-live="polite"</span>, and <span class="keyword">aria-atomic="true"</span> for screen readers</li>
-                <li>Respects <span class="keyword">prefers-reduced-motion</span></li>
-                <li>Typing animation and cursor blinking are disabled when reduced motion is preferred</li>
-                <li>Static fallback ensures meaningful content is always available</li>
+            <ul class="docs-list">
+                <li>
+                    Includes <span class="keyword">aria-label</span>, <span
+                        class="keyword">aria-live="polite"</span
+                    >, and <span class="keyword">aria-atomic="true"</span> for screen
+                    readers
+                </li>
+                <li>
+                    Respects <span class="keyword">prefers-reduced-motion</span>
+                </li>
+                <li>
+                    Typing animation and cursor blinking are disabled when
+                    reduced motion is preferred
+                </li>
+                <li>
+                    Static fallback ensures meaningful content is always
+                    available
+                </li>
             </ul>
         </div>
 
@@ -236,28 +312,50 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
         <div class="docs-intro-section" id="performance">
             <h2 class="docs-subtitle">Performance</h2>
             <ul class="docs-list">
-                <li>Uses <span class="keyword">setTimeout</span>-based scheduling for precise timing control</li>
+                <li>
+                    Uses <span class="keyword">setTimeout</span>-based
+                    scheduling for precise timing control
+                </li>
                 <li>WeakMap prevents duplicate initialization</li>
-                <li>MutationObserver ensures timers are cleaned up when element is removed from the DOM</li>
-                <li>No layout shifts — content updates via <span class="keyword">textContent</span> only</li>
+                <li>
+                    MutationObserver ensures timers are cleaned up when element
+                    is removed from the DOM
+                </li>
+                <li>
+                    No layout shifts — content updates via <span class="keyword"
+                        >textContent</span
+                    > only
+                </li>
             </ul>
         </div>
 
         <!-- COMPONENTS API SECTION -->
         <div class="docs-intro-section" id="components-api">
             <h2 class="docs-subtitle">Components API</h2>
-            <ul  class="docs-list">
-                <li><a href="#typewriter-text" class="component-link">&lt;TypewriterText /&gt;</a></li>
-                <li><a href="#animated-button" class="component-link">&lt;AnimatedButton /&gt;</a></li>
-                <li><a href="#animated-card" class="component-link">&lt;AnimatedCard /&gt;</a></li>
+            <ul class="docs-list">
+                <li>
+                    <a href="#typewriter-text" class="component-link"
+                        >&lt;TypewriterText /&gt;</a>
+                </li>
+                <li>
+                    <a href="#animated-button" class="component-link"
+                        >&lt;AnimatedButton /&gt;</a>
+                </li>
+                <li>
+                    <a href="#animated-card" class="component-link"
+                        >&lt;AnimatedCard /&gt;</a>
+                </li>
             </ul>
         </div>
 
         <div class="docs-intro-section" id="components-api">
             <h2 class="docs-subtitle">Credits</h2>
-            <ul  class="docs-list">
-                <li>Credit to <a href="https://github.com/vipin" class="credits-link">@vipin</a></li>
-              
+            <ul class="docs-list">
+                <li>
+                    Credit to <a
+                        href="https://github.com/vipin"
+                        class="credits-link">@vipin</a>
+                </li>
             </ul>
         </div>
 
@@ -272,7 +370,6 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
             </div>
         </div>
 
-       
         <div class="docs-footer-nav" style="justify-content: space-between;">
             <a href="/docs/Sec-FadeInText" class="prev-link">
                 <span class="label">PREVIOUS</span>
@@ -296,7 +393,7 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
             <a href="/docs/Sec-ScaleIn" class="next-link">
                 <span class="label">NEXT</span>
                 <span class="title">
-                   Scale In
+                    Scale In
                     <svg
                         width="18"
                         height="18"
@@ -340,7 +437,7 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
         gap: 12px;
         margin-bottom: 20px;
         padding: 12px 16px;
-justify-content: right;
+        justify-content: right;
         border-radius: 8px;
     }
 
@@ -365,22 +462,22 @@ justify-content: right;
     }
 
     .created-by-label {
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         font-size: 14px;
-        color: #4B5563;
+        color: #4b5563;
     }
 
     .created-by-name {
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         font-size: 14px;
         font-weight: 500;
-        color: #F9FAFB;
+        color: #f9fafb;
     }
 
     .playground-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        border: 1px solid #1F2937;
+        border: 1px solid #1f2937;
         background: #050505;
         border-radius: 12px;
         overflow: hidden;
@@ -388,8 +485,8 @@ justify-content: right;
 
     .playground-preview {
         padding: 40px;
-        background: #E8E8E8;
-        border-right: 1px solid #1F2937;
+        background: #e8e8e8;
+        border-right: 1px solid #1f2937;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -404,7 +501,7 @@ justify-content: right;
     }
 
     .demo-typewriter {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: "JetBrains Mono", monospace;
         font-size: 18px;
         color: #000;
         background: #fff;
@@ -421,7 +518,7 @@ justify-content: right;
     }
 
     .code-header {
-        background: #15191E;
+        background: #15191e;
         padding: 12px 16px;
         border-bottom: 1px solid #2a2a2a;
         display: flex;
@@ -433,18 +530,18 @@ justify-content: right;
         display: flex;
         align-items: center;
         gap: 8px;
-        font-family: 'JetBrains Mono', monospace;
+        font-family: "JetBrains Mono", monospace;
         font-size: 13px;
         color: #fff;
     }
 
     .astro-logo {
-        color: #FF5D01;
+        color: #ff5d01;
     }
 
     .code-content {
         padding: 20px;
-        font-family: 'JetBrains Mono', monospace;
+        font-family: "JetBrains Mono", monospace;
         font-size: 13px;
         line-height: 1.6;
         overflow-x: auto;
@@ -469,13 +566,13 @@ justify-content: right;
 
     .installation-block {
         background: transparent;
-        border: 1px solid #1F2937;
+        border: 1px solid #1f2937;
         border-radius: 8px;
         overflow: hidden;
     }
 
     .installation-header {
-        background: #0B0D10;
+        background: #0b0d10;
         padding: 8px 16px;
         border-bottom: 1px solid #2a2a2a;
         display: flex;
@@ -484,43 +581,43 @@ justify-content: right;
     }
 
     .bash-label {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: "JetBrains Mono", monospace;
         font-size: 12px;
-        color: #9CA3AF;
+        color: #9ca3af;
     }
 
     .copy-icon {
-        color: #9CA3AF;
+        color: #9ca3af;
         cursor: pointer;
         transition: color 0.2s ease;
     }
 
     .copy-icon:hover {
-        color: #F9FAFB;
+        color: #f9fafb;
     }
 
     .installation-block pre {
         margin: 0;
         padding: 16px;
         background: transparent;
-        font-family: 'JetBrains Mono', monospace;
+        font-family: "JetBrains Mono", monospace;
         font-size: 14px;
         color: #e0e0e0;
     }
 
     .code-header-text {
-        color: #9CA3AF;
+        color: #9ca3af;
         font-size: 12px;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
     }
 
     .package-name {
-        color: #10B981;
+        color: #10b981;
     }
 
     .docs-code-block {
-        background: #0B0D10;
-        border: 1px solid #1F2937;
+        background: #0b0d10;
+        border: 1px solid #1f2937;
         border-radius: 8px;
         overflow: hidden;
     }
@@ -529,33 +626,33 @@ justify-content: right;
         margin: 0;
         padding: 16px;
         background: transparent;
-        font-family: 'JetBrains Mono', monospace;
+        font-family: "JetBrains Mono", monospace;
         font-size: 14px;
         color: #e0e0e0;
     }
 
     .string {
-        color: #CE9178;
+        color: #ce9178;
     }
 
     .comment {
-        color: #6A9955;
+        color: #6a9955;
     }
 
     .component-name {
-        color: #4EC9B0;
+        color: #4ec9b0;
     }
 
     .component {
-        color: #DCDCAA;
+        color: #dcdcaa;
     }
 
     .prop {
-        color: #9CDCFE;
+        color: #9cdcfe;
     }
 
     .tag {
-        color: #569CD6;
+        color: #569cd6;
     }
 
     .docs-table {
@@ -571,8 +668,8 @@ justify-content: right;
     .docs-table td {
         padding: 12px 16px;
         text-align: left;
-        border-right: 1px solid #1F2937;
-        font-family: 'Inter', sans-serif;
+        border-right: 1px solid #1f2937;
+        font-family: "Inter", sans-serif;
     }
 
     .docs-table th:last-child,
@@ -581,16 +678,16 @@ justify-content: right;
     }
 
     .docs-table th {
-        background: #0B0D10;
+        background: #0b0d10;
         font-weight: 500;
         font-size: 14px;
-        border-bottom: 1px solid #1F2937;
+        border-bottom: 1px solid #1f2937;
     }
 
     .docs-table td {
-        color: #9CA3AF;
+        color: #9ca3af;
         font-size: 14px;
-        border-bottom: 1px solid #1F2937;
+        border-bottom: 1px solid #1f2937;
         background: transparent;
     }
 
@@ -602,15 +699,15 @@ justify-content: right;
         background: transparent;
         padding: 2px 6px;
         border-radius: 4px;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         font-size: 14px;
     }
 
     .docs-table td:not(:first-child) code {
-        background: #1F2937;
+        background: #1f2937;
         padding: 2px 6px;
         border-radius: 4px;
-        font-family: 'JetBrains Mono', monospace;
+        font-family: "JetBrains Mono", monospace;
         font-size: 12px;
         margin-right: 8px;
         display: inline-block;
@@ -630,22 +727,22 @@ justify-content: right;
 
     .api-card {
         padding: 24px;
-        border: 1px solid #1F2937;
+        border: 1px solid #1f2937;
         background: #050505;
         border-radius: 8px;
     }
 
     .api-card h3 {
         font-size: 18px;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         font-weight: 500;
-        color: #F9FAFB;
+        color: #f9fafb;
         margin-bottom: 8px;
     }
 
     .api-card p {
-        color: #9CA3AF;
-        font-family: 'Inter', sans-serif;
+        color: #9ca3af;
+        font-family: "Inter", sans-serif;
         font-size: 14px;
         margin: 0;
     }
@@ -659,21 +756,21 @@ justify-content: right;
 
     .related-card {
         aspect-ratio: 16/9;
-        border: 1px solid #1F2937;
+        border: 1px solid #1f2937;
         background: #050505;
         border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #4B5563;
-        font-family: 'Inter', sans-serif;
+        color: #4b5563;
+        font-family: "Inter", sans-serif;
         font-size: 14px;
     }
 
     .related-card.empty {
-        background: #0A0A0A;
+        background: #0a0a0a;
     }
-/* 
+    /* 
     .docs-footer-nav {
         margin-top: 60px;
         padding-top: 40px;
@@ -713,27 +810,27 @@ justify-content: right;
     } */
 
     .component-link {
-        color: #9CA3AF;
+        color: #9ca3af;
     }
 
     .credits-link {
-        color: #60A5FA;
-    }   
+        color: #60a5fa;
+    }
 
     .component-link:hover {
-        color: #FF953D;
+        color: #ff953d;
     }
 
     @media (max-width: 1024px) {
         .playground-container {
             grid-template-columns: 1fr;
         }
-        
+
         .playground-preview {
             border-right: none;
-            border-bottom: 1px solid #1F2937;
+            border-bottom: 1px solid #1f2937;
         }
-        
+
         .related-grid {
             grid-template-columns: repeat(2, 1fr);
         }

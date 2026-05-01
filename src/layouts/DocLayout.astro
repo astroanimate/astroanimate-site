@@ -227,7 +227,7 @@ const schema = {
                 class:list={[
                   "sidebar-comp-item",
                   { active: pathname === "/docs/Sec-FadeInText" },
-                ]}>Fade In Text</a
+                ]}>FadeIn </a
               >
               <a
                 href="/docs/TypewriterText"
@@ -668,11 +668,88 @@ const schema = {
       });
     }
 
+    // Search functionality for docs sidebar
+    function initSearch() {
+      const searchInput = document.querySelector('.sidebar-search input');
+      const allLinks = document.querySelectorAll('.sidebar-comp-item, .sidebar-sub-item');
+      const allCategories = document.querySelectorAll('.sidebar-category, .subcategory-list details');
+
+      if (!searchInput) return;
+
+      // Create no results message
+      let noResultsMsg = document.querySelector('.no-results-message');
+      if (!noResultsMsg) {
+        noResultsMsg = document.createElement('div');
+        noResultsMsg.className = 'no-results-message';
+        noResultsMsg.textContent = 'No results found';
+        noResultsMsg.style.display = 'none';
+        noResultsMsg.style.padding = '16px';
+        noResultsMsg.style.color = '#9CA3AF';
+        noResultsMsg.style.fontSize = '14px';
+        noResultsMsg.style.textAlign = 'center';
+        searchInput.parentElement.parentElement.appendChild(noResultsMsg);
+      }
+
+      searchInput.addEventListener('input', (e) => {
+        const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
+        
+        if (searchTerm === '') {
+          // Show all items and categories when search is empty
+          allLinks.forEach(link => {
+            (link as HTMLElement).style.display = '';
+          });
+          allCategories.forEach(category => {
+            (category as HTMLElement).style.display = '';
+          });
+          noResultsMsg.style.display = 'none';
+          return;
+        }
+
+        // Hide all categories first
+        allCategories.forEach(category => {
+          (category as HTMLElement).style.display = 'none';
+        });
+
+        let hasResults = false;
+
+        // Show matching items and their parent categories
+        allLinks.forEach(link => {
+          const text = link.textContent?.toLowerCase() || '';
+          if (text.includes(searchTerm)) {
+            (link as HTMLElement).style.display = '';
+            hasResults = true;
+            
+            // Show parent categories
+            let parent = link.closest('.sidebar-category, .subcategory-list details');
+            while (parent) {
+              (parent as HTMLElement).style.display = '';
+              const parentElement = parent.parentElement?.closest('.sidebar-category, .subcategory-list details');
+              parent = parentElement || null;
+            }
+          } else {
+            (link as HTMLElement).style.display = 'none';
+          }
+        });
+
+        // Show or hide no results message
+        noResultsMsg.style.display = hasResults ? 'none' : 'block';
+      });
+    }
+
     // Update active state on page load
-    document.addEventListener("DOMContentLoaded", updateActiveState);
+    document.addEventListener("DOMContentLoaded", () => {
+      updateActiveState();
+      initSearch();
+    });
     // Update active state on navigation
-    document.addEventListener("astro:page-load", updateActiveState);
+    document.addEventListener("astro:page-load", () => {
+      updateActiveState();
+      initSearch();
+    });
     // Also update on popstate (browser back/forward)
-    window.addEventListener("popstate", updateActiveState);
+    window.addEventListener("popstate", () => {
+      updateActiveState();
+      initSearch();
+    });
   </script>
 </Layout>
