@@ -2,13 +2,13 @@
 import Layout from "../../layouts/Layout.astro";
 import NavBar from "../../components/NavBar.astro";
 import Footer from "../../components/Footer.astro";
-import "../../styles/Global.css";
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "Blog",
   name: "AstroAnimate Blog",
-  description: "Motion design, web performance, and Astro development guides.",
+  description:
+    "Articles, release updates, implementation guides, and performance-focused animation content for Astro developers.",
   url: "https://www.astroanimate.com/blog",
   publisher: {
     "@type": "Organization",
@@ -18,8 +18,8 @@ const schema = {
 ---
 
 <Layout
-  title="AstroAnimate Blog — Motion Design & Web Performance"
-  description="Motion design, web performance, and Astro development guides. Learn how to build faster, more beautiful websites with AstroAnimate."
+  title="AstroAnimate Blog — Articles, Updates & Guides"
+  description="Articles, release updates, implementation guides, and performance-focused animation content for Astro developers."
   schema={schema}
 >
   <NavBar />
