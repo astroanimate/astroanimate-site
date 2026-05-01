@@ -18,38 +18,66 @@ import "../styles/Global.css";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 const schema = {
-	"@context": "https://schema.org",
-	"@type": "SoftwareApplication",
-	name: "AstroAnimate",
-	applicationCategory: "DeveloperApplication",
-	operatingSystem: "Web",
-	url: "https://www.astroanimate.com",
-	description:
-		"Add CSS-first animations and motion components to Astro projects with optional JavaScript. Built for Astro’s rendering model and compatible with View Transitions.",
-	author: {
-		"@type": "Organization",
-		name: "AstroAnimate",
-	},
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.astroanimate.com/#organization",
+      name: "AstroAnimate",
+      url: "https://www.astroanimate.com",
+      logo: "https://www.astroanimate.com/logo.png",
+      sameAs: [
+        "https://github.com/astroanimate",
+        "https://twitter.com/astroanimate",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.astroanimate.com/#website",
+      url: "https://www.astroanimate.com",
+      name: "AstroAnimate",
+      publisher: {
+        "@id": "https://www.astroanimate.com/#organization",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.astroanimate.com/#app",
+      name: "AstroAnimate",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Web",
+      url: "https://www.astroanimate.com",
+
+      description:
+        "Animation component library for Astro projects using CSS-first motion and optional JavaScript.",
+      softwareVersion: "0.1.1",
+      license: "https://opensource.org/licenses/MIT",
+      programmingLanguage: ["TypeScript", "JavaScript", "CSS"],
+      author: {
+        "@id": "https://www.astroanimate.com/about",
+      },
+    },
+  ],
 };
 ---
 
 <Layout
-	title="AstroAnimate — Animation Library for Astro"
-	description="Add CSS-first animations and motion components to Astro projects with optional JavaScript. Built for Astro’s rendering model and compatible with View Transitions."
-	schema={schema}
+  title="AstroAnimate — Animation Library for Astro"
+  description="Add CSS-first animations and motion components to Astro projects with optional JavaScript. Built for Astro’s rendering model and compatible with View Transitions."
+  schema={schema}
 >
-	<NavBar />
-	<Hero />
-	<HowItWorks />
-	<Differentiation />
-	<UseCases />
-	<!-- <Demo /> -->
-	<!-- <Preview /> -->
-	<Comparison />
-	<Perfomance />
-	<Architecture />
-	<DocStructure />
-	<OpenSource />
-	<CTA />
-	<Footer />
+  <NavBar />
+  <Hero />
+  <HowItWorks />
+  <Differentiation />
+  <UseCases />
+  <!-- <Demo /> -->
+  <!-- <Preview /> -->
+  <Comparison />
+  <Perfomance />
+  <Architecture />
+  <DocStructure />
+  <OpenSource />
+  <CTA />
+  <Footer />
 </Layout>

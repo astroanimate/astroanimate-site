@@ -4,172 +4,167 @@ import { execSync } from "child_process";
 
 let lastUpdated = "21-Mar-2026";
 try {
-    const gitDate = execSync('git log -1 --format=%cd --date=format:"%d-%b-%Y"')
-        .toString()
-        .trim();
-    if (gitDate) lastUpdated = gitDate;
+  const gitDate = execSync('git log -1 --format=%cd --date=format:"%d-%b-%Y"')
+    .toString()
+    .trim();
+  if (gitDate) lastUpdated = gitDate;
 } catch (e) {
-    // Fallback if git is not available
+  // Fallback if git is not available
 }
 ---
 
 <footer class="footer-section">
-    <div class="footer-grid">
-        <!-- LEFT COLUMN: LOGO & NEWSLETTER -->
-        <div class="footer-main">
-            <a
-                href="/"
-                class="footer-logo"
-                style="text-decoration: none; color: inherit;"
-            >
-                <img
-                    src="/images/astro-footer-logo.png"
-                    alt="AstroAnimate feature visualization"
-                    class="logo-bolt"
-                    loading="lazy"
-                />
-                <!-- <span class="logo-text"> <span>Animate</span></span> -->
-            </a>
+  <div class="footer-grid">
+    <!-- LEFT COLUMN: LOGO & NEWSLETTER -->
+    <div class="footer-main">
+      <a
+        href="/"
+        class="footer-logo"
+        style="text-decoration: none; color: inherit;"
+      >
+        <img
+          src="/images/astro-footer-logo.png"
+          alt="AstroAnimate feature visualization"
+          class="logo-bolt"
+          loading="lazy"
+        />
+        <!-- <span class="logo-text"> <span>Animate</span></span> -->
+      </a>
 
-            <div class="last-updated">
-                // Last Updated [<span>{lastUpdated}</span>]
-                <div class="double-pulse-container">
-                    <div class="pulse-outer"></div>
-                    <div class="pulse-inner">
-                        <Loader
-                            type="pulse"
-                            color="#4ADE80"
-                            size={10}
-                            speed={0.5}
-                        />
-                    </div>
-                </div>
-            </div>
-
-            <div class="newsletter">
-                <p>Subscribe for newsletter</p>
-                <div class="subscribe-box">
-                    <input
-                        type="email"
-                        placeholder="Your email address"
-                        aria-label="Email for newsletter"
-                    />
-                    <button type="button">Subscribe</button>
-                </div>
-            </div>
+      <div class="last-updated">
+        // Last Updated [<span>{lastUpdated}</span>]
+        <div class="double-pulse-container">
+          <div class="pulse-outer"></div>
+          <div class="pulse-inner">
+            <Loader type="pulse" color="#4ADE80" size={10} speed={0.5} />
+          </div>
         </div>
+      </div>
 
-        <!-- PRODUCT SECTION -->
-        <div class="footer-column border-left">
-            <h3 class="column-title">PRODUCT</h3>
-            <ul class="footer-links">
-                <li><a href="/docs" class="active">Docs</a></li>
-                <li><a href="/docs/components">Components</a></li>
-                <li><a href="/docs/support">Support</a></li>
-            </ul>
+      <div class="newsletter">
+        <p>Subscribe for newsletter</p>
+        <div class="subscribe-box">
+          <input
+            type="email"
+            placeholder="Your email address"
+            aria-label="Email for newsletter"
+          />
+          <button type="button">Subscribe</button>
         </div>
-
-        <!-- COMPANY SECTION -->
-        <div class="footer-column border-left">
-            <h3 class="column-title">COMPANY</h3>
-            <ul class="footer-links">
-                <li><a href="/About">About us</a></li>
-                <li><a href="/Contact">Contact us</a></li>
-                <li><a href="/Blog">Blog</a></li>
-            </ul>
-        </div>
-
-        <!-- LEGAL SECTION -->
-        <div class="footer-column border-left border-top">
-            <h3 class="column-title">LEGAL</h3>
-            <ul class="footer-links">
-                <li><a href="#">MIT License</a></li>
-                <li><a href="/Privacy">Privacy Policy</a></li>
-                <li><a href="/terms">Terms of service</a></li>
-            </ul>
-        </div>
-
-        <!-- COMMUNITY SECTION -->
-        <div class="footer-column border-left border-top">
-            <h3 class="column-title">COMMUNITY</h3>
-            <ul class="footer-links">
-                <li><a href="https://github.com">GitHub</a></li>
-                <li><a href="https://x.com">X.com</a></li>
-                <li><a href="https://discord.com">Discord</a></li>
-            </ul>
-        </div>
+      </div>
     </div>
+
+    <!-- PRODUCT SECTION -->
+    <div class="footer-column border-left">
+      <h3 class="column-title">PRODUCT</h3>
+      <ul class="footer-links">
+        <li><a href="/docs/" class="active">Docs</a></li>
+        <li><a href="/docs/components">Components</a></li>
+        <li><a href="/docs/support/">Support</a></li>
+      </ul>
+    </div>
+
+    <!-- COMPANY SECTION -->
+    <div class="footer-column border-left">
+      <h3 class="column-title">COMPANY</h3>
+      <ul class="footer-links">
+        <li><a href="/about/">About us</a></li>
+        <li><a href="/contact/">Contact us</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+    </div>
+
+    <!-- LEGAL SECTION -->
+    <div class="footer-column border-left border-top">
+      <h3 class="column-title">LEGAL</h3>
+      <ul class="footer-links">
+        <li>
+          <a
+            href="https://github.com/astroanimate/astroanimate-site/blob/main/LICENSE"
+            target="_blank">MIT License</a
+          >
+        </li>
+        <li><a href="/privacy/">Privacy Policy</a></li>
+        <li><a href="/terms/">Terms of service</a></li>
+      </ul>
+    </div>
+
+    <!-- COMMUNITY SECTION -->
+    <div class="footer-column border-left border-top">
+      <h3 class="column-title">COMMUNITY</h3>
+      <ul class="footer-links">
+        <li><a href="https://github.com">GitHub</a></li>
+        <li><a href="https://x.com">X.com</a></li>
+        <li><a href="https://discord.com">Discord</a></li>
+      </ul>
+    </div>
+  </div>
 </footer>
 
 <!-- BOTTOM BAR -->
 <div class="footer-bottom">
-    <div class="bottom-content">
-        <p>© 2026 AstroAnimate. All Rights Reserved.</p>
+  <div class="bottom-content">
+    <p>© 2026 AstroAnimate. All Rights Reserved.</p>
 
-        <div class="built-by">
-            <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-                ><path
-                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.84-8.84 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-                ></path></svg
-            >
-            Built for Astro developers
-        </div>
-
-        <div class="utc-time">
-            <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-                ><circle cx="12" cy="12" r="10"></circle><polyline
-                    points="12 6 12 12 16 14"></polyline></svg
-            >
-            <span id="utc-time-display">00:00:00 UTC</span>
-            <div class="double-pulse-container">
-                <div class="pulse-outer"></div>
-                <div class="pulse-inner">
-                    <Loader
-                        type="pulse"
-                        color="#4ADE80"
-                        size={10}
-                        speed={0.5}
-                    />
-                </div>
-            </div>
-        </div>
+    <div class="built-by">
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+        ><path
+          d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.84-8.84 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+        ></path></svg
+      >
+      Built for Astro developers
     </div>
+
+    <div class="utc-time">
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+        ><circle cx="12" cy="12" r="10"></circle><polyline
+          points="12 6 12 12 16 14"></polyline></svg
+      >
+      <span id="utc-time-display">00:00:00 UTC</span>
+      <div class="double-pulse-container">
+        <div class="pulse-outer"></div>
+        <div class="pulse-inner">
+          <Loader type="pulse" color="#4ADE80" size={10} speed={0.5} />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
-    function updateUTCTime() {
-        const display = document.getElementById("utc-time-display");
-        if (!display) return;
+  function updateUTCTime() {
+    const display = document.getElementById("utc-time-display");
+    if (!display) return;
 
-        const now = new Date();
-        const hours = now.getUTCHours();
-        const minutes = now.getUTCMinutes();
-        const seconds = now.getUTCSeconds();
+    const now = new Date();
+    const hours = now.getUTCHours();
+    const minutes = now.getUTCMinutes();
+    const seconds = now.getUTCSeconds();
 
-        const ampm = hours >= 12 ? "PM" : "AM";
-        const displayHours = hours % 12 || 12;
-        const displayMinutes = String(minutes).padStart(2, "0");
-        const displaySeconds = String(seconds).padStart(2, "0");
+    const ampm = hours >= 12 ? "PM" : "AM";
+    const displayHours = hours % 12 || 12;
+    const displayMinutes = String(minutes).padStart(2, "0");
+    const displaySeconds = String(seconds).padStart(2, "0");
 
-        display.textContent = `${displayHours}:${displayMinutes}:${displaySeconds} ${ampm} UTC`;
-    }
+    display.textContent = `${displayHours}:${displayMinutes}:${displaySeconds} ${ampm} UTC`;
+  }
 
-    // Initial update
-    updateUTCTime();
-    // Update every second
-    setInterval(updateUTCTime, 1000);
+  // Initial update
+  updateUTCTime();
+  // Update every second
+  setInterval(updateUTCTime, 1000);
 </script>

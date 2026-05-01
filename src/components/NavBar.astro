@@ -4,59 +4,59 @@ const { pathname } = Astro.url;
 ---
 
 <nav class="nav" aria-label="Main navigation">
+  <a
+    href="/"
+    class="nav-item nav-logo"
+    style="text-decoration: none; color: inherit;"
+  >
+    <img
+      src="/images/Logo.png"
+      alt="AstroAnimate logo"
+      class="logo-icon"
+      width="24"
+      height="24"
+      loading="eager"
+    />
+    <span class="version">
+      VER 1.0
+      <svg
+        width="12"
+        height="12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg
+      >
+    </span>
+  </a>
+
+  <!-- TOGGLE FOR MOBILE -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden />
+  <label for="nav-toggle" class="hamburger" aria-label="Toggle Navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
+  <div class="nav-content">
+    <div class="nav-item nav-empty-left"></div>
+
     <a
-        href="/"
-        class="nav-item nav-logo"
-        style="text-decoration: none; color: inherit;"
+      href="/"
+      class:list={["nav-item nav-link", { active: pathname === "/" }]}
+      aria-current={pathname === "/" ? "page" : undefined}>HOME</a
     >
-        <img
-            src="/images/Logo.png"
-            alt="AstroAnimate logo"
-            class="logo-icon"
-            width="24"
-            height="24"
-            loading="eager"
-        />
-        <span class="version">
-            VER 1.0
-            <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg
-            >
-        </span>
-    </a>
-
-    <!-- TOGGLE FOR MOBILE -->
-    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden />
-    <label for="nav-toggle" class="hamburger" aria-label="Toggle Navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
-
-    <div class="nav-content">
-        <div class="nav-item nav-empty-left"></div>
-
-        <a
-            href="/"
-            class:list={["nav-item nav-link", { active: pathname === "/" }]}
-            aria-current={pathname === "/" ? "page" : undefined}>HOME</a
-        >
-        <a
-            href="/docs"
-            class:list={[
-                "nav-item nav-link",
-                { active: pathname.startsWith("/docs") },
-            ]}>DOCS</a
-        >
-        <!-- <a
+    <a
+      href="/docs/"
+      class:list={[
+        "nav-item nav-link",
+        { active: pathname.startsWith("/docs/") },
+      ]}>DOCS</a
+    >
+    <!-- <a
             href="/playground"
             class:list={[
                 "nav-item nav-link",
@@ -65,64 +65,62 @@ const { pathname } = Astro.url;
             aria-current={pathname === "/playground" ? "page" : undefined}
             >PLAYGROUND</a> -->
 
-        <a
-            href="/docs/all-components"
-            class:list={[
-                "nav-item nav-link",
-                { active: pathname === "/docs/all-components" },
-            ]}
-            aria-current={pathname === "/docs/all-components"
-                ? "page"
-                : undefined}
-        >
-            COMPONENTS</a
-        >
-        <!-- <a href="/pricing" class="nav-item nav-link">PRICING</a> -->
-        <a
-            href="/Blog"
-            class:list={["nav-item nav-link", { active: pathname === "/blog" }]}
-            aria-current={pathname === "/Blog" ? "page" : undefined}>BLOG</a
-        >
+    <a
+      href="/docs/all-components"
+      class:list={[
+        "nav-item nav-link",
+        { active: pathname === "/docs/all-components" },
+      ]}
+      aria-current={pathname === "/docs/all-components" ? "page" : undefined}
+    >
+      COMPONENTS</a
+    >
+    <!-- <a href="/pricing" class="nav-item nav-link">PRICING</a> -->
+    <a
+      href="/blog/"
+      class:list={["nav-item nav-link", { active: pathname === "/blog/" }]}
+      aria-current={pathname === "/blog/" ? "page" : undefined}>BLOG</a
+    >
 
-        <div class="nav-item nav-empty-right"></div>
+    <div class="nav-item nav-empty-right"></div>
 
-        <div class="nav-social-wrap">
-            <a
-                class="nav-item nav-social"
-                href="https://github.com/astroanimate/astroanimate"
-                target="_blank"
-            >
-                <img
-                    class="icon"
-                    src="/images/github-og.png"
-                    alt="GitHub"
-                    width="24"
-                    height="24"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                />
-                <!-- <span class="social-count">1.5K</span> -->
-            </a>
-            <a
-                class="nav-item nav-social border-none"
-                href="https://x.com/astroanimate"
-                target="_blank"
-            >
-                <img
-                    class="icon"
-                    src="/images/twitter.png"
-                    alt="X (Twitter)"
-                    width="24"
-                    height="24"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                />
-                <!-- <span class="social-count">1.5K</span> -->
-            </a>
-        </div>
-
-        <button class="nav-item install">INSTALL</button>
+    <div class="nav-social-wrap">
+      <a
+        class="nav-item nav-social"
+        href="https://github.com/astroanimate/astroanimate"
+        target="_blank"
+      >
+        <img
+          class="icon"
+          src="/images/github-og.png"
+          alt="GitHub"
+          width="24"
+          height="24"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+        />
+        <!-- <span class="social-count">1.5K</span> -->
+      </a>
+      <a
+        class="nav-item nav-social border-none"
+        href="https://x.com/astroanimate"
+        target="_blank"
+      >
+        <img
+          class="icon"
+          src="/images/twitter.png"
+          alt="X (Twitter)"
+          width="24"
+          height="24"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+        />
+        <!-- <span class="social-count">1.5K</span> -->
+      </a>
     </div>
+
+    <button class="nav-item install">INSTALL</button>
+  </div>
 </nav>
