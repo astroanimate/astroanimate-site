@@ -60,7 +60,8 @@ import TypewriterText from "@astroanimate/core/TypewriterText";
     display: flex;
     overflow: hidden;
     width: 100%;
-    max-width: 500px;
+    min-width: 500px;
+    max-width: 600px;
   }
 
   .accent-bar {
@@ -112,8 +113,11 @@ import TypewriterText from "@astroanimate/core/TypewriterText";
 
   .code-text {
     color: #9ca3af;
-    min-width: 280px; /* Pre-reserve space to prevent card shrinking during typing */
+    min-width: 350px; /* Increased space to prevent text wrapping */
     display: inline-block;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflow if needed */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
   }
 
   .copy-button {
