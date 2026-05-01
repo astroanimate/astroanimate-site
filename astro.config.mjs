@@ -6,6 +6,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
 	site: 'https://www.astroanimate.com',
 	integrations: [sitemap()],
+	build: {
+		format: 'directory',
+	},
 	vite: {
 		build: {
 			minify: 'esbuild',
