@@ -1,8 +1,18 @@
 ---
+import { DEBUG_SEO } from "../../constants.ts";
+
 interface Props {
   schema: object;
 }
 const { schema } = Astro.props;
+
+// Debug logging
+if (DEBUG_SEO) {
+  console.log("=== JsonLd Debug ===");
+  console.log("Schema object:", schema);
+  console.log("Rendered JSON-LD:", JSON.stringify(schema, null, 2));
+  console.log("==================");
+}
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />

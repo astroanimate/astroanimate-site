@@ -1,4 +1,6 @@
 ---
+import { DEBUG_SEO } from "../../constants.ts";
+
 interface Props {
   title: string;
   description: string;
@@ -11,6 +13,33 @@ const {
   canonical,
   ogImage = "/og/default-og.jpg",
 } = Astro.props;
+
+// Debug logging
+if (DEBUG_SEO) {
+  const metaTags = [
+    `<title>${title}</title>`,
+    `<meta name="description" content="${description}" />`,
+    `<link rel="canonical" href="${canonical}" />`,
+    `<meta property="og:type" content="website" />`,
+    `<meta property="og:title" content="${title}" />`,
+    `<meta property="og:description" content="${description}" />`,
+    `<meta property="og:url" content="${canonical}" />`,
+    `<meta property="og:site_name" content="AstroAnimate" />`,
+    `<meta property="og:image" content="${ogImage}" />`,
+    `<meta name="twitter:card" content="summary_large_image" />`,
+    `<meta name="twitter:title" content="${title}" />`,
+    `<meta name="twitter:description" content="${description}" />`,
+    `<meta name="twitter:image" content="${ogImage}" />`,
+    `<meta name="twitter:site" content="@astroanimate" />`,
+    `<meta name="twitter:image:alt" content="${title}" />`,
+  ];
+
+  console.log("=== MetaTags Debug ===");
+  console.log("Props:", { title, description, canonical, ogImage });
+  console.log("Rendered meta tags:");
+  metaTags.forEach((tag, index) => console.log(`${index + 1}: ${tag}`));
+  console.log("===================");
+}
 ---
 
 <title>{title}</title>
