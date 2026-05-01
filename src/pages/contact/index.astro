@@ -3,9 +3,35 @@ import Layout from "../../layouts/Layout.astro";
 import NavBar from "../../components/NavBar.astro";
 import Footer from "../../components/Footer.astro";
 import "../../styles/Global.css";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      name: "Contact AstroAnimate",
+      url: "https://www.astroanimate.com/contact",
+    },
+    {
+      "@type": "Organization",
+      name: "AstroAnimate",
+      url: "https://www.astroanimate.com",
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: "support@astroanimate.com",
+      },
+    },
+  ],
+};
 ---
 
-<Layout title="Contact Us - AstroAnimate">
+<Layout
+  title="Contact AstroAnimate — Support & Project Inquiries"
+  description="Contact the AstroAnimate team for support, project inquiries, feedback, bug reports, or open-source discussions."
+  canonical="https://www.astroanimate.com/contact"
+  schema={schema}
+>
   <NavBar />
 
   <main class="page-container contact-container">

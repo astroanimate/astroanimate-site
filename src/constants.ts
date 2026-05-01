@@ -1,2 +1,2 @@
 // Debug configuration
-export const DEBUG_SEO = true;
+export const DEBUG_SEO = false;

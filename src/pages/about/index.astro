@@ -4,9 +4,33 @@ import Layout from "../../layouts/Layout.astro";
 import NavBar from "../../components/NavBar.astro";
 import Footer from "../../components/Footer.astro";
 import "../../styles/Global.css";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      name: "About AstroAnimate",
+      url: "https://www.astroanimate.com/about",
+      description:
+        "Information about the AstroAnimate project, maintainers, and philosophy.",
+    },
+    {
+      "@type": "Organization",
+      name: "AstroAnimate",
+      url: "https://www.astroanimate.com",
+      logo: "https://www.astroanimate.com/images/Logo.png",
+    },
+  ],
+};
 ---
 
-<Layout title="About Us - AstroAnimate">
+<Layout
+  title="About AstroAnimate — Team, Mission & Project Philosophy"
+  description="Meet the team behind AstroAnimate and learn about the project’s open-source philosophy and architectural goals."
+  canonical="https://www.astroanimate.com/about"
+  schema={schema}
+>
   <NavBar />
 
   <main class="page-container">
