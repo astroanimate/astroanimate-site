@@ -401,3 +401,91 @@
         </div>
     </section>
 </section>
+
+<script>
+    // Extend Window interface to include lastScrollY
+    declare global {
+        interface Window {
+            lastScrollY?: number;
+        }
+    }
+
+    function setupScrollBasedTabSwitching() {
+        const tabSystem = document.querySelector('.tab-system');
+        if (!tabSystem) return;
+
+        const tabs = [
+            { id: 'tab-core', content: '.content-core' },
+            { id: 'tab-limitations', content: '.content-limitations' },
+            { id: 'tab-guide', content: '.content-guide' },
+            { id: 'tab-architecture', content: '.content-architecture' }
+        ];
+
+        let currentTab = 0;
+        let isScrolling = false;
+        let scrollTimeout: ReturnType<typeof setTimeout> | undefined;
+        let scrollThrottle: ReturnType<typeof setTimeout> | undefined;
+
+        // Function to switch to a specific tab
+        function switchTab(index: number) {
+            if (index < 0 || index >= tabs.length) return;
+            
+            const tab = tabs[index];
+            const radio = document.getElementById(tab.id) as HTMLInputElement;
+            if (radio) {
+                radio.checked = true;
+                currentTab = index;
+            }
+        }
+
+        // Handle scroll events
+        function handleScroll() {
+            if (isScrolling) return;
+            
+            const scrollDirection = window.scrollY > (window.lastScrollY || 0) ? 1 : -1;
+            window.lastScrollY = window.scrollY;
+
+            // Clear existing timeout
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            
+            // Set a small delay to determine if user is still scrolling
+            scrollTimeout = setTimeout(() => {
+                if (scrollDirection > 0 && currentTab < tabs.length - 1) {
+                    // Scrolling down - move to next tab
+                    switchTab(currentTab + 1);
+                } else if (scrollDirection < 0 && currentTab > 0) {
+                    // Scrolling up - move to previous tab
+                    switchTab(currentTab - 1);
+                }
+            }, 100);
+        }
+
+        // Throttle scroll events
+        function throttledHandleScroll() {
+            if (!scrollThrottle) {
+                scrollThrottle = setTimeout(() => {
+                    handleScroll();
+                    scrollThrottle = undefined;
+                }, 50);
+            }
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', throttledHandleScroll, { passive: true });
+
+        // Also allow manual tab switching (maintain existing functionality)
+        const labels = tabSystem.querySelectorAll('.left label');
+        labels.forEach((label, index) => {
+            label.addEventListener('click', () => {
+                currentTab = index;
+            });
+        });
+    }
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', setupScrollBasedTabSwitching);
+    // Re-initialize after Astro page transitions
+    document.addEventListener('astro:page-load', setupScrollBasedTabSwitching);
+</script>
