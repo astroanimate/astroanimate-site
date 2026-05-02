@@ -1,0 +1,108 @@
+---
+interface RelatedItem {
+  name: string;
+  href: string;
+  image: string;
+}
+
+interface Props {
+  items: RelatedItem[];
+}
+
+const { items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <div class="docs-intro-section" id="related-components">
+      <h2 class="docs-subtitle">Related Components</h2>
+      <div
+        class="related-components-grid"
+        style={`--related-columns: ${Math.min(items.length, 4)}`}
+      >
+        {items.map((item) => (
+          <a href={item.href} class="related-component-card">
+            <span class="related-component-preview">
+              <img src={item.image} alt="" loading="lazy" />
+            </span>
+            <span class="related-component-name">{item.name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .related-components-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--related-columns), minmax(0, 1fr));
+    border: 1px solid #1F2937;
+    background: #000;
+    width: calc(var(--related-columns) * 25%);
+    max-width: 100%;
+    margin-top: 24px;
+  }
+
+  .related-component-card {
+    min-height: 252px;
+    padding: 26px;
+    border-right: 1px solid #1F2937;
+    text-decoration: none;
+    color: #F9FAFB;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .related-component-card:last-child {
+    border-right: none;
+  }
+
+  .related-component-preview {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1.16 / 1;
+    background: #171B22;
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+
+  .related-component-preview img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .related-component-name {
+    display: block;
+    color: #F9FAFB;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 980px) {
+    .related-components-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      width: 100%;
+    }
+
+    .related-component-card {
+      min-height: 230px;
+      padding: 22px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .related-components-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .related-component-card {
+      min-height: 220px;
+      padding: 18px;
+    }
+  }
+</style>

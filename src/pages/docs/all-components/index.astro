@@ -1,0 +1,397 @@
+---
+import DocLayout from "../../../layouts/DocLayout.astro";
+import "../../../styles/Global.css";
+
+const sections = [
+  {
+    title: "Text Animations",
+    items: [
+      { name: "FadeInText", href: "/docs/fadein", image: "/images/fadein.png" },
+      { name: "TypewriterText", href: "/docs/typewritter", image: "/images/typewritter.png" },
+    ],
+  },
+  {
+    title: "Core Animations",
+    items: [
+      { name: "Scale In", href: "/docs/scalein", image: "/images/scalein.png" },
+      { name: "RevealImage", href: "/docs/reveal-image", image: "/images/revealimage.png" },
+    ],
+  },
+  {
+    title: "Cards",
+    items: [
+      { name: "Expandable Card", href: "/docs/expandable-card", image: "/images/expandablecard.png" },
+      { name: "Animated Card", href: "/docs/animated-card", image: "/images/animatedcard.png" },
+      { name: "Glass Card", href: "/docs/glass-card", image: "/images/glasscard.png" },
+    ],
+  },
+  {
+    title: "Loaders & Feedback",
+    items: [
+      { name: "Loader", href: "/docs/loader", image: "/images/loader.png" },
+      { name: "Progress Bar", href: "/docs/progress-bar", image: "/images/progressbar.png" },
+    ],
+  },
+  {
+    title: "Buttons",
+    items: [{ name: "Animated Button", href: "/docs/animated-button", image: "/images/animated-btn.png" }],
+  },
+  {
+    title: "Overlays & Popovers",
+    items: [{ name: "Tool Tip", href: "/docs/tooltip", image: "/images/tooltip.png" }],
+  },
+];
+---
+
+<DocLayout title="All Components">
+  <section id="all-components" class="all-components-page">
+    <header class="all-components-header">
+      <div>
+        <h1 class="docs-title all-components-title">
+          All Components
+          <button
+            type="button"
+            class="all-components-share"
+            aria-label="Copy page link"
+          >
+            <img src="/images/share-link.png" alt="" width="16" height="16" />
+          </button>
+        </h1>
+                
+        <div class="docs-intro-section">
+            <p class="docs-paragraph">
+               Animated Button is an Astro animation component that renders a <code class="keyword">&lt;button&gt;</code> or <code class="keyword">&lt;a&gt;</code> with CSS-only hover effects and zero client-side JavaScript.
+            </p>
+        </div>
+      </div>
+    </header>
+
+    <div class="all-components-groups">
+      {
+        sections.map((section, index) => (
+          <section class="all-components-group" data-component-group>
+            <div class="all-components-content">
+              <h2>{section.title}</h2>
+
+              {index === 0 && (
+                <label class="all-components-search">
+                  <img src="/images/search.png" alt="" width="16" height="16" />
+                  <input type="search" placeholder="Search" aria-label="Search components" />
+                </label>
+              )}
+            </div>
+
+            <div
+              class="all-components-grid"
+              style={`--component-columns: ${Math.min(section.items.length, 4)}`}
+            >
+              {section.items.map((item) => (
+                <a href={item.href} class="all-component-card" data-component-card>
+                  <span class="all-component-preview">
+                    {item.image ? (
+                      <img src={item.image} alt="" loading="lazy" />
+                    ) : null}
+                  </span>
+                  <span class="all-component-name">{item.name}</span>
+                </a>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+
+    <div class="docs-footer-nav" style="justify-content: space-between;">
+        <a href="/docs/support" class="prev-link">
+            <span class="label">PREVIOUS</span>
+            <span class="title">
+                <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="transform: rotate(180deg);"
+                    ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                        points="12 5 19 12 12 19"></polyline></svg
+                >
+                Support
+            </span>
+        </a>
+        <a href="/docs/fadein" class="next-link">
+            <span class="label">NEXT</span>
+            <span class="title">
+                Fade In text
+                <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                        points="12 5 19 12 12 19"></polyline></svg
+                >
+            </span>
+        </a>
+    </div>
+  </section>
+<!-- 
+  <Fragment slot="toc">
+    <div class="toc-header">IN THIS PAGE</div>
+    <nav class="toc-nav">
+      <a href="#all-components" class="active">All Components</a>
+    </nav>
+  </Fragment> -->
+</DocLayout>
+
+<style>
+  .all-components-page {
+    padding-bottom: 12px;
+  }
+
+  .all-components-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 170px;
+    align-items: end;
+    gap: 28px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #1F2937;
+  }
+
+  .all-components-title {
+    margin: 0 0 12px;
+  }
+
+  .all-components-share {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    flex: 0 0 auto;
+    margin-left: 2px;
+  }
+
+  .all-components-share img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    /* opacity: 0.75; */
+  }
+
+  .all-components-share:hover img,
+  .all-components-share.copied img {
+    opacity: 1;
+  }
+
+  .all-components-desc {
+    margin: 0;
+    max-width: 760px;
+    color: #8B93A7;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .all-components-desc span {
+    color: #FF7F1F;
+  }
+
+  .all-components-search {
+    height: 28px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #1F2937;
+    padding: 0 9px;
+    box-sizing: border-box;
+  }
+
+  .all-components-search img {
+    width: 13px;
+    height: 13px;
+  }
+
+  .all-components-search input {
+    min-width: 0;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #F9FAFB;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+  }
+
+  .all-components-search input::placeholder {
+    color: #4B5563;
+  }
+
+  .all-components-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .all-components-group h2 {
+    margin: 0;
+    color: #F9FAFB;
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+  }
+
+  .all-components-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--component-columns), minmax(0, 1fr));
+    border: 1px solid #1F2937;
+
+    background: #000;
+    width: 100%;
+  }
+
+  .all-component-card {
+    min-height: 252px;
+    padding: 26px;
+    border-right: 1px solid #1F2937;
+    /* border-bottom: 1px solid #1F2937; */
+    text-decoration: none;
+    color: #F9FAFB;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .all-component-card:last-child {
+    border-right: none;
+  }
+/* 
+  .all-component-card:hover {
+    background: rgba(255, 127, 31, 0.025);
+  } */
+
+  .all-component-preview {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1.16 / 1;
+    background: #171B22;
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+
+  .all-component-preview img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .all-component-name {
+    display: block;
+    color: #F9FAFB;
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  .all-components-footer-nav {
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 16px;
+  }
+
+  .all-components-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 16px;
+  }
+
+  @media (max-width: 980px) {
+    .all-components-header {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .all-components-search {
+      width: min(260px, 100%);
+      margin-bottom: 21px;
+    }
+
+    .all-components-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .all-components-content {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .all-component-card {
+      min-height: 230px;
+      padding: 22px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .all-components-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .all-component-card {
+      min-height: 220px;
+      padding: 18px;
+    }
+  }
+</style>
+
+<script>
+  function initAllComponentsPage() {
+    const root = document.querySelector(".all-components-page");
+    if (!root || root.getAttribute("data-ready") === "true") return;
+    root.setAttribute("data-ready", "true");
+
+    const searchInput = root.querySelector<HTMLInputElement>(
+      ".all-components-search input",
+    );
+    const cards = Array.from(
+      root.querySelectorAll<HTMLElement>("[data-component-card]"),
+    );
+    const groups = Array.from(
+      root.querySelectorAll<HTMLElement>("[data-component-group]"),
+    );
+
+    searchInput?.addEventListener("input", () => {
+      const term = searchInput.value.trim().toLowerCase();
+
+      cards.forEach((card) => {
+        const name = card.textContent?.toLowerCase() ?? "";
+        card.style.display = !term || name.includes(term) ? "" : "none";
+      });
+
+      groups.forEach((group) => {
+        const visibleCards = group.querySelectorAll(
+          '[data-component-card]:not([style*="display: none"])',
+        );
+        group.style.display = visibleCards.length ? "" : "none";
+      });
+    });
+
+  }
+
+  document.addEventListener("DOMContentLoaded", initAllComponentsPage);
+  document.addEventListener("astro:page-load", initAllComponentsPage);
+</script>

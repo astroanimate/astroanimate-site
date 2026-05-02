@@ -1,12 +1,13 @@
 ---
-import DocLayout from "../../layouts/DocLayout.astro";
-import "../../styles/Global.css";
+import DocLayout from "../../../layouts/DocLayout.astro";
+import RelatedComponents from "../../../components/RelatedComponents.astro";
+import "../../../styles/Global.css";
 import AnimatedCard from "@astroanimate/core/AnimatedCard";
 ---
 
 <DocLayout title="Animated Card">
     <section id="animated-card">
-        <h1 class="docs-title">AnimatedCard</h1>
+        <h1 class="docs-title">AnimatedCard <button type="button" class="docs-title-share" aria-label="Copy page link"><img src="/images/share-link.png" alt="" width="16" height="16" /></button></h1>
 
         <div class="docs-intro-section">
             <p class="docs-paragraph">
@@ -23,7 +24,7 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
                     <img src="/images/barsan.jpeg" alt="Creator" />
                 </div>
                 <span class="created-by-name"
-                    >Barsan - Creator of AnimatedCard component</span
+                    >Barsan</span
                 >
             </div>
             <div class="playground-container">
@@ -123,8 +124,9 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
         <div class="docs-intro-section" id="quick-start">
             <h2 class="docs-subtitle">Quick Start</h2>
             <div class="docs-code-block">
+
                 <pre><code><span class="keyword">import</span> <span class="component-name">AnimatedCard</span> <span class="keyword">from</span> <span class="string">'@astroanimate/core/AnimatedCard'</span>;
----
+<!-- --- -->
 &lt;<span class="component">AnimatedCard</span>
   <span class="prop">title</span>=<span class="string">"Feature Name"</span>
   <span class="prop">description</span>=<span class="string">"Short description of the feature"</span>
@@ -132,6 +134,7 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
   <span class="prop">color</span>=<span class="string">"rose"</span>
 /&gt;</code></pre>
             </div>
+            <p class="docs-paragraph">Displays a themed card with lift animation on hover.</p>
         </div>
 
         <!-- PROPS SECTION -->
@@ -230,6 +233,48 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
                             <td><code>-</code></td>
                             <td>Link rel attribute</td>
                         </tr>
+                        <tr>
+                            <td><code>backTitle</code></td>
+                            <td><code>string</code></td>
+                            <td><code>-</code></td>
+                            <td>Back face heading (flip variant)</td>
+                        </tr>
+                        <tr>
+                            <td><code>backDescription</code></td>
+                            <td><code>string</code></td>
+                            <td><code>"Tap or click the button below to flip this card back."</code></td>
+                            <td>Back face description</td>
+                        </tr>
+                        <tr>
+                            <td><code>backButtonText</code></td>
+                            <td><code>string</code></td>
+                            <td><code>"Flip Back"</code></td>
+                            <td>Flip button text</td>
+                        </tr>
+                        <tr>
+                            <td><code>flipHint</code></td>
+                            <td><code>string</code></td>
+                            <td><code>"Flip to reveal more details"</code></td>
+                            <td>Flip instruction text</td>
+                        </tr>
+                        <tr>
+                            <td><code>iconLabel</code></td>
+                            <td><code>string</code></td>
+                            <td><code>"✦"</code></td>
+                            <td>Fallback icon character</td>
+                        </tr>
+                        <tr>
+                            <td><code>minHeight</code></td>
+                            <td><code>string</code></td>
+                            <td><code>"18rem"</code></td>
+                            <td>Minimum card height</td>
+                        </tr>
+                        <tr>
+                            <td><code>ariaLabel</code></td>
+                            <td><code>string</code></td>
+                            <td><code>-</code></td>
+                            <td>Custom ARIA label</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -266,6 +311,7 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
         <!-- CSS CUSTOM PROPERTIES SECTION -->
         <div class="docs-intro-section" id="css-custom-properties">
             <h2 class="docs-subtitle">CSS Custom Properties</h2>
+            <p class="docs-paragraph">Override these variables to customize styling:</p>
             <div class="table-wrapper">
                 <table class="docs-table">
                     <thead>
@@ -365,7 +411,7 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
         <div class="docs-intro-section" id="responsive-design">
             <h2 class="docs-subtitle">Responsive Design</h2>
             <div>
-                <p class="docs-paragraph">At <code>max-width: 640px</code>:</p>
+                <p class="docs-paragraph">At max-width: 640px:</p>
                 <ul class="docs-list">
                     <li>Padding reduces to 1.25rem</li>
                     <li>Border radius reduces to 1.25rem</li>
@@ -420,10 +466,10 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
             <h2 class="docs-subtitle">Accessibility</h2>
             <div>
                 <ul class="docs-list">
-                    <li>Respects prefers-reduced-motion media query</li>
+                    <li>Respects <span class="docs-code">prefers-reduced-motion</span> media query</li>
                     <li>Includes ARIA labels and focus-visible states</li>
                     <li>Keyboard navigation for flip variant (Enter/Space)</li>
-                    <li>Decorative elements marked with aria-hidden</li>
+                    <li>Decorative elements marked with <span class="docs-code">aria-hidden</span></li>
                 </ul>
             </div>
         </div>
@@ -449,52 +495,25 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
             </div>
         </div>
 
-        <!-- COMPONENTS API SECTION -->
-        <div class="docs-intro-section" id="components-api">
-            <h2 class="docs-subtitle">Components API</h2>
-            <ul class="docs-list">
-                <li>
-                    <a href="#typewriter-text" class="component-link"
-                        >&lt;TypewriterText /&gt;</a
-                    >
-                </li>
-                <li>
-                    <a href="#animated-button" class="component-link"
-                        >&lt;AnimatedButton /&gt;</a
-                    >
-                </li>
-                <li>
-                    <a href="#animated-card" class="component-link"
-                        >&lt;AnimatedCard /&gt;</a
-                    >
-                </li>
-            </ul>
-        </div>
+     
 
         <div class="docs-intro-section" id="components-api">
             <h2 class="docs-subtitle">Credits</h2>
             <ul class="docs-list">
                 <li>
                     Credit to <a
-                        href="https://github.com/vipin"
+                        href="https://github.com/Krishvipin"
+                        target="_blank"
                         class="credits-link">@vipin</a
                     >
                 </li>
             </ul>
         </div>
         <!-- RELATED COMPONENTS SECTION -->
-        <div class="docs-intro-section" id="related-components">
-            <h2 class="docs-subtitle">Related Components</h2>
-            <div class="related-grid">
-                <div class="related-card empty"></div>
-                <div class="related-card empty"></div>
-                <div class="related-card empty"></div>
-                <div class="related-card empty"></div>
-            </div>
-        </div>
+        <RelatedComponents items={[{ name: "AnimatedButton", href: "/docs/animated-button", image: "/images/animated-btn.png" }]} />
 
         <div class="docs-footer-nav" style="justify-content: space-between;">
-            <a href="/docs/Sec-ExpandableCard" class="prev-link">
+            <a href="/docs/expandable-card" class="prev-link">
                 <span class="label">PREVIOUS</span>
                 <span class="title">
                     <svg
@@ -510,13 +529,13 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
                         ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
                             points="12 5 19 12 12 19"></polyline></svg
                     >
-                    Expandable Card
+                    ExpandableCard
                 </span>
             </a>
-            <a href="/docs/Sec-GlassCard" class="next-link">
+            <a href="/docs/glass-card" class="next-link">
                 <span class="label">NEXT</span>
                 <span class="title">
-                    Glass Card
+                    GlassCard
                     <svg
                         width="18"
                         height="18"
@@ -598,7 +617,7 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
 
     .playground-container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        /* grid-template-columns: 1fr 1fr; */
         border: 1px solid #1f2937;
         background: #050505;
         border-radius: 12px;

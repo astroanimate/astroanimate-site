@@ -313,6 +313,7 @@ h2 span {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 }
 
 .btn-primary:hover {
@@ -3286,6 +3287,7 @@ h2 span {
     padding: 0 30px;
 }
 
+
 .content-header {
     margin-left: 0px !important;
     margin-right: 0px !important;
@@ -3299,7 +3301,21 @@ h2 span {
     line-height: 1.5;
 
 }
+.terms-header p {
+    color: #9CA3AF;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    max-width: 930px;
+    line-height: 1.5;
+}
 
+.privacy-header p {
+    color: #9CA3AF;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    max-width: 930px;
+    line-height: 1.5;
+}
 .badge-top {
     font-family: "Bai Jamjuree", sans-serif;
     font-size: 32px;

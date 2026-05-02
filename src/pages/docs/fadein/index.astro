@@ -1,18 +1,18 @@
 ---
-import DocLayout from "../../layouts/DocLayout.astro";
-import "../../styles/Global.css";
-import ProgressBar from "@astroanimate/core/ProgressBar";
+import DocLayout from "../../../layouts/DocLayout.astro";
+import RelatedComponents from "../../../components/RelatedComponents.astro";
+import "../../../styles/Global.css";
+import FadeInText from "@astroanimate/core/FadeInText";
 ---
 
-<DocLayout title="Progress Bar">
-    <section id="progressbar">
-        <h1 class="docs-title">ProgressBar</h1>
-
+<DocLayout title="FadeInText">
+    <section id="fade-in-text">
+       
+            <h1 class="docs-title">FadeInText <button type="button" class="docs-title-share" aria-label="Copy page link"><img src="/images/share-link.png" alt="" width="16" height="16" /></button></h1>
+            
         <div class="docs-intro-section">
             <p class="docs-paragraph">
-                Renders a customizable progress bar with size variants, color
-                options, and built-in accessibility support. Uses CSS
-                transitions for smooth updates with no JavaScript required.
+                Fades in text with blur effect and vertical translate animation. Supports CSS-only mode and scroll-triggered JS enhancement.
             </p>
         </div>
 
@@ -22,18 +22,30 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
             <div class="created-by">
                 <span class="created-by-label">Created by</span>
                 <div class="created-by-avatar">
-                    <img src="/images/barsan.jpeg" alt="Creator" />
+                    <img src="/images/vipin.jpg" alt="Creator" />
                 </div>
-                <span class="created-by-name">Barsan</span>
+
+                <span class="created-by-name">Vipin</span>
             </div>
             <div class="playground-container">
                 <div class="playground-preview">
-                    <div
-                        class="progressbar-showcase"
-                        style="padding: 40px; min-height: 200px; display: flex; align-items: center; justify-content: center; width: 100%;"
-                    >
-                        <div style="width: 100%; max-width: 400px;">
-                            <ProgressBar value={65} label="Loading..." />
+                    <div class="typewriter-showcase">
+                        <FadeInText>
+                            <h1 style="margin: 0; color: #000;">
+                                Welcome to my site
+                            </h1>
+                        </FadeInText>
+
+                        <div class="demo-typewriter">
+                            <FadeInText
+                                enhance={true}
+                                duration={0.8}
+                                yOffset={30}
+                            >
+                                <p style="margin: 0; color: #000;">
+                                    Scroll-triggered animation
+                                </p>
+                            </FadeInText>
                         </div>
                     </div>
                 </div>
@@ -50,12 +62,23 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
                         </div>
                     </div>
                     <div class="code-content">
-                        <pre><code><span class="keyword">import</span> <span class="component-name">ProgressBar</span> <span class="keyword">from</span> <span class="string">'@astroanimate/core/ProgressBar'</span>;
+                        <pre><code><span class="keyword">import</span> <span class="component-name">FadeInText</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/FadeInText"</span>;
 
-&lt;<span class="component">ProgressBar</span> <span class="prop">value</span>=&#123;<span class="string">65</span>&#125; <span class="prop">label</span>=<span class="string">"Loading..."</span> /&gt;</code></pre>
+&lt;<span class="component">FadeInText</span>&gt;
+  &lt;<span class="tag">h1</span>&gt;Welcome to my site&lt;/<span class="tag">h1</span>&gt;
+&lt;/<span class="component">FadeInText</span>&gt;
+
+&lt;<span class="component">FadeInText</span>
+  <span class="prop">enhance</span>={<span class="boolean">true</span>}
+  <span class="prop">duration</span>={<span class="number">0.8</span>}
+  <span class="prop">yOffset</span>={<span class="number">30</span>}
+&gt;
+  &lt;<span class="tag">p</span>&gt;Scroll-triggered animation&lt;/<span class="tag">p</span>&gt;
+&lt;/<span class="component">FadeInText</span>&gt;</code></pre>
                     </div>
                 </div>
             </div>
+            <p class="docs-paragraph">Basic fade-in with blur on page load & Scroll-triggered fade-in when element enters viewport.</p>
         </div>
 
         <!-- INSTALLATION SECTION -->
@@ -86,18 +109,6 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
             </div>
         </div>
 
-        <!-- QUICK START SECTION -->
-        <div class="docs-intro-section" id="usage">
-            <h2 class="docs-subtitle">Usage</h2>
-            <div class="docs-code-block">
-                <pre><code><span class="comment">---</span>
-<span class="keyword">import</span> <span class="component-name">ProgressBar</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/ProgressBar"</span>;
-<span class="comment">---</span>
-
-&lt;<span class="component">ProgressBar</span> <span class="prop">value</span>=&#123;<span class="string">65</span>&#125; <span class="prop">label</span>=<span class="string">"Loading..."</span> /&gt;</code></pre>
-            </div>
-        </div>
-
         <!-- PROPS SECTION -->
         <div class="docs-intro-section" id="props">
             <h2 class="docs-subtitle">Props</h2>
@@ -112,94 +123,98 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
                         </tr>
                     </thead>
                     <tbody>
-                        <tr
-                            ><td><code>value</code></td><td
-                                ><code>number</code></td
-                            ><td><code>-</code></td><td
-                                >Progress value (0–max). Required</td
-                            ></tr
-                        >
-                        <tr
-                            ><td><code>max</code></td><td
-                                ><code>number</code></td
-                            ><td><code>100</code></td><td
-                                >Maximum value used to compute percentage</td
-                            ></tr
-                        >
-                        <tr
-                            ><td><code>label</code></td><td
-                                ><code>string</code></td
-                            ><td><code>-</code></td><td
-                                >Label text displayed above the progress bar</td
-                            ></tr
-                        >
-                        <tr
-                            ><td><code>size</code></td><td
-                                ><code>"small" | "medium" | "large"</code></td
-                            ><td><code>"medium"</code></td><td
-                                >Size variant controlling height and label size</td
-                            ></tr
-                        >
-                        <tr
-                            ><td><code>color</code></td><td
-                                ><code>string</code></td
-                            ><td><code>"#3b82f6"</code></td><td
-                                >Bar fill color</td
-                            ></tr
-                        >
-                        <tr
-                            ><td><code>trackColor</code></td><td
-                                ><code>string</code></td
-                            ><td><code>"#e5e7eb"</code></td><td
-                                >Track background color</td
-                            ></tr
-                        >
-                        <tr
-                            ><td><code>class</code></td><td
-                                ><code>string</code></td
-                            ><td><code>-</code></td><td
-                                >Optional class applied to the root element</td
-                            ></tr
-                        >
+                        <tr>
+                            <td><code>enhance</code></td>
+                            <td><code>boolean</code></td>
+                            <td><code>false</code></td>
+                            <td
+                                >Enable JS-powered scroll-triggered animation
+                                via IntersectionObserver</td
+                            >
+                        </tr>
+                        <tr>
+                            <td><code>duration</code></td>
+                            <td><code>number</code></td>
+                            <td><code>0.6</code></td>
+                            <td>Animation duration in seconds</td>
+                        </tr>
+                        <tr>
+                            <td><code>delay</code></td>
+                            <td><code>number</code></td>
+                            <td><code>0</code></td>
+                            <td>Delay before animation starts in seconds</td>
+                        </tr>
+                        <tr>
+                            <td><code>easing</code></td>
+                            <td><code>string</code></td>
+                            <td><code>cubic-bezier(0.4, 0, 0.2, 1)</code></td>
+                            <td>CSS easing/timing function</td>
+                        </tr>
+                        <tr>
+                            <td><code>blur</code></td>
+                            <td><code>string</code></td>
+                            <td><code>"6px"</code></td>
+                            <td>Initial blur amount (must include CSS unit)</td>
+                        </tr>
+                        <tr>
+                            <td><code>yOffset</code></td>
+                            <td><code>number</code></td>
+                            <td><code>20</code></td>
+                            <td
+                                >Vertical distance (px) element travels upward
+                                during animation</td
+                            >
+                        </tr>
+                        <tr>
+                            <td><code>once</code></td>
+                            <td><code>boolean</code></td>
+                            <td><code>true</code></td>
+                            <td>Play animation only once (enhance=true only)</td
+                            >
+                        </tr>
+                        <tr>
+                            <td><code>inViewMargin</code></td>
+                            <td><code>string</code></td>
+                            <td><code>"-50px"</code></td>
+                            <td
+                                >IntersectionObserver bottom rootMargin
+                                (enhance=true only)</td
+                            >
+                        </tr>
+                        <tr>
+                            <td><code>class</code></td>
+                            <td><code>string</code></td>
+                            <td><code>""</code></td>
+                            <td>CSS class name applied to root element</td>
+                        </tr>
+                        <tr>
+                            <td><code>as</code></td>
+                            <td><code>string</code></td>
+                            <td><code>"div"</code></td>
+                            <td>HTML element rendered as root wrapper</td>
+                        </tr>
+                        <tr>
+                            <td><code>...rest</code></td>
+                            <td><code>unknown</code></td>
+                            <td><code>-</code></td>
+                            <td
+                                >Additional HTML attributes (id, aria-label,
+                                role, etc.)</td
+                            >
+                        </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
-
-        <!-- BEHAVIOR SECTION -->
-        <div class="docs-intro-section" id="behavior">
-            <h2 class="docs-subtitle">Behavior</h2>
-            <ul class="docs-list">
-                <li>
-                    Progress value is clamped between <code class="keyword"
-                        >0</code
-                    > and <code class="keyword">max</code> to prevent invalid states
-                </li>
-                <li>
-                    Percentage width is computed automatically from <code
-                        >value / max</code
-                    >
-                </li>
-                <li>
-                    Updates to <code class="keyword">value</code> animate smoothly
-                    using CSS transitions
-                </li>
-                <li>Label is optional and only rendered when provided</li>
-                <li>
-                    No JavaScript is used — all updates rely on reactive
-                    rendering
-                </li>
-            </ul>
         </div>
 
         <!-- USE WHEN SECTION -->
         <div class="docs-intro-section" id="use-when">
             <h2 class="docs-subtitle">Use When</h2>
             <ul class="docs-list">
-                <li>Displaying file upload or download progress</li>
-                <li>Showing form completion status</li>
-                <li>Indicating loading states with percentage</li>
-                <li>Visualizing linear progress in UI workflows</li>
+                <li>Page load text reveals with CSS-only animation</li>
+                <li>Scroll-triggered text reveals on long pages</li>
+                <li>Hero sections, headlines, or feature descriptions</li>
+                <li>Content that needs smooth entrance animation</li>
             </ul>
         </div>
 
@@ -207,16 +222,11 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
         <div class="docs-intro-section" id="avoid-when">
             <h2 class="docs-subtitle">Avoid When</h2>
             <ul class="docs-list">
+                <li>Content must be visible immediately without animation</li>
+                <li>Complex animation sequences beyond simple fade-in</li>
                 <li>
-                    Interactive progress control is required (use a slider
-                    instead)
-                </li>
-                <li>
-                    Multi-segment or stacked progress visualization is needed
-                </li>
-                <li>
-                    Precise real-time updates faster than transition duration
-                    are required
+                    When JS is disabled and enhance=true (content remains hidden
+                    with 2s fallback)
                 </li>
             </ul>
         </div>
@@ -227,30 +237,14 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
             <div>
                 <ul class="docs-list">
                     <li>
-                        Uses <code class="keyword">role="progressbar"</code> with
-                        ARIA attributes:
-                        <ul
-                            class="docs-list"
-                            style="margin-left: 20px; margin-top: 8px;"
-                        >
-                            <li><code class="keyword">aria-valuenow</code></li>
-                            <li><code class="keyword">aria-valuemin</code></li>
-                            <li><code class="keyword">aria-valuemax</code></li>
-                            <li>
-                                <code class="keyword">aria-label</code> (if label
-                                provided)
-                            </li>
-                        </ul>
+                        Respects <code class="docs-code">prefers-reduced-motion</code> media query -
+                        all motion neutralized
                     </li>
                     <li>
-                        Respects <code class="keyword"
-                            >prefers-reduced-motion</code
-                        > by disabling width transitions
+                        Content remains visible when reduced motion is preferred
                     </li>
                     <li>
-                        Supports dark mode via <code class="keyword"
-                            >prefers-color-scheme</code
-                        >
+                        Works with JS disabled in CSS-only mode (enhance=false)
                     </li>
                 </ul>
             </div>
@@ -261,9 +255,18 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
             <h2 class="docs-subtitle">Performance</h2>
             <div>
                 <ul class="docs-list">
-                    <li>CSS-only width transitions (no JavaScript overhead)</li>
-                    <li>Value clamping prevents layout inconsistencies</li>
-                    <li>Efficient rendering using inline CSS variables</li>
+                    <li>
+                        CSS-only by default (enhance=false) - zero JavaScript
+                        overhead
+                    </li>
+                    <li>
+                        JS-enhanced mode uses IntersectionObserver with WeakMap
+                        cleanup
+                    </li>
+                    <li>
+                        MutationObserver ensures observer disconnection on DOM
+                        removal
+                    </li>
                 </ul>
             </div>
         </div>
@@ -274,26 +277,19 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
             <ul class="docs-list">
                 <li>
                     Credit to <a
-                        href="https://github.com/barsan"
-                        class="credits-link">@barsan</a
+                        href="https://github.com/Krishvipin"
+                        target="_blank"
+                        class="credits-link">@Vipin</a
                     >
                 </li>
             </ul>
         </div>
 
         <!-- RELATED COMPONENTS SECTION -->
-        <div class="docs-intro-section" id="related-components">
-            <h2 class="docs-subtitle">Related Components</h2>
-            <div class="related-grid">
-                <div class="related-card empty"></div>
-                <div class="related-card empty"></div>
-                <div class="related-card empty"></div>
-                <div class="related-card empty"></div>
-            </div>
-        </div>
+        <RelatedComponents items={[{ name: "ScaleIn", href: "/docs/scalein", image: "/images/scalein.png" }]} />
 
         <div class="docs-footer-nav" style="justify-content: space-between;">
-            <a href="/docs/Sec-Loader" class="prev-link">
+            <a href="/docs/All-Components" class="prev-link">
                 <span class="label">PREVIOUS</span>
                 <span class="title">
                     <svg
@@ -309,13 +305,13 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
                         ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
                             points="12 5 19 12 12 19"></polyline></svg
                     >
-                    Loader
+                    All Components
                 </span>
             </a>
-            <a href="/docs/Sec-AnimatedButton" class="next-link">
+            <a href="/docs/typewritter" class="next-link">
                 <span class="label">NEXT</span>
                 <span class="title">
-                    Animated Button
+                    Typewriter Text
                     <svg
                         width="18"
                         height="18"
@@ -332,21 +328,19 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
             </a>
         </div>
     </section>
-
     <Fragment slot="toc">
         <div class="toc-header">IN THIS PAGE</div>
         <nav class="toc-nav">
-            <a href="#progressbar" class="active">ProgressBar</a>
+            <a href="#fade-in-text" class="active">Fade In Text</a>
             <a href="#preview-playground">Preview/Playground</a>
             <a href="#installation">Installation</a>
-            <a href="#usage">Usage</a>
             <a href="#props">Props</a>
-            <a href="#behavior">Behavior</a>
             <a href="#use-when">Use When</a>
             <a href="#avoid-when">Avoid When</a>
             <a href="#accessibility">Accessibility</a>
             <a href="#performance">Performance</a>
             <a href="#credits">Credits</a>
+            <a href="#related-components">Related Components</a>
         </nav>
     </Fragment>
 </DocLayout>
@@ -397,7 +391,7 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
 
     .playground-container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        /* grid-template-columns: 1fr 1fr; */
         border: 1px solid #1f2937;
         background: #050505;
         border-radius: 12px;
@@ -411,6 +405,23 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .typewriter-showcase {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .demo-typewriter {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 18px;
+        color: #000;
+        background: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
     }
 
     .playground-code {
@@ -534,10 +545,6 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
         color: #e0e0e0;
     }
 
-    /* .keyword {
-        color: #569cd6;
-    } */
-
     .string {
         color: #ce9178;
     }
@@ -560,6 +567,18 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
 
     .tag {
         color: #569cd6;
+    }
+
+    .keyword {
+        color: #c586c0;
+    }
+
+    .boolean {
+        color: #569cd6;
+    }
+
+    .number {
+        color: #b5cea8;
     }
 
     .docs-table {
@@ -625,6 +644,35 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
         margin-right: 0;
     }
 
+    .api-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 24px;
+    }
+
+    .api-card {
+        padding: 24px;
+        border: 1px solid #1f2937;
+        background: #050505;
+        border-radius: 8px;
+    }
+
+    .api-card h3 {
+        font-size: 18px;
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        color: #f9fafb;
+        margin-bottom: 8px;
+    }
+
+    .api-card p {
+        color: #9ca3af;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        margin: 0;
+    }
+
     .related-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -648,14 +696,6 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
     .related-card.empty {
         background: #0a0a0a;
     }
-
-    .docs-footer-nav {
-        margin-top: 60px;
-        padding-top: 40px;
-        border-top: 1px solid #1f2937;
-    }
-
-   
 
     .component-link {
         color: #9ca3af;

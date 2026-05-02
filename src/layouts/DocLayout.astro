@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar.astro";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema.astro";
 
 interface Props {
-  title: string;
+title: string;
 }
 
 const { pathname } = Astro.url;
@@ -16,836 +16,849 @@ const currentPage = pathSegments[pathSegments.length - 1] || "docs";
 
 // Format title: e.g., 'introduction' -> 'Introduction'
 const pageTitle =
-  currentPage.charAt(0).toUpperCase() + currentPage.slice(1).replace(/-/g, " ");
+currentPage.charAt(0).toUpperCase() + currentPage.slice(1).replace(/-/g, " ");
 
 const fullTitle = `AstroAnimate Docs — Installation, Components & API`;
 const description = `Documentation for AstroAnimate, including installation guides, animation components, API references, examples, and performance considerations for Astro projects.`;
 const canonical = `https://www.astroanimate.com${pathname}`;
 
 const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "TechArticle",
-      headline: "AstroAnimate Documentation",
-      description:
-        "Documentation for AstroAnimate covering installation, components, API references, and examples.",
-      url: "https://www.astroanimate.com/docs",
-      author: {
-        "@type": "Organization",
-        name: "AstroAnimate",
-      },
-      publisher: {
-        "@type": "Organization",
-        name: "AstroAnimate",
-        logo: {
-          "@type": "ImageObject",
-          url: "https://www.astroanimate.com/images/Logo.png",
-        },
-      },
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: "https://www.astroanimate.com/",
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Docs",
-          item: "https://www.astroanimate.com/docs",
-        },
-      ],
-    },
-  ],
+"@context": "https://schema.org",
+"@graph": [
+{
+"@type": "TechArticle",
+headline: "AstroAnimate Documentation",
+description:
+"Documentation for AstroAnimate covering installation, components, API references, and examples.",
+url: "https://www.astroanimate.com/docs",
+author: {
+"@type": "Organization",
+name: "AstroAnimate",
+},
+publisher: {
+"@type": "Organization",
+name: "AstroAnimate",
+logo: {
+"@type": "ImageObject",
+url: "https://www.astroanimate.com/images/Logo.png",
+},
+},
+},
+{
+"@type": "BreadcrumbList",
+itemListElement: [
+{
+"@type": "ListItem",
+position: 1,
+name: "Home",
+item: "https://www.astroanimate.com/",
+},
+{
+"@type": "ListItem",
+position: 2,
+name: "Docs",
+item: "https://www.astroanimate.com/docs",
+},
+],
+},
+],
 };
 ---
 
 <Layout
-  title={fullTitle}
-  description={description}
-  canonical={canonical}
-  schema={schema}
+title={fullTitle}
+description={description}
+canonical={canonical}
+schema={schema}
 >
-  <NavBar />
+<NavBar />
 
-  <div class="docs-container">
-    <input
-      type="checkbox"
-      id="docs-sidebar-toggle"
-      class="docs-sidebar-toggle"
-      aria-label="Toggle docs navigation"
-    />
-    <label for="docs-sidebar-toggle" class="docs-menu-toggle">
-      <span class="docs-menu-icon" aria-hidden="true"></span>
-      Docs menu
-    </label>
+<div class="docs-container">
+<input
+type="checkbox"
+id="docs-sidebar-toggle"
+class="docs-sidebar-toggle"
+aria-label="Toggle docs navigation"
+/>
+<label for="docs-sidebar-toggle" class="docs-menu-toggle">
+<span class="docs-menu-icon" aria-hidden="true"></span>
+Docs menu
+</label>
 
-    <!-- SIDEBAR -->
-    <aside class="docs-sidebar">
-      <!-- Search Bar -->
-      <div class="sidebar-search">
-        <div class="search-input-wrapper">
-          <img src="/images/search.png" alt="" height="20" width="20" />
-          <input type="text" placeholder="Search" />
-        </div>
-      </div>
+<!-- SIDEBAR -->
+<aside class="docs-sidebar">
+<!-- Search Bar -->
+<div class="sidebar-search">
+<div class="search-input-wrapper">
+<img src="/images/search.png" alt="" height="20" width="20" />
+<input type="text" placeholder="Search" />
+</div>
+</div>
 
-      <!-- Section: FOLLOW FOR UPDATES -->
-      <details class="sidebar-category" open>
-        <summary>
-          <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
-            >
-            FOLLOW FOR UPDATES
-          </div>
-        </summary>
-        <div class="subcategory-list no-side-bullets">
-          <a
-            href="https://twitter.com/astroanimate"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="sidebar-sub-item"
-          >
-            Twitter
-          </a>
-          <a
-            href="https://github.com/astroanimate"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="sidebar-sub-item"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://discord.gg/astroanimate"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="sidebar-sub-item"
-          >
-            Discord
-          </a>
-        </div>
-      </details>
+<!-- Section: FOLLOW FOR UPDATES -->
+<details class="sidebar-category" open>
+<summary>
+<div class="sidebar-nav-item">
+<svg
+class="chevron"
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="2"
+stroke-linecap="round"
+stroke-linejoin="round"
+><polyline points="9 18 15 12 9 6"></polyline></svg
+>
+FOLLOW FOR UPDATES
+</div>
+</summary>
+<div class="subcategory-list no-side-bullets">
+<a
+href="https://twitter.com/astroanimate"
+target="_blank"
+rel="noopener noreferrer"
+class="sidebar-sub-item"
+>
+Twitter
+</a>
+<a
+href="https://github.com/astroanimate"
+target="_blank"
+rel="noopener noreferrer"
+class="sidebar-sub-item"
+>
+GitHub
+</a>
+<a
+href="https://discord.gg/astroanimate"
+target="_blank"
+rel="noopener noreferrer"
+class="sidebar-sub-item"
+>
+Discord
+</a>
+</div>
+</details>
 
-      <!-- Section: GETTING STARTED -->
-      <details class="sidebar-category" open>
-        <summary>
-          <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
-            >
-            GETTING STARTED
-          </div>
-        </summary>
-        <div
-          class="subcategory-list no-side-bullets"
-          style="list-style: none; display: flex; flex-direction: column; gap: 4px;"
-        >
-          <a
-            href="/docs"
-            class:list={[
-              "sidebar-comp-item",
-              { active: pathname === "/docs" || pathname === "/docs/" },
-            ]}>Introduction</a
-          >
-          <a
-            href="/docs/installation"
-            class:list={[
-              "sidebar-comp-item",
-              { active: pathname === "/docs/installation" },
-            ]}>Installation</a
-          >
+<!-- Section: GETTING STARTED -->
+<details class="sidebar-category" open>
+<summary>
+<div class="sidebar-nav-item">
+<svg
+class="chevron"
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="2"
+stroke-linecap="round"
+stroke-linejoin="round"
+><polyline points="9 18 15 12 9 6"></polyline></svg
+>
+GETTING STARTED
+</div>
+</summary>
+<div
+class="subcategory-list no-side-bullets"
+style="list-style: none; display: flex; flex-direction: column; gap: 4px;"
+>
+<a
+href="/docs"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs" || pathname === "/docs/" },
+]}>Introduction</a
+>
+<a
+href="/docs/installation"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/installation" },
+]}>Installation</a
+>
 
-          <a
-            href="/docs/quick-start"
-            class:list={[
-              "sidebar-comp-item",
-              { active: pathname === "/docs/quick-start" },
-            ]}>Quick Start</a
-          >
-          <a
-            href="/docs/components"
-            class:list={[
-              "sidebar-comp-item",
-              { active: pathname === "/docs/components" },
-            ]}>Supported Components</a
-          >
-          <a
-            href="/docs/supported-platforms"
-            class:list={[
-              "sidebar-comp-item",
-              { active: pathname === "/docs/supported-platforms" },
-            ]}>Supported Platforms</a
-          >
-          <a
-            href="/docs/example-projects"
-            class:list={[
-              "sidebar-comp-item",
-              { active: pathname === "/docs/example-projects" },
-            ]}>Example Projects</a
-          >
-          <a
-            href="/docs/support"
-            class:list={[
-              "sidebar-comp-item",
-              { active: pathname === "/docs/support" },
-            ]}>Support</a
-          >
+<a
+href="/docs/quick-start"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/quick-start" },
+]}>Quick Start</a
+>
+<a
+href="/docs/components"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/components" },
+]}>Supported Components</a
+>
+<a
+href="/docs/supported-platforms"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/supported-platforms" },
+]}>Supported Platforms</a
+>
+<a
+href="/docs/example-projects"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/example-projects" },
+]}>Example Projects</a
+>
+<a
+href="/docs/support"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/support" },
+]}>Support</a
+>
 
-          <a
-            href="/docs/all-components"
-            class:list={[
-              "sidebar-comp-item",
-              { active: pathname === "/docs/all-components" },
-            ]}>All Components</a
-          >
-        </div>
-      </details>
+<a
+href="/docs/all-components"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/all-components" },
+]}>All Components</a
+>
+</div>
+</details>
 
-      <!-- Section: ANIMATION COMPONENTS -->
-      <details class="sidebar-category" open>
-        <summary>
-          <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
-            >
-            ANIMATION
-          </div>
-        </summary>
+<!-- Section: ANIMATION COMPONENTS -->
+<details class="sidebar-category" open>
+<summary>
+<div class="sidebar-nav-item">
+<svg
+class="chevron"
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="2"
+stroke-linecap="round"
+stroke-linejoin="round"
+><polyline points="9 18 15 12 9 6"></polyline></svg
+>
+ANIMATION
+</div>
+</summary>
 
-        <div class="subcategory-list">
-          <!-- Text Animations -->
-          <details open>
-            <summary class="sidebar-sub-item subtitle">
-              Text Animations
-            </summary>
-            <div class="component-list">
-              <!-- <div class="sidebar-comp-item">Text Reveal</div>
-              <div class="sidebar-comp-item">Count Up</div>
-              <div class="sidebar-comp-item">HighlightText</div>
-              <div class="sidebar-comp-item">Scrambler Text</div>
-              <div class="sidebar-comp-item">ScrollRevealText</div> -->
-              <!-- <div class="sidebar-comp-item">SlidingTextButton</div>
-              <div class="sidebar-comp-item">TextFlip</div> -->
-              <a
-                href="/docs/Sec-FadeInText"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/Sec-FadeInText" },
-                ]}
-                >FadeIn
-              </a>
-              <a
-                href="/docs/TypewriterText"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/TypewriterText" },
-                ]}>TypewriterText</a
-              >
-            </div>
-          </details>
+<div class="subcategory-list">
+<!-- Text Animations -->
+<details open>
+<summary class="sidebar-sub-item subtitle">
+Text Animations
+</summary>
+<div class="component-list">
+<!-- <div class="sidebar-comp-item">Text Reveal</div>
+<div class="sidebar-comp-item">Count Up</div>
+<div class="sidebar-comp-item">HighlightText</div>
+<div class="sidebar-comp-item">Scrambler Text</div>
+<div class="sidebar-comp-item">ScrollRevealText</div> -->
+<!-- <div class="sidebar-comp-item">SlidingTextButton</div>
+<div class="sidebar-comp-item">TextFlip</div> -->
+<a
+href="/docs/fadein"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/fadein" },
+]}
+>Fade In Text
+</a>
+<a
+href="/docs/typewritter"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/typewritter" },
+]}>Typewriter Text</a
+>
+</div>
+</details>
 
-          <!-- Card Components -->
-          <details open>
-            <summary class="sidebar-sub-item subtitle">
-              Core Animations
-            </summary>
-            <div class="component-list">
-              <!-- <div class="sidebar-comp-item">Fade In</div>
-             <div class="sidebar-comp-item">Slide In</div> -->
-              <a
-                href="/docs/Sec-ScaleIn"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/Sec-ScaleIn" },
-                ]}>Scale In</a
-              >
-              <a
-                href="/docs/Sec-RevealImage"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/Sec-RevealImage" },
-                ]}>Reveal Image</a
-              >
+<!-- Card Components -->
+<details open>
+<summary class="sidebar-sub-item subtitle">
+Core Animations
+</summary>
+<div class="component-list">
+<!-- <div class="sidebar-comp-item">Fade In</div>
+<div class="sidebar-comp-item">Slide In</div> -->
+<a
+href="/docs/scalein"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/scalein" },
+]}>Scale In</a
+>
+<a
+href="/docs/reveal-image"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/reveal-image" },
+]}>Reveal Image</a
+>
 
-              <!-- <div class="sidebar-comp-item">Stagger</div>
-              <div class="sidebar-comp-item">Text Fade Up</div>
-              <div class="sidebar-comp-item">Reveal</div> -->
-            </div>
-          </details>
-          <!-- 
-            <details open>
-            <summary class="sidebar-sub-item subtitle">
-             Scroll & Parallax
-            </summary>
-            <div class="component-list">
-             <div class="sidebar-comp-item">Infinite Scroll</div>
-              <div class="sidebar-comp-item">Parallax</div>
-              <div class="sidebar-comp-item">Reveal On Scroll</div>
-            </div>
-          </details> -->
+<!-- <div class="sidebar-comp-item">Stagger</div>
+<div class="sidebar-comp-item">Text Fade Up</div>
+<div class="sidebar-comp-item">Reveal</div> -->
+</div>
+</details>
+<!--
+<details open>
+<summary class="sidebar-sub-item subtitle">
+Scroll & Parallax
+</summary>
+<div class="component-list">
+<div class="sidebar-comp-item">Infinite Scroll</div>
+<div class="sidebar-comp-item">Parallax</div>
+<div class="sidebar-comp-item">Reveal On Scroll</div>
+</div>
+</details> -->
 
-          <!-- 
-            <details open>
-            <summary class="sidebar-sub-item subtitle">
-             Background Effects
-            </summary>
-            <div class="component-list">
-              <div class="sidebar-comp-item">Glow Effect</div>
-              <div class="sidebar-comp-item">Gradient Background</div>
-              <div class="sidebar-comp-item">Grid Dots Background</div>
-            </div>
-          </details> -->
-        </div>
-      </details>
+<!--
+<details open>
+<summary class="sidebar-sub-item subtitle">
+Background Effects
+</summary>
+<div class="component-list">
+<div class="sidebar-comp-item">Glow Effect</div>
+<div class="sidebar-comp-item">Gradient Background</div>
+<div class="sidebar-comp-item">Grid Dots Background</div>
+</div>
+</details> -->
+</div>
+</details>
 
-      <!-- Section: UI COMPONENTS -->
-      <details class="sidebar-category" open>
-        <summary>
-          <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
-            >
-            UI Components
-          </div>
-        </summary>
+<!-- Section: UI COMPONENTS -->
+<details class="sidebar-category" open>
+<summary>
+<div class="sidebar-nav-item">
+<svg
+class="chevron"
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="2"
+stroke-linecap="round"
+stroke-linejoin="round"
+><polyline points="9 18 15 12 9 6"></polyline></svg
+>
+UI Components
+</div>
+</summary>
 
-        <div class="subcategory-list">
-          <!-- Text Animations -->
-          <details open>
-            <summary class="sidebar-sub-item subtitle"> Cards </summary>
-            <div class="component-list">
-              <!-- <div class="sidebar-comp-item">Card Stack</div> -->
-              <a
-                href="/docs/Sec-ExpandableCard"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/Sec-ExpandableCard" },
-                ]}>Expandable Card</a
-              >
-              <a
-                href="/docs/Sec-AnimatedCard"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/Sec-AnimatedCard" },
-                ]}>Animated Card</a
-              >
-              <!-- <div class="sidebar-comp-item">Expandable Card</div> -->
-              <a
-                href="/docs/Sec-GlassCard"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/Sec-GlassCard" },
-                ]}>Glass Card</a
-              >
-              <!-- <div class="sidebar-comp-item">Liquid Glass card</div> -->
-            </div>
-          </details>
+<div class="subcategory-list">
+<!-- Text Animations -->
+<details open>
+<summary class="sidebar-sub-item subtitle"> Cards </summary>
+<div class="component-list">
+<!-- <div class="sidebar-comp-item">Card Stack</div> -->
+<a
+href="/docs/expandable-card"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/expandable-card" },
+]}>Expandable Card</a
+>
+<a
+href="/docs/animated-card"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/animated-card" },
+]}>Animated Card</a
+>
+<!-- <div class="sidebar-comp-item">Expandable Card</div> -->
+<a
+href="/docs/glass-card"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/glass-card" },
+]}>Glass Card</a
+>
+<!-- <div class="sidebar-comp-item">Liquid Glass card</div> -->
+</div>
+</details>
 
-          <!-- Card Components -->
-          <details open>
-            <summary class="sidebar-sub-item subtitle">
-              Loaders & Feedback
-            </summary>
-            <div class="component-list">
-              <a
-                href="/docs/Sec-Loader"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/Sec-Loader" },
-                ]}>Loader</a
-              >
-              <a
-                href="/docs/Sec-ProgressBar"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/Sec-ProgressBar" },
-                ]}>Progress Bar</a
-              >
-              <!-- <div class="sidebar-comp-item">Skeleton</div> -->
-            </div>
-          </details>
+<!-- Card Components -->
+<details open>
+<summary class="sidebar-sub-item subtitle">
+Loaders & Feedback
+</summary>
+<div class="component-list">
+<a
+href="/docs/loader"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/loader" },
+]}>Loader</a
+>
+<a
+href="/docs/progress-bar"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/progress-bar" },
+]}>Progress Bar</a
+>
+<!-- <div class="sidebar-comp-item">Skeleton</div> -->
+</div>
+</details>
 
-          <!-- <details open>
-            <summary class="sidebar-sub-item subtitle">
-             Navigation
-            </summary>
-            <div class="component-list">
-              <div class="sidebar-comp-item">Dock</div>
-              <div class="sidebar-comp-item">Animated Tabs</div>
-              <div class="sidebar-comp-item">Dropdown</div>
-            </div>
-          </details> -->
+<!-- <details open>
+<summary class="sidebar-sub-item subtitle">
+Navigation
+</summary>
+<div class="component-list">
+<div class="sidebar-comp-item">Dock</div>
+<div class="sidebar-comp-item">Animated Tabs</div>
+<div class="sidebar-comp-item">Dropdown</div>
+</div>
+</details> -->
 
-          <details open>
-            <summary class="sidebar-sub-item subtitle"> Buttons </summary>
-            <div class="component-list">
-              <a
-                href="/docs/Sec-AnimatedButton"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/Sec-AnimatedButton" },
-                ]}>Animated Button</a
-              >
-              <!-- <div class="sidebar-comp-item">Sliding Text Button</div> -->
-              <!-- <div class="sidebar-comp-item">Social Button</div> -->
-            </div>
-          </details>
+<details open>
+<summary class="sidebar-sub-item subtitle"> Buttons </summary>
+<div class="component-list">
+<a
+href="/docs/animated-button"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/animated-button" },
+]}>Animated Button</a
+>
+<!-- <div class="sidebar-comp-item">Sliding Text Button</div> -->
+<!-- <div class="sidebar-comp-item">Social Button</div> -->
+</div>
+</details>
 
-          <details open>
-            <summary class="sidebar-sub-item subtitle">
-              OverLays & popovers
-            </summary>
-            <div class="component-list">
-              <!-- <div class="sidebar-comp-item">Toast</div> -->
-              <a
-                href="/docs/Sec-Tooltip"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/Sec-Tooltip" },
-                ]}>Tool Tip</a
-              >
-            </div>
-          </details>
+<details open>
+<summary class="sidebar-sub-item subtitle">
+OverLays & popovers
+</summary>
+<div class="component-list">
+<!-- <div class="sidebar-comp-item">Toast</div> -->
+<a
+href="/docs/tooltip"
+class:list={[
+"sidebar-comp-item",
+{ active: pathname === "/docs/tooltip" },
+]}>Tool Tip</a
+>
+</div>
+</details>
 
-          <!-- <details open>
-            <summary class="sidebar-sub-item subtitle">
-            Data display
-            </summary>
-            <div class="component-list">
-              <div class="sidebar-comp-item">Count Up</div>
-              <div class="sidebar-comp-item">Infinite Marquee</div>
-              <div class="sidebar-comp-item">Page Transition</div>
-            </div>
-          </details> -->
-        </div>
-      </details>
+<!-- <details open>
+<summary class="sidebar-sub-item subtitle">
+Data display
+</summary>
+<div class="component-list">
+<div class="sidebar-comp-item">Count Up</div>
+<div class="sidebar-comp-item">Infinite Marquee</div>
+<div class="sidebar-comp-item">Page Transition</div>
+</div>
+</details> -->
+</div>
+</details>
 
-      <!-- Section: Advance UI -->
+<!-- Section: Advance UI -->
 
-      <!-- <details class="sidebar-category" open>
-        <summary>
-          <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
-            >
-            Advance ui
-          </div>
-        </summary>
+<!-- <details class="sidebar-category" open>
+<summary>
+<div class="sidebar-nav-item">
+<svg
+class="chevron"
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="2"
+stroke-linecap="round"
+stroke-linejoin="round"
+><polyline points="9 18 15 12 9 6"></polyline></svg
+>
+Advance ui
+</div>
+</summary>
 
-        <div class="subcategory-list">
-       Text Animations
-           <details open>
-            <summary class="sidebar-sub-item subtitle">
-             interaction animations
-            </summary>
-            <div class="component-list">
-              <div class="sidebar-comp-item">Magnetic blob cursor</div>
-            </div>
-          </details>
-        </div>
-      </details> -->
+<div class="subcategory-list">
+Text Animations
+<details open>
+<summary class="sidebar-sub-item subtitle">
+interaction animations
+</summary>
+<div class="component-list">
+<div class="sidebar-comp-item">Magnetic blob cursor</div>
+</div>
+</details>
+</div>
+</details> -->
 
-      <!-- Section: sections & blocks -->
+<!-- Section: sections & blocks -->
 
-      <!-- <details class="sidebar-category"> -->
-      <!-- <summary>
-          <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
-            >
-            sections & blocks
-          </div>
-        </summary> -->
+<!-- <details class="sidebar-category"> -->
+<!-- <summary>
+<div class="sidebar-nav-item">
+<svg
+class="chevron"
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="2"
+stroke-linecap="round"
+stroke-linejoin="round"
+><polyline points="9 18 15 12 9 6"></polyline></svg
+>
+sections & blocks
+</div>
+</summary> -->
 
-      <!-- <div class="subcategory-list"> -->
-      <!-- Text Animations -->
-      <!-- <details open>
-            <summary class="sidebar-sub-item subtitle">
-             Page Sections
-            </summary>
-            <div class="component-list">
-              <div class="sidebar-comp-item">Hero Section</div>
-              <div class="sidebar-comp-item">Features Section</div>
-              <div class="sidebar-comp-item">Testimonials Section</div>
-              <div class="sidebar-comp-item">CTA Section</div>  
-              <div class="sidebar-comp-item">Pricing Section</div>  
-              <div class="sidebar-comp-item">Contact Section</div>  
-              <div class="sidebar-comp-item">Blog Section</div>  
-              <div class="sidebar-comp-item">Footer Section</div>  
-            </div>
-          </details>
-      </details> -->
+<!-- <div class="subcategory-list"> -->
+<!-- Text Animations -->
+<!-- <details open>
+<summary class="sidebar-sub-item subtitle">
+Page Sections
+</summary>
+<div class="component-list">
+<div class="sidebar-comp-item">Hero Section</div>
+<div class="sidebar-comp-item">Features Section</div>
+<div class="sidebar-comp-item">Testimonials Section</div>
+<div class="sidebar-comp-item">CTA Section</div>
+<div class="sidebar-comp-item">Pricing Section</div>
+<div class="sidebar-comp-item">Contact Section</div>
+<div class="sidebar-comp-item">Blog Section</div>
+<div class="sidebar-comp-item">Footer Section</div>
+</div>
+</details>
+</details> -->
 
-      <!-- Section: TEMPLATES -->
-      <!-- <details class="sidebar-category">
-        <summary>
-          <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
-            >
-            TEMPLATES
-          </div>
-        </summary>
-        <div class="subcategory-list no-side-bullets">
-          <div class="sidebar-sub-item">Basics - Portfolio</div>
-          <div class="sidebar-sub-item">MonoGraph - Blog template</div>
-        </div>
-      </details> -->
-      <!-- </div>
-      </details> -->
-    </aside>
+<!-- Section: TEMPLATES -->
+<!-- <details class="sidebar-category">
+<summary>
+<div class="sidebar-nav-item">
+<svg
+class="chevron"
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="2"
+stroke-linecap="round"
+stroke-linejoin="round"
+><polyline points="9 18 15 12 9 6"></polyline></svg
+>
+TEMPLATES
+</div>
+</summary>
+<div class="subcategory-list no-side-bullets">
+<div class="sidebar-sub-item">Basics - Portfolio</div>
+<div class="sidebar-sub-item">MonoGraph - Blog template</div>
+</div>
+</details> -->
+<!-- </div>
+</details> -->
+</aside>
 
-    <!-- MAIN CONTENT AREA -->
-    <main class="docs-content">
-      <div class="docs-content-inner">
-        <!-- Breadcrumbs -->
-        <nav class="docs-breadcrumbs">
-          {
-            isDocsLanding ? (
-              <span class="active">Docs</span>
-            ) : (
-              <>
-                <a href="/docs">Docs</a>
-                <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-                <span class="active">{pageTitle}</span>
-              </>
-            )
-          }
-        </nav>
+<!-- MAIN CONTENT AREA -->
+<main class="docs-content">
+<div class="docs-content-inner">
+<!-- Breadcrumbs -->
+<nav class="docs-breadcrumbs">
+{
+isDocsLanding ? (
+<span class="active">Docs</span>
+) : (
+<>
+<a href="/docs">Docs</a>
+<svg
+width="12"
+height="12"
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="2"
+>
+<polyline points="9 18 15 12 9 6" />
+</svg>
+<span class="active">{pageTitle}</span>
+</>
+)
+}
+</nav>
 
-        <slot />
+<slot />
 
-        <div class="global-docs-footer">
-          <a href="/" class="global-footer-logo-link">
-            <img
-              src="/images/astro-text-logo.png"
-              alt="astro-text-logo"
-              class="global-footer-logo"
-            />
-          </a>
-          <div class="global-footer-social">
-            <p class="global-footer-follow-text">Follow us:</p>
-            <div class="global-footer-icons">
-              <a href="https://x.com" class="global-follow-icon">
-                <img
-                  src="/images/twitter2.png"
-                  alt="twitter"
-                  height="24"
-                  width="24"
-                />
-              </a>
-              <a href="https://github.com" class="global-follow-icon">
-                <img
-                  src="/images/github2.png"
-                  alt="github"
-                  height="24"
-                  width="24"
-                />
-              </a>
-              <a href="https://discord.com" class="global-follow-icon">
-                <img
-                  src="/images/discord.png"
-                  alt="discord"
-                  height="24"
-                  width="24"
-                />
-              </a>
-              <a href="https://linkedin.com" class="global-follow-icon">
-                <img
-                  src="/images/linkedin.png"
-                  alt="linkedin"
-                  height="24"
-                  width="24"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+<div class="global-docs-footer">
+<a href="/" class="global-footer-logo-link">
+<img
+src="/images/astro-text-logo.png"
+alt="astro-text-logo"
+class="global-footer-logo"
+/>
+</a>
+<div class="global-footer-social">
+<p class="global-footer-follow-text">Follow us:</p>
+<div class="global-footer-icons">
+<a href="https://x.com" class="global-follow-icon">
+<img
+src="/images/twitter2.png"
+alt="twitter"
+height="24"
+width="24"
+/>
+</a>
+<a href="https://github.com" class="global-follow-icon">
+<img
+src="/images/github2.png"
+alt="github"
+height="24"
+width="24"
+/>
+</a>
+<a href="https://discord.com" class="global-follow-icon">
+<img
+src="/images/discord.png"
+alt="discord"
+height="24"
+width="24"
+/>
+</a>
+<a href="https://linkedin.com" class="global-follow-icon">
+<img
+src="/images/linkedin.png"
+alt="linkedin"
+height="24"
+width="24"
+/>
+</a>
+</div>
+</div>
+</div>
+</div>
+</main>
 
-    <!-- RIGHT TOC SIDEBAR -->
-    <aside class="docs-toc">
-      <slot name="toc" />
-    </aside>
-  </div>
+<!-- RIGHT TOC SIDEBAR -->
+<aside class="docs-toc">
+<slot name="toc" />
+</aside>
+</div>
 
-  <script>
-    function initTocObserver() {
-      const tocLinks = document.querySelectorAll(".toc-nav a");
-      if (!tocLinks.length) return;
+<script>
+function initTocObserver() {
+const tocLinks = document.querySelectorAll(".toc-nav a");
+if (!tocLinks.length) return;
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              // Remove active class from all links
-              tocLinks.forEach((link) => link.classList.remove("active"));
+const observer = new IntersectionObserver(
+(entries) => {
+entries.forEach((entry) => {
+if (entry.isIntersecting) {
+// Remove active class from all links
+tocLinks.forEach((link) => link.classList.remove("active"));
 
-              // Add active class to corresponding link
-              const activeLink = Array.from(tocLinks).find(
-                (link) => link.getAttribute("href") === `#${entry.target.id}`,
-              );
-              if (activeLink) {
-                activeLink.classList.add("active");
-              }
-            }
-          });
-        },
-        // Trigger earlier: offset for sticky header, and fire when element crosses the middle
-        { rootMargin: "-100px 0px -60% 0px" },
-      );
+// Add active class to corresponding link
+const activeLink = Array.from(tocLinks).find(
+(link) => link.getAttribute("href") === `#${entry.target.id}`,
+);
+if (activeLink) {
+activeLink.classList.add("active");
+}
+}
+});
+},
+// Trigger earlier: offset for sticky header, and fire when element crosses the middle
+{ rootMargin: "-100px 0px -60% 0px" },
+);
 
-      // Observe each target section defined in TOC
-      tocLinks.forEach((link) => {
-        const href = link.getAttribute("href");
-        if (href && href.startsWith("#")) {
-          const target = document.getElementById(href.substring(1));
-          if (target) {
-            observer.observe(target);
-          }
-        }
-      });
+// Observe each target section defined in TOC
+tocLinks.forEach((link) => {
+const href = link.getAttribute("href");
+if (href && href.startsWith("#")) {
+const target = document.getElementById(href.substring(1));
+if (target) {
+observer.observe(target);
+}
+}
+});
 
-      // Optionally handle manual clicks
-      tocLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          tocLinks.forEach((l) => l.classList.remove("active"));
-          link.classList.add("active");
-        });
-      });
-    }
+// Optionally handle manual clicks
+tocLinks.forEach((link) => {
+link.addEventListener("click", () => {
+tocLinks.forEach((l) => l.classList.remove("active"));
+link.classList.add("active");
+});
+});
+}
 
-    // Run on standard load
-    document.addEventListener("DOMContentLoaded", initTocObserver);
-    // Support Astro view transitions if used
-    document.addEventListener("astro:page-load", initTocObserver);
+// Run on standard load
+document.addEventListener("DOMContentLoaded", initTocObserver);
+// Support Astro view transitions if used
+document.addEventListener("astro:page-load", initTocObserver);
 
-    function normalizeDocsPath(path: string) {
-      return path.replace(/\/$/, "").toLowerCase() || "/";
-    }
+function normalizeDocsPath(path: string) {
+return path.replace(/\/$/, "").toLowerCase() || "/";
+}
 
-    // Fix active state for sidebar navigation
-    function updateActiveState() {
-      const currentPath = normalizeDocsPath(window.location.pathname);
-      const sidebarLinks = document.querySelectorAll(
-        ".sidebar-comp-item, .sidebar-sub-item",
-      );
+// Fix active state for sidebar navigation
+function updateActiveState() {
+const currentPath = normalizeDocsPath(window.location.pathname);
+const sidebarLinks = document.querySelectorAll(
+".sidebar-comp-item, .sidebar-sub-item",
+);
 
-      sidebarLinks.forEach((link) => {
-        const href = link.getAttribute("href");
-        if (!href || href.startsWith("http")) return;
+sidebarLinks.forEach((link) => {
+const href = link.getAttribute("href");
+if (!href || href.startsWith("http")) return;
 
-        const linkPath = normalizeDocsPath(new URL(href, window.location.origin).pathname);
-        if (linkPath === currentPath) {
-          link.classList.add("active");
-          link.setAttribute("aria-current", "page");
-        } else {
-          link.classList.remove("active");
-          link.removeAttribute("aria-current");
-        }
-      });
-    }
+const linkPath = normalizeDocsPath(new URL(href, window.location.origin).pathname);
+if (linkPath === currentPath) {
+link.classList.add("active");
+link.setAttribute("aria-current", "page");
+} else {
+link.classList.remove("active");
+link.removeAttribute("aria-current");
+}
+});
+}
 
-    function initTitleShareButtons() {
-      const currentPath = normalizeDocsPath(window.location.pathname);
-      const isComponentPage =
-        currentPath.startsWith("/docs/sec-") ||
-        currentPath === "/docs/typewritertext";
-      if (!isComponentPage) return;
+function initTitleShareButtons() {
+const buttons = document.querySelectorAll(
+".docs-title-share, .all-components-share",
+);
 
-      const titles = document.querySelectorAll(".docs-title");
+buttons.forEach((button) => {
+const shareButton = button as HTMLButtonElement;
+if (shareButton.dataset.shareReady === "true") return;
+shareButton.dataset.shareReady = "true";
 
-      titles.forEach((title) => {
-        if (title.querySelector(".docs-title-share")) return;
+const image = shareButton.querySelector("img");
+const originalSrc = image?.getAttribute("src") || "/images/share-link.png";
+let resetTimer: number | undefined;
 
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "docs-title-share";
-        button.setAttribute("aria-label", "Copy page link");
-        button.innerHTML = '<img src="/images/share-link.png" alt="" width="20" height="20" />';
+shareButton.addEventListener("click", async () => {
+const pageUrl = window.location.href;
 
-        button.addEventListener("click", async () => {
-          try {
-            await navigator.clipboard.writeText(window.location.href);
-            button.classList.add("copied");
-            button.setAttribute("aria-label", "Copied page link");
-            setTimeout(() => {
-              button.classList.remove("copied");
-              button.setAttribute("aria-label", "Copy page link");
-            }, 1400);
-          } catch {
-            const fallback = document.createElement("input");
-            fallback.value = window.location.href;
-            document.body.appendChild(fallback);
-            fallback.select();
-            document.execCommand("copy");
-            fallback.remove();
-          }
-        });
+try {
+if (navigator.clipboard?.writeText) {
+await navigator.clipboard.writeText(pageUrl);
+} else {
+throw new Error("Clipboard API unavailable");
+}
+} catch {
+const fallback = document.createElement("input");
+fallback.value = pageUrl;
+fallback.setAttribute("readonly", "");
+fallback.style.position = "fixed";
+fallback.style.opacity = "0";
+document.body.appendChild(fallback);
+fallback.select();
+document.execCommand("copy");
+fallback.remove();
+}
 
-        title.appendChild(button);
-      });
-    }
+window.clearTimeout(resetTimer);
+shareButton.classList.add("copied");
+shareButton.setAttribute("aria-label", "Copied page link");
 
-    // Search functionality for docs sidebar
-    function initSearch() {
-      const searchInput = document.querySelector(".sidebar-search input");
-      const allLinks = document.querySelectorAll(
-        ".sidebar-comp-item, .sidebar-sub-item",
-      );
-      const allCategories = document.querySelectorAll(
-        ".sidebar-category, .subcategory-list details",
-      );
+if (image) {
+image.setAttribute("src", "/images/checkmark.png");
+image.setAttribute("width", image.getAttribute("width") || "16");
+image.setAttribute("height", image.getAttribute("height") || "16");
+}
 
-      if (!searchInput) return;
+resetTimer = window.setTimeout(() => {
+shareButton.classList.remove("copied");
+shareButton.setAttribute("aria-label", "Copy page link");
+if (image) image.setAttribute("src", originalSrc);
+}, 1400);
+});
+});
+}
 
-      // Create no results message
-      let noResultsMsg = document.querySelector(".no-results-message");
-      if (!noResultsMsg) {
-        noResultsMsg = document.createElement("div");
-        noResultsMsg.className = "no-results-message";
-        noResultsMsg.textContent = "No results found";
-        noResultsMsg.style.display = "none";
-        noResultsMsg.style.padding = "16px";
-        noResultsMsg.style.color = "#9CA3AF";
-        noResultsMsg.style.fontSize = "14px";
-        noResultsMsg.style.textAlign = "center";
-        searchInput.parentElement.parentElement.appendChild(noResultsMsg);
-      }
+// Search functionality for docs sidebar
+function initSearch() {
+const searchInput = document.querySelector(".sidebar-search input");
+const allLinks = document.querySelectorAll(
+".sidebar-comp-item, .sidebar-sub-item",
+);
+const allCategories = document.querySelectorAll(
+".sidebar-category, .subcategory-list details",
+);
 
-      searchInput.addEventListener("input", (e) => {
-        const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
+if (!searchInput) return;
 
-        if (searchTerm === "") {
-          // Show all items and categories when search is empty
-          allLinks.forEach((link) => {
-            (link as HTMLElement).style.display = "";
-          });
-          allCategories.forEach((category) => {
-            (category as HTMLElement).style.display = "";
-          });
-          noResultsMsg.style.display = "none";
-          return;
-        }
+// Create no results message
+let noResultsMsg = document.querySelector(".no-results-message");
+if (!noResultsMsg) {
+noResultsMsg = document.createElement("div");
+noResultsMsg.className = "no-results-message";
+noResultsMsg.textContent = "No results found";
+noResultsMsg.style.display = "none";
+noResultsMsg.style.padding = "16px";
+noResultsMsg.style.color = "#9CA3AF";
+noResultsMsg.style.fontSize = "14px";
+noResultsMsg.style.textAlign = "center";
+searchInput.parentElement.parentElement.appendChild(noResultsMsg);
+}
 
-        // Hide all categories first
-        allCategories.forEach((category) => {
-          (category as HTMLElement).style.display = "none";
-        });
+searchInput.addEventListener("input", (e) => {
+const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
 
-        let hasResults = false;
+if (searchTerm === "") {
+// Show all items and categories when search is empty
+allLinks.forEach((link) => {
+(link as HTMLElement).style.display = "";
+});
+allCategories.forEach((category) => {
+(category as HTMLElement).style.display = "";
+});
+noResultsMsg.style.display = "none";
+return;
+}
 
-        // Show matching items and their parent categories
-        allLinks.forEach((link) => {
-          const text = link.textContent?.toLowerCase() || "";
-          if (text.includes(searchTerm)) {
-            (link as HTMLElement).style.display = "";
-            hasResults = true;
+// Hide all categories first
+allCategories.forEach((category) => {
+(category as HTMLElement).style.display = "none";
+});
 
-            // Show parent categories
-            let parent = link.closest(
-              ".sidebar-category, .subcategory-list details",
-            );
-            while (parent) {
-              (parent as HTMLElement).style.display = "";
-              const parentElement = parent.parentElement?.closest(
-                ".sidebar-category, .subcategory-list details",
-              );
-              parent = parentElement || null;
-            }
-          } else {
-            (link as HTMLElement).style.display = "none";
-          }
-        });
+let hasResults = false;
 
-        // Show or hide no results message
-        noResultsMsg.style.display = hasResults ? "none" : "block";
-      });
-    }
+// Show matching items and their parent categories
+allLinks.forEach((link) => {
+const text = link.textContent?.toLowerCase() || "";
+if (text.includes(searchTerm)) {
+(link as HTMLElement).style.display = "";
+hasResults = true;
 
-    // Update active state on page load
-    document.addEventListener("DOMContentLoaded", () => {
-      updateActiveState();
-      initTitleShareButtons();
-      initSearch();
-    });
-    // Update active state on navigation
-    document.addEventListener("astro:page-load", () => {
-      updateActiveState();
-      initTitleShareButtons();
-      initSearch();
-    });
-    // Also update on popstate (browser back/forward)
-    window.addEventListener("popstate", () => {
-      updateActiveState();
-      initTitleShareButtons();
-      initSearch();
-    });
-  </script>
+// Show parent categories
+let parent = link.closest(
+".sidebar-category, .subcategory-list details",
+);
+while (parent) {
+(parent as HTMLElement).style.display = "";
+const parentElement = parent.parentElement?.closest(
+".sidebar-category, .subcategory-list details",
+);
+parent = parentElement || null;
+}
+} else {
+(link as HTMLElement).style.display = "none";
+}
+});
+
+// Show or hide no results message
+noResultsMsg.style.display = hasResults ? "none" : "block";
+});
+}
+
+// Update active state on page load
+document.addEventListener("DOMContentLoaded", () => {
+updateActiveState();
+initTitleShareButtons();
+initSearch();
+});
+// Update active state on navigation
+document.addEventListener("astro:page-load", () => {
+updateActiveState();
+initTitleShareButtons();
+initSearch();
+});
+// Also update on popstate (browser back/forward)
+window.addEventListener("popstate", () => {
+updateActiveState();
+initTitleShareButtons();
+initSearch();
+});
+</script>
 </Layout>

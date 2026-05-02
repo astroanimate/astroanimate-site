@@ -1,19 +1,18 @@
 ---
-import DocLayout from "../../layouts/DocLayout.astro";
-import "../../styles/Global.css";
-import { AnimatedButton } from "@astroanimate/core";
+import DocLayout from "../../../layouts/DocLayout.astro";
+import RelatedComponents from "../../../components/RelatedComponents.astro";
+import "../../../styles/Global.css";
+import ScaleIn from "@astroanimate/core/ScaleIn";
 ---
 
-<DocLayout title="Animated Button">
-    <section id="animated-button">
-        <h1 class="docs-title">Animated Button</h1>
+<DocLayout title="ScaleIn">
+    <section id="scale-in">
+        <h1 class="docs-title">ScaleIn <button type="button" class="docs-title-share" aria-label="Copy page link"><img src="/images/share-link.png" alt="" width="16" height="16" /></button></h1>
 
         <div class="docs-intro-section">
             <p class="docs-paragraph">
-                Animated Button is an Astro animation component that renders a <span
-                    class="keyword">&lt;button&gt;</span
-                > or <span class="keyword">&lt;a&gt;</span> with CSS-only hover effects
-                and zero client-side JavaScript.
+                Scroll-reveal animation that scales content from an initial
+                scale to full size when entering the viewport.
             </p>
         </div>
 
@@ -23,23 +22,25 @@ import { AnimatedButton } from "@astroanimate/core";
             <div class="created-by">
                 <span class="created-by-label">Created by</span>
                 <div class="created-by-avatar">
-                    <img src="/images/barsan.jpeg" alt="Creator" />
+                    <img src="/images/vipin.jpg" alt="Creator" />
                 </div>
 
-                <span class="created-by-name">Barsan</span>
+                <span class="created-by-name">Vipin</span>
             </div>
             <div class="playground-container">
                 <div class="playground-preview">
-                    <div class="button-showcase">
-                        <AnimatedButton variant="fill">Fill</AnimatedButton>
-                        <AnimatedButton variant="shimmer"
-                            >shimmer</AnimatedButton
-                        >
+                    <div class="scale-showcase">
+                        <ScaleIn enhance={true}>
+                            <h1>Scale In - Default</h1>
+                        </ScaleIn>
 
-                        <AnimatedButton variant="border">Border</AnimatedButton>
-                        <AnimatedButton variant="none">None</AnimatedButton>
-                        <AnimatedButton disabled>Disabled</AnimatedButton>
-                        <AnimatedButton href="/docs">Go to docs</AnimatedButton>
+                        <ScaleIn enhance={true} duration={2000}>
+                            <h1>Scale In - Enhanced</h1>
+                        </ScaleIn>
+
+                        <ScaleIn enhance={true}>
+                            <h1>Scale In - Enhanced with props</h1>
+                        </ScaleIn>
                     </div>
                 </div>
                 <div class="playground-code">
@@ -55,14 +56,11 @@ import { AnimatedButton } from "@astroanimate/core";
                         </div>
                     </div>
                     <div class="code-content">
-                        <pre><code><span class="keyword">import</span> &#123; AnimatedButton &#125; <span class="keyword">from</span> <span class="string">'@astroanimate/core/AnimatedButton'</span>;
+                        <pre><code><span class="keyword">import</span> <span class="component-name">ScaleIn</span> <span class="keyword">from</span> <span class="string">'@astroanimate/core/ScaleIn'</span>;
 
-<span class="tag">&lt;AnimatedButton</span> <span class="attr">variant</span>=<span class="string">"fill"</span><span class="tag">&gt;</span>Fill<span class="tag">&lt;/AnimatedButton&gt;</span>
-<span class="tag">&lt;AnimatedButton</span> <span class="attr">variant</span>=<span class="string">"shimmer"</span><span class="tag">&gt;</span>Shimmer<span class="tag">&lt;/AnimatedButton&gt;</span>
-<span class="tag">&lt;AnimatedButton</span> <span class="attr">variant</span>=<span class="string">"border"</span><span class="tag">&gt;</span>Border<span class="tag">&lt;/AnimatedButton&gt;</span>
-<span class="tag">&lt;AnimatedButton</span> <span class="attr">variant</span>=<span class="string">"none"</span><span class="tag">&gt;</span>None<span class="tag">&lt;/AnimatedButton&gt;</span>
-<span class="tag">&lt;AnimatedButton</span> <span class="attr">disabled</span><span class="tag">&gt;</span>Disabled<span class="tag">&lt;/AnimatedButton&gt;</span>
-<span class="tag">&lt;AnimatedButton</span> <span class="attr">href</span>=<span class="string">"/docs"</span><span class="tag">&gt;</span>Go to docs<span class="tag">&lt;/AnimatedButton&gt;</span></code></pre>
+&lt;<span class="component">ScaleIn</span> <span class="prop">enhance</span>=<span class="boolean">&#123;true&#125;</span>&gt;
+  <span class="tag">&lt;h1&gt;</span>Your content here<span class="tag">&lt;/h1&gt;</span>
+&lt;/<span class="component">ScaleIn</span>&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -92,20 +90,21 @@ import { AnimatedButton } from "@astroanimate/core";
                         ></path>
                     </svg>
                 </div>
-                <pre><code><span class="keyword">npm</span> install <span class="string">@astro-animate/button</span></code></pre>
+                <pre><code><span class="keyword">npm</span> install <span class="string">@astroanimate/core</span></code></pre>
             </div>
         </div>
 
         <!-- QUICK START SECTION -->
         <div class="docs-intro-section" id="example">
-            <h2 class="docs-subtitle">Quick Start</h2>
+            <h2 class="docs-subtitle">Usage</h2>
             <div class="docs-code-block">
-                <pre><code><span class="comment">---</span>
-<span class="keyword">import</span> <span class="component-name">AnimatedButton</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/AnimatedButton"</span>;
-<span class="comment">---</span>
+                <pre><code><span class="keyword">import</span> <span class="component-name">ScaleIn</span> <span class="keyword">from</span> <span class="string">'@astroanimate/core/ScaleIn'</span>;
 
-&lt;<span class="component">AnimatedButton</span> <span class="prop">variant</span>=<span class="string">"shimmer"</span>&gt;Explore&lt;/<span class="component">AnimatedButton</span>&gt;</code></pre>
+&lt;<span class="component">ScaleIn</span> <span class="prop">enhance</span>=<span class="boolean">&#123;true&#125;</span>&gt;
+  <span class="tag">&lt;h1&gt;</span>Your content here<span class="tag">&lt;/h1&gt;</span>
+&lt;/<span class="component">ScaleIn</span>&gt;</code></pre>
             </div>
+            <p class="docs-paragraph">Applies scale animation when element scrolls into view.</p>
         </div>
 
         <!-- PROPS SECTION -->
@@ -123,54 +122,73 @@ import { AnimatedButton } from "@astroanimate/core";
                     </thead>
                     <tbody>
                         <tr>
-                            <td><code>variant</code></td>
+                            <td><code>enhance</code></td>
+                            <td><code>boolean</code></td>
+                            <td><code>false</code></td>
                             <td
-                                ><code>shimmer</code>
-                                <code>fill</code>
-                                <code>border</code>
-                                <code>none</code></td
-                            >
-                            <td><code>none</code></td>
-                            <td
-                                >Selects which built-in visual effect classes
-                                and decorative spans are rendered.</td
+                                >Opt-in to JS enhancement (Scroll Reveal). If
+                                false, renders visible immediately with no
+                                animation</td
                             >
                         </tr>
                         <tr>
-                            <td><code>href</code></td>
-                            <td><code>string</code></td>
-                            <td>-</td>
+                            <td><code>initialScale</code></td>
+                            <td><code>number</code></td>
+                            <td><code>0.9</code></td>
+                            <td>Initial scale value to start from</td>
+                        </tr>
+                        <tr>
+                            <td><code>duration</code></td>
+                            <td><code>number</code></td>
+                            <td><code>600</code></td>
+                            <td>Duration of animation in milliseconds</td>
+                        </tr>
+                        <tr>
+                            <td><code>delay</code></td>
+                            <td><code>number</code></td>
+                            <td><code>0</code></td>
                             <td
-                                >When provided, the root element is rendered as
-                                &lt;a&gt;; otherwise it renders as
-                                &lt;button&gt;</td
+                                >Delay before animation starts in milliseconds</td
                             >
+                        </tr>
+                        <tr>
+                            <td><code>easing</code></td>
+                            <td><code>string</code></td>
+                            <td
+                                ><code>cubic-bezier(0.34, 1.56, 0.64, 1)</code
+                                ></td
+                            >
+                            <td>CSS easing function</td>
+                        </tr>
+                        <tr>
+                            <td><code>once</code></td>
+                            <td><code>boolean</code></td>
+                            <td><code>true</code></td>
+                            <td
+                                >Whether animation should only play once. If
+                                false, reverses when scrolling out</td
+                            >
+                        </tr>
+                        <tr>
+                            <td><code>margin</code></td>
+                            <td><code>string</code></td>
+                            <td><code>0px 0px -10% 0px</code></td>
+                            <td>IntersectionObserver margin</td>
                         </tr>
                         <tr>
                             <td><code>class</code></td>
                             <td><code>string</code></td>
-                            <td><code>“ ”</code></td>
-                            <td
-                                >Appends custom classes to the root element
-                                alongside internal classes.</td
-                            >
+                            <td><code>-</code></td>
+                            <td>Optional CSS class for the root element</td>
                         </tr>
                         <tr>
-                            <td><code>shimmer Color</code></td>
-                            <td><code>string</code></td>
-                            <td><code>"rgba(255, 255, 255, 0.4)"</code></td>
+                            <td><code>as</code></td>
+                            <td><code>ScaleInTag</code></td>
+                            <td><code>div</code></td>
                             <td
-                                >Sets --shimmer-color inline when
-                                variant="shimmer".</td
-                            >
-                        </tr>
-                        <tr>
-                            <td><code>...rest</code></td>
-                            <td><code>Record&lt;string, unknown&gt;</code></td>
-                            <td>-</td>
-                            <td
-                                >Additional attributes are forwarded to the root
-                                element.</td
+                                >HTML tag to use for the root element (div,
+                                section, article, aside, main, header, footer,
+                                nav, span, p, h1-h6, li, ul, ol, a, button)</td
                             >
                         </tr>
                     </tbody>
@@ -179,151 +197,117 @@ import { AnimatedButton } from "@astroanimate/core";
         </div>
 
         <!-- HOW IT WORKS SECTION -->
-        <div class="docs-intro-section" id="how-it-works">
+        <!-- <div class="docs-intro-section" id="how-it-works">
             <h2 class="docs-subtitle">How It Works</h2>
-            <p class="docs-paragraph">✅ Use when:</p>
-            <ul class="docs-list">
-                <li>
-                    You want animated button visuals without shipping client JS.
-                </li>
-                <li>
-                    You need SSR-safe markup with visible content before any
-                    enhancement.
-                </li>
-                <li>
-                    You need a single component that can act as link or button.
-                </li>
-            </ul>
+            <div class="docs-content">
+                <p class="docs-paragraph">
+                    ScaleIn uses the IntersectionObserver API to detect when
+                    elements enter the viewport and applies a CSS scale
+                    animation. The component is designed with performance and
+                    accessibility in mind.
+                </p>
+                <h3 class="docs-subtitle">Animation Process:</h3>
+                <ul class="docs-list">
+                    <li>
+                        Element starts with <code
+                            >transform: scale(initialScale)</code
+                        > and <code>opacity: 0</code>
+                    </li>
+                    <li>
+                        When element enters viewport (based on margin), scale
+                        transitions to <code>1</code> and opacity to <code
+                            >1</code
+                        >
+                    </li>
+                    <li>
+                        Animation uses CSS transitions for smooth 60fps
+                        performance
+                    </li>
+                    <li>
+                        If <code>once</code> is false, animation reverses when scrolling
+                        out of viewport
+                    </li>
+                </ul>
+            </div>
+        </div> -->
 
-            <p>❌ Avoid when:</p>
+        <!-- USE WHEN SECTION -->
+        <div class="docs-intro-section" id="use-when">
+            <h2 class="docs-subtitle">Use When</h2>
             <ul class="docs-list">
-                <li>
-                    You need programmable animation timing controls like
-                    duration or delay per instance (Not exposed in current
-                    implementation.).
-                </li>
-                <li>
-                    You need non-hover interaction animation triggers such as
-                    in-view or click-sequenced timelines (Not exposed in current
-                    implementation.).
-                </li>
-                <li>
-                    You need fully custom variant presets beyond <span
-                        class="keyword">none, shimmer, fill, border;</span
-                    > use custom classes/CSS instead.
-                </li>
+                <li>Content should animate when scrolling into view</li>
+                <li>Need scale-based entrance animations</li>
+                <li>Want progressive disclosure of sections</li>
+            </ul>
+        </div>
+
+        <!-- AVOID WHEN SECTION -->
+        <div class="docs-intro-section" id="avoid-when">
+            <h2 class="docs-subtitle">Avoid When</h2>
+            <ul class="docs-list">
+                <li>Content must be visible immediately without JS</li>
+                <li>Need complex multi-stage animations</li>
+                <li>Require continuous looping animations</li>
             </ul>
         </div>
 
         <!-- ACCESSIBILITY SECTION -->
         <div class="docs-intro-section" id="accessibility">
             <h2 class="docs-subtitle">Accessibility</h2>
-            <ul class="docs-list">
-                <li>
-                    Decorative animation layers are marked <span class="keyword"
-                        >aria-hidden="true"</span
-                    >
-                </li>
-                <li>
-                    Reduced motion is explicitly handled via @media
-                    (prefers-reduced-motion: reduce).
-                </li>
-                <li>
-                    No additional ARIA role/state management is added by the
-                    component.
-                </li>
-            </ul>
+            <div>
+                <p class="docs-paragraph">
+                    ScaleIn is built with accessibility as a priority:
+                </p>
+                <ul class="docs-list">
+                    <li>
+                        Respects <code class="docs-code"
+                            >prefers-reduced-motion</code
+                        > media query
+                    </li>
+                    <li>
+                        Disables all animations when user prefers reduced motion
+                    </li>
+                    <li>Renders visible by default without JS</li>
+                </ul>
+            </div>
         </div>
 
-        <!-- PERFORMANCE NOTES SECTION -->
+        <!-- PERFORMANCE SECTION -->
         <div class="docs-intro-section" id="performance-notes">
-            <h2 class="docs-subtitle">Performance Notes</h2>
-            <ul class="docs-list">
-                <li>
-                    No hydration directives and no <span class="keyword">
-                        &lt;script&gt;
-                    </span> block are present, so runtime JS payload from this component
-                    is effectively zero.
-                </li>
-                <li>
-                    Behavior is CSS-first and SSR-compatible because
-                    markup/styles are produced at render time.
-                </li>
-                <li>
-                    Hover effects rely on extra spans for some variants, which
-                    adds small DOM overhead.
-                </li>
-            </ul>
+            <h2 class="docs-subtitle">Performance</h2>
+            <div>
+                <ul class="docs-list">
+                    <li>
+                        Uses IntersectionObserver for efficient scroll detection
+                    </li>
+                    <li>
+                        WeakMap prevents memory leaks with cleanup on DOM
+                        removal
+                    </li>
+                    <li>MutationObserver handles element removal from DOM</li>
+                </ul>
+            </div>
         </div>
 
-        <!-- EDGE CASES SECTION -->
-        <div class="docs-intro-section" id="edge-cases">
-            <h2 class="docs-subtitle">Edge Cases</h2>
-            <ul class="docs-list">
-                <li>
-                    Passing href changes semantics and keyboard behavior to a
-                    link element.
-                </li>
-                <li>
-                    <span class="keyword">shimmerColor</span> has no effect unless
-                    <span class="keyword">variant="shimmer"</span>.
-                </li>
-                <li>
-                    Border and fill visuals assume sufficient <span
-                        class="keyword"
-                        >text/background
-                    </span> contrast from consumer styling.
-                </li>
-                <li>
-                    Unknown variant values are typed against in TS, but fallback
-                    class resolution becomes empty at runtime.
-                </li>
-            </ul>
-        </div>
-
-        <!-- COMPONENTS API SECTION -->
-        <div class="docs-intro-section" id="components-api">
-            <h2 class="docs-subtitle">Components API</h2>
-            <ul class="docs-list">
-                <li>
-                    <a href="#animated-button" class="component-link"
-                        >&lt;AnimatedButton /&gt;</a>
-                </li>
-                <li>
-                    <a href="#popper" class="component-link"
-                        >&lt;Popper /&gt;</a>
-                </li>
-                <li>
-                    <a href="#text-field" class="component-link"
-                        >&lt;TextField /&gt;</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="docs-intro-section" id="components-api">
+        <!-- CREDITS SECTION -->
+        <div class="docs-intro-section" id="credits">
             <h2 class="docs-subtitle">Credits</h2>
             <ul class="docs-list">
                 <li>
                     Credit to <a
-                        href="https://github.com/barsan"
-                        class="credits-link">@barsan</a>
+                        href="https://github.com/Krishvipin"
+                        target="_blank"
+                        class="credits-link">@vipin</a
+                    >
                 </li>
             </ul>
         </div>
 
         <!-- RELATED COMPONENTS SECTION -->
-        <div class="docs-intro-section" id="related-components">
-            <h2 class="docs-subtitle">Related Components</h2>
-            <div class="related-grid">
-                <div class="related-card empty"></div>
-                <div class="related-card empty"></div>
-                <div class="related-card empty"></div>
-                <div class="related-card empty"></div>
-            </div>
-        </div>
+        <RelatedComponents items={[{ name: "FadeInText", href: "/docs/fadein", image: "/images/fadein.png" }]} />
 
         <div class="docs-footer-nav" style="justify-content: space-between;">
-            <a href="/docs/Sec-ProgressBar" class="prev-link">
+            <a href="/docs/typewritter" class="prev-link">
                 <span class="label">PREVIOUS</span>
                 <span class="title">
                     <svg
@@ -339,13 +323,14 @@ import { AnimatedButton } from "@astroanimate/core";
                         ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
                             points="12 5 19 12 12 19"></polyline></svg
                     >
-                    Progress Bar
+                    TypewriterText
+
                 </span>
             </a>
-            <a href="/docs/Sec-Tooltip" class="next-link">
+            <a href="/docs/reveal-image" class="next-link">
                 <span class="label">NEXT</span>
                 <span class="title">
-                    Tooltip
+                    RevealImage
                     <svg
                         width="18"
                         height="18"
@@ -366,17 +351,16 @@ import { AnimatedButton } from "@astroanimate/core";
     <Fragment slot="toc">
         <div class="toc-header">IN THIS PAGE</div>
         <nav class="toc-nav">
-            <a href="#animated-button" class="active">Animated Button</a>
+            <a href="#scale-in" class="active">Scale In</a>
             <a href="#preview-playground">Preview/Playground</a>
             <a href="#installation">Installation</a>
-            <a href="#quick-start">Quick Start</a>
             <a href="#props">Props</a>
             <a href="#how-it-works">How It Works</a>
+            <a href="#use-when">Use When</a>
+            <a href="#avoid-when">Avoid When</a>
             <a href="#accessibility">Accessibility</a>
             <a href="#performance-notes">Performance Notes</a>
-            <a href="#edge-cases">Edge Cases</a>
-            <a href="#components-api">Components API</a>
-            <a href="#related-components">Related Components</a>
+            <a href="#credits">Credits</a>
         </nav>
     </Fragment>
 </DocLayout>
@@ -427,7 +411,7 @@ import { AnimatedButton } from "@astroanimate/core";
 
     .playground-container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        /* grid-template-columns: 1fr 1fr; */
         border: 1px solid #1f2937;
         background: #050505;
         border-radius: 12px;
@@ -443,129 +427,21 @@ import { AnimatedButton } from "@astroanimate/core";
         justify-content: center;
     }
 
-    .button-showcase {
+    .typewriter-showcase {
         display: flex;
         flex-direction: column;
         gap: 20px;
         width: 100%;
-        max-width: 300px;
     }
 
-    .demo-btn {
-        padding: 14px 28px;
-        border: 2px solid transparent;
-        background: #000;
-        color: #fff;
-        font-family: "Inter", sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border-radius: 10px;
-        text-align: center;
-        min-height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .demo-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .default-btn {
-        background: #000;
-        color: #fff;
-        border: 2px solid #000;
-    }
-
-    .default-btn:hover {
-        background: #333;
-        border-color: #333;
-    }
-
-    .outline-btn {
-        background: transparent;
-        border: 2px solid #000;
+    .demo-typewriter {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 18px;
         color: #000;
-    }
-
-    .outline-btn:hover {
-        background: #000;
-        color: #fff;
-    }
-
-    .shimmer-btn {
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-        color: #fff;
-        border: none;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .shimmer-btn::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.3),
-            transparent
-        );
-        animation: shimmer 2s infinite;
-    }
-
-    @keyframes shimmer {
-        0% {
-            left: -100%;
-        }
-        100% {
-            left: 100%;
-        }
-    }
-
-    .shimmer-btn:hover {
-        background: linear-gradient(90deg, #764ba2 0%, #667eea 100%);
-    }
-
-    .custom-btn {
-        background: #10b981;
-        color: #fff;
-        border: none;
-    }
-
-    .custom-btn:hover {
-        background: #059669;
-    }
-
-    .hover-btn {
-        background: #8b5cf6;
-        color: #fff;
-        border: none;
-    }
-
-    .hover-btn:hover {
-        background: #7c3aed;
-        transform: scale(1.05);
-    }
-
-    .link-btn {
-        background: transparent;
-        border: none;
-        color: #667eea;
-        text-decoration: underline;
-        padding: 0;
-        min-height: auto;
-    }
-
-    .link-btn:hover {
-        color: #764ba2;
-        text-decoration: none;
+        background: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
     }
 
     .playground-code {
@@ -689,10 +565,6 @@ import { AnimatedButton } from "@astroanimate/core";
         color: #e0e0e0;
     }
 
-    /* .keyword {
-        color: #569CD6;
-    } */
-
     .string {
         color: #ce9178;
     }
@@ -721,7 +593,6 @@ import { AnimatedButton } from "@astroanimate/core";
         width: 100%;
         border-collapse: separate;
         border-spacing: 0;
-        /* border: 1px solid #1F2937; */
         background: transparent;
         border-radius: 8px;
         overflow: hidden;
@@ -742,7 +613,6 @@ import { AnimatedButton } from "@astroanimate/core";
 
     .docs-table th {
         background: #0b0d10;
-        /* color: #F9FAFB; */
         font-weight: 500;
         font-size: 14px;
         border-bottom: 1px solid #1f2937;
@@ -768,7 +638,6 @@ import { AnimatedButton } from "@astroanimate/core";
     }
 
     .docs-table td:not(:first-child) code {
-        /* color: #E5E7EB; */
         background: #1f2937;
         padding: 2px 6px;
         border-radius: 4px;
@@ -841,6 +710,41 @@ import { AnimatedButton } from "@astroanimate/core";
         padding-top: 40px;
         border-top: 1px solid #1f2937;
     }
+
+    /* .prev-link,
+    .next-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #9ca3af;
+        font-family: "Inter", sans-serif;
+        transition: color 0.2s ease;
+    } */
+
+    /* .prev-link:hover,
+    .next-link:hover {
+        color: #f9fafb;
+    }
+
+    .prev-link svg,
+    .next-link svg {
+        flex-shrink: 0;
+    }
+
+    .label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: #ff7f1f;
+    }
+
+    .title {
+        font-size: 16px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    } */
 
     .component-link {
         color: #9ca3af;

@@ -177,9 +177,10 @@ import TypewriterText from "@astroanimate/core/TypewriterText";
 
     copyButtons.forEach((btn) => {
       btn.addEventListener("click", async () => {
-        const cardBody = btn.closest(".card-body");
-        const codeText =
-          cardBody?.querySelector(".code-text")?.textContent ?? "";
+const cardBody = btn.closest(".card-body");
+        // const codeText =
+        //   cardBody?.querySelector(".code-text")?.textContent ?? "";
+          const codeText = "npm install @astroanimate/core";
 
         // Get reference to the two states within the SVG
         const copyState = btn.querySelector<HTMLElement>(".icon-copy-state");

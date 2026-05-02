@@ -1,17 +1,19 @@
 ---
-import DocLayout from "../../layouts/DocLayout.astro";
-import "../../styles/Global.css";
-import ScaleIn from "@astroanimate/core/ScaleIn";
+import DocLayout from "../../../layouts/DocLayout.astro";
+import RelatedComponents from "../../../components/RelatedComponents.astro";
+import "../../../styles/Global.css";
+import ProgressBar from "@astroanimate/core/ProgressBar";
 ---
 
-<DocLayout title="Scale In">
-    <section id="scale-in">
-        <h1 class="docs-title">ScaleIn</h1>
+<DocLayout title="ProgressBar">
+    <section id="progressbar">
+        <h1 class="docs-title">ProgressBar <button type="button" class="docs-title-share" aria-label="Copy page link"><img src="/images/share-link.png" alt="" width="16" height="16" /></button></h1>
 
         <div class="docs-intro-section">
             <p class="docs-paragraph">
-                Scroll-reveal animation that scales content from an initial
-                scale to full size when entering the viewport.
+                Renders a customizable progress bar with size variants, color
+                options, and built-in accessibility support. Uses CSS
+                transitions for smooth updates with no JavaScript required.
             </p>
         </div>
 
@@ -23,23 +25,17 @@ import ScaleIn from "@astroanimate/core/ScaleIn";
                 <div class="created-by-avatar">
                     <img src="/images/barsan.jpeg" alt="Creator" />
                 </div>
-
-                <span class="created-by-name">Vipin</span>
+                <span class="created-by-name">Barsan</span>
             </div>
             <div class="playground-container">
                 <div class="playground-preview">
-                    <div class="scale-showcase">
-                        <ScaleIn enhance={true}>
-                            <h1>Scale In - Default</h1>
-                        </ScaleIn>
-
-                        <ScaleIn enhance={true} duration={2000}>
-                            <h1>Scale In - Enhanced</h1>
-                        </ScaleIn>
-
-                        <ScaleIn enhance={true}>
-                            <h1>Scale In - Enhanced with props</h1>
-                        </ScaleIn>
+                    <div
+                        class="progressbar-showcase"
+                        style="padding: 40px; min-height: 200px; display: flex; align-items: center; justify-content: center; width: 100%;"
+                    >
+                        <div style="width: 100%; max-width: 400px;">
+                            <ProgressBar value={65} label="Loading..." />
+                        </div>
                     </div>
                 </div>
                 <div class="playground-code">
@@ -55,11 +51,9 @@ import ScaleIn from "@astroanimate/core/ScaleIn";
                         </div>
                     </div>
                     <div class="code-content">
-                        <pre><code><span class="keyword">import</span> <span class="component-name">ScaleIn</span> <span class="keyword">from</span> <span class="string">'@astroanimate/core/ScaleIn'</span>;
+                        <pre><code><span class="keyword">import</span> <span class="component-name">ProgressBar</span> <span class="keyword">from</span> <span class="string">'@astroanimate/core/ProgressBar'</span>;
 
-&lt;<span class="component">ScaleIn</span> <span class="prop">enhance</span>=<span class="boolean">&#123;true&#125;</span>&gt;
-  <span class="tag">&lt;h1&gt;</span>Your content here<span class="tag">&lt;/h1&gt;</span>
-&lt;/<span class="component">ScaleIn</span>&gt;</code></pre>
+&lt;<span class="component">ProgressBar</span> <span class="prop">value</span>=&#123;<span class="string">65</span>&#125; <span class="prop">label</span>=<span class="string">"Loading..."</span> /&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -94,15 +88,16 @@ import ScaleIn from "@astroanimate/core/ScaleIn";
         </div>
 
         <!-- QUICK START SECTION -->
-        <div class="docs-intro-section" id="example">
+        <div class="docs-intro-section" id="usage">
             <h2 class="docs-subtitle">Usage</h2>
             <div class="docs-code-block">
-                <pre><code><span class="keyword">import</span> <span class="component-name">ScaleIn</span> <span class="keyword">from</span> <span class="string">'@astroanimate/core/ScaleIn'</span>;
+                <pre><code><span class="comment">---</span>
+<span class="keyword">import</span> <span class="component-name">ProgressBar</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/ProgressBar"</span>;
+<span class="comment">---</span>
 
-&lt;<span class="component">ScaleIn</span> <span class="prop">enhance</span>=<span class="boolean">&#123;true&#125;</span>&gt;
-  <span class="tag">&lt;h1&gt;</span>Your content here<span class="tag">&lt;/h1&gt;</span>
-&lt;/<span class="component">ScaleIn</span>&gt;</code></pre>
+&lt;<span class="component">ProgressBar</span> <span class="prop">value</span>=&#123;<span class="string">65</span>&#125; <span class="prop">label</span>=<span class="string">"Loading..."</span> /&gt;</code></pre>
             </div>
+            <p class="docs-paragraph">Displays a progress bar at 65% completion with an optional label.</p>
         </div>
 
         <!-- PROPS SECTION -->
@@ -119,123 +114,94 @@ import ScaleIn from "@astroanimate/core/ScaleIn";
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><code>enhance</code></td>
-                            <td><code>boolean</code></td>
-                            <td><code>false</code></td>
-                            <td
-                                >Opt-in to JS enhancement (Scroll Reveal). If
-                                false, renders visible immediately with no
-                                animation</td
-                            >
-                        </tr>
-                        <tr>
-                            <td><code>initialScale</code></td>
-                            <td><code>number</code></td>
-                            <td><code>0.9</code></td>
-                            <td>Initial scale value to start from</td>
-                        </tr>
-                        <tr>
-                            <td><code>duration</code></td>
-                            <td><code>number</code></td>
-                            <td><code>600</code></td>
-                            <td>Duration of animation in milliseconds</td>
-                        </tr>
-                        <tr>
-                            <td><code>delay</code></td>
-                            <td><code>number</code></td>
-                            <td><code>0</code></td>
-                            <td
-                                >Delay before animation starts in milliseconds</td
-                            >
-                        </tr>
-                        <tr>
-                            <td><code>easing</code></td>
-                            <td><code>string</code></td>
-                            <td
-                                ><code>cubic-bezier(0.34, 1.56, 0.64, 1)</code
-                                ></td
-                            >
-                            <td>CSS easing function</td>
-                        </tr>
-                        <tr>
-                            <td><code>once</code></td>
-                            <td><code>boolean</code></td>
-                            <td><code>true</code></td>
-                            <td
-                                >Whether animation should only play once. If
-                                false, reverses when scrolling out</td
-                            >
-                        </tr>
-                        <tr>
-                            <td><code>margin</code></td>
-                            <td><code>string</code></td>
-                            <td><code>0px 0px -10% 0px</code></td>
-                            <td>IntersectionObserver margin</td>
-                        </tr>
-                        <tr>
-                            <td><code>class</code></td>
-                            <td><code>string</code></td>
-                            <td><code>-</code></td>
-                            <td>Optional CSS class for the root element</td>
-                        </tr>
-                        <tr>
-                            <td><code>as</code></td>
-                            <td><code>ScaleInTag</code></td>
-                            <td><code>div</code></td>
-                            <td
-                                >HTML tag to use for the root element (div,
-                                section, article, aside, main, header, footer,
-                                nav, span, p, h1-h6, li, ul, ol, a, button)</td
-                            >
-                        </tr>
+                        <tr
+                            ><td><code>value</code></td><td
+                                ><code>number</code></td
+                            ><td><code>-</code></td><td
+                                >Progress value (0–max). Required</td
+                            ></tr
+                        >
+                        <tr
+                            ><td><code>max</code></td><td
+                                ><code>number</code></td
+                            ><td><code>100</code></td><td
+                                >Maximum value used to compute percentage</td
+                            ></tr
+                        >
+                        <tr
+                            ><td><code>label</code></td><td
+                                ><code>string</code></td
+                            ><td><code>-</code></td><td
+                                >Label text displayed above the progress bar</td
+                            ></tr
+                        >
+                        <tr
+                            ><td><code>size</code></td><td
+                                ><code>"small" | "medium" | "large"</code></td
+                            ><td><code>"medium"</code></td><td
+                                >Size variant controlling height and label size</td
+                            ></tr
+                        >
+                        <tr
+                            ><td><code>color</code></td><td
+                                ><code>string</code></td
+                            ><td><code>"#3b82f6"</code></td><td
+                                >Bar fill color</td
+                            ></tr
+                        >
+                        <tr
+                            ><td><code>trackColor</code></td><td
+                                ><code>string</code></td
+                            ><td><code>"#e5e7eb"</code></td><td
+                                >Track background color</td
+                            ></tr
+                        >
+                        <tr
+                            ><td><code>class</code></td><td
+                                ><code>string</code></td
+                            ><td><code>-</code></td><td
+                                >Optional class applied to the root element</td
+                            ></tr
+                        >
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- HOW IT WORKS SECTION -->
-        <!-- <div class="docs-intro-section" id="how-it-works">
-            <h2 class="docs-subtitle">How It Works</h2>
-            <div class="docs-content">
-                <p class="docs-paragraph">
-                    ScaleIn uses the IntersectionObserver API to detect when
-                    elements enter the viewport and applies a CSS scale
-                    animation. The component is designed with performance and
-                    accessibility in mind.
-                </p>
-                <h3 class="docs-subtitle">Animation Process:</h3>
-                <ul class="docs-list">
-                    <li>
-                        Element starts with <code
-                            >transform: scale(initialScale)</code
-                        > and <code>opacity: 0</code>
-                    </li>
-                    <li>
-                        When element enters viewport (based on margin), scale
-                        transitions to <code>1</code> and opacity to <code
-                            >1</code
-                        >
-                    </li>
-                    <li>
-                        Animation uses CSS transitions for smooth 60fps
-                        performance
-                    </li>
-                    <li>
-                        If <code>once</code> is false, animation reverses when scrolling
-                        out of viewport
-                    </li>
-                </ul>
-            </div>
-        </div> -->
+        <!-- BEHAVIOR SECTION -->
+        <div class="docs-intro-section" id="behavior">
+            <h2 class="docs-subtitle">Behavior</h2>
+            <ul class="docs-list">
+                <li>
+                    Progress value is clamped between <code class="docs-code"
+                        >0</code
+                    > and <code class="docs-code">max</code> to prevent invalid states
+                </li>
+                <li>
+                    Percentage width is computed automatically from <code
+                        class="docs-code">value / max</code
+                    >
+                </li>
+                <li>
+                    Updates to <code class="docs-code">value</code> animate smoothly
+                    using CSS transitions
+                </li>
+                <li>Label is optional and only rendered when provided</li>
+                <li>
+                    No JavaScript is used — all updates rely on reactive
+                    rendering
+                </li>
+            </ul>
+        </div>
 
         <!-- USE WHEN SECTION -->
         <div class="docs-intro-section" id="use-when">
             <h2 class="docs-subtitle">Use When</h2>
             <ul class="docs-list">
-                <li>Content should animate when scrolling into view</li>
-                <li>Need scale-based entrance animations</li>
-                <li>Want progressive disclosure of sections</li>
+                <li>Displaying file upload or download progress</li>
+                <li>Showing form completion status</li>
+                <li>Indicating loading states with percentage</li>
+                <li>Visualizing linear progress in UI workflows</li>
             </ul>
         </div>
 
@@ -243,9 +209,17 @@ import ScaleIn from "@astroanimate/core/ScaleIn";
         <div class="docs-intro-section" id="avoid-when">
             <h2 class="docs-subtitle">Avoid When</h2>
             <ul class="docs-list">
-                <li>Content must be visible immediately without JS</li>
-                <li>Need complex multi-stage animations</li>
-                <li>Require continuous looping animations</li>
+                <li>
+                    Interactive progress control is required (use a slider
+                    instead)
+                </li>
+                <li>
+                    Multi-segment or stacked progress visualization is needed
+                </li>
+                <li>
+                    Precise real-time updates faster than transition duration
+                    are required
+                </li>
             </ul>
         </div>
 
@@ -253,37 +227,45 @@ import ScaleIn from "@astroanimate/core/ScaleIn";
         <div class="docs-intro-section" id="accessibility">
             <h2 class="docs-subtitle">Accessibility</h2>
             <div>
-                <p class="docs-paragraph">
-                    ScaleIn is built with accessibility as a priority:
-                </p>
                 <ul class="docs-list">
                     <li>
-                        Respects <code class="keyword"
-                            >prefers-reduced-motion</code
-                        > media query
+                        Uses <code class="docs-code">role="progressbar"</code> with
+                        ARIA attributes:
+                        <ul
+                            class="docs-list"
+                            style="margin-left: 20px; margin-top: 8px;"
+                        >
+                            <li><code class="docs-code">aria-valuenow</code></li>
+                            <li><code class="docs-code">aria-valuemin</code></li>
+                            <li><code class="docs-code">aria-valuemax</code></li>
+                            <li>
+                                <code class="docs-code">aria-label</code> (if label
+                                provided)
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        Disables all animations when user prefers reduced motion
+                        Respects <code class="docs-code"
+                            >prefers-reduced-motion</code
+                        > by disabling width transitions
                     </li>
-                    <li>Renders visible by default without JS</li>
+                    <li>
+                        Supports dark mode via <code class="docs-code"
+                            >prefers-color-scheme</code
+                        >
+                    </li>
                 </ul>
             </div>
         </div>
 
         <!-- PERFORMANCE SECTION -->
-        <div class="docs-intro-section" id="performance-notes">
+        <div class="docs-intro-section" id="performance">
             <h2 class="docs-subtitle">Performance</h2>
             <div>
-                <p class="docs-paragraph">Optimized for maximum performance:</p>
                 <ul class="docs-list">
-                    <li>
-                        Uses IntersectionObserver for efficient scroll detection
-                    </li>
-                    <li>
-                        WeakMap prevents memory leaks with cleanup on DOM
-                        removal
-                    </li>
-                    <li>MutationObserver handles element removal from DOM</li>
+                    <li>CSS-only width transitions (no JavaScript overhead)</li>
+                    <li>Value clamping prevents layout inconsistencies</li>
+                    <li>Efficient rendering using inline CSS variables</li>
                 </ul>
             </div>
         </div>
@@ -294,26 +276,19 @@ import ScaleIn from "@astroanimate/core/ScaleIn";
             <ul class="docs-list">
                 <li>
                     Credit to <a
-                        href="https://github.com/vipin"
-                        class="credits-link">@vipin</a
+                        href="https://github.com/barsaan"
+                        target="_blank"
+                        class="credits-link">@barsan</a
                     >
                 </li>
             </ul>
         </div>
 
         <!-- RELATED COMPONENTS SECTION -->
-        <div class="docs-intro-section" id="related-components">
-            <h2 class="docs-subtitle">Related Components</h2>
-            <div class="related-grid">
-                <div class="related-card empty"></div>
-                <div class="related-card empty"></div>
-                <div class="related-card empty"></div>
-                <div class="related-card empty"></div>
-            </div>
-        </div>
+        <RelatedComponents items={[{ name: "Loader", href: "/docs/loader", image: "/images/loader.png" }]} />
 
         <div class="docs-footer-nav" style="justify-content: space-between;">
-            <a href="/docs/TypewriterText" class="prev-link">
+            <a href="/docs/loader" class="prev-link">
                 <span class="label">PREVIOUS</span>
                 <span class="title">
                     <svg
@@ -329,13 +304,13 @@ import ScaleIn from "@astroanimate/core/ScaleIn";
                         ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
                             points="12 5 19 12 12 19"></polyline></svg
                     >
-                    Typewriter Text
+                    Loader
                 </span>
             </a>
-            <a href="/docs/Sec-RevealImage" class="next-link">
+            <a href="/docs/animated-button" class="next-link">
                 <span class="label">NEXT</span>
                 <span class="title">
-                    Reveal Image
+                    AnimatedButton
                     <svg
                         width="18"
                         height="18"
@@ -356,15 +331,16 @@ import ScaleIn from "@astroanimate/core/ScaleIn";
     <Fragment slot="toc">
         <div class="toc-header">IN THIS PAGE</div>
         <nav class="toc-nav">
-            <a href="#scale-in" class="active">Scale In</a>
+            <a href="#progressbar" class="active">ProgressBar</a>
             <a href="#preview-playground">Preview/Playground</a>
             <a href="#installation">Installation</a>
+            <a href="#usage">Usage</a>
             <a href="#props">Props</a>
-            <a href="#how-it-works">How It Works</a>
+            <a href="#behavior">Behavior</a>
             <a href="#use-when">Use When</a>
             <a href="#avoid-when">Avoid When</a>
             <a href="#accessibility">Accessibility</a>
-            <a href="#performance-notes">Performance Notes</a>
+            <a href="#performance">Performance</a>
             <a href="#credits">Credits</a>
         </nav>
     </Fragment>
@@ -416,7 +392,7 @@ import ScaleIn from "@astroanimate/core/ScaleIn";
 
     .playground-container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        /* grid-template-columns: 1fr 1fr; */
         border: 1px solid #1f2937;
         background: #050505;
         border-radius: 12px;
@@ -430,24 +406,6 @@ import ScaleIn from "@astroanimate/core/ScaleIn";
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-
-    .typewriter-showcase {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .demo-typewriter {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 18px;
-        color: #000;
-        background: #fff;
-        padding: 16px;
-        border-radius: 8px;
-        border: 1px solid #ddd;
     }
 
     .playground-code {
@@ -571,6 +529,10 @@ import ScaleIn from "@astroanimate/core/ScaleIn";
         color: #e0e0e0;
     }
 
+    /* .keyword {
+        color: #569cd6;
+    } */
+
     .string {
         color: #ce9178;
     }
@@ -658,35 +620,6 @@ import ScaleIn from "@astroanimate/core/ScaleIn";
         margin-right: 0;
     }
 
-    .api-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-        margin-top: 24px;
-    }
-
-    .api-card {
-        padding: 24px;
-        border: 1px solid #1f2937;
-        background: #050505;
-        border-radius: 8px;
-    }
-
-    .api-card h3 {
-        font-size: 18px;
-        font-family: "Inter", sans-serif;
-        font-weight: 500;
-        color: #f9fafb;
-        margin-bottom: 8px;
-    }
-
-    .api-card p {
-        color: #9ca3af;
-        font-family: "Inter", sans-serif;
-        font-size: 14px;
-        margin: 0;
-    }
-
     .related-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -717,40 +650,7 @@ import ScaleIn from "@astroanimate/core/ScaleIn";
         border-top: 1px solid #1f2937;
     }
 
-    /* .prev-link,
-    .next-link {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-        color: #9ca3af;
-        font-family: "Inter", sans-serif;
-        transition: color 0.2s ease;
-    } */
-
-    /* .prev-link:hover,
-    .next-link:hover {
-        color: #f9fafb;
-    }
-
-    .prev-link svg,
-    .next-link svg {
-        flex-shrink: 0;
-    }
-
-    .label {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 12px;
-        color: #ff7f1f;
-    }
-
-    .title {
-        font-size: 16px;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    } */
+   
 
     .component-link {
         color: #9ca3af;

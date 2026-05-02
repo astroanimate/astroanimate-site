@@ -7,7 +7,7 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
 	site: 'https://www.astroanimate.com',
 	integrations: [sitemap()],
-	trailingSlash: "always",
+	trailingSlash: "ignore",
 	adapter: vercel(),
 	build: {
 		format: 'directory',
