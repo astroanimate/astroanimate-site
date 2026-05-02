@@ -267,7 +267,7 @@ href="/docs/typewritter"
 class:list={[
 "sidebar-comp-item",
 { active: pathname === "/docs/typewritter" },
-]}>Typewriter Text</a
+]}>Typewriter text</a
 >
 </div>
 </details>
@@ -591,7 +591,7 @@ class="global-footer-logo"
 <div class="global-footer-social">
 <p class="global-footer-follow-text">Follow us:</p>
 <div class="global-footer-icons">
-<a href="https://x.com" class="global-follow-icon">
+<a href="https://x.com/astroanimate" target="_blank" class="global-follow-icon">
 <img
 src="/images/twitter2.png"
 alt="twitter"
@@ -599,7 +599,7 @@ height="24"
 width="24"
 />
 </a>
-<a href="https://github.com" class="global-follow-icon">
+<a href="https://github.com/astroanimate/astroanimate" target="_blank" class="global-follow-icon">
 <img
 src="/images/github2.png"
 alt="github"
@@ -607,7 +607,7 @@ height="24"
 width="24"
 />
 </a>
-<a href="https://discord.com" class="global-follow-icon">
+<a href="https://discord.com/invite/astroanimate" target="_blank" class="global-follow-icon">
 <img
 src="/images/discord.png"
 alt="discord"
@@ -615,7 +615,7 @@ height="24"
 width="24"
 />
 </a>
-<a href="https://linkedin.com" class="global-follow-icon">
+<a href="https://www.linkedin.com/company/astroanimate/about/" target="_blank" class="global-follow-icon">
 <img
 src="/images/linkedin.png"
 alt="linkedin"
@@ -766,6 +766,112 @@ if (image) image.setAttribute("src", originalSrc);
 });
 }
 
+function getCopyTargetText(trigger: Element) {
+const container =
+trigger.closest(".installation-block") ||
+trigger.closest(".docs-code-block") ||
+trigger.closest(".code-wrapper");
+const code = container?.querySelector("pre code");
+return code?.textContent?.trim().replace(/\n{3,}/g, "\n\n") || "";
+}
+
+async function copyTextToClipboard(text: string) {
+try {
+if (navigator.clipboard?.writeText) {
+await navigator.clipboard.writeText(text);
+return;
+}
+throw new Error("Clipboard API unavailable");
+} catch {
+const fallback = document.createElement("textarea");
+fallback.value = text;
+fallback.setAttribute("readonly", "");
+fallback.style.position = "fixed";
+fallback.style.opacity = "0";
+document.body.appendChild(fallback);
+fallback.select();
+document.execCommand("copy");
+fallback.remove();
+}
+}
+
+function initCodeCopyButtons() {
+const copyTriggers = document.querySelectorAll(".copy-icon, .copy-btn-icon");
+
+copyTriggers.forEach((trigger) => {
+const copyTrigger = trigger as HTMLElement;
+if (copyTrigger.dataset.copyReady === "true") return;
+copyTrigger.dataset.copyReady = "true";
+
+if (copyTrigger.tagName.toLowerCase() === "svg") {
+copyTrigger.setAttribute("role", "button");
+copyTrigger.setAttribute("tabindex", "0");
+copyTrigger.setAttribute("aria-label", "Copy code");
+}
+
+const icon = copyTrigger.matches("svg")
+? (copyTrigger as unknown as SVGElement)
+: copyTrigger.querySelector("svg");
+const originalIcon = icon?.innerHTML || "";
+const originalViewBox = icon?.getAttribute("viewBox") || "0 0 24 24";
+let resetTimer: number | undefined;
+
+const showCheckIcon = () => {
+if (!icon) return;
+
+while (icon.firstChild) {
+icon.removeChild(icon.firstChild);
+}
+
+const checkPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+checkPath.setAttribute("d", "M20 6 9 17l-5-5");
+checkPath.setAttribute("fill", "none");
+checkPath.setAttribute("stroke", "currentColor");
+checkPath.setAttribute("stroke-width", "2.8");
+checkPath.setAttribute("stroke-linecap", "round");
+checkPath.setAttribute("stroke-linejoin", "round");
+
+icon.appendChild(checkPath);
+icon.classList.add("copied");
+icon.setAttribute("viewBox", "0 0 24 24");
+icon.setAttribute("aria-hidden", "true");
+};
+
+const restoreCopyIcon = () => {
+if (!icon) return;
+
+icon.classList.remove("copied");
+icon.setAttribute("viewBox", originalViewBox);
+icon.innerHTML = originalIcon;
+};
+
+const runCopy = async () => {
+const codeText = getCopyTargetText(copyTrigger);
+if (!codeText) return;
+
+await copyTextToClipboard(codeText);
+
+window.clearTimeout(resetTimer);
+copyTrigger.classList.add("copied");
+copyTrigger.setAttribute("aria-label", "Copied code");
+showCheckIcon();
+
+resetTimer = window.setTimeout(() => {
+copyTrigger.classList.remove("copied");
+copyTrigger.setAttribute("aria-label", "Copy code");
+restoreCopyIcon();
+}, 5000);
+};
+
+copyTrigger.addEventListener("click", runCopy);
+copyTrigger.addEventListener("keydown", (event) => {
+if (event.key !== "Enter" && event.key !== " ") return;
+event.preventDefault();
+runCopy();
+});
+});
+}
+
 // Search functionality for docs sidebar
 function initSearch() {
 const searchInput = document.querySelector(".sidebar-search input");
@@ -846,18 +952,21 @@ noResultsMsg.style.display = hasResults ? "none" : "block";
 document.addEventListener("DOMContentLoaded", () => {
 updateActiveState();
 initTitleShareButtons();
+initCodeCopyButtons();
 initSearch();
 });
 // Update active state on navigation
 document.addEventListener("astro:page-load", () => {
 updateActiveState();
 initTitleShareButtons();
+initCodeCopyButtons();
 initSearch();
 });
 // Also update on popstate (browser back/forward)
 window.addEventListener("popstate", () => {
 updateActiveState();
 initTitleShareButtons();
+initCodeCopyButtons();
 initSearch();
 });
 </script>

@@ -7,7 +7,7 @@ const sections = [
     title: "Text Animations",
     items: [
       { name: "FadeInText", href: "/docs/fadein", image: "/images/fadein.png" },
-      { name: "TypewriterText", href: "/docs/typewritter", image: "/images/typewritter.png" },
+      { name: "Typewriter text", href: "/docs/typewritter", image: "/images/typewritter.png" },
     ],
   },
   {
@@ -69,7 +69,11 @@ const sections = [
     <div class="all-components-groups">
       {
         sections.map((section, index) => (
-          <section class="all-components-group" data-component-group>
+          <section
+            class="all-components-group"
+            data-component-group
+            data-search-group={index === 0 ? "true" : "false"}
+          >
             <div class="all-components-content">
               <h2>{section.title}</h2>
 
@@ -100,6 +104,8 @@ const sections = [
         ))
       }
     </div>
+
+    <p class="all-components-no-results" aria-live="polite">No results found.</p>
 
     <div class="docs-footer-nav" style="justify-content: space-between;">
         <a href="/docs/support" class="prev-link">
@@ -243,6 +249,17 @@ const sections = [
     gap: 24px;
   }
 
+  .all-components-no-results {
+    display: none;
+    margin: 24px 0 0;
+    padding: 22px;
+    /* border: 1px solid #1F2937; */
+    color: #9CA3AF;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    text-align: center;
+  }
+
   .all-components-group h2 {
     margin: 0;
     color: #F9FAFB;
@@ -373,21 +390,40 @@ const sections = [
     const groups = Array.from(
       root.querySelectorAll<HTMLElement>("[data-component-group]"),
     );
+    const noResults = root.querySelector<HTMLElement>(
+      ".all-components-no-results",
+    );
 
     searchInput?.addEventListener("input", () => {
       const term = searchInput.value.trim().toLowerCase();
+      let totalVisibleCards = 0;
 
       cards.forEach((card) => {
         const name = card.textContent?.toLowerCase() ?? "";
-        card.style.display = !term || name.includes(term) ? "" : "none";
+        const isVisible = !term || name.includes(term);
+        card.style.display = isVisible ? "" : "none";
+        if (isVisible) totalVisibleCards += 1;
       });
 
       groups.forEach((group) => {
         const visibleCards = group.querySelectorAll(
           '[data-component-card]:not([style*="display: none"])',
         );
+        const grid = group.querySelector<HTMLElement>(".all-components-grid");
+        const isSearchGroup = group.dataset.searchGroup === "true";
+
+        if (isSearchGroup) {
+          group.style.display = "";
+          if (grid) grid.style.display = visibleCards.length ? "" : "none";
+          return;
+        }
+
         group.style.display = visibleCards.length ? "" : "none";
       });
+
+      if (noResults) {
+        noResults.style.display = term && totalVisibleCards === 0 ? "block" : "none";
+      }
     });
 
   }

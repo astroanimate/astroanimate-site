@@ -2,12 +2,12 @@
 import DocLayout from "../../../layouts/DocLayout.astro";
 import RelatedComponents from "../../../components/RelatedComponents.astro";
 import "../../../styles/Global.css";
-import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
+import TypewriterText from "@astroanimate/core/TypewriterText";
 ---
 
 <DocLayout title="Typewriter Text">
     <section id="typewriter-text">
-        <h1 class="docs-title">TypewriterText <button type="button" class="docs-title-share" aria-label="Copy page link"><img src="/images/share-link.png" alt="" width="16" height="16" /></button></h1>
+        <h1 class="docs-title">Typewriter text <button type="button" class="docs-title-share" aria-label="Copy page link"><img src="/images/share-link.png" alt="" width="16" height="16" /></button></h1>
 
         <div class="docs-intro-section">
             <p class="docs-paragraph">
@@ -31,13 +31,13 @@ import TypewriterTextComponent from "@astroanimate/core/TypewriterText";
             <div class="playground-container">
                 <div class="playground-preview">
                     <div class="typewriter-showcase">
-                        <TypewriterTextComponent
+                        <TypewriterText
                             texts={["Hello", "World", "Astro"]}
                             enhance
                         />
 
                         <div class="demo-typewriter">
-                            <TypewriterTextComponent
+                            <TypewriterText
                                 texts={["Fast", "Reliable", "Astro-native"]}
                                 typeSpeed={60}
                                 eraseSpeed={30}

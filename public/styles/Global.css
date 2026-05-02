@@ -1632,6 +1632,7 @@ h2 span {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #000;
 }
 
 .terminal-label {
@@ -2649,7 +2650,7 @@ h2 span {
     .usecase-header,
     .doc-header h1,
     .cta-content h2 {
-        font-size: 28px !important;
+        font-size: 32px !important;
     }
 
     .left,
@@ -2695,9 +2696,9 @@ h2 span {
 
     .footer-bottom {
         padding: 40px 20px;
-        margin: 0;
+        /* margin: 0;
         border-left: none;
-        border-right: none;
+        border-right: none; */
     }
 
     .bottom-content {
@@ -3335,7 +3336,7 @@ h2 span {
 
 .content-row {
     /* margin-bottom: 40px; */
-    border-bottom: 1px solid #1F2937;
+    /* border-bottom: 1px solid #1F2937; */
     border-top: 1px solid #1F2937;
     margin-left: -30px;
     margin-right: -30px;
@@ -3357,7 +3358,6 @@ h2 span {
     height: auto;
     display: block;
     margin: 40px auto;
-    opacity: 0.8;
 }
 
 .content-row:last-child {
@@ -4714,7 +4714,7 @@ details[open] .sidebar-nav-item .chevron {
 .docs-intro-section {
     margin-bottom: 28px;
     padding-bottom: 14px;
-    border-bottom: 1px solid #1F2937;
+    /* border-bottom: 1px solid #1F2937; */
     scroll-margin-top: 100px;
 }
 
@@ -5448,8 +5448,12 @@ details[open] .sidebar-nav-item .chevron {
     } */
 
     .features-header h2 {
-        font-size: 28px !important;
+        font-size: 32px !important;
     }
+
+    .cta-card-about:nth-last-child(-n+3) {
+    border-bottom: 1px solid #1F2937 !important;
+}
 
     /* Stack Use Cases labels and content */
     .tab-system {
@@ -5476,7 +5480,7 @@ details[open] .sidebar-nav-item .chevron {
 
     .footer-main {
         padding-bottom: 40px;
-        border-bottom: 1px solid #1F2937;
+        /* border-bottom: 1px solid #1F2937; */
     }
 
     .footer-links {

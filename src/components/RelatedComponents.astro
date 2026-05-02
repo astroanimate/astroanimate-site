@@ -14,7 +14,7 @@ const { items } = Astro.props;
 
 {
   items.length > 0 && (
-    <div class="docs-intro-section" id="related-components">
+    <div class="docs-intro-section related-components-section" id="related-components">
       <h2 class="docs-subtitle">Related Components</h2>
       <div
         class="related-components-grid"
@@ -41,12 +41,13 @@ const { items } = Astro.props;
     background: #000;
     width: calc(var(--related-columns) * 25%);
     max-width: 100%;
-    margin-top: 24px;
+    margin-top: 16px;
+    margin-bottom: 0;
   }
 
   .related-component-card {
-    min-height: 252px;
-    padding: 26px;
+    min-height: 232px;
+    padding: 22px;
     border-right: 1px solid #1F2937;
     text-decoration: none;
     color: #F9FAFB;
