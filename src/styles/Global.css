@@ -415,7 +415,7 @@ h2 span {
 }
 
 .card-body {
-    padding: 16px 20px;
+    /* padding: 16px 20px; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -747,6 +747,7 @@ h2 span {
 .item {
     padding: 30px;
     border-bottom: 1px solid #1F2937;
+    --tab-progress: 0%;
 }
 
 .item:last-child {
@@ -772,6 +773,23 @@ h2 span {
     font-size: 18px;
     font-weight: 400;
     font-family: 'Inter', sans-serif;
+}
+
+.usecase-tab-progress {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-top: 18px;
+    background: #1F2937;
+    overflow: hidden;
+}
+
+.usecase-tab-progress::before {
+    content: '';
+    display: block;
+    width: var(--tab-progress);
+    height: 100%;
+    background: #FF7F1F;
 }
 
 /* RIGHT */
@@ -1316,7 +1334,7 @@ h2 span {
 .archi-card .num {
     display: inline-block;
     border: 1px solid #1F2937;
-    padding: 4px 8px;
+    padding: 8px 8px;
     font-size: 16px;
     color: #94A3B8;
     font-family: 'JetBrains Mono', monospace;
@@ -1480,6 +1498,7 @@ h2 span {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .cta-section::before,
@@ -1515,7 +1534,9 @@ h2 span {
 
 .cta-video {
     width: 100%;
+    min-height: 260px;
     height: auto;
+    object-fit: cover;
 }
 
 .cta-container {
@@ -1524,6 +1545,7 @@ h2 span {
     width: 100%;
     /* max-width: 1100px; */
     margin: 0 auto;
+    min-width: 0;
 }
 
 .cta-box {
@@ -1535,6 +1557,19 @@ h2 span {
     box-sizing: border-box;
     z-index: 50;
     margin: 0 1px;
+    min-width: 0;
+}
+
+.cta-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 1px;
+    background: #FF7F1F;
+    z-index: 60;
+    pointer-events: none;
 }
 
 .cta-content {
@@ -1542,6 +1577,7 @@ h2 span {
     position: relative;
     border-right: 1px solid #1F2937;
     background: #0B0D10;
+    min-width: 0;
 }
 
 .cta-arcs {
@@ -1586,6 +1622,7 @@ h2 span {
 .cta-buttons {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .btn-primary-cta {
@@ -1597,6 +1634,7 @@ h2 span {
     font-weight: 700;
     font-family: 'JetBrains Mono', monospace;
     cursor: pointer;
+    min-width: 0;
 }
 
 .btn-primary-cta:hover {
@@ -1614,6 +1652,7 @@ h2 span {
     align-items: center;
     gap: 12px;
     cursor: pointer;
+    min-width: 0;
 }
 
 .btn-secondary-cta:hover {
@@ -1626,6 +1665,8 @@ h2 span {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .terminal-label {
@@ -1708,6 +1749,7 @@ h2 span {
     flex-direction: column;
     gap: 20px;
     z-index: 2;
+    min-width: 0;
 }
 
 /* DOC STRUCTURE SECTION */
@@ -1915,6 +1957,7 @@ h2 span {
     position: relative;
     background: #000;
     padding: 0 var(--side-padding);
+    box-sizing: border-box;
 }
 
 .footer-section::before,
@@ -1939,9 +1982,12 @@ h2 span {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-columns: minmax(280px, 1fr) minmax(240px, 1fr) minmax(240px, 1fr);
+    grid-template-rows: 1fr 1fr;
     border-top: 1px solid #1F2937;
+    border-left: 1px solid #1F2937;
+    border-right: 1px solid #1F2937;
+    min-height: 465px;
     position: relative;
 }
 
@@ -1968,11 +2014,13 @@ h2 span {
 }
 
 .footer-main {
-    grid-row: span 2;
+    grid-row: 1 / span 2;
     padding: 30px 40px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-width: 0;
+    border-right: 1px solid #1F2937;
 }
 
 /* 
@@ -1983,9 +2031,10 @@ h2 span {
 } */
 
 .logo-bolt {
-    width: 385px;
+    width: min(385px, 100%);
     height: 40px;
     object-fit: contain;
+    object-position: left center;
 }
 
 .logo-text {
@@ -2036,19 +2085,23 @@ h2 span {
 
 .subscribe-box {
     display: flex;
-    border: 1px solid #1F2937;
     max-width: 320px;
+    width: 100%;
+    min-width: 0;
+    gap: 8px;
+    box-sizing: border-box;
 }
 
 .subscribe-box input {
     background: transparent;
-    border: none;
+    border: 1px solid #1F2937;
     padding: 10px 16px;
     color: #fff;
     flex-grow: 1;
     font-size: 12px;
     font-family: 'JetBrains Mono', monospace;
     outline: none;
+    min-width: 0;
 }
 
 .subscribe-box input::placeholder {
@@ -2058,12 +2111,14 @@ h2 span {
 .subscribe-box button {
     background: #FF7F1F;
     border: none;
-    padding: 0 20px;
+    padding: 0 18px;
     color: #F9FAFB;
     font-weight: 400;
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     cursor: pointer;
+    min-height: 39px;
+    flex: 0 0 auto;
 }
 
 .subscribe-box button:hover {
@@ -2074,6 +2129,20 @@ h2 span {
     padding: 30px 40px;
     display: flex;
     flex-direction: column;
+    min-width: 0;
+}
+
+.footer-product {
+    border-right: 1px solid #1F2937;
+    border-bottom: 1px solid #1F2937;
+}
+
+.footer-company {
+    border-bottom: 1px solid #1F2937;
+}
+
+.footer-legal {
+    border-right: 1px solid #1F2937;
 }
 
 .column-title {
@@ -2120,6 +2189,7 @@ h2 span {
     border: 1px solid #1F2937;
     margin: 0 var(--side-padding);
     padding: 15px 40px;
+    box-sizing: border-box;
 }
 
 .footer-bottom::before,
@@ -2151,6 +2221,7 @@ h2 span {
     color: #9CA3AF;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
+    gap: 16px;
 }
 
 .bottom-content p {
@@ -2170,12 +2241,14 @@ h2 span {
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
 }
 
 .utc-time {
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
 }
 
 .dot-green {
@@ -2445,7 +2518,7 @@ h2 span {
     }
 
     .nav-item.nav-link {
-        padding: 0 15px;
+        padding: 16px 15px;
         font-size: 14px;
     }
 
@@ -2654,7 +2727,7 @@ h2 span {
     }
 
     .cta-section {
-        padding: 160px var(--side-padding) 80px;
+        padding: 150px var(--side-padding) 80px;
     }
 
     .cta-terminal {
@@ -2672,6 +2745,10 @@ h2 span {
     .btn-secondary-cta {
         width: 100%;
         box-sizing: border-box;
+        justify-content: center;
+        padding: 16px 18px;
+        font-size: 14px;
+        text-align: center;
     }
 
     .footer-grid {
@@ -4231,6 +4308,26 @@ h2 span {
     align-items: stretch;
 }
 
+.docs-sidebar-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.docs-menu-toggle {
+    display: none;
+}
+
+.docs-menu-icon {
+    width: 16px;
+    height: 12px;
+    display: inline-block;
+    background:
+        linear-gradient(#F9FAFB, #F9FAFB) 0 0 / 100% 1px no-repeat,
+        linear-gradient(#F9FAFB, #F9FAFB) 0 50% / 100% 1px no-repeat,
+        linear-gradient(#F9FAFB, #F9FAFB) 0 100% / 100% 1px no-repeat;
+}
+
 .docs-sidebar {
     width: 280px;
     background: #000;
@@ -4490,6 +4587,7 @@ details[open] .sidebar-nav-item .chevron {
 
 .sidebar-sub-item.active {
     color: #FF7F1F;
+    background: rgba(255, 127, 31, 0.1);
 }
 
 .sidebar-sub-item.active::before {
@@ -4512,9 +4610,10 @@ details[open] .sidebar-nav-item .chevron {
 }
 
 .sidebar-comp-item.active {
-    color: #FF7F1F;
-    border-left: 1px solid #FF7F1F;
-    background-color: rgba(255, 127, 31, 0.1);
+    color: #FF7F1F !important;
+    border-left: 2px solid #FF7F1F;
+    background-color: rgba(255, 127, 31, 0.14);
+    box-shadow: inset 0 0 0 1px rgba(255, 127, 31, 0.08);
 }
 
 /* Status Labels */
@@ -4687,6 +4786,39 @@ details[open] .sidebar-nav-item .chevron {
     color: #F9FAFB;
     /* margin-bottom: 28px; */
     font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.docs-title-share {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #1F2937;
+    background: #0B0D10;
+    cursor: pointer;
+    margin-left: auto;
+    flex: 0 0 auto;
+}
+
+.docs-title-share img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    opacity: 0.75;
+}
+
+.docs-title-share:hover,
+.docs-title-share.copied {
+    border-color: #FF7F1F;
+}
+
+.docs-title-share:hover img,
+.docs-title-share.copied img {
+    opacity: 1;
 }
 
 .docs-intro-section {
@@ -4918,6 +5050,7 @@ details[open] .sidebar-nav-item .chevron {
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 12px;
+    max-width: 100%;
 }
 
 .docs-code-block.dark-bg {
@@ -4974,6 +5107,7 @@ details[open] .sidebar-nav-item .chevron {
     margin: 0;
     overflow-x: auto;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .docs-code-block code {
@@ -5421,12 +5555,51 @@ details[open] .sidebar-nav-item .chevron {
         font-size: 32px !important;
     } */
 
-    .features-header {
+    /* .features-header {
         padding: 20px;
-    }
+    } */
 
     .features-header h2 {
         font-size: 28px !important;
+    }
+
+    .docs-menu-toggle {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 0 24px;
+        border-bottom: 1px solid #1F2937;
+        color: #F9FAFB;
+        background: #000;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    .docs-sidebar {
+        display: none;
+        max-height: 45vh;
+        overflow-y: auto;
+    }
+
+    .docs-sidebar-toggle:checked~.docs-sidebar {
+        display: flex;
+    }
+
+    .docs-toc {
+        display: none;
+    }
+
+    .docs-content {
+        padding: 0;
+        border-right: none;
+    }
+
+    .docs-content-inner {
+        max-width: none;
+        padding: 36px 24px;
     }
 
     /* Stack Use Cases labels and content */
@@ -5450,17 +5623,28 @@ details[open] .sidebar-nav-item .chevron {
     /* Footer adjustments */
     .footer-grid {
         grid-template-columns: 1fr !important;
+        grid-template-rows: auto;
+        min-height: 0;
     }
 
     .footer-main {
-        padding-bottom: 40px;
+        grid-row: auto;
+        padding: 28px 24px 40px;
+        border-right: none;
         border-bottom: 1px solid #1F2937;
     }
 
-    .footer-links {
-        padding-top: 40px;
-        border-left: none !important;
+    .footer-column {
+        padding: 24px;
         border-top: 1px solid #1F2937;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    .footer-links {
+        padding-top: 0;
+        border-left: none !important;
+        border-top: none;
     }
 
     .footer-bottom {
@@ -5477,6 +5661,24 @@ details[open] .sidebar-nav-item .chevron {
     .built-by,
     .utc-time {
         justify-self: center !important;
+    }
+
+    .docs-title {
+        font-size: 28px;
+    }
+
+    .docs-subtitle {
+        font-size: 22px;
+    }
+
+    .docs-footer-nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+    }
+
+    .next-link {
+        align-items: flex-start;
     }
 }
 
@@ -5497,6 +5699,123 @@ details[open] .sidebar-nav-item .chevron {
     .btn-secondary {
         font-size: 14px;
         padding: 0 16px;
+    }
+
+    .docs-sidebar {
+        padding: 18px 16px;
+        max-height: 50vh;
+    }
+
+    .docs-menu-toggle {
+        padding: 0 16px;
+    }
+
+    .sidebar-nav-item {
+        padding: 0 4px;
+        font-size: 14px;
+    }
+
+    .subcategory-list {
+        margin-left: 14px;
+    }
+
+    .sidebar-comp-item,
+    .sidebar-sub-item {
+        padding-left: 12px;
+        padding-right: 8px;
+    }
+
+    .docs-content-inner {
+        padding: 28px 16px;
+    }
+
+    .docs-breadcrumbs {
+        font-size: 14px;
+        flex-wrap: wrap;
+    }
+
+    .docs-title {
+        font-size: 26px;
+    }
+
+    .docs-subtitle {
+        font-size: 20px;
+        align-items: flex-start;
+    }
+
+    .docs-paragraph,
+    .docs-list li,
+    .docs-numbered-list li,
+    .info-alert p,
+    .docs-callout p {
+        font-size: 14px;
+    }
+
+    .docs-code-block pre {
+        padding: 12px 14px;
+    }
+
+    .docs-code-block code {
+        font-size: 12px;
+    }
+
+    .cta-section {
+        padding-top: 120px;
+        padding-bottom: 64px;
+    }
+
+    .cta-content,
+    .cta-terminal {
+        padding: 24px 16px;
+    }
+
+    .cta-content h2 {
+        margin-bottom: 22px;
+    }
+
+    .cta-desc-box {
+        padding-left: 14px;
+        margin-bottom: 28px;
+    }
+
+    .cta-desc-box p {
+        font-size: 14px;
+    }
+
+    .btn-primary-cta,
+    .btn-secondary-cta {
+        min-height: 50px;
+        padding: 14px 12px;
+    }
+
+    .terminal-label {
+        margin-bottom: 16px;
+    }
+
+    .footer-main,
+    .footer-column {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .subscribe-box {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .subscribe-box input,
+    .subscribe-box button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .subscribe-box button {
+        min-height: 42px;
+    }
+
+    .built-by,
+    .utc-time {
+        white-space: normal;
     }
 
     .install-card {

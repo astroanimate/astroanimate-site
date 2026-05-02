@@ -60,8 +60,8 @@ import TypewriterText from "@astroanimate/core/TypewriterText";
     display: flex;
     overflow: hidden;
     width: 100%;
-    min-width: 500px;
     max-width: 600px;
+    min-width: min(500px, 100%);
   }
 
   .accent-bar {
@@ -74,6 +74,7 @@ import TypewriterText from "@astroanimate/core/TypewriterText";
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-width: 0;
   }
 
   .card-header {
@@ -91,11 +92,13 @@ import TypewriterText from "@astroanimate/core/TypewriterText";
   }
 
   .card-body {
-    padding: 20px;
+    /* padding: 20px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 75px;
+    gap: 20px;
+    min-height: 66px;
+    min-width: 0;
   }
 
   .code-content {
@@ -104,6 +107,8 @@ import TypewriterText from "@astroanimate/core/TypewriterText";
     align-items: center;
     font-family: "JetBrains Mono", monospace;
     font-size: 16px;
+    flex: 1;
+    min-width: 0;
   }
 
   .code-prefix {
@@ -113,11 +118,14 @@ import TypewriterText from "@astroanimate/core/TypewriterText";
 
   .code-text {
     color: #9ca3af;
-    min-width: 350px; /* Increased space to prevent text wrapping */
+    flex: 1 1 350px;
+    width: 350px;
+    max-width: 100%;
+    min-width: 0;
     display: inline-block;
-    white-space: nowrap; /* Prevent text wrapping */
-    overflow: hidden; /* Hide overflow if needed */
-    text-overflow: ellipsis; /* Add ellipsis for overflow */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .copy-button {
@@ -129,6 +137,7 @@ import TypewriterText from "@astroanimate/core/TypewriterText";
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 0 0 auto;
   }
 
   .copy-button:hover {
@@ -137,6 +146,28 @@ import TypewriterText from "@astroanimate/core/TypewriterText";
 
   .copy-button.success {
     color: #4ade80 !important;
+  }
+
+  @media (max-width: 520px) {
+    .card-header {
+      padding: 10px 14px;
+    }
+
+    .card-body {
+      /* padding: 14px; */
+      gap: 12px;
+      min-height: 58px;
+    }
+
+    .code-content {
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .code-text {
+      flex-basis: auto;
+      width: auto;
+    }
   }
 </style>
 

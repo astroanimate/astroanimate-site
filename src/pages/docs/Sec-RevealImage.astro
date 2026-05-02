@@ -6,7 +6,7 @@ import RevealImage from "@astroanimate/core/RevealImage";
 
 <DocLayout title="Reveal Image">
     <section id="reveal-image">
-        <h1 class="docs-title">RevealImage – Astro animation component</h1>
+        <h1 class="docs-title">RevealImage</h1>
 
         <div class="docs-intro-section">
             <p class="docs-paragraph">
@@ -250,45 +250,46 @@ import RevealImage from "@astroanimate/core/RevealImage";
                 </li>
             </ul>
         </div>
-         <!-- PERFORMANCE SECTION -->
-    <div class="docs-intro-section" id="performance-notes">
-        <h2 class="docs-subtitle">Performance</h2>
-        <div>
+        <!-- PERFORMANCE SECTION -->
+        <div class="docs-intro-section" id="performance-notes">
+            <h2 class="docs-subtitle">Performance</h2>
+            <div>
+                <ul class="docs-list">
+                    <li>Pure CSS animations (no JavaScript overhead)</li>
+                    <li>
+                        Images use <code class="keyword">loading="lazy"</code>
+                    </li>
+                    <li>
+                        Uses transform-based animations for efficient rendering
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CREDITS SECTION -->
+        <div class="docs-intro-section" id="credits">
+            <h2 class="docs-subtitle">Credits</h2>
             <ul class="docs-list">
-                <li>Pure CSS animations (no JavaScript overhead)</li>
-                <li>Images use <code class="keyword">loading="lazy"</code></li>
-                <li>Uses transform-based animations for efficient rendering</li>
+                <li>
+                    Credit to <a
+                        href="https://github.com/barsan"
+                        class="credits-link">@barsan</a
+                    >
+                </li>
             </ul>
         </div>
-    </div>
-
-    <!-- CREDITS SECTION -->
-    <div class="docs-intro-section" id="credits">
-        <h2 class="docs-subtitle">Credits</h2>
-        <ul class="docs-list">
-            <li>
-                Credit to <a
-                    href="https://github.com/barsan"
-                    class="credits-link">@barsan</a
-                >
-            </li>
-        </ul>
-    </div>
-<!-- RELATED COMPONENTS SECTION -->
-    <div class="docs-intro-section" id="related-components">
-        <h2 class="docs-subtitle">Related Components</h2>
-        <div class="related-grid">
-            <div class="related-card empty"></div>
-            <div class="related-card empty"></div>
-            <div class="related-card empty"></div>
-            <div class="related-card empty"></div>
+        <!-- RELATED COMPONENTS SECTION -->
+        <div class="docs-intro-section" id="related-components">
+            <h2 class="docs-subtitle">Related Components</h2>
+            <div class="related-grid">
+                <div class="related-card empty"></div>
+                <div class="related-card empty"></div>
+                <div class="related-card empty"></div>
+                <div class="related-card empty"></div>
+            </div>
         </div>
-    </div>
-
     </section>
 
-   
-    
     <div class="docs-footer-nav" style="justify-content: space-between;">
         <a href="/docs/Sec-ScaleIn" class="prev-link">
             <span class="label">PREVIOUS</span>
@@ -329,22 +330,22 @@ import RevealImage from "@astroanimate/core/RevealImage";
         </a>
     </div>
 
-<Fragment slot="toc">
-    <div class="toc-header">IN THIS PAGE</div>
-    <nav class="toc-nav">
-        <a href="#reveal-image" class="active">Reveal Image</a>
-        <a href="#preview-playground">Preview/Playground</a>
-        <a href="#installation">Installation</a>
-        <a href="#usage">Usage</a>
-        <a href="#props">Props</a>
-        <a href="#behavior">Behavior</a>
-        <a href="#use-when">Use When</a>
-        <a href="#avoid-when">Avoid When</a>
-        <a href="#accessibility">Accessibility</a>
-        <a href="#performance">Performance</a>
-        <a href="#credits">Credits</a>
-    </nav>
-</Fragment>
+    <Fragment slot="toc">
+        <div class="toc-header">IN THIS PAGE</div>
+        <nav class="toc-nav">
+            <a href="#reveal-image" class="active">Reveal Image</a>
+            <a href="#preview-playground">Preview/Playground</a>
+            <a href="#installation">Installation</a>
+            <a href="#usage">Usage</a>
+            <a href="#props">Props</a>
+            <a href="#behavior">Behavior</a>
+            <a href="#use-when">Use When</a>
+            <a href="#avoid-when">Avoid When</a>
+            <a href="#accessibility">Accessibility</a>
+            <a href="#performance">Performance</a>
+            <a href="#credits">Credits</a>
+        </nav>
+    </Fragment>
 </DocLayout>
 
 <style>

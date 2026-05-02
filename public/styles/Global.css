@@ -160,6 +160,11 @@
     font-family: 'JetBrains Mono', monospace;
 }
 
+.install-btn {
+    text-decoration: none;
+    color: inherit;
+}
+
 .install:hover {
     background: #e66a15;
 }
@@ -415,7 +420,7 @@ h2 span {
 }
 
 .card-body {
-    padding: 16px 20px;
+    padding: 0 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -2036,7 +2041,7 @@ h2 span {
 
 .subscribe-box {
     display: flex;
-    border: 1px solid #1F2937;
+    /* border: 1px solid #1F2937; */
     max-width: 320px;
 }
 
@@ -2733,6 +2738,7 @@ h2 span {
     .doc-badge {
         padding: 8px 24px 10px;
         font-size: 10px;
+        text-align: center;
     }
 
     .cta-content h2 span {
@@ -5421,9 +5427,9 @@ details[open] .sidebar-nav-item .chevron {
         font-size: 32px !important;
     } */
 
-    .features-header {
+    /* .features-header {
         padding: 20px;
-    }
+    } */
 
     .features-header h2 {
         font-size: 28px !important;

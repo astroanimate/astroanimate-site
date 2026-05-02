@@ -74,6 +74,17 @@ const schema = {
   <NavBar />
 
   <div class="docs-container">
+    <input
+      type="checkbox"
+      id="docs-sidebar-toggle"
+      class="docs-sidebar-toggle"
+      aria-label="Toggle docs navigation"
+    />
+    <label for="docs-sidebar-toggle" class="docs-menu-toggle">
+      <span class="docs-menu-icon" aria-hidden="true"></span>
+      Docs menu
+    </label>
+
     <!-- SIDEBAR -->
     <aside class="docs-sidebar">
       <!-- Search Bar -->
@@ -675,18 +686,70 @@ const schema = {
     // Support Astro view transitions if used
     document.addEventListener("astro:page-load", initTocObserver);
 
+    function normalizeDocsPath(path: string) {
+      return path.replace(/\/$/, "").toLowerCase() || "/";
+    }
+
     // Fix active state for sidebar navigation
     function updateActiveState() {
-      const currentPath = window.location.pathname;
-      const sidebarLinks = document.querySelectorAll(".sidebar-comp-item");
+      const currentPath = normalizeDocsPath(window.location.pathname);
+      const sidebarLinks = document.querySelectorAll(
+        ".sidebar-comp-item, .sidebar-sub-item",
+      );
 
       sidebarLinks.forEach((link) => {
         const href = link.getAttribute("href");
-        if (href === currentPath) {
+        if (!href || href.startsWith("http")) return;
+
+        const linkPath = normalizeDocsPath(new URL(href, window.location.origin).pathname);
+        if (linkPath === currentPath) {
           link.classList.add("active");
+          link.setAttribute("aria-current", "page");
         } else {
           link.classList.remove("active");
+          link.removeAttribute("aria-current");
         }
+      });
+    }
+
+    function initTitleShareButtons() {
+      const currentPath = normalizeDocsPath(window.location.pathname);
+      const isComponentPage =
+        currentPath.startsWith("/docs/sec-") ||
+        currentPath === "/docs/typewritertext";
+      if (!isComponentPage) return;
+
+      const titles = document.querySelectorAll(".docs-title");
+
+      titles.forEach((title) => {
+        if (title.querySelector(".docs-title-share")) return;
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "docs-title-share";
+        button.setAttribute("aria-label", "Copy page link");
+        button.innerHTML = '<img src="/images/share-link.png" alt="" width="20" height="20" />';
+
+        button.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            button.classList.add("copied");
+            button.setAttribute("aria-label", "Copied page link");
+            setTimeout(() => {
+              button.classList.remove("copied");
+              button.setAttribute("aria-label", "Copy page link");
+            }, 1400);
+          } catch {
+            const fallback = document.createElement("input");
+            fallback.value = window.location.href;
+            document.body.appendChild(fallback);
+            fallback.select();
+            document.execCommand("copy");
+            fallback.remove();
+          }
+        });
+
+        title.appendChild(button);
       });
     }
 
@@ -769,16 +832,19 @@ const schema = {
     // Update active state on page load
     document.addEventListener("DOMContentLoaded", () => {
       updateActiveState();
+      initTitleShareButtons();
       initSearch();
     });
     // Update active state on navigation
     document.addEventListener("astro:page-load", () => {
       updateActiveState();
+      initTitleShareButtons();
       initSearch();
     });
     // Also update on popstate (browser back/forward)
     window.addEventListener("popstate", () => {
       updateActiveState();
+      initTitleShareButtons();
       initSearch();
     });
   </script>
