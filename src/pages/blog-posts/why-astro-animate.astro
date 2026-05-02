@@ -204,107 +204,207 @@ Astro View Transitions                        </li>
                             <span class="diamond"></span>
 Performance budgets                        </li>
                     </ul>
+
+                    <p>It needs animation primitives that:</p>
+
+                    <ul class="content-list">
+                        <li>
+                            <span class="diamond"></span>
+Default to zero JS                      </li>
+                        <li>
+                            <span class="diamond"></span>
+Hydrate only when required                     </li>
+                        <li>
+                            <span class="diamond"></span>
+Work inside isolated islands                      </li>
+                        <li>
+                            <span class="diamond"></span>
+Respect prefers-reduced-motion                     </li>
+                        <li>
+                            <span class="diamond"></span>
+Degrade gracefully                   </li>
+                    </ul>
+                    <p>There was no dedicated Astro animation library built around those constraints.</p>
+                    <p>AstroAnimate was built after repeatedly encountering hydration conflicts in real Astro projects. The goal was not to add more motion — but to add motion that aligns with Astro’s architecture.</p>
                 </section>
 
                 <section id="what-is-astroanimate" class="content-section">
                     <h3>What is AstroAnimate?</h3>
                     <p>
-                        AstroAnimate is a purpose-built animation library
-                        designed specifically for Astro's unique architecture.
-                        It provides powerful animation capabilities while
-                        respecting Astro's core principles of performance and
-                        minimal JavaScript.
+                       AstroAnimate is a dedicated animation component library built specifically for Astro.
                     </p>
 
+                    <p>It is not a thin wrapper around an existing timeline engine. It is not a generic abstraction layer.</p>
+
+                    <p>AstroAnimate was designed around Astro’s static-first model from the beginning.</p>
+
+                    <p>It follows five architectural principles:</p>
                     <ul class="content-list">
                         <li>
                             <span class="diamond"></span>
-                            CSS and Web Animations API based transitions
-                        </li>
+                            Zero-JS by default</li>
                         <li>
                             <span class="diamond"></span>
-                            Zero runtime JavaScript unless explicitly enabled
-                        </li>
+                            Island-aware components</li>
                         <li>
                             <span class="diamond"></span>
-                            Built for Islands architecture
-                        </li>
+                            Astro View Transitions compatibility</li>
                         <li>
                             <span class="diamond"></span>
-                            Native View Transitions API support
-                        </li>
+                            Performance-first constraints</li>
                         <li>
                             <span class="diamond"></span>
-                            Server-side rendering compatible
-                        </li>
+                            Optional engine adapters</li>
                     </ul>
+
+                  <p >You can explore the full 
+                    <a href="/docs" class="why-link">documentation</a>
+                     for implementation details.</p>
                 </section>
 
                 <section id="architecture" class="content-section">
                     <h3>How AstroAnimate Differs Architecturally</h3>
-                    <p>
-                        Unlike traditional animation libraries, AstroAnimate is
-                        built around Astro's architectural patterns. It
-                        understands Islands boundaries, respects server-side
-                        rendering, and provides progressive enhancement.
-                    </p>
+                    <div class="table-wrapper article-table-wrapper">
+                        <table class="docs-table article-comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Foundational Decision</th>
+                                    <th>Framer</th>
+                                    <th>Feature</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Default JS runtime</td>
+                                    <td>Required</td>
+                                    <td>Optional</td>
+                                </tr>
+                                <tr>
+                                    <td>Works without hydration</td>
+                                    <td>No</td>
+                                    <td>Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>Hydration Scope</td>
+                                    <td>Often global</td>
+                                    <td>Scoped to islands</td>
+                                </tr>
+                                <tr>
+                                    <td>Island-aware</td>
+                                    <td>No</td>
+                                    <td>Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>View Transitions compatibility</td>
+                                    <td>Partial</td>
+                                    <td>Designed for Astro</td>
+                                </tr>
+                                <tr>
+                                    <td>Bundle-conscious</td>
+                                    <td>Not by default</td>
+                                    <td>Constrained by design</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                    <ul class="content-list">
-                        <li>
-                            <span class="diamond"></span>
-                            Component-scoped animations that respect Island boundaries
-                        </li>
-                        <li>
-                            <span class="diamond"></span>
-                            CSS-based animations with JavaScript enhancement layers
-                        </li>
-                        <li>
-                            <span class="diamond"></span>
-                            View Transitions API as first-class citizen
-                        </li>
-                        <li>
-                            <span class="diamond"></span>
-                            Server-side animation state management
-                        </li>
-                        <li>
-                            <span class="diamond"></span>
-                            Progressive enhancement approach
-                        </li>
-                    </ul>
+                    <p>
+                        AstroAnimate enforces boundaries instead of expanding them.
+                    </p>
                 </section>
 
                 <section id="css-first" class="content-section">
                     <h3>CSS-First Design: Why It Matters</h3>
                     <p>
-                        The CSS-first approach is fundamental to AstroAnimate's
-                        design. By prioritizing CSS animations and using
-                        JavaScript only when necessary, we maintain Astro's
-                        performance benefits while still providing rich
-                        animation capabilities.
+                        Components from <code>@astroanimate/core</code> are CSS-based primitives.
                     </p>
 
-                    <ul class="content-list">
-                        <li>
-                            <span class="diamond"></span>
-                            Better performance with CSS-only animations
-                        </li>
-                        <li>
-                            <span class="diamond"></span>
-                            Reduced JavaScript bundle size
-                        </li>
-                        <li>
-                            <span class="diamond"></span>
-                            Improved accessibility with reduced motion support
-                        </li>
-                        <li>
-                            <span class="diamond"></span>
-                            Server-side rendering compatibility
-                        </li>
-                        <li>
-                            <span class="diamond"></span>
-                            Progressive enhancement capabilities
-                        </li>
-                    </ul>
+                    <pre class="article-code-block"><code>import &#123; FadeIn &#125; from "@astroanimate/core";
+
+&lt;FadeIn duration=&#123;400&#125;&gt;
+  Content
+&lt;/FadeIn&gt;</code></pre>
+
+                    <p>
+                        This ships no runtime JavaScript. Hydration is not required. Performance characteristics remain predictable.
+                    </p>
+
+                    <p>
+                        For deeper understanding of how this interacts with route-level motion, explore the <a href="/docs/view-transitions" class="article-inline-link">View Transitions guide</a>.
+                    </p>
+
+                    <h3>Built for Astro View Transitions</h3>
+                    <p>
+                        Astro supports the View Transitions API natively. AstroAnimate components are designed to coexist with it.
+                    </p>
+
+                    <pre class="article-code-block"><code>import &#123; ViewTransitions &#125; from "astro:transitions";</code></pre>
+
+                    <p>
+                        Component-level motion does not interfere with page-level transitions. Content and layout can fallback animation rather than native support, so transitions should be tested accordingly.
+                    </p>
+
+                    <p>
+                        Compatibility here is intentional, not accidental.
+                    </p>
+
+                    <h3>The Performance Philosophy Behind AstroAnimate</h3>
+                    <p>
+                        AstroAnimate was built with strict performance constraints, including bundle-size limits, accessibility standards, and TypeScript strict mode.
+                    </p>
+
+                    <p>
+                        Performance is not treated as an optional feature. See how these constraints integrate with Astro performance model in the <a href="/docs/performance" class="article-inline-link">performance guide</a>.
+                    </p>
+
+                    <p>
+                        In a static-first framework, animation should adapt to architecture not override it.
+                    </p>
+
+                    <h3>Why This Category Matters</h3>
+                    <p>
+                        As Astro adoption grows, developers increasingly look for animation patterns that align with its architecture.
+                    </p>
+
+                    <p>
+                        They do not need a generic motion tool. They need motion that respects static rendering and island isolation.
+                    </p>
+
+                    <div class="article-callout">
+                        AstroAnimate exists to fill that architectural gap.
+                    </div>
+
+                    <p>
+                        It is not about adding animation. It is about defining what an Astro-aligned animation system should look like.
+                    </p>
+
+                    <h3>How This Connects to Implementation</h3>
+                    <p>
+                        If you want the detailed implementation guide covering CSS, View Transitions, and JavaScript fallbacks, read:
+                    </p>
+
+                    <p>
+                        <a href="/blog/how-to-add-animations-to-astro-without-breaking-performance/" class="article-inline-link">
+                            -> /blog/how-to-add-animations-to-astro-without-breaking-performance/
+                        </a>
+                    </p>
+
+                    <p>
+                        This article defines the architectural need. That guide explains the practical execution. Together, they form the foundation of AstroAnimate.
+                    </p>
+
+                    <h3>Conclusion</h3>
+                    <p>
+                        Astro exposes the power of frontend architecture, prioritizing static rendering, island isolation, and performance budgets. Generic animation libraries were not built for that model. AstroAnimate was created to align motion with Astro's design principles.
+                    </p>
+
+                    <p>
+                        In a static-first framework, animation should adapt to architecture - not override it.
+                    </p>
+
+                    <p>
+                        If you are building motion in Astro and want it aligned with the framework's constraints, explore the <a href="/docs" class="article-inline-link">AstroAnimate documentation</a>.
+                    </p>
                 </section>
             </article>
 
