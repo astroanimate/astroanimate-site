@@ -200,6 +200,8 @@
     pointer-events: none;
     z-index: 0;
     opacity: 1;
+    --star-speed-primary: 28s;
+    --star-speed-secondary: 42s;
 }
 
 .star-field::before,
@@ -243,7 +245,7 @@
         71vw 22vh rgba(148, 163, 184, 0.45),
         81vw 68vh rgba(249, 250, 251, 0.58),
         92vw 93vh rgba(249, 250, 251, 0.45);
-    animation: star-drift 28s linear infinite;
+    animation: star-drift var(--star-speed-primary) linear infinite;
 }
 
 .star-field::after {
@@ -271,7 +273,138 @@
         91vw 76vh rgba(148, 163, 184, 0.5),
         96vw 46vh rgba(249, 250, 251, 0.68),
         99vw 15vh rgba(249, 250, 251, 0.4);
-    animation-duration: 42s;
+    animation-duration: var(--star-speed-secondary);
+}
+
+.star-field-dense {
+    --star-speed-primary: 2s;
+    --star-speed-secondary: 2.8s;
+}
+
+.star-field-dense::before,
+.star-field-dense::after {
+    animation-direction: alternate;
+}
+
+.star-field-dense::before {
+    box-shadow:
+        3vw 7vh rgba(249, 250, 251, 0.55),
+        8vw 19vh rgba(148, 163, 184, 0.65),
+        14vw 4vh rgba(249, 250, 251, 0.35),
+        18vw 36vh rgba(249, 250, 251, 0.55),
+        24vw 12vh rgba(148, 163, 184, 0.6),
+        29vw 58vh rgba(249, 250, 251, 0.45),
+        34vw 24vh rgba(249, 250, 251, 0.7),
+        39vw 74vh rgba(148, 163, 184, 0.45),
+        44vw 9vh rgba(249, 250, 251, 0.4),
+        48vw 48vh rgba(148, 163, 184, 0.75),
+        53vw 16vh rgba(249, 250, 251, 0.6),
+        58vw 66vh rgba(249, 250, 251, 0.42),
+        63vw 29vh rgba(148, 163, 184, 0.55),
+        69vw 5vh rgba(249, 250, 251, 0.5),
+        73vw 41vh rgba(249, 250, 251, 0.7),
+        78vw 83vh rgba(148, 163, 184, 0.45),
+        84vw 17vh rgba(249, 250, 251, 0.5),
+        89vw 54vh rgba(249, 250, 251, 0.65),
+        94vw 31vh rgba(148, 163, 184, 0.55),
+        98vw 72vh rgba(249, 250, 251, 0.35),
+        6vw 86vh rgba(249, 250, 251, 0.65),
+        12vw 63vh rgba(148, 163, 184, 0.55),
+        21vw 79vh rgba(249, 250, 251, 0.38),
+        31vw 43vh rgba(249, 250, 251, 0.58),
+        42vw 91vh rgba(148, 163, 184, 0.5),
+        51vw 36vh rgba(249, 250, 251, 0.4),
+        61vw 88vh rgba(249, 250, 251, 0.62),
+        71vw 22vh rgba(148, 163, 184, 0.45),
+        81vw 68vh rgba(249, 250, 251, 0.58),
+        92vw 93vh rgba(249, 250, 251, 0.45),
+        5vw 27vh rgba(249, 250, 251, 0.58),
+        10vw 74vh rgba(148, 163, 184, 0.52),
+        15vw 92vh rgba(249, 250, 251, 0.42),
+        20vw 15vh rgba(249, 250, 251, 0.68),
+        26vw 45vh rgba(148, 163, 184, 0.5),
+        32vw 68vh rgba(249, 250, 251, 0.62),
+        36vw 6vh rgba(249, 250, 251, 0.42),
+        41vw 33vh rgba(148, 163, 184, 0.62),
+        46vw 86vh rgba(249, 250, 251, 0.48),
+        50vw 11vh rgba(249, 250, 251, 0.58),
+        56vw 52vh rgba(148, 163, 184, 0.6),
+        60vw 95vh rgba(249, 250, 251, 0.42),
+        65vw 73vh rgba(249, 250, 251, 0.62),
+        70vw 36vh rgba(148, 163, 184, 0.48),
+        75vw 2vh rgba(249, 250, 251, 0.56),
+        80vw 27vh rgba(249, 250, 251, 0.7),
+        85vw 91vh rgba(148, 163, 184, 0.45),
+        90vw 12vh rgba(249, 250, 251, 0.5),
+        95vw 64vh rgba(249, 250, 251, 0.7);
+}
+
+.star-field-dense::after {
+    box-shadow:
+        2vw 41vh rgba(249, 250, 251, 0.45),
+        7vw 28vh rgba(249, 250, 251, 0.7),
+        11vw 52vh rgba(148, 163, 184, 0.6),
+        16vw 89vh rgba(249, 250, 251, 0.45),
+        22vw 6vh rgba(249, 250, 251, 0.65),
+        27vw 31vh rgba(148, 163, 184, 0.5),
+        33vw 84vh rgba(249, 250, 251, 0.7),
+        37vw 14vh rgba(249, 250, 251, 0.4),
+        43vw 62vh rgba(148, 163, 184, 0.6),
+        47vw 3vh rgba(249, 250, 251, 0.55),
+        55vw 77vh rgba(249, 250, 251, 0.45),
+        59vw 21vh rgba(148, 163, 184, 0.65),
+        66vw 57vh rgba(249, 250, 251, 0.5),
+        72vw 11vh rgba(249, 250, 251, 0.4),
+        76vw 34vh rgba(148, 163, 184, 0.58),
+        82vw 49vh rgba(249, 250, 251, 0.7),
+        86vw 8vh rgba(249, 250, 251, 0.42),
+        91vw 76vh rgba(148, 163, 184, 0.5),
+        96vw 46vh rgba(249, 250, 251, 0.68),
+        99vw 15vh rgba(249, 250, 251, 0.4),
+        4vw 58vh rgba(249, 250, 251, 0.58),
+        13vw 81vh rgba(148, 163, 184, 0.55),
+        19vw 23vh rgba(249, 250, 251, 0.48),
+        25vw 97vh rgba(249, 250, 251, 0.55),
+        30vw 8vh rgba(148, 163, 184, 0.6),
+        35vw 49vh rgba(249, 250, 251, 0.65),
+        40vw 78vh rgba(249, 250, 251, 0.4),
+        45vw 29vh rgba(148, 163, 184, 0.55),
+        52vw 92vh rgba(249, 250, 251, 0.62),
+        57vw 40vh rgba(249, 250, 251, 0.5),
+        62vw 7vh rgba(148, 163, 184, 0.5),
+        68vw 86vh rgba(249, 250, 251, 0.58),
+        74vw 61vh rgba(249, 250, 251, 0.42),
+        79vw 19vh rgba(148, 163, 184, 0.68),
+        83vw 70vh rgba(249, 250, 251, 0.52),
+        88vw 38vh rgba(249, 250, 251, 0.7),
+        93vw 4vh rgba(148, 163, 184, 0.45),
+        97vw 88vh rgba(249, 250, 251, 0.55);
+}
+
+.star-field-ultra {
+    background-image:
+        radial-gradient(circle at 1% 8%, rgba(249, 250, 251, 0.55) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 5% 44%, rgba(148, 163, 184, 0.5) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 9% 91%, rgba(249, 250, 251, 0.65) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 13% 17%, rgba(249, 250, 251, 0.45) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 17% 67%, rgba(148, 163, 184, 0.55) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 23% 33%, rgba(249, 250, 251, 0.7) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 28% 82%, rgba(249, 250, 251, 0.48) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 32% 11%, rgba(148, 163, 184, 0.52) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 37% 54%, rgba(249, 250, 251, 0.62) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 41% 96%, rgba(249, 250, 251, 0.42) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 46% 27%, rgba(148, 163, 184, 0.58) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 51% 72%, rgba(249, 250, 251, 0.68) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 57% 6%, rgba(249, 250, 251, 0.44) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 62% 39%, rgba(148, 163, 184, 0.55) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 67% 88%, rgba(249, 250, 251, 0.6) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 73% 23%, rgba(249, 250, 251, 0.52) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 79% 63%, rgba(148, 163, 184, 0.5) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 84% 4%, rgba(249, 250, 251, 0.7) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 89% 79%, rgba(249, 250, 251, 0.46) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 96% 35%, rgba(148, 163, 184, 0.6) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 99% 93%, rgba(249, 250, 251, 0.55) 0 1px, transparent 1.6px);
+    animation: star-twinkle 2s ease-in-out infinite alternate;
 }
 
 .hero-stars {
@@ -290,7 +423,17 @@
     }
 
     to {
-        transform: translate3d(24px, 18px, 0);
+        transform: translate3d(8px, 6px, 0);
+    }
+}
+
+@keyframes star-twinkle {
+    from {
+        opacity: 0.82;
+    }
+
+    to {
+        opacity: 1;
     }
 }
 
@@ -2736,8 +2879,8 @@ h2 span {
         padding: 0;
         position: sticky;
         top: 0;
-        background: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(12px);
+        background: #000;
+        backdrop-filter: none;
     }
 
     .nav-logo {
@@ -2760,8 +2903,8 @@ h2 span {
         left: 0;
         width: 100%;
         flex-direction: column;
-        background: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(20px);
+        background: #000;
+        backdrop-filter: none;
         border-top: 1px solid #1F2937;
         z-index: 100;
         padding-top: 10px;
@@ -2770,6 +2913,11 @@ h2 span {
 
     .nav-toggle:checked~.nav-content {
         display: flex;
+    }
+
+    .nav-empty-left,
+    .nav-empty-right {
+        display: none;
     }
 
     /* HAMBURGER ANIMATION */
@@ -2822,8 +2970,8 @@ h2 span {
 
     .install {
         width: calc(100% - 64px);
-        margin: 32px;
-        padding: 20px;
+        margin: 22px;
+        padding: 9px;
         height: auto;
         border: 1px solid #FF7F1F;
         background: transparent;
@@ -2831,6 +2979,12 @@ h2 span {
         border-radius: 4px;
         justify-content: center;
         font-weight: 600;
+    }
+
+    .install:hover,
+    .install:focus-visible {
+        background: #FF7F1F;
+        color: #000;
     }
 
     .hero {
@@ -3139,6 +3293,12 @@ h2 span {
     background: #0a0a0a;
 }
 
+.featured-image a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 .category-tag {
     color: #FF7F1F;
     font-family: "JetBrains Mono", monospace;
@@ -3253,6 +3413,23 @@ h2 span {
     aspect-ratio: 16 / 10;
     background: #0a0a0a;
     border: 1px solid #1f2937;
+}
+
+.side-card-soon {
+    min-height: 230px;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(135deg, rgba(255, 127, 31, 0.08), transparent 44%),
+        #000;
+}
+
+.side-card-soon span {
+    color: #9CA3AF;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 .side-card h3 {
@@ -4010,6 +4187,12 @@ h2 span {
     color: #FF7F1F;
 }
 
+.copy-link-btn.copied {
+    border-color: #FF7F1F;
+    background: #FF7F1F;
+    color: #000;
+}
+
 /* Content Wrapper */
 .article-layout {
     display: grid;
@@ -4026,6 +4209,13 @@ h2 span {
     position: sticky;
     top: 100px;
     height: fit-content;
+}
+
+.table-of-contents .toc-nav {
+    display: block;
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
 }
 
 .toc-title {
@@ -4055,6 +4245,10 @@ h2 span {
     display: block;
     padding-left: 12px;
     border-left: 1px solid transparent;
+}
+
+.content-section {
+    scroll-margin-top: 96px;
 }
 
 .toc-link:hover {
@@ -6119,8 +6313,8 @@ details[open] .sidebar-nav-item .chevron {
     }
 
     .docs-footer-nav {
-        flex-direction: column;
-        align-items: stretch;
+        /* flex-direction: column;
+        align-items: stretch; */
         gap: 24px;
     }
 

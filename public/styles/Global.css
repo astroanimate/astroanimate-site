@@ -2558,8 +2558,8 @@ h2 span {
 
     .install {
         width: calc(100% - 64px);
-        margin: 32px;
-        padding: 20px;
+        margin: 22px;
+        padding: 9px;
         height: auto;
         border: 1px solid #FF7F1F;
         background: transparent;
@@ -3467,6 +3467,10 @@ h2 span {
     border-left: 1px solid #FF7F1F;
     padding-left: 16px;
     margin-bottom: 20px;
+}
+.blog-highlight-border {
+        border-left: 1px solid #FF7F1F;
+    padding-left: 16px;
 }
 
 .highlight-text {

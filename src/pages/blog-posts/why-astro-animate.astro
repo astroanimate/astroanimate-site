@@ -15,7 +15,7 @@ import "../../styles/Global.css";
         <header class="article-header">
             <div class="blog-nav">
                 <a href="/blog" class="back-link">← Go Back</a>
-                <a href="#" class="next-link">Next Post →</a>
+                <!-- <a href="#" class="next-link">Next Post →</a> -->
             </div>
 
             <div class="article-title-section">
@@ -61,7 +61,7 @@ import "../../styles/Global.css";
                         />
                         <span class="author-name">Prashanth ks</span>
                     </div>
-                    <button class="copy-link-btn">Copy Link</button>
+                    <button class="copy-link-btn" type="button">Copy Link</button>
                 </div>
             </div>
         </header>
@@ -114,107 +114,95 @@ import "../../styles/Global.css";
                         Why Astro Needs a Dedicated Animation Library (And How
                         AstroAnimate Solves It)
                     </h2>
-
+                    <p>Astro is static-first and built around Islands Architecture. Most animation libraries assume fully hydrated client frameworks, which expands bundle size and breaks performance boundaries.</p>
+<p>AstroAnimate is a dedicated Astro animation library designed specifically for Astro. It provides CSS-first primitives, optional JS adapters, and built-in Astro View Transitions compatibility without forcing global hydration.</p>
                     <h3>
-                        The Core Problem: Astro Wasn't Designed for Client-Heavy
-                        Animation
+                        The Core Problem: Astro Wasn’t Designed for Client-Heavy Animation
                     </h3>
                     <p>
-                        Astro's architecture is fundamentally built around
-                        server-side rendering and minimal client-side
-                        JavaScript. While this approach delivers exceptional
-                        performance, it creates unique challenges for animation
-                        libraries that traditionally rely heavily on runtime
-                        JavaScript.
+                        Astro is not a fully client-rendered framework.
+Astro renders static HTML by default and hydrates only what you explicitly opt into. That architectural decision changes how animation should be implemented.
                     </p>
+                    <p>Most animation libraries were built assuming:</p>
 
                     <ul class="content-list">
                         <li>
                             <span class="diamond"></span>
 
-                            Server-side first rendering conflicts with
-                            traditional animation timing
+                            Full client-side runtime
                         </li>
                         <li>
                             <span class="diamond"></span>
-
-                            Islands architecture requires careful JavaScript
-                            boundary management
+Persistent hydration
                         </li>
                         <li>
                             <span class="diamond"></span>
-                            View Transitions API integration needs specialized handling
+                          Global initialization
                         </li>
                         <li>
                             <span class="diamond"></span>
-                            Performance optimization requires zero-JS by default approach
+                           Virtual DOM orchestration
                         </li>
                     </ul>
+                    <p>Astro was designed to avoid those assumptions. That mismatch creates friction.
+For example, importing a timeline-based animation library just to fade in a hero section can add tens of kilobytes of JavaScript and introduce unnecessary hydration. The effect works but the performance cost may not be justified.</p>
                 </section>
 
                 <section id="generic-libraries" class="content-section">
                     <h3>
-                        Why Generic Animation Libraries Don't Fit Astro Cleanly
+                        Why Generic Animation Libraries Don’t Fit Astro Cleanly
                     </h3>
                     <p>
-                        Popular animation libraries like GSAP, Framer Motion, or
-                        Anime.js were designed for traditional SPA
-                        architectures. They assume persistent client-side
-                        JavaScript runtime, which conflicts with Astro's core
-                        principles.
+                        Libraries like GSAP, Motion, or AOS are powerful tools. They work well in client-rendered applications.
                     </p>
 
+                    <p>In Astro, however, they typically require:</p>
                     <ul class="content-list">
                         <li>
                             <span class="diamond"></span>
-                            Heavy JavaScript footprint contradicts Astro's performance
-                            goals
+                            Hydrated islands
                         </li>
                         <li>
                             <span class="diamond"></span>
-                            Lack of native View Transitions API support
+                           Runtime execution
                         </li>
                         <li>
                             <span class="diamond"></span>
-                            Poor integration with Islands architecture boundaries
-                        </li>
-                        <li>
-                            <span class="diamond"></span>
-                            No consideration for server-side rendering constraints
+                            Expanded bundle size
                         </li>
                     </ul>
+                    <p>When used without careful scoping, hydration boundaries grow quickly.
+Astro’s philosophy is clear:</p>
+
+<div class="blog-highlight-border">
+    <p class="highlight-text">Ship as little JavaScript as possible.</p>
+</div>
+<p>Many animation libraries assume JavaScript is always present. Astro assumes it is optional.
+That architectural difference matters.</p>
                 </section>
 
                 <section id="astro-needs" class="content-section">
-                    <h3>What Astro Actually Needs From Animation</h3>
+                    <h3>What Astro Actually Needs From an Animation System</h3>
                     <p>
-                        Astro requires an animation approach that respects its
-                        architectural principles while still providing powerful
-                        animation capabilities. This means rethinking how
-                        animations are implemented from the ground up.
+                        Astro needs motion that respects:
                     </p>
 
                     <ul class="content-list">
                         <li>
                             <span class="diamond"></span>
-                            CSS-first approach with JavaScript as progressive enhancement
-                        </li>
+Static rendering                        </li>
                         <li>
                             <span class="diamond"></span>
-                            Native View Transitions API integration
-                        </li>
+Islands Architecture                        </li>
                         <li>
                             <span class="diamond"></span>
-                            Islands-aware animation boundaries
-                        </li>
+Hydration boundaries                        </li>
                         <li>
                             <span class="diamond"></span>
-                            Server-side rendering compatibility
-                        </li>
+Astro View Transitions                        </li>
                         <li>
                             <span class="diamond"></span>
-                            Zero JavaScript by default, opt-in when needed
-                        </li>
+Performance budgets                        </li>
                     </ul>
                 </section>
 
@@ -321,7 +309,7 @@ import "../../styles/Global.css";
             </article>
 
             <!-- AUTHOR BIO -->
-            <section class="author-bio">
+            <!-- <section class="author-bio">
                 <div class="author-bio-content">
                     <img
                         src="/images/prashanth.png"
@@ -342,9 +330,89 @@ import "../../styles/Global.css";
                         </p>
                     </div>
                 </div>
-            </section>
+            </section> -->
         </div>
     </main>
 
     <Footer />
 </Layout>
+
+<script>
+    function initArticleInteractions() {
+        const article = document.querySelector<HTMLElement>(".article-container");
+        if (!article || article.dataset.articleReady === "true") return;
+        article.dataset.articleReady = "true";
+
+        const copyButton = document.querySelector<HTMLButtonElement>(".copy-link-btn");
+        const tocLinks = Array.from(
+            document.querySelectorAll<HTMLAnchorElement>(".table-of-contents .toc-link"),
+        );
+        const sections = tocLinks
+            .map((link) => {
+                const id = link.getAttribute("href")?.replace("#", "");
+                return id ? document.getElementById(id) : null;
+            })
+            .filter((section): section is HTMLElement => Boolean(section));
+
+        copyButton?.addEventListener("click", async () => {
+            const pageUrl = window.location.href;
+
+            try {
+                if (navigator.clipboard?.writeText) {
+                    await navigator.clipboard.writeText(pageUrl);
+                } else {
+                    throw new Error("Clipboard API unavailable");
+                }
+            } catch {
+                const fallback = document.createElement("textarea");
+                fallback.value = pageUrl;
+                fallback.setAttribute("readonly", "");
+                fallback.style.position = "fixed";
+                fallback.style.opacity = "0";
+                document.body.appendChild(fallback);
+                fallback.select();
+                document.execCommand("copy");
+                fallback.remove();
+            }
+
+            copyButton.classList.add("copied");
+            copyButton.textContent = "Copied";
+
+            window.setTimeout(() => {
+                copyButton.classList.remove("copied");
+                copyButton.textContent = "Copy Link";
+            }, 1800);
+        });
+
+        tocLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                tocLinks.forEach((item) => item.classList.remove("active"));
+                link.classList.add("active");
+            });
+        });
+
+        if (!sections.length) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const activeEntry = entries
+                    .filter((entry) => entry.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+                if (!activeEntry) return;
+
+                tocLinks.forEach((link) => {
+                    const isActive =
+                        link.getAttribute("href") === `#${activeEntry.target.id}`;
+                    link.classList.toggle("active", isActive);
+                });
+            },
+            { rootMargin: "-120px 0px -55% 0px", threshold: [0.15, 0.35, 0.6] },
+        );
+
+        sections.forEach((section) => observer.observe(section));
+    }
+
+    document.addEventListener("DOMContentLoaded", initArticleInteractions);
+    document.addEventListener("astro:page-load", initArticleInteractions);
+</script>

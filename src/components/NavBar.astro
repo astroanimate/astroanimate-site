@@ -1,6 +1,26 @@
 ---
 import "../styles/Global.css";
 const { pathname } = Astro.url;
+
+const normalizedPath = pathname.replace(/\/$/, "") || "/";
+const componentDocPaths = new Set([
+  "/docs/all-components",
+  "/docs/fadein",
+  "/docs/typewritter",
+  "/docs/scalein",
+  "/docs/reveal-image",
+  "/docs/expandable-card",
+  "/docs/animated-card",
+  "/docs/glass-card",
+  "/docs/loader",
+  "/docs/progress-bar",
+  "/docs/animated-button",
+  "/docs/tooltip",
+]);
+const isComponentsActive = componentDocPaths.has(normalizedPath);
+const isDocsActive =
+  (normalizedPath === "/docs" || normalizedPath.startsWith("/docs/")) &&
+  !isComponentsActive;
 ---
 
 <nav class="nav" aria-label="Main navigation">
@@ -53,7 +73,7 @@ const { pathname } = Astro.url;
       href="/docs/"
       class:list={[
         "nav-item nav-link",
-        { active: pathname.startsWith("/docs/") },
+        { active: isDocsActive },
       ]}>DOCS</a
     >
     <!-- <a
@@ -69,9 +89,9 @@ const { pathname } = Astro.url;
       href="/docs/all-components"
       class:list={[
         "nav-item nav-link",
-        { active: pathname === "/docs/all-components" },
+        { active: isComponentsActive },
       ]}
-      aria-current={pathname === "/docs/all-components" ? "page" : undefined}
+      aria-current={isComponentsActive ? "page" : undefined}
     >
       COMPONENTS</a
     >
