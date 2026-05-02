@@ -1,143 +1,141 @@
 <section class="features-section">
-    <div class="badge-border"></div>
-    <div class="badge">ARCHITECTURE</div>
+  <div class="badge-border"></div>
+  <div class="badge">ARCHITECTURE</div>
 
-    <div class="features-header">
-        <p class="mini">// ARCHITECTURE</p>
-        <h3>
-            Architecture Built for
-            <span>Predictable Performance</span>
-        </h3>
+  <div class="features-header">
+    <p class="mini">// ARCHITECTURE</p>
+    <h3>
+      Architecture Built for
+      <span>Predictable Performance</span>
+    </h3>
 
-        <ul class="points">
-            <li>
-                <img
-                    class="check-icon"
-                    src="/images/checkmark.png"
-                    alt="Checkmark indicating performance alignment"
-                    width="16"
-                    height="16"
-                    loading="lazy"
-                    decoding="async"
-                />
-                AstroAnimate aligns with Astro's partial hydration model.
-            </li>
-            <li>
-                <img
-                    class="check-icon"
-                    src="/images/checkmark.png"
-                    alt="Checkmark indicating rendering alignment"
-                    width="16"
-                    height="16"
-                    loading="lazy"
-                    decoding="async"
-                />
-                Motion is structured to work within Astro's rendering model.
-            </li>
-        </ul>
+    <ul class="points">
+      <li>
+        <img
+          class="check-icon"
+          src="/images/checkmark.png"
+          alt="Checkmark indicating performance alignment"
+          width="16"
+          height="16"
+          loading="lazy"
+          decoding="async"
+        />
+        AstroAnimate aligns with Astro's partial hydration model.
+      </li>
+      <li>
+        <img
+          class="check-icon"
+          src="/images/checkmark.png"
+          alt="Checkmark indicating rendering alignment"
+          width="16"
+          height="16"
+          loading="lazy"
+          decoding="async"
+        />
+        Motion is structured to work within Astro's rendering model.
+      </li>
+    </ul>
+  </div>
+
+  <div class="archi-grid">
+    <!-- 01 -->
+    <div class="archi-card border-right border-bottom">
+      <div class="top">
+        <span class="num">01</span>
+        <img
+          src="/images/forced.png"
+          alt="hydration"
+          class="archi-icon"
+          width="24"
+          height="24"
+        />
+      </div>
+      <h3>No Forced Hydration</h3>
+      <p>
+        Components do not trigger global hydration. Client directives are
+        opt-in.
+      </p>
     </div>
 
-    <div class="archi-grid">
-        <!-- 01 -->
-        <div class="archi-card border-right border-bottom">
-            <div class="top">
-                <span class="num">01</span>
-                <img
-                    src="/images/forced.png"
-                    alt="hydration"
-                    class="archi-icon"
-                    width="24"
-                    height="24"
-                />
-            </div>
-            <h3>No Forced Hydration</h3>
-            <p>
-                Components do not trigger global hydration. Client directives
-                are opt-in.
-            </p>
-        </div>
-
-        <!-- 02 -->
-        <div class="archi-card border-right border-bottom">
-            <div class="top">
-                <span class="num">02</span>
-                <img
-                    src="/images/footprint.png"
-                    alt="footprint"
-                    class="archi-icon"
-                    width="24"
-                    height="24"
-                />
-            </div>
-            <h3>Minimal CSS Footprint</h3>
-            <p>
-                Animation styles are scoped to components. No global CSS resets.
-            </p>
-        </div>
-
-        <!-- 05 (SPANNING) -->
-        <div class="archi-card span-vertical border-right">
-            <div class="top">
-                <span class="num">05</span>
-                <img
-                    src="/images/impact.png"
-                    alt="leaf"
-                    class="archi-icon"
-                    width="24"
-                    height="24"
-                />
-            </div>
-            <h3>Hydration Impact</h3>
-            <p>
-                CSS-only animations add zero JavaScript to the client bundle.
-                Optional JavaScript-based animations load only when explicitly
-                enabled via client directives.
-            </p>
-            <ul class="stats-list">
-                <li>• CSS-only FadeIn component: 0KB JavaScript added</li>
-                <li>
-                    • GSAP-based timeline component: ~45KB JavaScript (opt-in
-                    only)
-                </li>
-            </ul>
-        </div>
-
-        <!-- 03 -->
-        <div class="archi-card border-right">
-            <div class="top">
-                <span class="num">03</span>
-                <img
-                    src="/images/render.png"
-                    alt="render"
-                    class="archi-icon"
-                    width="24"
-                    height="24"
-                />
-            </div>
-            <h3>Static-First Rendering</h3>
-            <p>
-                Animations render correctly in fully static builds. No runtime
-                dependency required for basic effects.
-            </p>
-        </div>
-
-        <!-- 04 -->
-        <div class="archi-card border-right">
-            <div class="top">
-                <span class="num">04</span>
-                <img
-                    src="/images/motion.png"
-                    alt="motion"
-                    class="archi-icon"
-                    width="24"
-                    height="24"
-                />
-            </div>
-            <h3>Reduced Motion Support</h3>
-            <p>
-                Animations automatically disable when users prefer reduced
-                motion. Accessibility is built into default behavior.
-            </p>
-        </div>
+    <!-- 02 -->
+    <div class="archi-card border-right border-bottom">
+      <div class="top">
+        <span class="num">02</span>
+        <img
+          src="/images/footprint.png"
+          alt="footprint"
+          class="archi-icon"
+          width="24"
+          height="24"
+        />
+      </div>
+      <h3>Minimal CSS Footprint</h3>
+      <p>Animation styles are scoped to components. No global CSS resets.</p>
     </div>
+
+    <!-- 05 (SPANNING) -->
+    <div class="archi-card span-vertical border-right">
+      <div class="top">
+        <span class="num">05</span>
+        <img
+          src="/images/impact.png"
+          alt="leaf"
+          class="archi-icon"
+          width="24"
+          height="24"
+        />
+      </div>
+      <h3>Hydration Impact</h3>
+      <p>
+        CSS-only animations add zero JavaScript to the client bundle. Optional
+        JavaScript-based animations load only when explicitly enabled via client
+        directives.
+      </p>
+      <ul class="stats-list">
+        <li>• CSS-only FadeIn component: 0KB JavaScript added</li>
+        <li>• GSAP-based timeline component: ~45KB JavaScript (opt-in only)</li>
+      </ul>
+    </div>
+
+    <!-- 03 -->
+    <div class="archi-card border-right">
+      <div class="top">
+        <span class="num">03</span>
+        <img
+          src="/images/render.png"
+          alt="render"
+          class="archi-icon"
+          width="24"
+          height="24"
+        />
+      </div>
+      <h3>Static-First Rendering</h3>
+      <p>
+        Animations render correctly in fully static builds. No runtime
+        dependency required for basic effects.
+      </p>
+    </div>
+
+    <!-- 04 -->
+    <div
+      class="archi-card border-right card-04"
+      style="border-bottom: 1px solid #1F2937 !important;"
+    >
+      <div class="top">
+        <span class="num">04</span>
+        <img
+          src="/images/motion.png"
+          alt="motion"
+          class="archi-icon"
+          width="24"
+          height="24"
+        />
+      </div>
+      <h3>Reduced Motion Support</h3>
+      <p>
+        Animations automatically disable when users prefer reduced motion.
+        Accessibility is built into default behavior.
+      </p>
+    </div>
+  </div>
 </section>

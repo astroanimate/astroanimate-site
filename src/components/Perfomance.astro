@@ -1,97 +1,168 @@
 <section class="features-section">
-    <div class="badge-border"></div>
-    <div class="badge">PERFOMANCE</div>
+  <div class="badge-border"></div>
+  <div class="badge">PERFOMANCE</div>
 
-    <div class="features-header">
-        <p class="mini">// PERFORMANCE</p>
-        <h3>
-            Measured Performance
-            <span>Characteristics</span>
-        </h3>
-        <p class="desc">
-            The following metrics are measured from static demo builds and
-            documented test environments.
-        </p>
+  <div class="features-header">
+    <p class="mini">// PERFORMANCE</p>
+    <h3>
+      Measured Performance
+      <span>Characteristics</span>
+    </h3>
+    <p class="desc">
+      The following metrics are measured from static demo builds and documented
+      test environments.
+    </p>
+  </div>
+
+  <div class="perf-grid">
+    <!-- ROW 1 -->
+    <div class="perf-cell has-content border-right border-bottom">
+      <h3>Bundle size:</h3>
+      <ul class="perf-list">
+        <li>
+          <img
+            src="/images/checkmark.png"
+            alt="check"
+            class="check-icon"
+            width="16"
+            height="16"
+          /> Core library: ~12KB gzipped (base components)
+        </li>
+        <li>
+          <img
+            src="/images/checkmark.png"
+            alt="check"
+            class="check-icon"
+            width="16"
+            height="16"
+          /> Individual components: 2-5KB gzipped each
+        </li>
+        <li>
+          <img
+            src="/images/checkmark.png"
+            alt="check"
+            class="check-icon"
+            width="16"
+            height="16"
+          /> Tree-shakable: Only imported components are bundled
+        </li>
+      </ul>
+    </div>
+    <div class="perf-cell border-bottom">
+      <img
+        src="/images/bundle.png"
+        alt="AstroAnimate feature visualization"
+        class="perf-cell-bundle"
+      />
     </div>
 
-    <div class="perf-grid">
-        <!-- ROW 1 -->
-        <div class="perf-cell has-content border-right border-bottom">
-            <h3>Bundle size:</h3>
-            <ul class="perf-list">
-                <li>
-                    <img src="/images/checkmark.png" alt="check" class="check-icon" width="16" height="16" /> Core library: ~12KB gzipped (base
-                    components)
-                </li>
-                <li>
-                    <img src="/images/checkmark.png" alt="check" class="check-icon" width="16" height="16" /> Individual components: 2-5KB
-                    gzipped each
-                </li>
-                <li>
-                    <img src="/images/checkmark.png" alt="check" class="check-icon" width="16" height="16" /> Tree-shakable: Only imported
-                    components are bundled
-                </li>
-            </ul>
-        </div>
-        <div class="perf-cell border-bottom">
-            <img src="/images/bundle.png" alt="AstroAnimate feature visualization" class="perf-cell-bundle">
-        </div>
-
-        <!-- ROW 2 -->
-        <div class="perf-cell border-right border-bottom">
-            <img src="/images/lighthouse.png" alt="Lighthouse Score" class="perf-cell-bundle">
-        </div>
-        <div class="perf-cell has-content border-bottom">
-            <h3>Lighthouse Scores:</h3>
-            <ul class="perf-list">
-                <li>
-                    <img src="/images/checkmark.png" alt="check" class="check-icon" width="16" height="16" /> Demo site: 98+ Performance, 100
-                    Accessibility, 100 Best Practices
-                </li>
-                <li>
-                    <img src="/images/checkmark.png" alt="check" class="check-icon" width="16" height="16" /> Tested on Astro 4.x static builds
-                </li>
-            </ul>
-        </div>
-     
-        <!-- ROW 3 -->
-        <div class="perf-cell has-content border-right border-bottom">
-            <h3>Browser Compatibility:</h3>
-            <ul class="perf-list">
-                <li>
-                    <img src="/images/checkmark.png" alt="check" class="check-icon" width="16" height="16" /> Chrome 90+, Firefox 88+, Safari
-                    14+, Edge 90+
-                </li>
-                <li>
-                    <img src="/images/checkmark.png" alt="check" class="check-icon" width="16" height="16" /> Graceful degradation for older
-                    browsers (animations disabled, layout preserved)
-                </li>
-            </ul>
-        </div>
-        <div class="perf-cell border-bottom">
-                        <img src="/images/browser.png" alt="AstroAnimate feature visualization" class="perf-cell-bundle">
-
-        </div>
-
-        <!-- ROW 4 -->
-        <div class="perf-cell border-right">
-            <img src="/images/css-scope.png" alt="CSS Scope Performance" class="perf-cell-bundle">
-        </div>
-        <div class="perf-cell has-content">
-            <h3>CSS Scope:</h3>
-            <ul class="perf-list">
-                <li>
-                    <img src="/images/checkmark.png" alt="check" class="check-icon" width="16" height="16" /> Component-scoped animation styles
-                </li>
-                <li>
-                    <img src="/images/checkmark.png" alt="check" class="check-icon" width="16" height="16" /> No global resets or conflicting
-                    selectors
-                </li>
-                <li>
-                    <img src="/images/checkmark.png" alt="check" class="check-icon" width="16" height="16" /> ~50 lines of CSS per animated
-                    component (average)
-                </li>
-            </ul>
-        </div>
+    <!-- ROW 2 -->
+    <div class="perf-cell border-right border-bottom">
+      <img
+        src="/images/lighthouse.png"
+        alt="Lighthouse Score"
+        class="perf-cell-bundle"
+      />
     </div>
+    <div class="perf-cell has-content border-bottom">
+      <h3>Lighthouse Scores:</h3>
+      <ul class="perf-list">
+        <li>
+          <img
+            src="/images/checkmark.png"
+            alt="check"
+            class="check-icon"
+            width="16"
+            height="16"
+          /> Demo site: 98+ Performance, 100 Accessibility, 100 Best Practices
+        </li>
+        <li>
+          <img
+            src="/images/checkmark.png"
+            alt="check"
+            class="check-icon"
+            width="16"
+            height="16"
+          /> Tested on Astro 4.x static builds
+        </li>
+      </ul>
+    </div>
+
+    <!-- ROW 3 -->
+    <div class="perf-cell has-content border-right border-bottom">
+      <h3>Browser Compatibility:</h3>
+      <ul class="perf-list">
+        <li>
+          <img
+            src="/images/checkmark.png"
+            alt="check"
+            class="check-icon"
+            width="16"
+            height="16"
+          /> Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
+        </li>
+        <li>
+          <img
+            src="/images/checkmark.png"
+            alt="check"
+            class="check-icon"
+            width="16"
+            height="16"
+          /> Graceful degradation for older browsers (animations disabled, layout
+          preserved)
+        </li>
+      </ul>
+    </div>
+    <div class="perf-cell border-bottom">
+      <img
+        src="/images/browser.png"
+        alt="AstroAnimate feature visualization"
+        class="perf-cell-bundle"
+      />
+    </div>
+
+    <!-- ROW 4 -->
+    <div class="perf-cell border-right">
+      <img
+        src="/images/css-scope.png"
+        alt="CSS Scope Performance"
+        class="perf-cell-bundle"
+      />
+    </div>
+    <div
+      class="perf-cell has-content"
+      style="border-bottom: 1px solid #1F2937 !important;"
+    >
+      <h3>CSS Scope:</h3>
+      <ul class="perf-list">
+        <li>
+          <img
+            src="/images/checkmark.png"
+            alt="check"
+            class="check-icon"
+            width="16"
+            height="16"
+          /> Component-scoped animation styles
+        </li>
+        <li>
+          <img
+            src="/images/checkmark.png"
+            alt="check"
+            class="check-icon"
+            width="16"
+            height="16"
+          /> No global resets or conflicting selectors
+        </li>
+        <li>
+          <img
+            src="/images/checkmark.png"
+            alt="check"
+            class="check-icon"
+            width="16"
+            height="16"
+          /> ~50 lines of CSS per animated component (average)
+        </li>
+      </ul>
+    </div>
+  </div>
 </section>

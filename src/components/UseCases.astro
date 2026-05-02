@@ -3,489 +3,579 @@
 ---
 
 <section class="features-section">
-    <div class="badge-border"></div>
-    <div class="badge">DESIGNED FOR COMPONENT MOTION</div>
+  <div class="badge-border"></div>
+  <div class="badge">DESIGNED FOR COMPONENT MOTION</div>
 
-    <div class="features-header usecase-header">
-        <p class="mini">// DESIGNED FOR COMPONENT MOTION</p>
-        <h2>
-            Optimized for Specific
-            <span> Use Cases</span>
-        </h2>
-        <p class="desc">
-            AstroAnimate is designed for component-level motion in Astro
-            projects. It prioritizes clarity and architectural alignment for
-            common UI animation patterns.
-        </p>
-    </div>
+  <div class="features-header usecase-header">
+    <p class="mini">// DESIGNED FOR COMPONENT MOTION</p>
+    <h2>
+      Optimized for Specific
+      <span> Use Cases</span>
+    </h2>
+    <p class="desc">
+      AstroAnimate is designed for component-level motion in Astro projects. It
+      prioritizes clarity and architectural alignment for common UI animation
+      patterns.
+    </p>
+  </div>
 
-    <section class="usecases">
-        <!-- CSS-ONLY TAB SYSTEM -->
-        <div class="container tab-system">
-            <!-- HIDDEN RADIOS -->
-            <input
-                type="radio"
-                id="tab-core"
-                name="usecase-tabs"
-                checked
-                hidden
-            />
-            <input
-                type="radio"
-                id="tab-limitations"
-                name="usecase-tabs"
-                hidden
-            />
-            <input type="radio" id="tab-guide" name="usecase-tabs" hidden />
-            <input
-                type="radio"
-                id="tab-architecture"
-                name="usecase-tabs"
-                hidden
-            />
+  <section class="usecases">
+    <!-- CSS-ONLY TAB SYSTEM -->
+    <div class="container tab-system">
+      <!-- HIDDEN RADIOS -->
+      <input type="radio" id="tab-core" name="usecase-tabs" checked hidden />
+      <input type="radio" id="tab-limitations" name="usecase-tabs" hidden />
+      <input type="radio" id="tab-guide" name="usecase-tabs" hidden />
+      <input type="radio" id="tab-architecture" name="usecase-tabs" hidden />
 
-            <!-- LEFT SIDE (LABELS) -->
-            <div class="left">
-                <label for="tab-core" class="item item-core">
-                    <div class="usecase-item-header">
-                        <span class="label">CORE_CAPABILITIES</span>
-                        <div class="icon-wrapper">
-                            <img
-                                src="/images/checkmark-wc.png"
-                                class="tab-icon icon-non-active"
-                                alt="AstroAnimate feature visualization"
-                                width="18"
-                                height="18"
-                            />
-                            <img
-                                src="/images/checkmark-copy.png"
-                                class="tab-icon icon-active"
-                                alt="AstroAnimate feature visualization"
-                                width="18"
-                                height="18"
-                            />
-                        </div>
-                    </div>
-                    <p>What This Library Does Well</p>
-                </label>
-
-                <label for="tab-limitations" class="item item-limitations">
-                    <div class="usecase-item-header">
-                        <span class="label">LIMITATIONS</span>
-                        <div class="icon-wrapper">
-                            <img
-                                src="/images/limitation.png"
-                                class="tab-icon icon-non-active"
-                                alt="AstroAnimate feature visualization"
-                                width="18"
-                                height="18"
-                            />
-                            <img
-                                src="/images/limitation-copy.png"
-                                class="tab-icon icon-active"
-                                alt="AstroAnimate feature visualization"
-                                width="18"
-                                height="18"
-                            />
-                        </div>
-                    </div>
-                    <p>What This Library Doesn't Do</p>
-                </label>
-
-                <label for="tab-guide" class="item item-guide">
-                    <div class="usecase-item-header">
-                        <span class="label">USE_CASE_GUIDE</span>
-                        <div class="icon-wrapper">
-                            <img
-                                src="/images/gauide.png"
-                                class="tab-icon icon-non-active"
-                                alt="AstroAnimate feature visualization"
-                                width="18"
-                                height="18"
-                            />
-                            <img
-                                src="/images/guide-copy.png"
-                                class="tab-icon icon-active"
-                                alt="AstroAnimate feature visualization"
-                                width="18"
-                                height="18"
-                            />
-                        </div>
-                    </div>
-                    <p>When to Use AstroAnimate</p>
-                </label>
-
-                <label for="tab-architecture" class="item item-architecture">
-                    <div class="usecase-item-header">
-                        <span class="label">PACKAGE_ARCHITECTURE</span>
-                        <div class="icon-wrapper">
-                            <img
-                                src="/images/package.png"
-                                class="tab-icon icon-non-active"
-                                alt="AstroAnimate feature visualization"
-                                width="18"
-                                height="18"
-                            />
-                            <img
-                                src="/images/package-copy.png"
-                                class="tab-icon icon-active"
-                                alt="AstroAnimate feature visualization"
-                                width="18"
-                                height="18"
-                            />
-                        </div>
-                    </div>
-                    <p>Package Structure</p>
-                </label>
+      <!-- LEFT SIDE (LABELS) -->
+      <div class="left">
+        <label for="tab-core" class="item item-core">
+          <div class="usecase-item-header">
+            <span class="label">CORE_CAPABILITIES</span>
+            <div class="icon-wrapper">
+              <img
+                src="/images/checkmark-wc.png"
+                class="tab-icon icon-non-active"
+                alt="AstroAnimate feature visualization"
+                width="18"
+                height="18"
+              />
+              <img
+                src="/images/checkmark-copy.png"
+                class="tab-icon icon-active"
+                alt="AstroAnimate feature visualization"
+                width="18"
+                height="18"
+              />
             </div>
+          </div>
+          <p>What This Library Does Well</p>
+        </label>
 
-            <!-- RIGHT SIDE (CONTENT) -->
-            <div class="right">
-                <!-- CORE CONTENT -->
-                <div class="tab-content content-core">
-                    <h3>What This Library Does Well</h3>
-                    <p class="desc">
-                        AstroAnimate focuses on common UI animation patterns in
-                        Astro, including component entry, scroll reveals, view
-                        transitions, and micro-interactions.
-                    </p>
-                    <ul class="points">
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/checkmark.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />Component enter/exit animations
-                        </li>
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/checkmark.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />Scroll-based reveal effects
-                        </li>
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/checkmark.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />View Transitions API integration
-                        </li>
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/checkmark.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />Micro-interactions (buttons, cards, lists)
-                        </li>
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/checkmark.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />Accessibility-aware motion (prefers-reduced-motion
-                            built-in)
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- LIMITATIONS CONTENT -->
-                <div class="tab-content content-limitations">
-                    <h3>What This Library Doesn't Do</h3>
-                    <p class="desc">
-                        AstroAnimate does not handle complex animation
-                        timelines, physics simulations, or 3D/WebGL motion.
-                        These cases are better handled by specialized engines.
-                    </p>
-                    <ul class="points">
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/false.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />Complex timeline orchestration (use
-                            @astroanimate/gsap for advanced timelines)
-                        </li>
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/false.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />Raw engine-level physics orchestration (use
-                            @astroanimate/motion or direct Motion API for
-                            fine-grained control)
-                        </li>
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/false.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />Canvas or WebGL motion (use Three.js for 3D/WebGL
-                            rendering)
-                        </li>
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/false.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />Framework-agnostic usage (designed specifically
-                            for Astro)
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- GUIDE CONTENT -->
-                <div class="tab-content content-guide">
-                    <h3>When to Use AstroAnimate</h3>
-                    <p class="desc">
-                        Use AstroAnimate when you need structured,
-                        component-level animations that integrate cleanly with
-                        Astro's rendering model.
-                    </p>
-                    <ul class="points">
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/checkmark.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />Animating component entry and exit states in Astro
-                            pages.
-                        </li>
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/checkmark.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />Adding scroll-based reveal effects for sections
-                            and lists.
-                        </li>
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/checkmark.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />Implementing page transitions using the View
-                            Transitions API.
-                        </li>
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/checkmark.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />Creating micro-interactions for buttons, cards,
-                            and UI elements.
-                        </li>
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/checkmark.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />Building animations that respect
-                            `prefers-reduced-motion` for accessibility.
-                        </li>
-                        <li>
-                            <img
-                                class="check-icon"
-                                src="/images/checkmark.png"
-                                alt="AstroAnimate feature visualization"
-                                width="16"
-                                height="16"
-                                loading="lazy"
-                                decoding="async"
-                            />Keeping animation logic server-side without
-                            increasing bundle size.
-                        </li>
-                    </ul>
-
-                    <div class="highlight-box">
-                        <p>
-                            Install only what your project requires. CSS-first
-                            by default, engine-based motion when necessary.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- ARCHITECTURE CONTENT -->
-                <div class="tab-content content-architecture">
-                    <h3>Package Structure</h3>
-                    <p class="desc">
-                        The library is split into modular packages so developers
-                        can install only the animation engines or features they
-                        need. This separation keeps the core lightweight while
-                        allowing JavaScript engines to be added explicitly when
-                        needed.
-                    </p>
-                    <ul class="points">
-                        <li>
-                            <span class="code">@astroanimate/core</span> CSS-first
-                            component animations
-                        </li>
-                        <li>
-                            <span class="code">@astroanimate/aos</span> Scroll-triggered
-                            animation integration
-                        </li>
-                        <li>
-                            <span class="code">@astroanimate/gsap</span> GSAP integration
-                            for timeline-based motion
-                        </li>
-                        <li>
-                            <span class="code">@astroanimate/motion</span> Motion-based
-                            animations (spring physics, advanced transitions)
-                        </li>
-                    </ul>
-
-                    <div class="highlight-box">
-                        <p>
-                            Install only what your project requires. CSS-first
-                            by default, engine-based motion when necessary.
-                        </p>
-                    </div>
-                </div>
+        <label for="tab-limitations" class="item item-limitations">
+          <div class="usecase-item-header">
+            <span class="label">LIMITATIONS</span>
+            <div class="icon-wrapper">
+              <img
+                src="/images/limitation.png"
+                class="tab-icon icon-non-active"
+                alt="AstroAnimate feature visualization"
+                width="18"
+                height="18"
+              />
+              <img
+                src="/images/limitation-copy.png"
+                class="tab-icon icon-active"
+                alt="AstroAnimate feature visualization"
+                width="18"
+                height="18"
+              />
             </div>
+          </div>
+          <p>What This Library Doesn't Do</p>
+        </label>
+
+        <label for="tab-guide" class="item item-guide">
+          <div class="usecase-item-header">
+            <span class="label">USE_CASE_GUIDE</span>
+            <div class="icon-wrapper">
+              <img
+                src="/images/gauide.png"
+                class="tab-icon icon-non-active"
+                alt="AstroAnimate feature visualization"
+                width="18"
+                height="18"
+              />
+              <img
+                src="/images/guide-copy.png"
+                class="tab-icon icon-active"
+                alt="AstroAnimate feature visualization"
+                width="18"
+                height="18"
+              />
+            </div>
+          </div>
+          <p>When to Use AstroAnimate</p>
+        </label>
+
+        <label for="tab-architecture" class="item item-architecture">
+          <div class="usecase-item-header">
+            <span class="label">PACKAGE_ARCHITECTURE</span>
+            <div class="icon-wrapper">
+              <img
+                src="/images/package.png"
+                class="tab-icon icon-non-active"
+                alt="AstroAnimate feature visualization"
+                width="18"
+                height="18"
+              />
+              <img
+                src="/images/package-copy.png"
+                class="tab-icon icon-active"
+                alt="AstroAnimate feature visualization"
+                width="18"
+                height="18"
+              />
+            </div>
+          </div>
+          <p>Package Structure</p>
+        </label>
+      </div>
+
+      <!-- RIGHT SIDE (CONTENT) -->
+      <div class="right">
+        <!-- CORE CONTENT -->
+        <div class="tab-content content-core">
+          <h3>What This Library Does Well</h3>
+          <p class="desc">
+            AstroAnimate focuses on common UI animation patterns in Astro,
+            including component entry, scroll reveals, view transitions, and
+            micro-interactions.
+          </p>
+          <ul class="points">
+            <li>
+              <img
+                class="check-icon"
+                src="/images/checkmark.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />Component enter/exit animations
+            </li>
+            <li>
+              <img
+                class="check-icon"
+                src="/images/checkmark.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />Scroll-based reveal effects
+            </li>
+            <li>
+              <img
+                class="check-icon"
+                src="/images/checkmark.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />View Transitions API integration
+            </li>
+            <li>
+              <img
+                class="check-icon"
+                src="/images/checkmark.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />Micro-interactions (buttons, cards, lists)
+            </li>
+            <li>
+              <img
+                class="check-icon"
+                src="/images/checkmark.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />Accessibility-aware motion (prefers-reduced-motion built-in)
+            </li>
+          </ul>
         </div>
-    </section>
+
+        <!-- LIMITATIONS CONTENT -->
+        <div class="tab-content content-limitations">
+          <h3>What This Library Doesn't Do</h3>
+          <p class="desc">
+            AstroAnimate does not handle complex animation timelines, physics
+            simulations, or 3D/WebGL motion. These cases are better handled by
+            specialized engines.
+          </p>
+          <ul class="points">
+            <li>
+              <img
+                class="check-icon"
+                src="/images/false.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />Complex timeline orchestration (use @astroanimate/gsap for
+              advanced timelines)
+            </li>
+            <li>
+              <img
+                class="check-icon"
+                src="/images/false.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />Raw engine-level physics orchestration (use @astroanimate/motion
+              or direct Motion API for fine-grained control)
+            </li>
+            <li>
+              <img
+                class="check-icon"
+                src="/images/false.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />Canvas or WebGL motion (use Three.js for 3D/WebGL rendering)
+            </li>
+            <li>
+              <img
+                class="check-icon"
+                src="/images/false.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />Framework-agnostic usage (designed specifically for Astro)
+            </li>
+          </ul>
+        </div>
+
+        <!-- GUIDE CONTENT -->
+        <div class="tab-content content-guide">
+          <h3>When to Use AstroAnimate</h3>
+          <p class="desc">
+            Use AstroAnimate when you need structured, component-level
+            animations that integrate cleanly with Astro's rendering model.
+          </p>
+          <ul class="points">
+            <li>
+              <img
+                class="check-icon"
+                src="/images/checkmark.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />Animating component entry and exit states in Astro pages.
+            </li>
+            <li>
+              <img
+                class="check-icon"
+                src="/images/checkmark.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />Adding scroll-based reveal effects for sections and lists.
+            </li>
+            <li>
+              <img
+                class="check-icon"
+                src="/images/checkmark.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />Implementing page transitions using the View Transitions API.
+            </li>
+            <li>
+              <img
+                class="check-icon"
+                src="/images/checkmark.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />Creating micro-interactions for buttons, cards, and UI elements.
+            </li>
+            <li>
+              <img
+                class="check-icon"
+                src="/images/checkmark.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />Building animations that respect `prefers-reduced-motion` for
+              accessibility.
+            </li>
+            <li>
+              <img
+                class="check-icon"
+                src="/images/checkmark.png"
+                alt="AstroAnimate feature visualization"
+                width="16"
+                height="16"
+                loading="lazy"
+                decoding="async"
+              />Keeping animation logic server-side without increasing bundle
+              size.
+            </li>
+          </ul>
+
+          <div class="highlight-box">
+            <p>
+              Install only what your project requires. CSS-first by default,
+              engine-based motion when necessary.
+            </p>
+          </div>
+        </div>
+
+        <!-- ARCHITECTURE CONTENT -->
+        <div class="tab-content content-architecture">
+          <h3>Package Structure</h3>
+          <p class="desc">
+            The library is split into modular packages so developers can install
+            only the animation engines or features they need. This separation
+            keeps the core lightweight while allowing JavaScript engines to be
+            added explicitly when needed.
+          </p>
+          <ul class="points">
+            <li>
+              <span class="code">@astroanimate/core</span> CSS-first component animations
+            </li>
+            <li>
+              <span class="code">@astroanimate/aos</span> Scroll-triggered animation
+              integration
+            </li>
+            <li>
+              <span class="code">@astroanimate/gsap</span> GSAP integration for timeline-based
+              motion
+            </li>
+            <li>
+              <span class="code">@astroanimate/motion</span> Motion-based animations
+              (spring physics, advanced transitions)
+            </li>
+          </ul>
+
+          <div class="highlight-box">
+            <p>
+              Install only what your project requires. CSS-first by default,
+              engine-based motion when necessary.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </section>
 
 <script>
-    // Extend Window interface to include lastScrollY
-    declare global {
-        interface Window {
-            lastScrollY?: number;
-        }
+  // Extend Window interface to include lastScrollY
+  declare global {
+    interface Window {
+      lastScrollY?: number;
+    }
+  }
+
+  // Configuration: Set this to true to enable timed tab switching, false to disable
+  const ENABLE_TIMED_TAB_SWITCHING = false;
+
+  function setupScrollBasedTabSwitching() {
+    const tabSystem = document.querySelector(".tab-system");
+    if (!tabSystem) return;
+
+    const tabs = [
+      { id: "tab-core", content: ".content-core" },
+      { id: "tab-limitations", content: ".content-limitations" },
+      { id: "tab-guide", content: ".content-guide" },
+      { id: "tab-architecture", content: ".content-architecture" },
+    ];
+
+    let currentTab = 0;
+    let isScrolling = false;
+    let scrollTimeout: ReturnType<typeof setTimeout> | undefined;
+    let scrollThrottle: ReturnType<typeof setTimeout> | undefined;
+
+    // Check if we're in mobile view
+    function isMobileView() {
+      return window.innerWidth <= 768; // Adjust breakpoint as needed
     }
 
-    function setupScrollBasedTabSwitching() {
-        const tabSystem = document.querySelector('.tab-system');
-        if (!tabSystem) return;
+    // Setup mobile accordion behavior
+    function setupMobileAccordion() {
+      if (!tabSystem) return;
 
-        const tabs = [
-            { id: 'tab-core', content: '.content-core' },
-            { id: 'tab-limitations', content: '.content-limitations' },
-            { id: 'tab-guide', content: '.content-guide' },
-            { id: 'tab-architecture', content: '.content-architecture' }
-        ];
+      const leftItems = tabSystem.querySelectorAll(".left .item");
+      const rightContent = tabSystem.querySelectorAll(".right .tab-content");
 
-        let currentTab = 0;
-        let isScrolling = false;
-        let scrollTimeout: ReturnType<typeof setTimeout> | undefined;
-        let scrollThrottle: ReturnType<typeof setTimeout> | undefined;
+      // Move content sections to be inline with their headers in mobile
+      function restructureForMobile() {
+        const rightContainer = tabSystem.querySelector(".right");
 
-        // Function to switch to a specific tab
-        function switchTab(index: number) {
-            if (index < 0 || index >= tabs.length) return;
-            
-            const tab = tabs[index];
-            const radio = document.getElementById(tab.id) as HTMLInputElement;
-            if (radio) {
-                radio.checked = true;
-                currentTab = index;
-            }
-        }
-
-        // Handle scroll events
-        function handleScroll() {
-            if (isScrolling) return;
-            
-            const scrollDirection = window.scrollY > (window.lastScrollY || 0) ? 1 : -1;
-            window.lastScrollY = window.scrollY;
-
-            // Clear existing timeout
-            if (scrollTimeout) {
-                clearTimeout(scrollTimeout);
-            }
-            
-            // Set a small delay to determine if user is still scrolling
-            scrollTimeout = setTimeout(() => {
-                if (scrollDirection > 0 && currentTab < tabs.length - 1) {
-                    // Scrolling down - move to next tab
-                    switchTab(currentTab + 1);
-                } else if (scrollDirection < 0 && currentTab > 0) {
-                    // Scrolling up - move to previous tab
-                    switchTab(currentTab - 1);
-                }
-            }, 100);
-        }
-
-        // Throttle scroll events
-        function throttledHandleScroll() {
-            if (!scrollThrottle) {
-                scrollThrottle = setTimeout(() => {
-                    handleScroll();
-                    scrollThrottle = undefined;
-                }, 50);
-            }
-        }
-
-        // Add scroll event listener
-        window.addEventListener('scroll', throttledHandleScroll, { passive: true });
-
-        // Also allow manual tab switching (maintain existing functionality)
-        const labels = tabSystem.querySelectorAll('.left label');
-        labels.forEach((label, index) => {
-            label.addEventListener('click', () => {
-                currentTab = index;
+        if (!isMobileView()) {
+          // Desktop: restore original structure
+          if (rightContainer) {
+            (rightContainer as HTMLElement).style.display = "";
+            rightContent.forEach((content) => {
+              if (!rightContainer.contains(content)) {
+                rightContainer.appendChild(content);
+              }
             });
+          }
+          return;
+        }
+
+        // Mobile: move each content section after its corresponding header
+        leftItems.forEach((item, index) => {
+          const correspondingContent = rightContent[index] as HTMLElement;
+          if (
+            correspondingContent &&
+            !item.nextElementSibling?.isSameNode(correspondingContent)
+          ) {
+            item.parentNode?.insertBefore(
+              correspondingContent,
+              item.nextSibling,
+            );
+          }
         });
+
+        // Hide the empty right container in mobile view
+        if (rightContainer) {
+          (rightContainer as HTMLElement).style.display = "none";
+        }
+      }
+
+      // Handle click events for accordion behavior
+      function handleAccordionClick(event: Event) {
+        const clickedItem = event.currentTarget as HTMLElement;
+        const clickedIndex = Array.from(leftItems).indexOf(clickedItem);
+
+        if (clickedIndex === -1) return;
+
+        // Hide all content sections
+        rightContent.forEach((content) => {
+          (content as HTMLElement).style.display = "none";
+        });
+
+        // Show clicked content
+        const clickedContent = rightContent[clickedIndex] as HTMLElement;
+        if (clickedContent) {
+          clickedContent.style.display = "block";
+        }
+
+        // Update visual states
+        leftItems.forEach((item, index) => {
+          if (index === clickedIndex) {
+            (item as HTMLElement).classList.add("accordion-active");
+          } else {
+            (item as HTMLElement).classList.remove("accordion-active");
+          }
+        });
+
+        // Update radio button for consistency
+        const radio = document.getElementById(
+          tabs[clickedIndex].id,
+        ) as HTMLInputElement;
+        if (radio) {
+          radio.checked = true;
+          currentTab = clickedIndex;
+        }
+      }
+
+      // Initial restructuring
+      restructureForMobile();
+
+      // Add click listeners for accordion
+      leftItems.forEach((item) => {
+        (item as HTMLElement).addEventListener("click", handleAccordionClick);
+      });
+
+      // Handle resize
+      window.addEventListener("resize", restructureForMobile);
+
+      // Initially show first content in mobile
+      if (isMobileView() && rightContent.length > 0) {
+        rightContent.forEach((content, index) => {
+          (content as HTMLElement).style.display =
+            index === 0 ? "block" : "none";
+        });
+        (leftItems[0] as HTMLElement)?.classList.add("accordion-active");
+      }
     }
 
-    // Initialize when DOM is ready
-    document.addEventListener('DOMContentLoaded', setupScrollBasedTabSwitching);
-    // Re-initialize after Astro page transitions
-    document.addEventListener('astro:page-load', setupScrollBasedTabSwitching);
+    // Initialize accordion functionality
+    setupMobileAccordion();
+
+    // Function to switch to a specific tab
+    function switchTab(index: number) {
+      if (index < 0 || index >= tabs.length) return;
+
+      const tab = tabs[index];
+      const radio = document.getElementById(tab.id) as HTMLInputElement;
+      if (radio) {
+        radio.checked = true;
+        currentTab = index;
+      }
+    }
+
+    // Handle scroll events
+    function handleScroll() {
+      if (isScrolling) return;
+
+      // Check if timed tab switching is enabled
+      if (!ENABLE_TIMED_TAB_SWITCHING) return;
+
+      const scrollDirection =
+        window.scrollY > (window.lastScrollY || 0) ? 1 : -1;
+      window.lastScrollY = window.scrollY;
+
+      // Clear existing timeout
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+
+      // Set a small delay to determine if user is still scrolling
+      scrollTimeout = setTimeout(() => {
+        if (scrollDirection > 0 && currentTab < tabs.length - 1) {
+          // Scrolling down - move to next tab
+          switchTab(currentTab + 1);
+        } else if (scrollDirection < 0 && currentTab > 0) {
+          // Scrolling up - move to previous tab
+          switchTab(currentTab - 1);
+        }
+      }, 100);
+    }
+
+    // Throttle scroll events
+    function throttledHandleScroll() {
+      if (!scrollThrottle) {
+        scrollThrottle = setTimeout(() => {
+          handleScroll();
+          scrollThrottle = undefined;
+        }, 50);
+      }
+    }
+
+    // Add scroll event listener
+    window.addEventListener("scroll", throttledHandleScroll, { passive: true });
+
+    // Also allow manual tab switching (maintain existing functionality)
+    const labels = tabSystem.querySelectorAll(".left label");
+    labels.forEach((label, index) => {
+      label.addEventListener("click", () => {
+        currentTab = index;
+      });
+    });
+  }
+
+  // Initialize when DOM is ready
+  document.addEventListener("DOMContentLoaded", setupScrollBasedTabSwitching);
+  // Re-initialize after Astro page transitions
+  document.addEventListener("astro:page-load", setupScrollBasedTabSwitching);
 </script>
