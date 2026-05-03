@@ -1731,6 +1731,7 @@ h2 span {
     font-size: 18px;
     font-family: 'Inter', sans-serif;
     color: #F9FAFB;
+    font-weight: 200;
 }
 
 .os-card p {
@@ -5551,6 +5552,53 @@ details[open] .sidebar-nav-item .chevron {
     /* margin-bottom: 20px; */
     font-size: 16px;
     font-family: 'Inter', sans-serif;
+    width: 100%;
+    max-width: 100%;
+}
+
+.all-components-page .docs-container {
+    width: 100vw !important;
+    max-width: 100vw !important;
+}
+
+.all-components-page .docs-content {
+    width: 100vw !important;
+    max-width: 100vw !important;
+}
+
+.all-components-page .docs-content-inner {
+    max-width: none !important;
+    padding-left: 40px !important;
+    width: 100% !important;
+}
+
+.all-components-header {
+    width: 100% !important;
+    max-width: none !important;
+    display: block !important;
+}
+
+.all-components-header > div {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+}
+
+.all-components-header .docs-intro-section {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+.all-components-page .docs-paragraph {
+    width: 100% !important;
+    max-width: none !important;
+    flex: 1 !important;
+}
+
+.all-components-header > div {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
 }
 
 .docs-paragraph a {
@@ -6411,10 +6459,11 @@ details[open] .sidebar-nav-item .chevron {
     .built-by,
     .utc-time {
         justify-self: center !important;
+        margin: 0;
     }
 
     .docs-title {
-        font-size: 28px;
+        font-size: 28px !important;
     }
 
     .docs-footer-nav {
@@ -6551,6 +6600,8 @@ details[open] .sidebar-nav-item .chevron {
     .footer-grid {
         border-left: none;
         border-right: none;
+        margin: 0 16px;
+        padding: 0;
     }
 
     .footer-coffee {
@@ -6587,6 +6638,46 @@ details[open] .sidebar-nav-item .chevron {
 
     .blog-listing-header h1 {
         font-size: 28px;
+    }
+
+    .article-container {
+        padding: 0;
+    }
+
+    .article-layout {
+        padding: 30px 16px;
+    }
+
+    .article-category-tag,
+    .article-title-wrapper,
+    .article-author-section {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .article-title-wrapper .blog-title-left h1,
+    .article-body h2,
+    .docs-subtitle,
+    .all-components-content h2 {
+        font-size: 24px !important;
+    }
+
+    .featured-content h2 a {
+        font-size: 24px !important;
+    }
+
+    .all-component-card .all-component-preview,
+    .all-component-name {
+        font-size: 14px !important;
+    }
+
+    .all-component-card {
+        border-bottom: 1px solid #1F2937;
+    }
+
+    .article-container::before,
+    .article-container::after {
+        background: transparent;
     }
 }
 
