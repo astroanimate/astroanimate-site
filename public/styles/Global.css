@@ -3796,20 +3796,17 @@ h2 span {
     font-size: 16px;
     color: #F9FAFB;
     text-decoration: none;
-    line-height: 1.4;
+    padding: 8px 12px;
     display: block;
-    padding-left: 12px;
-    border-left: 1px solid transparent;
+    transition: all 0.2s ease;
 }
 
 .toc-link:hover {
     color: #FF7F1F;
-    border-left-color: #FF7F1F;
 }
 
 .toc-link.active {
     color: #FF7F1F;
-    border-left-color: #FF7F1F;
 }
 
 /* Main Content */

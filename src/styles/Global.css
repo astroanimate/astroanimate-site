@@ -4250,7 +4250,6 @@ h2 span {
     line-height: 1.4;
     display: block;
     padding-left: 12px;
-    border-left: 1px solid transparent;
 }
 
 .content-section {
@@ -4259,12 +4258,10 @@ h2 span {
 
 .toc-link:hover {
     color: #FF7F1F;
-    border-left-color: #FF7F1F;
 }
 
 .toc-link.active {
     color: #FF7F1F;
-    border-left-color: #FF7F1F;
 }
 
 /* Main Content */
@@ -4403,7 +4400,7 @@ h2 span {
 /* Responsive Design */
 @media (max-width: 768px) {
     .article-container {
-        padding: 0 20px;
+        padding: 0 24px;
     }
 
     /* .article-header {

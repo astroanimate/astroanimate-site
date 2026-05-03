@@ -6,410 +6,487 @@ import "../../styles/Global.css";
 ---
 
 <Layout
-    title="Why Astro Needs a Dedicated Animation Library (And How AstroAnimate Solves It)"
+  title="Why Astro Needs a Dedicated Animation Library (And How AstroAnimate Solves It)"
 >
-    <NavBar />
+  <NavBar />
 
-    <main class="article-container">
-        <!-- BLOG HEADER -->
-        <header class="article-header">
-            <div class="blog-nav">
-                <a href="/blog" class="back-link">← Go Back</a>
-                <!-- <a href="#" class="next-link">Next Post →</a> -->
+  <main class="article-container">
+    <!-- BLOG HEADER -->
+    <header class="article-header">
+      <div class="blog-nav">
+        <a href="/blog/" class="back-link">← Go Back</a>
+        <!-- <a href="#" class="next-link">Next Post →</a> -->
+      </div>
+
+      <div class="article-title-section">
+        <span class="article-category-tag">// Blog</span>
+
+        <div class="article-title-wrapper">
+          <div class="blog-title-left">
+            <h1 class="blog-title">
+              Why Astro Needs a Dedicated Animation Library (And How
+              AstroAnimate Solves It)
+            </h1>
+
+            <div class="article-meta-wrapper">
+              <div class="article-meta">
+                <span class="blog-date">MAR 25, 2006</span>
+                <span class="blog-read-time">4 MIN READ</span>
+              </div>
             </div>
+          </div>
 
-            <div class="article-title-section">
-                <span class="article-category-tag">// Blog</span>
-
-                <div class="article-title-wrapper">
-                    <div class="blog-title-left">
-                        <h1 class="blog-title">
-                            Why Astro Needs a Dedicated Animation Library (And
-                            How AstroAnimate Solves It)
-                        </h1>
-
-                        <div class="article-meta-wrapper">
-                            <div class="article-meta">
-                                <span class="blog-date">MAR 25, 2006</span>
-                                <span class="blog-read-time">4 MIN READ</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="blog-title-image">
-                        <div class="blog-featured-image">
-                            <img
-                                src="/images/blog-1.png"
-                                alt="AstroAnimate feature visualization"
-                                loading="lazy"
-                                decoding="async"
-                                width="800"
-                                height="400"
-                            />
-                     
-                        </div>
-                    </div>
-                </div>
-                <div class="article-author-section">
-                    <div class="author-info">
-                        <img
-                            src="/images/prashanth.png"
-                            alt="Prashanth ks"
-                            class="author-avatar"
-                            width="40"
-                            height="40"
-                        />
-                        <span class="author-name">Prashanth ks</span>
-                    </div>
-                    <button class="copy-link-btn" type="button">Copy Link</button>
-                </div>
+          <div class="blog-title-image">
+            <div class="blog-featured-image">
+              <img
+                src="/images/blog-1.png"
+                alt="AstroAnimate feature visualization"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="400"
+              />
             </div>
-        </header>
+          </div>
+        </div>
+        <div class="article-author-section">
+          <div class="author-info">
+            <img
+              src="/images/prashanth.png"
+              alt="Prashanth ks"
+              class="author-avatar"
+              width="40"
+              height="40"
+            />
+            <span class="author-name">Prashanth ks</span>
+          </div>
+          <button class="copy-link-btn" type="button">Copy Link</button>
+        </div>
+      </div>
+    </header>
 
-        <!-- BLOG CONTENT -->
-        <div class="article-layout">
-            <!-- TABLE OF CONTENTS -->
-            <aside class="table-of-contents">
-                <nav class="toc-nav">
-                    <!-- <h3 class="toc-title">Table of Contents</h3> -->
-                    <ul class="toc-list">
-                        <li class="toc-item">
-                            <a href="#core-problem" class="toc-link active"
-                                >The Core Problem: Astro Wasn't...</a
-                            >
-                        </li>
-                        <li class="toc-item">
-                            <a href="#generic-libraries" class="toc-link"
-                                >Why Generic Animation Libraries...</a
-                            >
-                        </li>
-                        <li class="toc-item">
-                            <a href="#astro-needs" class="toc-link"
-                                >What Astro Actually Needs From...</a
-                            >
-                        </li>
-                        <li class="toc-item">
-                            <a href="#what-is-astroanimate" class="toc-link"
-                                >What is AstroAnimate?</a
-                            >
-                        </li>
-                        <li class="toc-item">
-                            <a href="#architecture" class="toc-link"
-                                >How AstroAnimate Differs Architectur...</a
-                            >
-                        </li>
-                        <li class="toc-item">
-                            <a href="#css-first" class="toc-link"
-                                >CSS-First Design: Why It Matters</a
-                            >
-                        </li>
-                    </ul>
-                </nav>
-            </aside>
+    <!-- BLOG CONTENT -->
+    <div class="article-layout">
+      <!-- TABLE OF CONTENTS -->
+      <aside class="table-of-contents">
+        <nav class="toc-nav">
+          <!-- <h3 class="toc-title">Table of Contents</h3> -->
+          <ul class="toc-list">
+            <li class="toc-item">
+              <a href="#core-problem" class="toc-link active"
+                >The Core Problem: Astro Wasn't...</a
+              >
+            </li>
+            <li class="toc-item">
+              <a href="#generic-libraries" class="toc-link"
+                >Why Generic Animation Libraries...</a
+              >
+            </li>
+            <li class="toc-item">
+              <a href="#astro-needs" class="toc-link"
+                >What Astro Actually Needs From...</a
+              >
+            </li>
+            <li class="toc-item">
+              <a href="#what-is-astroanimate" class="toc-link"
+                >What is AstroAnimate?</a
+              >
+            </li>
+            <li class="toc-item">
+              <a href="#architecture" class="toc-link"
+                >How AstroAnimate Differs Architectur...</a
+              >
+            </li>
+            <li class="toc-item">
+              <a href="#css-first" class="toc-link"
+                >CSS-First Design: Why It Matters</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
 
-            <!-- MAIN CONTENT -->
-            <article class="article-body">
-                <section id="core-problem" class="content-section">
-                    <h2>
-                        Why Astro Needs a Dedicated Animation Library (And How
-                        AstroAnimate Solves It)
-                    </h2>
-                    <p>Astro is static-first and built around Islands Architecture. Most animation libraries assume fully hydrated client frameworks, which expands bundle size and breaks performance boundaries.</p>
-<p>AstroAnimate is a dedicated Astro animation library designed specifically for Astro. It provides CSS-first primitives, optional JS adapters, and built-in Astro View Transitions compatibility without forcing global hydration.</p>
-                    <h3>
-                        The Core Problem: Astro Wasn’t Designed for Client-Heavy Animation
-                    </h3>
-                    <p>
-                        Astro is not a fully client-rendered framework.
-Astro renders static HTML by default and hydrates only what you explicitly opt into. That architectural decision changes how animation should be implemented.
-                    </p>
-                    <p>Most animation libraries were built assuming:</p>
+      <!-- MAIN CONTENT -->
+      <article class="article-body">
+        <section id="core-problem" class="content-section">
+          <h2>
+            Why Astro Needs a Dedicated Animation Library (And How AstroAnimate
+            Solves It)
+          </h2>
+          <p>
+            Astro is static-first and built around Islands Architecture. Most
+            animation libraries assume fully hydrated client frameworks, which
+            expands bundle size and breaks performance boundaries.
+          </p>
+          <p>
+            AstroAnimate is a dedicated Astro animation library designed
+            specifically for Astro. It provides CSS-first primitives, optional
+            JS adapters, and built-in Astro View Transitions compatibility
+            without forcing global hydration.
+          </p>
+          <h3>
+            The Core Problem: Astro Wasn’t Designed for Client-Heavy Animation
+          </h3>
+          <p>
+            Astro is not a fully client-rendered framework. Astro renders static
+            HTML by default and hydrates only what you explicitly opt into. That
+            architectural decision changes how animation should be implemented.
+          </p>
+          <p>Most animation libraries were built assuming:</p>
 
-                    <ul class="content-list">
-                        <li>
-                            <span class="diamond"></span>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
 
-                            Full client-side runtime
-                        </li>
-                        <li>
-                            <span class="diamond"></span>
-Persistent hydration
-                        </li>
-                        <li>
-                            <span class="diamond"></span>
-                          Global initialization
-                        </li>
-                        <li>
-                            <span class="diamond"></span>
-                           Virtual DOM orchestration
-                        </li>
-                    </ul>
-                    <p>Astro was designed to avoid those assumptions. That mismatch creates friction.
-For example, importing a timeline-based animation library just to fade in a hero section can add tens of kilobytes of JavaScript and introduce unnecessary hydration. The effect works but the performance cost may not be justified.</p>
-                </section>
+              Full client-side runtime
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Persistent hydration
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Global initialization
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Virtual DOM orchestration
+            </li>
+          </ul>
+          <p>
+            Astro was designed to avoid those assumptions. That mismatch creates
+            friction. For example, importing a timeline-based animation library
+            just to fade in a hero section can add tens of kilobytes of
+            JavaScript and introduce unnecessary hydration. The effect works but
+            the performance cost may not be justified.
+          </p>
+        </section>
 
-                <section id="generic-libraries" class="content-section">
-                    <h3>
-                        Why Generic Animation Libraries Don’t Fit Astro Cleanly
-                    </h3>
-                    <p>
-                        Libraries like GSAP, Motion, or AOS are powerful tools. They work well in client-rendered applications.
-                    </p>
+        <section id="generic-libraries" class="content-section">
+          <h3>Why Generic Animation Libraries Don’t Fit Astro Cleanly</h3>
+          <p>
+            Libraries like GSAP, Motion, or AOS are powerful tools. They work
+            well in client-rendered applications.
+          </p>
 
-                    <p>In Astro, however, they typically require:</p>
-                    <ul class="content-list">
-                        <li>
-                            <span class="diamond"></span>
-                            Hydrated islands
-                        </li>
-                        <li>
-                            <span class="diamond"></span>
-                           Runtime execution
-                        </li>
-                        <li>
-                            <span class="diamond"></span>
-                            Expanded bundle size
-                        </li>
-                    </ul>
-                    <p>When used without careful scoping, hydration boundaries grow quickly.
-Astro’s philosophy is clear:</p>
+          <p>In Astro, however, they typically require:</p>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
+              Hydrated islands
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Runtime execution
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Expanded bundle size
+            </li>
+          </ul>
+          <p>
+            When used without careful scoping, hydration boundaries grow
+            quickly. Astro’s philosophy is clear:
+          </p>
 
-<div class="blog-highlight-border">
-    <p class="highlight-text">Ship as little JavaScript as possible.</p>
-</div>
-<p>Many animation libraries assume JavaScript is always present. Astro assumes it is optional.
-That architectural difference matters.</p>
-                </section>
+          <div class="blog-highlight-border">
+            <p class="highlight-text">Ship as little JavaScript as possible.</p>
+          </div>
+          <p>
+            Many animation libraries assume JavaScript is always present. Astro
+            assumes it is optional. That architectural difference matters.
+          </p>
+        </section>
 
-                <section id="astro-needs" class="content-section">
-                    <h3>What Astro Actually Needs From an Animation System</h3>
-                    <p>
-                        Astro needs motion that respects:
-                    </p>
+        <section id="astro-needs" class="content-section">
+          <h3>What Astro Actually Needs From an Animation System</h3>
+          <p>Astro needs motion that respects:</p>
 
-                    <ul class="content-list">
-                        <li>
-                            <span class="diamond"></span>
-Static rendering                        </li>
-                        <li>
-                            <span class="diamond"></span>
-Islands Architecture                        </li>
-                        <li>
-                            <span class="diamond"></span>
-Hydration boundaries                        </li>
-                        <li>
-                            <span class="diamond"></span>
-Astro View Transitions                        </li>
-                        <li>
-                            <span class="diamond"></span>
-Performance budgets                        </li>
-                    </ul>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
+              Static rendering
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Islands Architecture
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Hydration boundaries
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Astro View Transitions
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Performance budgets
+            </li>
+          </ul>
 
-                    <p>It needs animation primitives that:</p>
+          <p>It needs animation primitives that:</p>
 
-                    <ul class="content-list">
-                        <li>
-                            <span class="diamond"></span>
-Default to zero JS                      </li>
-                        <li>
-                            <span class="diamond"></span>
-Hydrate only when required                     </li>
-                        <li>
-                            <span class="diamond"></span>
-Work inside isolated islands                      </li>
-                        <li>
-                            <span class="diamond"></span>
-Respect prefers-reduced-motion                     </li>
-                        <li>
-                            <span class="diamond"></span>
-Degrade gracefully                   </li>
-                    </ul>
-                    <p>There was no dedicated Astro animation library built around those constraints.</p>
-                    <p>AstroAnimate was built after repeatedly encountering hydration conflicts in real Astro projects. The goal was not to add more motion — but to add motion that aligns with Astro’s architecture.</p>
-                </section>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
+              Default to zero JS
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Hydrate only when required
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Work inside isolated islands
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Respect prefers-reduced-motion
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Degrade gracefully
+            </li>
+          </ul>
+          <p>
+            There was no dedicated Astro animation library built around those
+            constraints.
+          </p>
+          <p>
+            AstroAnimate was built after repeatedly encountering hydration
+            conflicts in real Astro projects. The goal was not to add more
+            motion — but to add motion that aligns with Astro’s architecture.
+          </p>
+        </section>
 
-                <section id="what-is-astroanimate" class="content-section">
-                    <h3>What is AstroAnimate?</h3>
-                    <p>
-                       AstroAnimate is a dedicated animation component library built specifically for Astro.
-                    </p>
+        <section id="what-is-astroanimate" class="content-section">
+          <h3>What is AstroAnimate?</h3>
+          <p>
+            AstroAnimate is a dedicated animation component library built
+            specifically for Astro.
+          </p>
 
-                    <p>It is not a thin wrapper around an existing timeline engine. It is not a generic abstraction layer.</p>
+          <p>
+            It is not a thin wrapper around an existing timeline engine. It is
+            not a generic abstraction layer.
+          </p>
 
-                    <p>AstroAnimate was designed around Astro’s static-first model from the beginning.</p>
+          <p>
+            AstroAnimate was designed around Astro’s static-first model from the
+            beginning.
+          </p>
 
-                    <p>It follows five architectural principles:</p>
-                    <ul class="content-list">
-                        <li>
-                            <span class="diamond"></span>
-                            Zero-JS by default</li>
-                        <li>
-                            <span class="diamond"></span>
-                            Island-aware components</li>
-                        <li>
-                            <span class="diamond"></span>
-                            Astro View Transitions compatibility</li>
-                        <li>
-                            <span class="diamond"></span>
-                            Performance-first constraints</li>
-                        <li>
-                            <span class="diamond"></span>
-                            Optional engine adapters</li>
-                    </ul>
+          <p>It follows five architectural principles:</p>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
+              Zero-JS by default
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Island-aware components
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Astro View Transitions compatibility
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Performance-first constraints
+            </li>
+            <li>
+              <span class="diamond"></span>
+              Optional engine adapters
+            </li>
+          </ul>
 
-                  <p >You can explore the full 
-                    <a href="/docs" class="why-link">documentation</a>
-                     for implementation details.</p>
-                </section>
+          <p>
+            You can explore the full
+            <a href="/docs" class="why-link">documentation</a>
+            for implementation details.
+          </p>
+        </section>
 
-                <section id="architecture" class="content-section">
-                    <h3>How AstroAnimate Differs Architecturally</h3>
-                    <div class="table-wrapper article-table-wrapper">
-                        <table class="docs-table article-comparison-table">
-                            <thead>
-                                <tr>
-                                    <th>Foundational Decision</th>
-                                    <th>Framer</th>
-                                    <th>Feature</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Default JS runtime</td>
-                                    <td>Required</td>
-                                    <td>Optional</td>
-                                </tr>
-                                <tr>
-                                    <td>Works without hydration</td>
-                                    <td>No</td>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <td>Hydration Scope</td>
-                                    <td>Often global</td>
-                                    <td>Scoped to islands</td>
-                                </tr>
-                                <tr>
-                                    <td>Island-aware</td>
-                                    <td>No</td>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <td>View Transitions compatibility</td>
-                                    <td>Partial</td>
-                                    <td>Designed for Astro</td>
-                                </tr>
-                                <tr>
-                                    <td>Bundle-conscious</td>
-                                    <td>Not by default</td>
-                                    <td>Constrained by design</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        <section id="architecture" class="content-section">
+          <h3>How AstroAnimate Differs Architecturally</h3>
+          <div class="table-wrapper article-table-wrapper">
+            <table class="docs-table article-comparison-table">
+              <thead>
+                <tr>
+                  <th>Foundational Decision</th>
+                  <th>Framer</th>
+                  <th>Feature</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Default JS runtime</td>
+                  <td>Required</td>
+                  <td>Optional</td>
+                </tr>
+                <tr>
+                  <td>Works without hydration</td>
+                  <td>No</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>Hydration Scope</td>
+                  <td>Often global</td>
+                  <td>Scoped to islands</td>
+                </tr>
+                <tr>
+                  <td>Island-aware</td>
+                  <td>No</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>View Transitions compatibility</td>
+                  <td>Partial</td>
+                  <td>Designed for Astro</td>
+                </tr>
+                <tr>
+                  <td>Bundle-conscious</td>
+                  <td>Not by default</td>
+                  <td>Constrained by design</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                    <p>
-                        AstroAnimate enforces boundaries instead of expanding them.
-                    </p>
-                </section>
+          <p>AstroAnimate enforces boundaries instead of expanding them.</p>
+        </section>
 
-                <section id="css-first" class="content-section">
-                    <h3>CSS-First Design: Why It Matters</h3>
-                    <p>
-                        Components from <code>@astroanimate/core</code> are CSS-based primitives.
-                    </p>
+        <section id="css-first" class="content-section">
+          <h3>CSS-First Design: Why It Matters</h3>
+          <p>
+            Components from <code>@astroanimate/core</code> are CSS-based primitives.
+          </p>
 
-                    <pre class="article-code-block"><code>import &#123; FadeIn &#125; from "@astroanimate/core";
+          <pre
+            class="article-code-block"><code>import &#123; FadeIn &#125; from "@astroanimate/core";
 
 &lt;FadeIn duration=&#123;400&#125;&gt;
   Content
 &lt;/FadeIn&gt;</code></pre>
 
-                    <p>
-                        This ships no runtime JavaScript. Hydration is not required. Performance characteristics remain predictable.
-                    </p>
+          <p>
+            This ships no runtime JavaScript. Hydration is not required.
+            Performance characteristics remain predictable.
+          </p>
 
-                    <p>
-                        For deeper understanding of how this interacts with route-level motion, explore the <a href="/docs/view-transitions" class="article-inline-link">View Transitions guide</a>.
-                    </p>
+          <p>
+            For deeper understanding of how this interacts with route-level
+            motion, explore the <a
+              href="/docs/view-transitions"
+              class="article-inline-link">View Transitions guide</a
+            >.
+          </p>
 
-                    <h3>Built for Astro View Transitions</h3>
-                    <p>
-                        Astro supports the View Transitions API natively. AstroAnimate components are designed to coexist with it.
-                    </p>
+          <h3>Built for Astro View Transitions</h3>
+          <p>
+            Astro supports the View Transitions API natively. AstroAnimate
+            components are designed to coexist with it.
+          </p>
 
-                    <pre class="article-code-block"><code>import &#123; ViewTransitions &#125; from "astro:transitions";</code></pre>
+          <pre
+            class="article-code-block"><code>import &#123; ViewTransitions &#125; from "astro:transitions";</code></pre>
 
-                    <p>
-                        Component-level motion does not interfere with page-level transitions. Content and layout can fallback animation rather than native support, so transitions should be tested accordingly.
-                    </p>
+          <p>
+            Component-level motion does not interfere with page-level
+            transitions. Content and layout can fallback animation rather than
+            native support, so transitions should be tested accordingly.
+          </p>
 
-                    <p>
-                        Compatibility here is intentional, not accidental.
-                    </p>
+          <p>Compatibility here is intentional, not accidental.</p>
 
-                    <h3>The Performance Philosophy Behind AstroAnimate</h3>
-                    <p>
-                        AstroAnimate was built with strict performance constraints, including bundle-size limits, accessibility standards, and TypeScript strict mode.
-                    </p>
+          <h3>The Performance Philosophy Behind AstroAnimate</h3>
+          <p>
+            AstroAnimate was built with strict performance constraints,
+            including bundle-size limits, accessibility standards, and
+            TypeScript strict mode.
+          </p>
 
-                    <p>
-                        Performance is not treated as an optional feature. See how these constraints integrate with Astro performance model in the <a href="/docs/performance" class="article-inline-link">performance guide</a>.
-                    </p>
+          <p>
+            Performance is not treated as an optional feature. See how these
+            constraints integrate with Astro performance model in the <a
+              href="/docs/performance"
+              class="article-inline-link">performance guide</a
+            >.
+          </p>
 
-                    <p>
-                        In a static-first framework, animation should adapt to architecture not override it.
-                    </p>
+          <p>
+            In a static-first framework, animation should adapt to architecture
+            not override it.
+          </p>
 
-                    <h3>Why This Category Matters</h3>
-                    <p>
-                        As Astro adoption grows, developers increasingly look for animation patterns that align with its architecture.
-                    </p>
+          <h3>Why This Category Matters</h3>
+          <p>
+            As Astro adoption grows, developers increasingly look for animation
+            patterns that align with its architecture.
+          </p>
 
-                    <p>
-                        They do not need a generic motion tool. They need motion that respects static rendering and island isolation.
-                    </p>
+          <p>
+            They do not need a generic motion tool. They need motion that
+            respects static rendering and island isolation.
+          </p>
 
-                    <div class="article-callout">
-                        AstroAnimate exists to fill that architectural gap.
-                    </div>
+          <div class="article-callout">
+            AstroAnimate exists to fill that architectural gap.
+          </div>
 
-                    <p>
-                        It is not about adding animation. It is about defining what an Astro-aligned animation system should look like.
-                    </p>
+          <p>
+            It is not about adding animation. It is about defining what an
+            Astro-aligned animation system should look like.
+          </p>
 
-                    <h3>How This Connects to Implementation</h3>
-                    <p>
-                        If you want the detailed implementation guide covering CSS, View Transitions, and JavaScript fallbacks, read:
-                    </p>
+          <h3>How This Connects to Implementation</h3>
+          <p>
+            If you want the detailed implementation guide covering CSS, View
+            Transitions, and JavaScript fallbacks, read:
+          </p>
 
-                    <p>
-                        <a href="/blog/how-to-add-animations-to-astro-without-breaking-performance/" class="article-inline-link">
-                            -> /blog/how-to-add-animations-to-astro-without-breaking-performance/
-                        </a>
-                    </p>
+          <p>
+            <a
+              href="/blog/how-to-add-animations-to-astro-without-breaking-performance/"
+              class="article-inline-link"
+            >
+              ->
+              /blog/how-to-add-animations-to-astro-without-breaking-performance/
+            </a>
+          </p>
 
-                    <p>
-                        This article defines the architectural need. That guide explains the practical execution. Together, they form the foundation of AstroAnimate.
-                    </p>
+          <p>
+            This article defines the architectural need. That guide explains the
+            practical execution. Together, they form the foundation of
+            AstroAnimate.
+          </p>
 
-                    <h3>Conclusion</h3>
-                    <p>
-                        Astro exposes the power of frontend architecture, prioritizing static rendering, island isolation, and performance budgets. Generic animation libraries were not built for that model. AstroAnimate was created to align motion with Astro's design principles.
-                    </p>
+          <h3>Conclusion</h3>
+          <p>
+            Astro exposes the power of frontend architecture, prioritizing
+            static rendering, island isolation, and performance budgets. Generic
+            animation libraries were not built for that model. AstroAnimate was
+            created to align motion with Astro's design principles.
+          </p>
 
-                    <p>
-                        In a static-first framework, animation should adapt to architecture - not override it.
-                    </p>
+          <p>
+            In a static-first framework, animation should adapt to architecture
+            - not override it.
+          </p>
 
-                    <p>
-                        If you are building motion in Astro and want it aligned with the framework's constraints, explore the <a href="/docs" class="article-inline-link">AstroAnimate documentation</a>.
-                    </p>
-                </section>
-            </article>
+          <p>
+            If you are building motion in Astro and want it aligned with the
+            framework's constraints, explore the <a
+              href="/docs"
+              class="article-inline-link">AstroAnimate documentation</a
+            >.
+          </p>
+        </section>
+      </article>
 
-            <!-- AUTHOR BIO -->
-            <!-- <section class="author-bio">
+      <!-- AUTHOR BIO -->
+      <!-- <section class="author-bio">
                 <div class="author-bio-content">
                     <img
                         src="/images/prashanth.png"
@@ -431,88 +508,91 @@ Degrade gracefully                   </li>
                     </div>
                 </div>
             </section> -->
-        </div>
-    </main>
+    </div>
+  </main>
 
-    <Footer />
+  <Footer />
 </Layout>
 
 <script>
-    function initArticleInteractions() {
-        const article = document.querySelector<HTMLElement>(".article-container");
-        if (!article || article.dataset.articleReady === "true") return;
-        article.dataset.articleReady = "true";
+  function initArticleInteractions() {
+    const article = document.querySelector<HTMLElement>(".article-container");
+    if (!article || article.dataset.articleReady === "true") return;
+    article.dataset.articleReady = "true";
 
-        const copyButton = document.querySelector<HTMLButtonElement>(".copy-link-btn");
-        const tocLinks = Array.from(
-            document.querySelectorAll<HTMLAnchorElement>(".table-of-contents .toc-link"),
-        );
-        const sections = tocLinks
-            .map((link) => {
-                const id = link.getAttribute("href")?.replace("#", "");
-                return id ? document.getElementById(id) : null;
-            })
-            .filter((section): section is HTMLElement => Boolean(section));
+    const copyButton =
+      document.querySelector<HTMLButtonElement>(".copy-link-btn");
+    const tocLinks = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>(
+        ".table-of-contents .toc-link",
+      ),
+    );
+    const sections = tocLinks
+      .map((link) => {
+        const id = link.getAttribute("href")?.replace("#", "");
+        return id ? document.getElementById(id) : null;
+      })
+      .filter((section): section is HTMLElement => Boolean(section));
 
-        copyButton?.addEventListener("click", async () => {
-            const pageUrl = window.location.href;
+    copyButton?.addEventListener("click", async () => {
+      const pageUrl = window.location.href;
 
-            try {
-                if (navigator.clipboard?.writeText) {
-                    await navigator.clipboard.writeText(pageUrl);
-                } else {
-                    throw new Error("Clipboard API unavailable");
-                }
-            } catch {
-                const fallback = document.createElement("textarea");
-                fallback.value = pageUrl;
-                fallback.setAttribute("readonly", "");
-                fallback.style.position = "fixed";
-                fallback.style.opacity = "0";
-                document.body.appendChild(fallback);
-                fallback.select();
-                document.execCommand("copy");
-                fallback.remove();
-            }
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(pageUrl);
+        } else {
+          throw new Error("Clipboard API unavailable");
+        }
+      } catch {
+        const fallback = document.createElement("textarea");
+        fallback.value = pageUrl;
+        fallback.setAttribute("readonly", "");
+        fallback.style.position = "fixed";
+        fallback.style.opacity = "0";
+        document.body.appendChild(fallback);
+        fallback.select();
+        document.execCommand("copy");
+        fallback.remove();
+      }
 
-            copyButton.classList.add("copied");
-            copyButton.textContent = "Copied";
+      copyButton.classList.add("copied");
+      copyButton.textContent = "Copied";
 
-            window.setTimeout(() => {
-                copyButton.classList.remove("copied");
-                copyButton.textContent = "Copy Link";
-            }, 1800);
-        });
+      window.setTimeout(() => {
+        copyButton.classList.remove("copied");
+        copyButton.textContent = "Copy Link";
+      }, 1800);
+    });
+
+    tocLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        tocLinks.forEach((item) => item.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
+
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const activeEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!activeEntry) return;
 
         tocLinks.forEach((link) => {
-            link.addEventListener("click", () => {
-                tocLinks.forEach((item) => item.classList.remove("active"));
-                link.classList.add("active");
-            });
+          const isActive =
+            link.getAttribute("href") === `#${activeEntry.target.id}`;
+          link.classList.toggle("active", isActive);
         });
+      },
+      { rootMargin: "-120px 0px -55% 0px", threshold: [0.15, 0.35, 0.6] },
+    );
 
-        if (!sections.length) return;
+    sections.forEach((section) => observer.observe(section));
+  }
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                const activeEntry = entries
-                    .filter((entry) => entry.isIntersecting)
-                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-                if (!activeEntry) return;
-
-                tocLinks.forEach((link) => {
-                    const isActive =
-                        link.getAttribute("href") === `#${activeEntry.target.id}`;
-                    link.classList.toggle("active", isActive);
-                });
-            },
-            { rootMargin: "-120px 0px -55% 0px", threshold: [0.15, 0.35, 0.6] },
-        );
-
-        sections.forEach((section) => observer.observe(section));
-    }
-
-    document.addEventListener("DOMContentLoaded", initArticleInteractions);
-    document.addEventListener("astro:page-load", initArticleInteractions);
+  document.addEventListener("DOMContentLoaded", initArticleInteractions);
+  document.addEventListener("astro:page-load", initArticleInteractions);
 </script>
