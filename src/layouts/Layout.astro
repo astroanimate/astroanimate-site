@@ -1,6 +1,7 @@
 ---
 import MetaTags from "../components/seo/MetaTags.astro";
 import JsonLd from "../components/seo/JsonLd.astro";
+import Analytics from "@vercel/analytics/astro";
 
 interface Props {
   title: string;
@@ -29,6 +30,8 @@ const {
     <meta name="generator" content={Astro.generator} />
 
     <meta name="robots" content="index, follow" />
+    <!-- Vercel Analytics -->
+    <Analytics />
 
     <!-- Global CSS -->
     <link rel="stylesheet" href="/styles/Global.css" />
