@@ -1,10 +1,21 @@
-name: 🐛 Report Issue
-description: Report a bug
+name: "🐛 Report Issue"
+description: "Report a bug or problem"
 title: "[Bug]: "
 labels: ["bug"]
+
 body:
   - type: textarea
+    id: what-happened
     attributes:
-      label: What happened?
+      label: "What happened?"
+      description: "Explain the issue clearly"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Steps to reproduce"
+      description: "How can we reproduce this?"
     validations:
       required: true
