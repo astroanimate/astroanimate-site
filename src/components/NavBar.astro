@@ -71,10 +71,7 @@ const isDocsActive =
     >
     <a
       href="/docs/"
-      class:list={[
-        "nav-item nav-link",
-        { active: isDocsActive },
-      ]}>DOCS</a
+      class:list={["nav-item nav-link", { active: isDocsActive }]}>DOCS</a
     >
     <!-- <a
             href="/playground"
@@ -86,11 +83,8 @@ const isDocsActive =
             >PLAYGROUND</a> -->
 
     <a
-      href="/docs/all-components"
-      class:list={[
-        "nav-item nav-link",
-        { active: isComponentsActive },
-      ]}
+      href="/docs/all-components/"
+      class:list={["nav-item nav-link", { active: isComponentsActive }]}
       aria-current={isComponentsActive ? "page" : undefined}
     >
       COMPONENTS</a
@@ -141,7 +135,7 @@ const isDocsActive =
       </a>
     </div>
 
-    
-      <a href="/docs/installation" class="install-btn nav-item install">INSTALL</a>
+    <a href="/docs/installation" class="install-btn nav-item install">INSTALL</a
+    >
   </div>
 </nav>
