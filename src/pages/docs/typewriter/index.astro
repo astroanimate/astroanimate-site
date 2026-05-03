@@ -41,18 +41,29 @@ import { TypewriterText } from "@astroanimate/core";
         <span class="created-by-name">Vipin</span>
       </div>
       <div class="playground-container">
-        <div class="playground-preview">
+        <div class="playground-preview typewriter-playground">
           <div class="typewriter-showcase">
-            <TypewriterText texts={["Hello", "World", "Astro"]} enhance />
-
             <div class="demo-typewriter">
-              <TypewriterText
-                texts={["Fast", "Reliable", "Astro-native"]}
+              We build
+              <p class="typewritter-text">
+<TypewriterText
+                texts={["Astro sites", "Animations", "SaaS Projects"]}
                 typeSpeed={60}
                 eraseSpeed={30}
                 pauseAfter={1500}
                 enhance
+                
               />
+              </p>
+              
+            </div>
+            <div class="typewriter-preview-actions">
+              <a href="#" class="typewriter-preview-btn typewriter-preview-btn-outline">
+                Learn more
+              </a>
+              <a href="#" class="typewriter-preview-btn typewriter-preview-btn-filled">
+                Work with us
+              </a>
             </div>
           </div>
         </div>
@@ -426,6 +437,12 @@ import { TypewriterText } from "@astroanimate/core";
 </DocLayout>
 
 <style>
+
+  .typewritter-text {
+    color: #3B82F6;
+    margin: 0;
+    min-width: 0;
+  }
   .created-by {
     display: flex;
     align-items: center;
@@ -476,6 +493,9 @@ import { TypewriterText } from "@astroanimate/core";
     background: #050505;
     border-radius: 12px;
     overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .playground-preview {
@@ -485,23 +505,89 @@ import { TypewriterText } from "@astroanimate/core";
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 320px;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .typewriter-playground {
+    background: #fff;
+    overflow: hidden;
   }
 
   .typewriter-showcase {
     display: flex;
     flex-direction: column;
-    gap: 20px;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    text-align: center;
   }
 
   .demo-typewriter {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 18px;
+    font-family: Inter, sans-serif;
+    font-size: 34px;
+    font-weight: 500;
     color: #000;
-    background: #fff;
-    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .typewriter-preview-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .typewriter-preview-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid #111;
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: none;
+    padding: 8px 10px;
+    min-width: 112px;
+    min-height: 38px;
+    box-sizing: border-box;
+  }
+
+
+
+  .typewriter-preview-btn-outline {
+    background: transparent;
+    color: #111;
+  }
+
+  .typewriter-preview-btn-outline:hover {
+    background: #111;
+    color: #fff;
+  }
+
+  .typewriter-preview-btn-filled {
+    background: #000;
+    color: #fff;
+  }
+
+  .typewriter-preview-btn-filled:hover {
+    background: #ff7f1f;
+    border-color: #ff7f1f;
+    color: #000;
   }
 
   .playground-code {
@@ -509,6 +595,9 @@ import { TypewriterText } from "@astroanimate/core";
     padding: 0;
     display: flex;
     flex-direction: column;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .code-header {
@@ -539,11 +628,14 @@ import { TypewriterText } from "@astroanimate/core";
     font-size: 13px;
     line-height: 1.6;
     overflow-x: auto;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .code-content pre {
     margin: 0;
     color: #e0e0e0;
+    max-width: 100%;
   }
 
   .code-selector {
@@ -827,6 +919,116 @@ import { TypewriterText } from "@astroanimate/core";
 
     .related-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .playground-container {
+      width: min(100%, calc(100vw - 48px));
+      max-width: 100%;
+      grid-template-columns: minmax(0, 1fr);
+      margin-inline: auto;
+    }
+
+    .playground-preview {
+      min-height: 260px;
+      padding: 32px 18px;
+      width: 100%;
+      max-width: 100%;
+      margin-inline: auto;
+      border-right: none;
+      overflow: hidden;
+    }
+
+    .typewriter-playground {
+      width: 100%;
+      max-width: 100%;
+      margin-inline: auto;
+    }
+
+    .typewriter-showcase {
+      width: 100%;
+      max-width: 230px;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 0 auto;
+    }
+
+    .playground-code {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .demo-typewriter {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 8px;
+      font-size: clamp(24px, 7vw, 30px);
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .typewritter-text {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .demo-typewriter :global([data-typewriter]) {
+      width: 100%;
+      max-width: 100%;
+      display: inline-flex;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .demo-typewriter :global(.typewriter-static),
+    .demo-typewriter :global(.typewriter-dynamic) {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .typewriter-preview-actions {
+      gap: 10px;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      margin-top: 0;
+      width: 100%;
+      max-width: 100%;
+      justify-content: center;
+    }
+
+    .typewriter-preview-btn {
+      width: 100%;
+      min-width: 0;
+      min-height: 40px;
+      border-radius: 10px;
+      font-size: 15px;
+      padding: 9px 12px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .typewriter-showcase {
+      max-width: 210px;
+    }
+
+    .typewriter-preview-btn {
+      width: 100%;
     }
   }
 </style>

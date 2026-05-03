@@ -1,14 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import NavBar from "../components/NavBar.astro";
-import Footer from "../components/Footer.astro";
 import "../styles/Global.css";
+
+const enhance = true; 
 ---
 
 <Layout title="404 - Page Not Found | AstroAnimate">
     <NavBar />
     <main class="error-container">
-        <div class="star-field star-field-dense star-field-ultra error-stars" aria-hidden="true"></div>
+        <div 
+            data-starry-bg 
+            data-enhance={enhance ? "true" : "false"} 
+            data-star-count="400" 
+            data-drift-speed="0.5" 
+            data-drift-direction="145"
+            aria-hidden="true"
+        >
+            <canvas></canvas>
+        </div>
+
         <div class="error-content">
             <h1 class="error-code">404</h1>
             <p class="error-message">
@@ -19,12 +30,40 @@ import "../styles/Global.css";
             </div>
         </div>
     </main>
-    <!-- <Footer /> -->
 </Layout>
 
 <style>
+    [data-starry-bg] {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+        background-color: #000;
+        background-image: 
+            radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 10px),
+            radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 5px);
+        background-size: 550px 550px, 350px 350px;
+    }
+
+    [data-starry-bg] canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    [data-starry-bg][data-state="ready"] canvas {
+        opacity: 1;
+    }
+
+    [data-starry-bg][data-state="ready"] {
+        background-image: none;
+    }
+
     .error-container {
-        min-height: 70vh;
+        min-height: 78vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -42,8 +81,6 @@ import "../styles/Global.css";
         z-index: 1;
     }
 
-    
-
     .error-code {
         font-size: 280px;
         font-family: 'JetBrains Mono', monospace;
@@ -55,25 +92,12 @@ import "../styles/Global.css";
         line-height: 1;
     }
 
-    .error-title {
-        font-size: 2rem;
-        margin: 1rem 0;
-        font-family: 'Inter', sans-serif;
-    }
-
     .error-message {
         color: #F9FAFB;
         font-size: 18px;
         font-family: 'Inter', sans-serif;
         line-height: 1.6;
         margin-bottom: 2.5rem;
-    }
-
-    .error-actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
     }
 
     .btn-back {
@@ -83,34 +107,88 @@ import "../styles/Global.css";
         text-decoration: none;
         font-weight: 400;
         font-family: 'JetBrains Mono', monospace;
+        transition: transform 0.2s ease;
     }
 
-    .btn-primary:hover {
-        background: #e66a15;
-    }
-
-    .btn-secondary {
-        background: transparent;
-        color: white;
-        padding: 0.8rem 2rem;
-        border-radius: 4px;
-        text-decoration: none;
-        font-weight: 600;
-        border: 1px solid #1F2937;
-        transition: border-color 0.2s;
-    }
-
-    .btn-secondary:hover {
-        border-color: #FF7F1F;
+    .btn-back:hover {
+        transform: translateY(-2px);
     }
 
     @media (max-width: 640px) {
-        .error-code {
-            font-size: 130px;
-        }
-
-        .error-message {
-            font-size: 16px;
-        }
+        .error-code { font-size: 130px !important; }
+        .error-message { font-size: 16px !important; }
     }
 </style>
+
+<script>
+    const initialized = new WeakMap();
+
+    function enhanceStarryBackground(root) {
+        if (initialized.has(root)) return;
+        const canvas = root.querySelector('canvas');
+        const ctx = canvas?.getContext('2d');
+        if (!ctx) return;
+
+        const starCount = parseInt(root.dataset.starCount || "400");
+        const driftSpeed = parseFloat(root.dataset.driftSpeed || "1");
+        const driftRad = (parseFloat(root.dataset.driftDirection || "145") * Math.PI) / 180;
+
+        let width = 0, height = 0, stars = [], isPlaying = false, animationFrameId;
+
+        const initStars = () => {
+            stars = Array.from({ length: starCount }, () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: Math.random() * 1.5 + 0.5,
+                alpha: Math.random(),
+                alphaChange: (Math.random() * 0.02 + 0.005) * (Math.random() < 0.5 ? 1 : -1),
+                speed: driftSpeed * (Math.random() * 0.5 + 0.1),
+            }));
+        };
+
+        const resize = () => {
+            const rect = root.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            if (width !== rect.width * dpr || height !== rect.height * dpr) {
+                width = canvas.width = rect.width * dpr;
+                height = canvas.height = rect.height * dpr;
+                initStars();
+            }
+        };
+
+        const draw = () => {
+            if (!isPlaying) return;
+            ctx.clearRect(0, 0, width, height);
+            stars.forEach(s => {
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0, Math.min(1, s.alpha))})`;
+                ctx.fill();
+                s.alpha += s.alphaChange;
+                if (s.alpha <= 0 || s.alpha >= 1) s.alphaChange *= -1;
+                s.x += Math.cos(driftRad) * s.speed;
+                s.y += Math.sin(driftRad) * s.speed;
+                if (s.x > width) s.x = 0; else if (s.x < 0) s.x = width;
+                if (s.y > height) s.y = 0; else if (s.y < 0) s.y = height;
+            });
+            animationFrameId = requestAnimationFrame(draw);
+        };
+
+        const ro = new ResizeObserver(resize);
+        const io = new IntersectionObserver(([e]) => {
+            isPlaying = e.isIntersecting;
+            if (isPlaying) draw(); else cancelAnimationFrame(animationFrameId);
+        });
+
+        ro.observe(root);
+        io.observe(root);
+        root.dataset.state = "ready";
+        initialized.set(root, true);
+    }
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.querySelectorAll('[data-starry-bg][data-enhance="true"]').forEach(el => {
+            enhanceStarryBackground(el);
+        });
+    }
+</script>
