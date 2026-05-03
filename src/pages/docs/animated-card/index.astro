@@ -17,7 +17,15 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
 
         <!-- PREVIEW/PLAYGROUND SECTION -->
         <div class="docs-intro-section" id="preview-playground">
-            <h2 class="docs-subtitle">Preview/Playground</h2>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+                <h2 class="docs-subtitle" style="margin: 0;">Preview/Playground</h2>
+                <button onclick="location.reload()" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #FF7F1F; border-radius: 6px; background: #15191E; color: #FF7F1F; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#FF7F1F'; this.style.color='#15191E'" onmouseout="this.style.background='#15191E'; this.style.color='#FF7F1F'" aria-label="Refresh preview">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M21 12a9 9 0 1 1-2.64-6.36" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 4v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
             <div class="created-by">
                 <span class="created-by-label">Created by</span>
                 <div class="created-by-avatar">
@@ -29,9 +37,7 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
             </div>
             <div class="playground-container">
                 <div class="playground-preview">
-                    <div
-                        style="display: flex; flex-direction: column; gap: 20px; width: 100%;"
-                    >
+                    <div class="animated-card-container">
                         <AnimatedCard
                             title="Feature Name"
                             description="Short description of the feature"
@@ -622,15 +628,21 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
         background: #050505;
         border-radius: 12px;
         overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
     }
 
     .playground-preview {
         padding: 40px;
-        background: #e8e8e8;
+        background: #fff;
         border-right: 1px solid #1f2937;
         display: flex;
         align-items: center;
         justify-content: center;
+        min-width: 0;
+        overflow: hidden;
+        box-sizing: border-box;
     }
 
     .playground-code {
@@ -638,6 +650,9 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
         padding: 0;
         display: flex;
         flex-direction: column;
+        min-width: 0;
+        max-width: 100%;
+        overflow: hidden;
     }
 
     .code-header {
@@ -918,18 +933,72 @@ import AnimatedCard from "@astroanimate/core/AnimatedCard";
         color: #ff953d;
     }
 
+    .animated-card-container {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        align-items: stretch;
+    }
+
+    .animated-card-container :global([data-animated-card]) {
+        width: 100%;
+        min-width: 0;
+        min-height: 290px;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .animated-card-container :global(.animated-card__surface) {
+        min-height: 100%;
+    }
+
     @media (max-width: 1024px) {
         .playground-container {
             grid-template-columns: 1fr;
+            min-height: auto;
         }
 
         .playground-preview {
             border-right: none;
             border-bottom: 1px solid #1f2937;
+            padding: 32px 24px;
+        }
+
+        .animated-card-container {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
         }
 
         .related-grid {
             grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 760px) {
+        .playground-container {
+            width: min(100%, calc(100vw - 48px));
+            max-width: 100%;
+            grid-template-columns: minmax(0, 1fr);
+            margin-inline: auto;
+        }
+
+        .playground-preview {
+            width: 100%;
+            max-width: 100%;
+            padding: 24px 14px;
+        }
+
+        .animated-card-container {
+            grid-template-columns: 1fr;
+            width: min(100%, 290px);
+            margin-inline: auto;
+        }
+
+        .animated-card-container :global([data-animated-card]) {
+            min-height: 260px;
         }
     }
 </style>

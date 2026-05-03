@@ -18,7 +18,15 @@ import GlassCard from "@astroanimate/core/GlassCard";
 
         <!-- PREVIEW/PLAYGROUND SECTION -->
         <div class="docs-intro-section" id="preview-playground">
-            <h2 class="docs-subtitle">Preview/Playground</h2>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+                <h2 class="docs-subtitle" style="margin: 0;">Preview/Playground</h2>
+                <button onclick="location.reload()" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #FF7F1F; border-radius: 6px; background: #15191E; color: #FF7F1F; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#FF7F1F'; this.style.color='#15191E'" onmouseout="this.style.background='#15191E'; this.style.color='#FF7F1F'" aria-label="Refresh preview">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M21 12a9 9 0 1 1-2.64-6.36" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 4v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
             <div class="created-by">
                 <span class="created-by-label">Created by</span>
                 <div class="created-by-avatar">
@@ -28,14 +36,15 @@ import GlassCard from "@astroanimate/core/GlassCard";
             </div>
             <div class="playground-container">
                 <div class="playground-preview">
-                    <div>
+                    <div class="glass-preview-showcase">
                         <GlassCard
-                            title="Feature Title"
-                            subtitle="Category"
-                            description="Description text"
+                            title="Glassmorphism UI"
+                            subtitle="A New Design Trend"
+                            description="This card uses the &quot;glassmorphism&quot; effect to create a sense of depth and transparency. The 3D tilt and dynamic glare are powered by JavaScript to create a futuristic and engaging user experience."
                             enableTilt={true}
-                            backgroundColor="#ff6b35"
-                            containerBackground="#e8e8e8"
+                            backgroundColor="#232933"
+                            containerBackground="#111722"
+                            class="docs-glass-preview-card"
                         />
                     </div>
                 </div>
@@ -55,11 +64,12 @@ import GlassCard from "@astroanimate/core/GlassCard";
                         <pre><code><span class="keyword">import</span> <span class="component-name">GlassCard</span> <span class="keyword">from</span> <span class="string">'@astroanimate/core/GlassCard'</span>;
 
 &lt;<span class="component">GlassCard</span>
-  <span class="prop">title</span>=<span class="string">"Feature Title"</span>
-  <span class="prop">subtitle</span>=<span class="string">"Category"</span>
-  <span class="prop">description</span>=<span class="string">"Description text"</span>
-  <span class="prop">icon</span>=<span class="string">"&lt;svg&gt;...&lt;/svg&gt;"</span>
+  <span class="prop">title</span>=<span class="string">"Glassmorphism UI"</span>
+  <span class="prop">subtitle</span>=<span class="string">"A New Design Trend"</span>
+  <span class="prop">description</span>=<span class="string">"This card uses the glassmorphism effect to create depth and transparency."</span>
   <span class="prop">enableTilt</span>=&#123;<span class="keyword">true</span>&#125;
+  <span class="prop">backgroundColor</span>=<span class="string">"#232933"</span>
+  <span class="prop">containerBackground</span>=<span class="string">"#111722"</span>
 /&gt;</code></pre>
                     </div>
                 </div>
@@ -431,15 +441,40 @@ import GlassCard from "@astroanimate/core/GlassCard";
         background: #050505;
         border-radius: 12px;
         overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
     }
 
     .playground-preview {
         padding: 40px;
-        background: #e8e8e8;
+        background: #111722;
         border-right: 1px solid #1f2937;
         display: flex;
         align-items: center;
         justify-content: center;
+        min-width: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .glass-preview-showcase {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .glass-preview-showcase :global(.docs-glass-preview-card.glass-card-container) {
+        min-width: 0;
+        background: transparent !important;
+    }
+
+    .glass-preview-showcase :global(.glass-card) {
+        min-width: 0;
+        box-sizing: border-box;
     }
 
     .playground-code {
@@ -447,6 +482,9 @@ import GlassCard from "@astroanimate/core/GlassCard";
         padding: 0;
         display: flex;
         flex-direction: column;
+        min-width: 0;
+        max-width: 100%;
+        overflow: hidden;
     }
 
     .code-header {
@@ -699,6 +737,7 @@ import GlassCard from "@astroanimate/core/GlassCard";
     @media (max-width: 1024px) {
         .playground-container {
             grid-template-columns: 1fr;
+            min-height: auto;
         }
 
         .playground-preview {
@@ -708,6 +747,61 @@ import GlassCard from "@astroanimate/core/GlassCard";
 
         .related-grid {
             grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .playground-container {
+            width: min(100%, calc(100vw - 48px));
+            max-width: 100%;
+            grid-template-columns: minmax(0, 1fr);
+            margin-inline: auto;
+        }
+
+        .playground-preview {
+            width: 100%;
+            max-width: 100%;
+            padding: 28px 14px;
+            margin-inline: auto;
+        }
+
+        .glass-preview-showcase {
+            width: 100%;
+            max-width: 290px;
+            margin-inline: auto;
+            overflow: hidden;
+        }
+
+        .glass-preview-showcase :global(.docs-glass-preview-card.glass-card-container) {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .glass-preview-showcase :global(.glass-card) {
+            width: 100%;
+            max-width: 100%;
+            padding: 18px;
+            border-radius: 18px;
+        }
+
+        .glass-preview-showcase :global(.glass-card-header) {
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .glass-preview-showcase :global(.glass-card-icon-container) {
+            width: 44px;
+            height: 44px;
+            flex: 0 0 44px;
+        }
+
+        .glass-preview-showcase :global(.glass-card-text-content h2) {
+            font-size: 20px !important;
+        }
+
+        .glass-preview-showcase :global(.glass-card-description) {
+            font-size: 13px;
+            line-height: 1.55;
         }
     }
 </style>

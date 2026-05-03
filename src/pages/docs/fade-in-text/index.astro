@@ -30,7 +30,15 @@ import FadeInText from "@astroanimate/core/FadeInText";
 
     <!-- PREVIEW/PLAYGROUND SECTION -->
     <div class="docs-intro-section" id="preview-playground">
-      <h2 class="docs-subtitle">Preview/Playground</h2>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+        <h2 class="docs-subtitle" style="margin: 0;">Preview/Playground</h2>
+        <button onclick="location.reload()" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #FF7F1F; border-radius: 6px; background: #15191E; color: #FF7F1F; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#FF7F1F'; this.style.color='#15191E'" onmouseout="this.style.background='#15191E'; this.style.color='#FF7F1F'" aria-label="Refresh preview">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 12a9 9 0 1 1-2.64-6.36" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 4v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
       <div class="created-by">
         <span class="created-by-label">Created by</span>
         <div class="created-by-avatar">
@@ -66,7 +74,7 @@ import FadeInText from "@astroanimate/core/FadeInText";
             <pre><code><span class="keyword">import</span> <span class="component-name">FadeInText</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/FadeInText"</span>;
 
 &lt;<span class="component">FadeInText</span>&gt;
-  &lt;<span class="tag">h1</span>&gt;Welcome to my site&lt;/<span class="tag">h1</span>&gt;
+  &lt;<span class="tag">h1</span> <span class="prop">style</span>=<span class="string">"margin: 0; color: #000; font-size: 64px; font-weight: bold;"</span>&gt;Hello World 👋&lt;/<span class="tag">h1</span>&gt;
 &lt;/<span class="component">FadeInText</span>&gt;
 
 &lt;<span class="component">FadeInText</span>
@@ -74,7 +82,7 @@ import FadeInText from "@astroanimate/core/FadeInText";
   <span class="prop">duration</span>={<span class="number">0.8</span>}
   <span class="prop">yOffset</span>={<span class="number">30</span>}
 &gt;
-  &lt;<span class="tag">p</span>&gt;Scroll-triggered animation&lt;/<span class="tag">p</span>&gt;
+  &lt;<span class="tag">p</span> <span class="prop">style</span>=<span class="string">"margin: 0; color: #374151; font-size: 35px;"</span>&gt;Nice to meet you&lt;/<span class="tag">p</span>&gt;
 &lt;/<span class="component">FadeInText</span>&gt;</code></pre>
           </div>
         </div>
@@ -279,7 +287,7 @@ import FadeInText from "@astroanimate/core/FadeInText";
         {
           name: "ScaleIn",
           href: "/docs/scale-in/",
-          image: "/images/scalein.png",
+          image: "/images/scalein-demo.png",
         },
       ]}
     />
@@ -345,9 +353,9 @@ import FadeInText from "@astroanimate/core/FadeInText";
 .fadein-demo {
   margin: 0;
   color: #000;
-  font-size: 80px;
+  font-size: 64px;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
   max-width: 100%;
   line-height: 1.1;
   overflow-wrap: break-word;
@@ -356,8 +364,8 @@ import FadeInText from "@astroanimate/core/FadeInText";
 .fadein-demo-description {
   margin: 0;
   color: #374151;
-  font-size: 48px;
-  text-align: center;
+  font-size: 35px;
+  text-align: left;
   max-width: 100%;
   line-height: 1.25;
   overflow-wrap: break-word;
@@ -435,21 +443,22 @@ import FadeInText from "@astroanimate/core/FadeInText";
   .typewriter-showcase {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    width: 100%;
+    gap: 8px;
+    width: fit-content;
     max-width: 100%;
     min-width: 0;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    text-align: center;
+    text-align: left;
+    margin: 0 auto;
   }
 
   .typewriter-showcase :global(.astro-fade-in-text) {
     display: block;
-    width: 100%;
+    width: fit-content;
     max-width: 100%;
     min-width: 0;
-    text-align: center;
+    text-align: left;
     overflow: hidden;
   }
 
@@ -775,8 +784,11 @@ import FadeInText from "@astroanimate/core/FadeInText";
     }
 
     .typewriter-showcase {
-      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      align-items: flex-start;
       justify-content: center;
+      text-align: left;
     }
 
     .fadein-demo {
@@ -803,19 +815,21 @@ import FadeInText from "@astroanimate/core/FadeInText";
     }
 
     .typewriter-showcase {
-      gap: 16px;
-      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      align-items: flex-start;
       justify-content: center;
+      text-align: left;
     }
 
     .fadein-demo {
       font-size: clamp(24px, 7vw, 32px);
-      width: 100%;
+      width: auto;
     }
 
     .fadein-demo-description {
       font-size: clamp(16px, 5vw, 20px);
-      width: 100%;
+      width: auto;
     }
 
     .related-grid {

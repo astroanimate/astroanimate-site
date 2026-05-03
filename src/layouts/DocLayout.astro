@@ -896,6 +896,7 @@ TEMPLATES
       });
     }
 
+    
     // Search functionality for docs sidebar
     function initSearch() {
       const searchInput = document.querySelector(".sidebar-search input");
@@ -993,5 +994,10 @@ TEMPLATES
       initCodeCopyButtons();
       initSearch();
     });
+
+    updateActiveState();
+    initTitleShareButtons();
+    initCodeCopyButtons();
+    initSearch();
   </script>
 </Layout>

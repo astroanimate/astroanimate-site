@@ -19,7 +19,15 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
 
         <!-- PREVIEW/PLAYGROUND SECTION -->
         <div class="docs-intro-section" id="preview-playground">
-            <h2 class="docs-subtitle">Preview/Playground</h2>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+                <h2 class="docs-subtitle" style="margin: 0;">Preview/Playground</h2>
+                <button onclick="location.reload()" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #FF7F1F; border-radius: 6px; background: #15191E; color: #FF7F1F; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#FF7F1F'; this.style.color='#15191E'" onmouseout="this.style.background='#15191E'; this.style.color='#FF7F1F'" aria-label="Refresh preview">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M21 12a9 9 0 1 1-2.64-6.36" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 4v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
             <div class="created-by">
                 <span class="created-by-label">Created by</span>
                 <div class="created-by-avatar">
@@ -53,7 +61,9 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
                     <div class="code-content">
                         <pre><code><span class="keyword">import</span> <span class="component-name">ProgressBar</span> <span class="keyword">from</span> <span class="string">'@astroanimate/core/ProgressBar'</span>;
 
-&lt;<span class="component">ProgressBar</span> <span class="prop">value</span>=&#123;<span class="string">65</span>&#125; <span class="prop">label</span>=<span class="string">"Loading..."</span> /&gt;</code></pre>
+&lt;<span class="tag">div</span> <span class="prop">style</span>=<span class="string">"width: 100%; max-width: 400px;"</span>&gt;
+  &lt;<span class="component">ProgressBar</span> <span class="prop">value</span>=&#123;<span class="string">65</span>&#125; <span class="prop">label</span>=<span class="string">"Loading..."</span> /&gt;
+&lt;/<span class="tag">div</span>&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -397,15 +407,21 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
         background: #050505;
         border-radius: 12px;
         overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
     }
 
     .playground-preview {
         padding: 40px;
-        background: #e8e8e8;
+        background: #fff;
         border-right: 1px solid #1f2937;
         display: flex;
         align-items: center;
         justify-content: center;
+        min-width: 0;
+        overflow: hidden;
+        box-sizing: border-box;
     }
 
     .playground-code {
@@ -413,6 +429,9 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
         padding: 0;
         display: flex;
         flex-direction: column;
+        min-width: 0;
+        max-width: 100%;
+        overflow: hidden;
     }
 
     .code-header {
@@ -667,6 +686,7 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
     @media (max-width: 1024px) {
         .playground-container {
             grid-template-columns: 1fr;
+            min-height: auto;
         }
 
         .playground-preview {
@@ -676,6 +696,22 @@ import ProgressBar from "@astroanimate/core/ProgressBar";
 
         .related-grid {
             grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .playground-container {
+            width: min(100%, calc(100vw - 48px));
+            max-width: 100%;
+            grid-template-columns: minmax(0, 1fr);
+            margin-inline: auto;
+        }
+
+        .playground-preview {
+            width: 100%;
+            max-width: 100%;
+            padding: 28px 14px;
+            margin-inline: auto;
         }
     }
 </style>

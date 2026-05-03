@@ -5528,6 +5528,58 @@ details[open] .sidebar-nav-item .chevron {
     opacity: 1;
 }
 
+.preview-heading-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.preview-heading-row .docs-subtitle {
+    margin-bottom: 0;
+}
+
+.preview-refresh-btn {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border: 1px solid #FF7F1F;
+    border-radius: 8px;
+    background: #15191E;
+    color: #FF7F1F;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.preview-refresh-btn:hover {
+    background: #FF7F1F;
+    color: #F9FAFB;
+    transform: translateY(-1px);
+}
+
+.preview-refresh-btn svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+.docs-intro-section .playground-container {
+    position: relative;
+}
+
+.preview-refresh-btn-overlay {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 20;
+}
+
 .docs-intro-section {
     margin-bottom: 28px;
     padding-bottom: 14px;
@@ -6276,21 +6328,34 @@ details[open] .sidebar-nav-item .chevron {
 }
 
 .created-by {
-    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    transition: none;
 }
 
 .created-by:hover {
-    background: rgba(255, 127, 31, 0.04);
-    box-shadow: inset 0 0 0 1px #FF7F1F;
-    transform: translateY(-1px);
+    background: transparent;
+    box-shadow: none;
+    transform: none;
 }
 
-.created-by:hover .created-by-name {
-    color: #FF7F1F;
+
+
+.created-by-name {
+    border-radius: 8px;
+    padding: 7px 10px 7px 36px;
+    margin-left: -40px;
+    background: transparent;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
-.created-by:hover .created-by-avatar img {
-    transform: scale(1.08);
+.created-by-avatar {
+    position: relative;
+    z-index: 1;
+}
+
+.created-by:has(.created-by-avatar:hover) .created-by-name,
+.created-by:has(.created-by-name:hover) .created-by-name {
+    background: #15191E;
+    color: #F9FAFB;
 }
 
 .related-components-section {

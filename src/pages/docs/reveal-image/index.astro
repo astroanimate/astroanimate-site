@@ -30,7 +30,15 @@ import RevealImage from "@astroanimate/core/RevealImage";
 
     <!-- PREVIEW/PLAYGROUND SECTION -->
     <div class="docs-intro-section" id="preview-playground">
-      <h2 class="docs-subtitle">Preview/Playground</h2>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+        <h2 class="docs-subtitle" style="margin: 0;">Preview/Playground</h2>
+        <button onclick="location.reload()" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #FF7F1F; border-radius: 6px; background: #15191E; color: #FF7F1F; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#FF7F1F'; this.style.color='#15191E'" onmouseout="this.style.background='#15191E'; this.style.color='#FF7F1F'" aria-label="Refresh preview">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 12a9 9 0 1 1-2.64-6.36" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 4v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
       <div class="created-by">
         <span class="created-by-label">Created by</span>
         <div class="created-by-avatar">
@@ -40,11 +48,21 @@ import RevealImage from "@astroanimate/core/RevealImage";
       </div>
       <div class="playground-container">
         <div class="playground-preview">
-          <div
-            class="reveal-showcase"
-            style="padding: 40px; min-height: 200px; display: flex; align-items: center; justify-content: center;"
-          >
+          <div class="reveal-showcase">
             <RevealImage
+              text="Hover me"
+              image1="/images/barsan.jpeg"
+              image2="/images/barsan.jpeg"
+              alt="Preview Image"
+            />
+
+             <RevealImage
+              text="Hover me"
+              image1="/images/barsan.jpeg"
+              image2="/images/barsan.jpeg"
+              alt="Preview Image"
+            />
+             <RevealImage
               text="Hover me"
               image1="/images/barsan.jpeg"
               image2="/images/barsan.jpeg"
@@ -64,9 +82,23 @@ import RevealImage from "@astroanimate/core/RevealImage";
 
 &lt;<span class="component">RevealImage</span>
   <span class="prop">text</span>=<span class="string">"Hover me"</span>
-  <span class="prop">image1</span>=<span class="string">"/path/to/image1.jpg"</span>
-  <span class="prop">image2</span>=<span class="string">"/path/to/image2.jpg"</span>
-  <span class="prop">alt</span>=<span class="string">"Description"</span>
+  <span class="prop">image1</span>=<span class="string">"/images/barsan.jpeg"</span>
+  <span class="prop">image2</span>=<span class="string">"/images/barsan.jpeg"</span>
+  <span class="prop">alt</span>=<span class="string">"Preview Image"</span>
+/&gt;
+
+&lt;<span class="component">RevealImage</span>
+  <span class="prop">text</span>=<span class="string">"Hover me"</span>
+  <span class="prop">image1</span>=<span class="string">"/images/barsan.jpeg"</span>
+  <span class="prop">image2</span>=<span class="string">"/images/barsan.jpeg"</span>
+  <span class="prop">alt</span>=<span class="string">"Preview Image"</span>
+/&gt;
+
+&lt;<span class="component">RevealImage</span>
+  <span class="prop">text</span>=<span class="string">"Hover me"</span>
+  <span class="prop">image1</span>=<span class="string">"/images/barsan.jpeg"</span>
+  <span class="prop">image2</span>=<span class="string">"/images/barsan.jpeg"</span>
+  <span class="prop">alt</span>=<span class="string">"Preview Image"</span>
 /&gt;</code></pre>
           </div>
         </div>
@@ -278,7 +310,7 @@ import RevealImage from "@astroanimate/core/RevealImage";
         {
           name: "ScaleIn",
           href: "/docs/scale-in/",
-          image: "/images/scalein.png",
+          image: "/images/scalein-demo.png",
         },
       ]}
     />
@@ -343,6 +375,7 @@ import RevealImage from "@astroanimate/core/RevealImage";
 </DocLayout>
 
 <style>
+
   .created-by {
     display: flex;
     align-items: center;

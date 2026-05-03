@@ -30,7 +30,15 @@ import { ScaleIn } from "@astroanimate/core";
 
     <!-- PREVIEW/PLAYGROUND SECTION -->
     <div class="docs-intro-section" id="preview-playground">
-      <h2 class="docs-subtitle">Preview/Playground</h2>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+        <h2 class="docs-subtitle" style="margin: 0;">Preview/Playground</h2>
+        <button onclick="location.reload()" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #FF7F1F; border-radius: 6px; background: #15191E; color: #FF7F1F; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#FF7F1F'; this.style.color='#15191E'" onmouseout="this.style.background='#15191E'; this.style.color='#FF7F1F'" aria-label="Refresh preview">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 12a9 9 0 1 1-2.64-6.36" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 4v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
       <div class="created-by">
         <span class="created-by-label">Created by</span>
         <div class="created-by-avatar">
@@ -40,19 +48,14 @@ import { ScaleIn } from "@astroanimate/core";
         <span class="created-by-name">Vipin</span>
       </div>
       <div class="playground-container">
-        <div class="playground-preview">
+        <div class="playground-preview scalein-preview">
           <div class="scale-showcase">
-            <ScaleIn enhance={true}>
-              <h1>Scale In - Default</h1>
-            </ScaleIn>
 
             <ScaleIn enhance={true} duration={2000}>
-              <h1>Scale In - Enhanced</h1>
+              <!-- <h1 class="scalein-demo">Welcome to astroanimate</h1> -->
+              <img src="/images/scalein-img.avif" alt="">
             </ScaleIn>
 
-            <ScaleIn enhance={true}>
-              <h1>Scale In - Enhanced with props</h1>
-            </ScaleIn>
           </div>
         </div>
         <div class="playground-code">
@@ -66,7 +69,11 @@ import { ScaleIn } from "@astroanimate/core";
             <pre><code><span class="keyword">import</span> <span class="component-name">ScaleIn</span> <span class="keyword">from</span> <span class="string">'@astroanimate/core/ScaleIn'</span>;
 
 &lt;<span class="component">ScaleIn</span> <span class="prop">enhance</span>=<span class="boolean">&#123;true&#125;</span>&gt;
-  <span class="tag">&lt;h1&gt;</span>Your content here<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;img</span>
+    <span class="prop">src</span>=<span class="string">"/images/scalein-img.avif"</span>
+    <span class="prop">alt</span>=<span class="string">""</span>
+    <span class="prop">style</span>=<span class="string">"max-width: 100%; height: auto;"</span>
+  <span class="tag">/&gt;</span>
 &lt;/<span class="component">ScaleIn</span>&gt;</code></pre>
           </div>
         </div>
@@ -365,6 +372,13 @@ import { ScaleIn } from "@astroanimate/core";
 </DocLayout>
 
 <style>
+
+.scalein-demo {
+  color: #FF7F1F;
+}
+  .scalein-preview {
+    background: #000 !important ;
+  }
   .created-by {
     display: flex;
     align-items: center;
@@ -415,22 +429,50 @@ import { ScaleIn } from "@astroanimate/core";
     background: #050505;
     border-radius: 12px;
     overflow: hidden;
+    min-height: 400px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .playground-preview {
     padding: 40px;
     background: #e8e8e8;
-    border-right: 1px solid #1f2937;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    min-width: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .scale-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .scale-showcase img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .scale-showcase :global(.astro-scale-in) {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .typewriter-showcase {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .demo-typewriter {
@@ -448,6 +490,9 @@ import { ScaleIn } from "@astroanimate/core";
     padding: 0;
     display: flex;
     flex-direction: column;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .code-header {
@@ -760,15 +805,45 @@ import { ScaleIn } from "@astroanimate/core";
   @media (max-width: 1024px) {
     .playground-container {
       grid-template-columns: 1fr;
+      min-height: auto;
     }
 
     .playground-preview {
       border-right: none;
       border-bottom: 1px solid #1f2937;
+      min-height: 300px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scale-showcase {
+      align-items: center;
+      justify-content: center;
     }
 
     .related-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .playground-preview {
+      padding: 20px;
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scale-showcase {
+      align-items: center;
+      justify-content: center;
+    }
+
+    .related-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
