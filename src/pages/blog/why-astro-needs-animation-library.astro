@@ -3,10 +3,45 @@ import Layout from "../../layouts/Layout.astro";
 import NavBar from "../../components/NavBar.astro";
 import Footer from "../../components/Footer.astro";
 import "../../styles/Global.css";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: "Why Astro Needs a Dedicated Animation Library",
+  description:
+    "Explore why Astro projects benefit from an animation system designed for islands architecture, View Transitions, and zero-runtime performance.",
+  url: "https://www.astroanimate.com/blog/why-astro-needs-animation-library/",
+  image:
+    "https://www.astroanimate.com/og/why-astro-needs-animation-library.png",
+  articleSection: "Astro",
+  keywords: ["Astro", "Astro animations", "View Transitions", "AstroAnimate"],
+  author: {
+    "@type": "Person",
+    name: "Sai Prashanth K",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AstroAnimate",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://www.astroanimate.com/images/Logo.png",
+    },
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id":
+      "https://www.astroanimate.com/blog/why-astro-needs-animation-library/",
+  },
+  datePublished: "2026-05-04",
+  dateModified: "2026-05-04",
+};
 ---
 
 <Layout
-  title="Why Astro Needs a Dedicated Animation Library (And How AstroAnimate Solves It)"
+  title="Why Astro Needs a Dedicated Animation Library | AstroAnimate"
+  description="Explore why Astro projects benefit from an animation system designed for islands architecture, View Transitions, and zero-runtime performance."
+  canonical="https://www.astroanimate.com/blog/why-astro-needs-animation-library/"
+  schema={schema}
 >
   <NavBar />
 
@@ -30,7 +65,7 @@ import "../../styles/Global.css";
 
             <div class="article-meta-wrapper">
               <div class="article-meta">
-                <span class="blog-date">MAR 25, 2006</span>
+                <span class="blog-date">MAY 04, 2026</span>
                 <span class="blog-read-time">4 MIN READ</span>
               </div>
             </div>
