@@ -6,39 +6,83 @@ const sections = [
   {
     title: "Text Animations",
     items: [
-      { name: "FadeInText", href: "/docs/fadein", image: "/images/fadein.png" },
-      { name: "Typewriter text", href: "/docs/typewritter", image: "/images/typewritter.png" },
+      {
+        name: "Fade In Text",
+        href: "/docs/fade-in-text/",
+        image: "/images/fadein.png",
+      },
+      {
+        name: "Typewriter text",
+        href: "/docs/typewriter/",
+        image: "/images/typewriter.png",
+      },
     ],
   },
   {
     title: "Core Animations",
     items: [
-      { name: "Scale In", href: "/docs/scalein", image: "/images/scalein.png" },
-      { name: "RevealImage", href: "/docs/reveal-image", image: "/images/revealimage.png" },
+      {
+        name: "Scale In",
+        href: "/docs/scale-in/",
+        image: "/images/scalein.png",
+      },
+      {
+        name: "Reveal Image",
+        href: "/docs/reveal-image/",
+        image: "/images/revealimage.png",
+      },
     ],
   },
   {
     title: "Cards",
     items: [
-      { name: "Expandable Card", href: "/docs/expandable-card", image: "/images/expandablecard.png" },
-      { name: "Animated Card", href: "/docs/animated-card", image: "/images/animatedcard.png" },
-      { name: "Glass Card", href: "/docs/glass-card", image: "/images/glasscard.png" },
+      {
+        name: "Expandable Card",
+        href: "/docs/expandable-card/",
+        image: "/images/expandablecard.png",
+      },
+      {
+        name: "Animated Card",
+        href: "/docs/animated-card/",
+        image: "/images/animatedcard.png",
+      },
+      {
+        name: "Glass Card",
+        href: "/docs/glass-card/",
+        image: "/images/glasscard.png",
+      },
     ],
   },
   {
     title: "Loaders & Feedback",
     items: [
-      { name: "Loader", href: "/docs/loader", image: "/images/loader.png" },
-      { name: "Progress Bar", href: "/docs/progress-bar", image: "/images/progressbar.png" },
+      { name: "Loader", href: "/docs/loader/", image: "/images/loader.png" },
+      {
+        name: "Progress Bar",
+        href: "/docs/progress-bar/",
+        image: "/images/progressbar.png",
+      },
     ],
   },
   {
     title: "Buttons",
-    items: [{ name: "Animated Button", href: "/docs/animated-button", image: "/images/animated-btn.png" }],
+    items: [
+      {
+        name: "Animated Button",
+        href: "/docs/animated-button/",
+        image: "/images/animated-btn.png",
+      },
+    ],
   },
   {
     title: "Overlays & Popovers",
-    items: [{ name: "Tool Tip", href: "/docs/tooltip", image: "/images/tooltip.png" }],
+    items: [
+      {
+        name: "Tool Tip",
+        href: "/docs/tooltip/",
+        image: "/images/tooltip.png",
+      },
+    ],
   },
 ];
 ---
@@ -57,11 +101,14 @@ const sections = [
             <img src="/images/share-link.png" alt="" width="16" height="16" />
           </button>
         </h1>
-                
+
         <div class="docs-intro-section">
-            <p class="docs-paragraph">
-               Animated Button is an Astro animation component that renders a <code class="keyword">&lt;button&gt;</code> or <code class="keyword">&lt;a&gt;</code> with CSS-only hover effects and zero client-side JavaScript.
-            </p>
+          <p class="docs-paragraph">
+            Animated Button is an Astro animation component that renders a <code
+              class="keyword">&lt;button&gt;</code
+            > or <code class="keyword">&lt;a&gt;</code> with CSS-only hover effects
+            and zero client-side JavaScript.
+          </p>
         </div>
       </div>
     </header>
@@ -80,7 +127,11 @@ const sections = [
               {index === 0 && (
                 <label class="all-components-search">
                   <img src="/images/search.png" alt="" width="16" height="16" />
-                  <input type="search" placeholder="Search" aria-label="Search components" />
+                  <input
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search components"
+                  />
                 </label>
               )}
             </div>
@@ -90,7 +141,11 @@ const sections = [
               style={`--component-columns: ${Math.min(section.items.length, 4)}`}
             >
               {section.items.map((item) => (
-                <a href={item.href} class="all-component-card" data-component-card>
+                <a
+                  href={item.href}
+                  class="all-component-card"
+                  data-component-card
+                >
                   <span class="all-component-preview">
                     {item.image ? (
                       <img src={item.image} alt="" loading="lazy" />
@@ -105,49 +160,51 @@ const sections = [
       }
     </div>
 
-    <p class="all-components-no-results" aria-live="polite">No results found.</p>
+    <p class="all-components-no-results" aria-live="polite">
+      No results found.
+    </p>
 
     <div class="docs-footer-nav" style="justify-content: space-between;">
-        <a href="/docs/support" class="prev-link">
-            <span class="label">PREVIOUS</span>
-            <span class="title">
-                <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    style="transform: rotate(180deg);"
-                    ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
-                        points="12 5 19 12 12 19"></polyline></svg
-                >
-                Support
-            </span>
-        </a>
-        <a href="/docs/fadein" class="next-link">
-            <span class="label">NEXT</span>
-            <span class="title">
-                Fade In text
-                <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
-                        points="12 5 19 12 12 19"></polyline></svg
-                >
-            </span>
-        </a>
+      <a href="/docs/support/" class="prev-link">
+        <span class="label">PREVIOUS</span>
+        <span class="title">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="transform: rotate(180deg);"
+            ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+              points="12 5 19 12 12 19"></polyline></svg
+          >
+          Support
+        </span>
+      </a>
+      <a href="/docs/fade-in-text/" class="next-link">
+        <span class="label">NEXT</span>
+        <span class="title">
+          Fade In text
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+              points="12 5 19 12 12 19"></polyline></svg
+          >
+        </span>
+      </a>
     </div>
   </section>
-<!-- 
+  <!-- 
   <Fragment slot="toc">
     <div class="toc-header">IN THIS PAGE</div>
     <nav class="toc-nav">
@@ -167,7 +224,7 @@ const sections = [
     align-items: end;
     gap: 28px;
     margin-bottom: 24px;
-    border-bottom: 1px solid #1F2937;
+    border-bottom: 1px solid #1f2937;
   }
 
   .all-components-title {
@@ -203,14 +260,14 @@ const sections = [
   .all-components-desc {
     margin: 0;
     max-width: 760px;
-    color: #8B93A7;
+    color: #8b93a7;
     font-family: "Inter", sans-serif;
     font-size: 13px;
     line-height: 1.5;
   }
 
   .all-components-desc span {
-    color: #FF7F1F;
+    color: #ff7f1f;
   }
 
   .all-components-search {
@@ -218,7 +275,7 @@ const sections = [
     display: flex;
     align-items: center;
     gap: 8px;
-    border: 1px solid #1F2937;
+    border: 1px solid #1f2937;
     padding: 0 9px;
     box-sizing: border-box;
   }
@@ -234,13 +291,13 @@ const sections = [
     border: none;
     outline: none;
     background: transparent;
-    color: #F9FAFB;
+    color: #f9fafb;
     font-family: "Inter", sans-serif;
     font-size: 14px;
   }
 
   .all-components-search input::placeholder {
-    color: #4B5563;
+    color: #4b5563;
   }
 
   .all-components-groups {
@@ -254,7 +311,7 @@ const sections = [
     margin: 24px 0 0;
     padding: 22px;
     /* border: 1px solid #1F2937; */
-    color: #9CA3AF;
+    color: #9ca3af;
     font-family: "Inter", sans-serif;
     font-size: 14px;
     text-align: center;
@@ -262,7 +319,7 @@ const sections = [
 
   .all-components-group h2 {
     margin: 0;
-    color: #F9FAFB;
+    color: #f9fafb;
     font-family: "Inter", sans-serif;
     font-size: 18px;
     font-weight: 400;
@@ -272,7 +329,7 @@ const sections = [
   .all-components-grid {
     display: grid;
     grid-template-columns: repeat(var(--component-columns), minmax(0, 1fr));
-    border: 1px solid #1F2937;
+    border: 1px solid #1f2937;
 
     background: #000;
     width: 100%;
@@ -281,10 +338,10 @@ const sections = [
   .all-component-card {
     min-height: 252px;
     padding: 26px;
-    border-right: 1px solid #1F2937;
+    border-right: 1px solid #1f2937;
     /* border-bottom: 1px solid #1F2937; */
     text-decoration: none;
-    color: #F9FAFB;
+    color: #f9fafb;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -293,7 +350,7 @@ const sections = [
   .all-component-card:last-child {
     border-right: none;
   }
-/* 
+  /* 
   .all-component-card:hover {
     background: rgba(255, 127, 31, 0.025);
   } */
@@ -302,7 +359,7 @@ const sections = [
     display: block;
     width: 100%;
     aspect-ratio: 1.16 / 1;
-    background: #171B22;
+    background: #171b22;
     margin-bottom: 18px;
     overflow: hidden;
   }
@@ -316,7 +373,7 @@ const sections = [
 
   .all-component-name {
     display: block;
-    color: #F9FAFB;
+    color: #f9fafb;
     font-family: "Inter", sans-serif;
     font-size: 12px;
     line-height: 1.2;
@@ -422,10 +479,10 @@ const sections = [
       });
 
       if (noResults) {
-        noResults.style.display = term && totalVisibleCards === 0 ? "block" : "none";
+        noResults.style.display =
+          term && totalVisibleCards === 0 ? "block" : "none";
       }
     });
-
   }
 
   document.addEventListener("DOMContentLoaded", initAllComponentsPage);

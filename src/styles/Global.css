@@ -3642,6 +3642,8 @@ h2 span {
 
     .side-card {
         border-right: 1px solid #1f2937;
+        border-top: 1px solid #1f2937;
+        border-left: 1px solid #1f2937;
     }
 /* 
     .side-card:last-child {
