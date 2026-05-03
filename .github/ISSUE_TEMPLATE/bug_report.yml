@@ -1,0 +1,10 @@
+name: 🐛 Report Issue
+description: Report a bug
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    attributes:
+      label: What happened?
+    validations:
+      required: true
