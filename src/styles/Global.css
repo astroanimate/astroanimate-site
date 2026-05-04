@@ -606,6 +606,14 @@ h2 span {
     padding-top: 40px;
 }
 
+/* PEERLIST BADGE */
+.peerlist-badge {
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+    z-index: 3;
+}
+
 /* CARD */
 .card {
     border: 1px solid #1F2937;
