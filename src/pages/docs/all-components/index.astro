@@ -142,10 +142,7 @@ const sections = [
               )}
             </div>
 
-            <div
-              class="all-components-grid"
-              style={`--component-columns: ${Math.min(section.items.length, 4)}`}
-            >
+            <div class="all-components-grid">
               {section.items.map((item) => (
                 <a
                   href={item.href}
@@ -334,27 +331,29 @@ const sections = [
 
   .all-components-grid {
     display: grid;
-    grid-template-columns: repeat(var(--component-columns), minmax(0, 1fr));
-    border: 1px solid #1f2937;
-
-    background: #000;
+    grid-template-columns: repeat(2, 345px);
+    gap: 0;
     width: 100%;
   }
 
   .all-component-card {
-    min-height: 252px;
+    width: 345px;
+    height: 355px;
     padding: 26px;
-    border-right: 1px solid #1f2937;
-    /* border-bottom: 1px solid #1F2937; */
+    border: 1px solid #1f2937;
     text-decoration: none;
     color: #f9fafb;
+    background: #000;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
   }
 
-  .all-component-card:last-child {
-    border-right: none;
+  /* Hide empty grid cells */
+  .all-components-grid::after {
+    content: "";
+    display: none;
   }
   /* 
   .all-component-card:hover {
@@ -381,7 +380,7 @@ const sections = [
     display: block;
     color: #f9fafb;
     font-family: "Inter", sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.2;
   }
 
@@ -411,7 +410,7 @@ const sections = [
     }
 
     .all-components-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, 345px);
     }
 
     .all-components-content {
@@ -421,7 +420,8 @@ const sections = [
     }
 
     .all-component-card {
-      min-height: 230px;
+      width: 345px;
+      height: 355px;
       padding: 22px;
     }
   }
@@ -432,7 +432,8 @@ const sections = [
     }
 
     .all-component-card {
-      min-height: 220px;
+      width: 100%;
+      height: 355px;
       padding: 18px;
     }
   }

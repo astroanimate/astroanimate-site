@@ -1,0 +1,150 @@
+# AstroAnimate
+
+> The first dedicated animation component library built specifically for the Astro web framework.
+
+AstroAnimate provides production-ready, performance-optimized animation components that are Astro-native, zero-JS by default, and fully compatible with Astro's View Transitions API and Islands Architecture. It pre-integrates Motion, GSAP, and AOS so developers do not need to manually configure third-party animation libraries for each project.
+
+## What AstroAnimate Is
+
+- An open-source animation component library built exclusively for the Astro framework
+- Components are zero-JS by default; JavaScript behavior is opt-in via the `enhance` prop
+- Built-in View Transitions API compatibility out of the box
+- Progressive enhancement pattern: all components render meaningful content without JavaScript
+- TypeScript strict mode throughout; no `any` types
+- MIT licensed core library.
+
+## What AstroAnimate Is Not
+
+- Not a replacement for GSAP or Motion for complex timeline sequencing
+- Not a framework-agnostic library (optimized for Astro only; not tested with React, Vue, or Svelte standalone)
+- Not a page builder or visual editor
+- Not designed for heavy 3D or WebGL animations
+
+## Core Architecture Principles
+
+1. **CSS-First**: All visual states, transitions, and layout are defined in CSS. JavaScript only toggles `data-*` attributes or class names.
+2. **Progressive Enhancement**: Every component renders meaningful content without JavaScript. The `enhance` prop opts into JS-powered behavior.
+3. **Zero Hydration**: No `client:*` directives anywhere. JavaScript is inlined or conditionally included at the component level.
+
+## Component Library (MVP — 11 components, launching April 2026)
+
+### Animation Components (6)
+
+**Scroll & Entrance**:
+FadeInText, ScaleIn, RevealImage
+
+**Text Components**:
+TypewriterText
+
+**Interactive**:
+AnimatedButton, AnimatedCard
+
+### UI Components (5)
+ExpandableCard, GlassCard, Tooltip, Loader, ProgressBar
+
+*Note: Additional components including Backgrounds & Visual Effects, more Text Components, Website templates and Sections & Blocks are planned for future releases.*
+
+## Technical Stack
+
+- Framework: Astro 4.x+ (compatible with Astro 5/6)
+- Languages: TypeScript (strict), JavaScript, Astro components (.astro)
+- Animation engines: Motion (Framer Motion), GSAP, AOS
+- Build tools: Vite (via Astro)
+- Testing: Vitest (unit, >80% coverage required), Playwright (E2E)
+- Documentation: Astro Starlight
+- Hosting: Vercel
+- CI/CD: GitHub Actions
+
+## Key Developer Information
+
+### Installation
+```bash
+npm install @astroanimate/core
+```
+
+### Basic Usage
+```astro
+---
+import { FadeInText } from '@astroanimate/core';
+---
+
+<FadeInText duration={300} delay={100}>
+  <h1>This fades in on scroll</h1>
+</FadeInText>
+```
+
+### TypewriterText (First Released Component)
+```astro
+---
+import { TypewriterText } from '@astroanimate/core';
+---
+
+<TypewriterText
+  texts={["Astro sites", "Animations", "SaaS Projects"]}
+  typeSpeed={60}
+  eraseSpeed={30}
+  pauseAfter={1500}
+  enhance
+/>
+```
+
+### Component Props Pattern
+All components follow a necessary API:
+- `enhance` (boolean, default: false) — opt-in to JavaScript animation
+- `duration` (number, ms) — animation duration
+- `delay` (number, ms) — delay before animation starts
+- `easing` ("smooth" | "snappy" | "gentle") — CSS easing preset
+
+### CSS Custom Properties
+- `--text-rotate-duration` — controls transition duration
+- `--text-rotate-easing` — controls easing curve
+
+## 8 Compliance Criteria (Every Component Must Pass)
+
+1. Visible without JavaScript (meaningful HTML rendered, no layout collapse)
+2. Zero hydration (no `client:*` directives)
+3. Multiple instances safe (all listeners have cleanup, all observers have `.disconnect()`, no global mutations)
+4. Works in build and preview (no dev-only behavior)
+5. No Astro internals (no `astro:*` events; standard DOM APIs only)
+6. Reduced motion respected (`@media (prefers-reduced-motion)` wraps all CSS animations; `matchMedia` check in JS before init)
+7. CSS-first (JS only sets attributes/classes, never `element.style`)
+8. JS only enhances (removing JS does not break the component)
+
+## Accessibility
+
+- All components include `prefers-reduced-motion` support
+- `aria-live="polite"` and `aria-atomic="true"` on animated text
+- Keyboard navigation supported
+- WCAG 2.1 AA compliance required
+
+## Performance Targets
+
+- Lighthouse Performance: 90+
+- Bundle size per component: <6KB gzipped
+- First Contentful Paint: <1.5s
+- Cumulative Layout Shift: <0.1
+
+## Browser Support
+
+Chrome (latest 2), Firefox (latest 2), Safari (latest 2), Edge (latest 2),
+Mobile Safari iOS (latest 1), Mobile Chrome Android (latest 1)
+
+## Documentation
+
+- Full docs: https://astroanimate.com/docs/
+- Installation guide: https://astroanimate.com/docs/installation/
+- Examples gallery: https://www.astroanimate.com/docs/all-components/
+
+## Links
+
+- Website: https://astroanimate.com
+- GitHub: https://github.com/astroanimate
+- npm: https://www.npmjs.com/package/@astroanimate/core
+- Twitter: https://x.com/astroanimate
+- Support: support@astroanimate.com
+- General: hello@astroanimate.com
+
+## About
+
+AstroAnimate is an open-source project. The core library is MIT licensed.
+Launch: April 2026. Market position: first dedicated animation library for Astro (zero direct competitors as of early 2026).
