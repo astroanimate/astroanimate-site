@@ -25,10 +25,8 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="apple-touch-icon" href="/images/favicon.png" />
     <meta name="generator" content={Astro.generator} />
 
     <meta name="robots" content="index, follow" />
@@ -75,7 +73,11 @@ const {
     </script>
 
     <!-- Ghostlyx Analytics -->
-    <script defer data-domain="www.astroanimate.com" data-site-id="gx_DsWYKnrVJvbr" src="https://ghostlyx.com/js/script.min.js"></script>
+    <script
+      defer
+      data-domain="www.astroanimate.com"
+      data-site-id="gx_DsWYKnrVJvbr"
+      src="https://ghostlyx.com/js/script.min.js"></script>
 
     <!-- Preload Critical Resources -->
     <link rel="preload" href="/styles/Global.css" as="style" />
