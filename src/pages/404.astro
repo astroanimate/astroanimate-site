@@ -26,8 +26,12 @@ const enhance = true;
                 “Oops! Looks like you're lost. Let's take you back home.”
             </p>
             <div class="error-actions">
-                <a href="/" class="btn-back">Back to Home</a>
+                <a href="/" class="btn-back" data-scrambler="BACK TO HOME">BACK TO HOME</a>
             </div>
+        </div>
+        
+        <div class="astronaut-container">
+            <img src="/images/astronaut.png" alt="Floating astronaut" class="astronaut" />
         </div>
     </main>
 </Layout>
@@ -108,10 +112,54 @@ const enhance = true;
         font-weight: 400;
         font-family: 'JetBrains Mono', monospace;
         transition: transform 0.2s ease;
+        min-width: fit-content;
+        display: inline-block;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
     }
 
     .btn-back:hover {
         transform: translateY(-2px);
+    }
+
+    .btn-back.scrambling {
+        animation: pulse 0.3s ease-in-out;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.8; }
+    }
+
+    .astronaut-container {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .astronaut {
+        width: 380px;
+        height: auto;
+        animation: float 8s ease-in-out infinite;
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px) rotate(-1deg);
+        }
+        25% {
+            transform: translateY(-2px) rotate(1deg);
+        }
+        50% {
+            transform: translateY(-1px) rotate(0deg);
+        }
+        75% {
+            transform: translateY(-2px) rotate(1deg);
+        }
     }
 
     @media (max-width: 640px) {
@@ -191,4 +239,90 @@ const enhance = true;
             enhanceStarryBackground(el);
         });
     }
+
+    // Text scrambler effect
+    class TextScrambler {
+        constructor(element) {
+            this.element = element;
+            this.originalText = element.dataset.scrambler || element.textContent;
+            this.chars = '!<>-_\/[]{}—=+*^?#________';
+            this.isAnimating = false;
+            this.queue = [];
+            this.frame = 0;
+            this.frameRequest = null;
+        }
+
+        scramble() {
+            if (this.isAnimating) return;
+            this.isAnimating = true;
+            this.element.classList.add('scrambling');
+            
+            const duration = 1800;
+            const frameRate = 30;
+            const totalFrames = Math.floor(duration / (1000 / frameRate));
+            
+            this.queue = [];
+            for (let i = 0; i < this.originalText.length; i++) {
+                const startFrame = totalFrames * 0.2;
+                const endFrame = totalFrames * 0.8;
+                const charFrame = startFrame + (endFrame - startFrame) * (i / this.originalText.length);
+                this.queue.push({ char: this.originalText[i], frame: charFrame });
+            }
+            
+            this.frame = 0;
+            this.update();
+        }
+
+        update() {
+            let output = '';
+            let complete = true;
+            
+            for (let i = 0; i < this.queue.length; i++) {
+                const { char, frame } = this.queue[i];
+                
+                if (this.frame >= frame) {
+                    output += char;
+                } else {
+                    complete = false;
+                    if (this.frame % 2 === 0) {
+                        output += this.chars[Math.floor(Math.random() * this.chars.length)];
+                    } else {
+                        output += char;
+                    }
+                }
+            }
+            
+            this.element.textContent = output;
+            
+            if (!complete) {
+                this.frame++;
+                this.frameRequest = requestAnimationFrame(() => this.update());
+            } else {
+                this.isAnimating = false;
+                this.element.classList.remove('scrambling');
+            }
+        }
+
+        reset() {
+            if (this.frameRequest) {
+                cancelAnimationFrame(this.frameRequest);
+            }
+            this.isAnimating = false;
+            this.element.textContent = this.originalText;
+            this.element.classList.remove('scrambling');
+        }
+    }
+
+    // Initialize scrambler for buttons with data-scrambler attribute
+    document.querySelectorAll('[data-scrambler]').forEach(element => {
+        const scrambler = new TextScrambler(element);
+        
+        element.addEventListener('mouseenter', () => {
+            scrambler.scramble();
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            scrambler.reset();
+        });
+    });
 </script>
