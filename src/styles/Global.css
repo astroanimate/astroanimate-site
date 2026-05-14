@@ -5063,6 +5063,10 @@ h2 span {
     scrollbar-color: #000 transparent;
 }
 
+.docs-sidebar-js .docs-sidebar[data-sidebar-restoring] {
+    visibility: hidden;
+}
+
 /* Custom Scrollbar for Sidebar */
 .docs-sidebar::-webkit-scrollbar {
     width: 3px;

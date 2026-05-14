@@ -73,6 +73,10 @@ const schema = {
 >
   <NavBar />
 
+  <script is:inline>
+    document.documentElement.classList.add("docs-sidebar-js");
+  </script>
+
   <div class="docs-container">
     <input
       type="checkbox"
@@ -86,7 +90,7 @@ const schema = {
     </label>
 
     <!-- SIDEBAR -->
-    <aside class="docs-sidebar">
+    <aside class="docs-sidebar" data-sidebar-restoring>
       <!-- Search Bar -->
       <div class="sidebar-search">
         <div class="search-input-wrapper">
@@ -706,6 +710,38 @@ TEMPLATES
       return path.replace(/\/$/, "").toLowerCase() || "/";
     }
 
+    const docsSidebarState = {
+      scrollKey: "astroanimate:docs-sidebar-scroll",
+      getSidebar() {
+        return document.querySelector(".docs-sidebar") as HTMLElement | null;
+      },
+      save() {
+        const sidebar = this.getSidebar();
+        if (!sidebar) return;
+
+        sessionStorage.setItem(this.scrollKey, String(sidebar.scrollTop));
+      },
+      restore() {
+        const sidebar = this.getSidebar();
+        if (!sidebar) return;
+
+        const savedScroll = sessionStorage.getItem(this.scrollKey);
+        const activeLink = sidebar.querySelector(
+          ".sidebar-comp-item.active, .sidebar-sub-item.active",
+        );
+
+        requestAnimationFrame(() => {
+          if (savedScroll !== null) {
+            sidebar.scrollTop = Number(savedScroll) || 0;
+          } else {
+            activeLink?.scrollIntoView({ block: "nearest" });
+          }
+
+          sidebar.removeAttribute("data-sidebar-restoring");
+        });
+      },
+    };
+
     // Fix active state for sidebar navigation
     function updateActiveState() {
       const currentPath = normalizeDocsPath(window.location.pathname);
@@ -727,6 +763,23 @@ TEMPLATES
           link.classList.remove("active");
           link.removeAttribute("aria-current");
         }
+      });
+    }
+
+    function initDocsSidebarState() {
+      const sidebar = docsSidebarState.getSidebar();
+      if (!sidebar || sidebar.dataset.stateReady === "true") return;
+
+      sidebar.dataset.stateReady = "true";
+
+      sidebar.addEventListener("scroll", () => {
+        docsSidebarState.save();
+      });
+
+      sidebar.querySelectorAll("a[href]").forEach((link) => {
+        link.addEventListener("click", () => {
+          docsSidebarState.save();
+        });
       });
     }
 
@@ -976,6 +1029,8 @@ TEMPLATES
     // Update active state on page load
     document.addEventListener("DOMContentLoaded", () => {
       updateActiveState();
+      initDocsSidebarState();
+      docsSidebarState.restore();
       initTitleShareButtons();
       initCodeCopyButtons();
       initSearch();
@@ -983,6 +1038,8 @@ TEMPLATES
     // Update active state on navigation
     document.addEventListener("astro:page-load", () => {
       updateActiveState();
+      initDocsSidebarState();
+      docsSidebarState.restore();
       initTitleShareButtons();
       initCodeCopyButtons();
       initSearch();
@@ -990,12 +1047,16 @@ TEMPLATES
     // Also update on popstate (browser back/forward)
     window.addEventListener("popstate", () => {
       updateActiveState();
+      initDocsSidebarState();
+      docsSidebarState.restore();
       initTitleShareButtons();
       initCodeCopyButtons();
       initSearch();
     });
 
     updateActiveState();
+    initDocsSidebarState();
+    docsSidebarState.restore();
     initTitleShareButtons();
     initCodeCopyButtons();
     initSearch();
