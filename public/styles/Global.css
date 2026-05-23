@@ -5634,13 +5634,12 @@ details[open] .sidebar-nav-item .chevron {
 
 /* VIDEO PREVIEW */
 .video-preview {
-    height: 520px;
+    height: auto;
     background: #020617;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     border-bottom: 1px solid #1f2937;
     position: relative;
+    overflow: hidden;
 }
 
 .play-button {
