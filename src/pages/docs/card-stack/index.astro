@@ -11,7 +11,9 @@ const previewCards = [
         name: "Sarah Jenkins",
         role: "Frontend Lead, PixelForge",
         bgColor: "#FFE6E3",
+        textColor: "#374151",
         image: "https://x.tax/wp-content/uploads/2026/02/219-150x150.jpg"
+       
     },
     {
         title: "Built for Real Projects",
@@ -19,6 +21,7 @@ const previewCards = [
         name: "Marcus Lee",
         role: "Senior Developer, Nova Studio",
         bgColor: "#DCCFFB",
+        textColor: "#374151",
         image: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR1ddElrY90Caq7L52GJdQnd4P7HPe5pZgYL4KSOdQvAuPmu4WF"
     },
     {
@@ -27,6 +30,7 @@ const previewCards = [
         name: "Priya Raman",
         role: "UI Engineer, CraftLayer",
         bgColor: "#CDEEDB",
+        textColor: "#374151",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTpWfSTHiGxbLCrJE5CwLGDkVGeqd922Zl4sJdFzR7TbH2oA1r"
     },
 ];
@@ -95,8 +99,8 @@ const previewCards = [
                                 stroke-linecap="round"
                                 stroke-linejoin="round"></path></svg
                         ></button
-                    ><div class="component-preview-stage">
-                        <CardStack cards={previewCards} />
+                    ><div class="component-preview-stage card-stack-preview-stage">
+                        <CardStack cards={previewCards} cardTextColor="#374151"/>
                     </div>
                 </div><div class="playground-code">
                     <div class="code-header">
@@ -740,6 +744,77 @@ const previewCards = [
         color: #ff953d;
     }
 
+    .card-stack-preview-stage {
+        min-height: 420px;
+        background: #ffffff;
+    }
+
+    
+
+    .card-stack-preview-stage :global(.stack-card) {
+        height: 335px;
+        padding: 28px 32px;
+        border: 0;
+        border-radius: 28px;
+        color: #374151 !important;
+        font-family: "Inter", sans-serif !important;
+        box-shadow: 0 20px 50px rgba(55, 65, 81, 0.14);
+    }
+
+    .card-stack-preview-stage :global(.quote-icon) {
+        width: 30px;
+        margin-bottom: 12px;
+        color: #374151 !important;
+        opacity: 1;
+    }
+
+    .card-stack-preview-stage :global(.card-title) {
+        margin: 0 0 16px;
+        color: #374151 !important;
+        font-size: 24px;
+        line-height: 1.2;
+        font-weight: 800;
+    }
+
+    .card-stack-preview-stage :global(.quote) {
+        max-height: none;
+        color: #374151 !important;
+        font-size: 20px;
+        line-height: 1.25;
+        font-weight: 400;
+        overflow: visible;
+    }
+
+    .card-stack-preview-stage :global(.card-footer) {
+        gap: 18px;
+        padding-top: 28px;
+        border-top: 0;
+    }
+
+    .card-stack-preview-stage :global(.avatar) {
+        width: 64px;
+        height: 64px;
+        border-radius: 999px;
+        flex: 0 0 64px;
+    }
+
+    .card-stack-preview-stage :global(.name) {
+        color: #374151 !important;
+        font-family: "Inter", sans-serif !important;
+        font-size: 25px;
+        line-height: 1.05;
+        font-weight: 800;
+    }
+
+    .card-stack-preview-stage :global(.role) {
+        color: #374151 !important;
+        font-family: "Inter", sans-serif !important;
+        opacity: 1;
+        font-size: 19px;
+        line-height: 1.2;
+        font-weight: 400;
+    }
+
     .highlight-preview-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -814,6 +889,39 @@ const previewCards = [
             width: 100%;
             max-width: 100%;
             padding: 24px 14px;
+        }
+
+        .card-stack-preview-stage :global(.astro-card-stack-container) {
+            max-width: 315px;
+            height: 360px;
+        }
+
+        .card-stack-preview-stage :global(.stack-card) {
+            height: 330px;
+            padding: 24px;
+        }
+
+        .card-stack-preview-stage :global(.card-title) {
+            font-size: 20px;
+        }
+
+        .card-stack-preview-stage :global(.quote) {
+            font-size: 16px;
+            line-height: 1.35;
+        }
+
+        .card-stack-preview-stage :global(.avatar) {
+            width: 52px;
+            height: 52px;
+            flex-basis: 52px;
+        }
+
+        .card-stack-preview-stage :global(.name) {
+            font-size: 20px;
+        }
+
+        .card-stack-preview-stage :global(.role) {
+            font-size: 15px;
         }
 
         .animated-card-container {
