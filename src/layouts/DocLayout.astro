@@ -2,6 +2,7 @@
 import Layout from "./Layout.astro";
 import NavBar from "../components/NavBar.astro";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema.astro";
+import { allNewComponentDocs } from "../data/newComponentDocs";
 
 interface Props {
   title: string;
@@ -9,6 +10,9 @@ interface Props {
 
 const { pathname } = Astro.url;
 const isDocsLanding = pathname === "/docs" || pathname === "/docs/";
+const normalizedPath = pathname.replace(/\/$/, "");
+const isLatestDocsVersion = Astro.url.searchParams.get("version") !== "0.1.1";
+const versionQuery = isLatestDocsVersion ? "" : "?version=0.1.1";
 
 // Map path to title if needed, or just capitalize the last segment
 const pathSegments = pathname.split("/").filter(Boolean);
@@ -63,6 +67,91 @@ const schema = {
     },
   ],
 };
+
+const oldComponentSections = [
+  {
+    title: "Text Animations",
+    items: [
+      { name: "Fade In Text", slug: "fade-in-text" },
+      { name: "Typewriter text", slug: "typewriter" },
+    ],
+  },
+  {
+    title: "Core Animations",
+    items: [
+      { name: "Scale In", slug: "scale-in" },
+      { name: "Reveal Image", slug: "reveal-image" },
+    ],
+  },
+  {
+    title: "Cards",
+    items: [
+      { name: "Expandable Card", slug: "expandable-card" },
+      { name: "Animated Card", slug: "animated-card" },
+      { name: "Glass Card", slug: "glass-card" },
+    ],
+  },
+  {
+    title: "Loaders & Feedback",
+    items: [
+      { name: "Loader", slug: "loader" },
+      { name: "Progress Bar", slug: "progress-bar" },
+    ],
+  },
+  {
+    title: "Buttons",
+    items: [{ name: "Animated Button", slug: "animated-button" }],
+  },
+  {
+    title: "Overlays & Popovers",
+    items: [{ name: "Tool Tip", slug: "tooltip" }],
+  },
+];
+
+const groupedNewComponents = allNewComponentDocs.reduce(
+  (groups, component) => {
+    if (!groups[component.section]) groups[component.section] = [];
+    groups[component.section].push(component);
+    return groups;
+  },
+  {} as Record<string, typeof allNewComponentDocs>,
+);
+
+const animationSectionTitles = [
+  "Text Animations",
+  "Core Animations",
+  "Background Effects",
+];
+const uiSectionTitles = [
+  "Navigation",
+  "Cards",
+  "Forms",
+  "Loaders & Feedback",
+  "Buttons",
+  "Overlays & Popovers",
+  "Data Display",
+];
+
+const mergedSections = (titles: string[]) =>
+  titles
+    .map((title) => ({
+      title,
+      items: [
+        ...(oldComponentSections.find((section) => section.title === title)
+          ?.items.map((item) => ({ ...item, isNew: false })) ?? []),
+        ...(isLatestDocsVersion
+          ? groupedNewComponents[title]?.map((item) => ({
+              name: item.name,
+              slug: item.slug,
+              isNew: true,
+            })) ?? []
+          : []),
+      ],
+    }))
+    .filter((section) => section.items.length > 0);
+
+const animationSections = mergedSections(animationSectionTitles);
+const uiSections = mergedSections(uiSectionTitles);
 ---
 
 <Layout
@@ -74,7 +163,59 @@ const schema = {
   <NavBar />
 
   <script is:inline>
-    document.documentElement.classList.add("docs-sidebar-js");
+    function syncDocsVersionClass() {
+      const isOldDocsVersion = new URLSearchParams(window.location.search).get(
+        "version",
+      ) === "0.1.1";
+      document.documentElement.classList.add("docs-sidebar-js");
+      document.documentElement.classList.toggle(
+        "docs-version-old",
+        isOldDocsVersion,
+      );
+      document.documentElement.classList.toggle(
+        "docs-version-latest",
+        !isOldDocsVersion,
+      );
+
+      window.requestAnimationFrame(() => {
+        document.querySelectorAll(".subcategory-list > details").forEach((group) => {
+          const links = Array.from(group.querySelectorAll(".sidebar-comp-item"));
+          if (!links.length) return;
+          const hasVisibleLink = links.some((link) => {
+            return window.getComputedStyle(link).display !== "none";
+          });
+          group.style.display = hasVisibleLink ? "" : "none";
+        });
+
+        if (isOldDocsVersion) {
+          document.querySelectorAll('a[href^="/docs/"]').forEach((link) => {
+            if (link.classList.contains("version-option")) return;
+            const url = new URL(link.getAttribute("href"), window.location.origin);
+            url.searchParams.set("version", "0.1.1");
+            link.setAttribute("href", `${url.pathname}${url.search}${url.hash}`);
+          });
+        }
+      });
+    }
+
+    syncDocsVersionClass();
+    document.addEventListener("astro:page-load", syncDocsVersionClass);
+
+    document.addEventListener("click", (event) => {
+      if (!document.documentElement.classList.contains("docs-version-old")) return;
+
+      const link = event.target.closest?.('a[href^="/docs/"]');
+      if (!link || link.classList.contains("version-option")) return;
+
+      const url = new URL(link.getAttribute("href"), window.location.origin);
+      url.searchParams.set("version", "0.1.1");
+      const nextUrl = `${url.pathname}${url.search}${url.hash}`;
+
+      if (link.getAttribute("href") !== nextUrl) {
+        event.preventDefault();
+        window.location.href = nextUrl;
+      }
+    });
   </script>
 
   <div class="docs-container">
@@ -126,7 +267,7 @@ const schema = {
             Twitter
           </a>
           <a
-            href="https://github.com/astroanimate/astroanimate-site"
+            href="https://github.com/astroanimate/astroanimate"
             target="_blank"
             rel="noopener noreferrer"
             class="sidebar-sub-item"
@@ -166,14 +307,14 @@ const schema = {
           style="list-style: none; display: flex; flex-direction: column; gap: 4px;"
         >
           <a
-            href="/docs/"
+            href={`/docs/${versionQuery}`}
             class:list={[
               "sidebar-comp-item",
               { active: pathname === "/docs" || pathname === "/docs/" },
             ]}>Introduction</a
           >
           <a
-            href="/docs/installation/"
+            href={`/docs/installation/${versionQuery}`}
             class:list={[
               "sidebar-comp-item",
               { active: pathname === "/docs/installation" },
@@ -181,7 +322,7 @@ const schema = {
           >
 
           <a
-            href="/docs/quick-start/"
+            href={`/docs/quick-start/${versionQuery}`}
             class:list={[
               "sidebar-comp-item",
               { active: pathname === "/docs/quick-start" },
@@ -195,21 +336,21 @@ const schema = {
             ]}>Supported Components</a
           > -->
           <a
-            href="/docs/supported-platforms/"
+            href={`/docs/supported-platforms/${versionQuery}`}
             class:list={[
               "sidebar-comp-item",
               { active: pathname === "/docs/supported-platforms" },
             ]}>Supported Platforms</a
           >
           <a
-            href="/docs/example-projects/"
+            href={`/docs/example-projects/${versionQuery}`}
             class:list={[
               "sidebar-comp-item",
               { active: pathname === "/docs/example-projects" },
             ]}>Example Projects</a
           >
           <a
-            href="/docs/support/"
+            href={`/docs/support/${versionQuery}`}
             class:list={[
               "sidebar-comp-item",
               { active: pathname === "/docs/support" },
@@ -217,7 +358,7 @@ const schema = {
           >
 
           <a
-            href="/docs/all-components/"
+            href={`/docs/all-components/${versionQuery}`}
             class:list={[
               "sidebar-comp-item",
               { active: pathname === "/docs/all-components" },
@@ -230,103 +371,30 @@ const schema = {
       <details class="sidebar-category" open>
         <summary>
           <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
-            >
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             ANIMATION
           </div>
         </summary>
-
         <div class="subcategory-list">
-          <!-- Text Animations -->
-          <details open>
-            <summary class="sidebar-sub-item subtitle">
-              Text Animations
-            </summary>
-            <div class="component-list">
-              <!-- <div class="sidebar-comp-item">Text Reveal</div>
-<div class="sidebar-comp-item">Count Up</div>
-<div class="sidebar-comp-item">HighlightText</div>
-<div class="sidebar-comp-item">Scrambler Text</div>
-<div class="sidebar-comp-item">ScrollRevealText</div> -->
-              <!-- <div class="sidebar-comp-item">SlidingTextButton</div>
-<div class="sidebar-comp-item">TextFlip</div> -->
-              <a
-                href="/docs/fade-in-text/"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/fade-in-text" },
-                ]}
-                >Fade In Text
-              </a>
-              <a
-                href="/docs/typewriter/"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/typewriter" },
-                ]}>Typewriter text</a
-              >
-            </div>
-          </details>
-
-          <!-- Card Components -->
-          <details open>
-            <summary class="sidebar-sub-item subtitle">
-              Core Animations
-            </summary>
-            <div class="component-list">
-              <!-- <div class="sidebar-comp-item">Fade In</div>
-<div class="sidebar-comp-item">Slide In</div> -->
-              <a
-                href="/docs/scale-in/"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/scale-in" },
-                ]}>Scale In</a
-              >
-              <a
-                href="/docs/reveal-image/"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/reveal-image" },
-                ]}>Reveal Image</a
-              >
-
-              <!-- <div class="sidebar-comp-item">Stagger</div>
-<div class="sidebar-comp-item">Text Fade Up</div>
-<div class="sidebar-comp-item">Reveal</div> -->
-            </div>
-          </details>
-          <!--
-<details open>
-<summary class="sidebar-sub-item subtitle">
-Scroll & Parallax
-</summary>
-<div class="component-list">
-<div class="sidebar-comp-item">Infinite Scroll</div>
-<div class="sidebar-comp-item">Parallax</div>
-<div class="sidebar-comp-item">Reveal On Scroll</div>
-</div>
-</details> -->
-
-          <!--
-<details open>
-<summary class="sidebar-sub-item subtitle">
-Background Effects
-</summary>
-<div class="component-list">
-<div class="sidebar-comp-item">Glow Effect</div>
-<div class="sidebar-comp-item">Gradient Background</div>
-<div class="sidebar-comp-item">Grid Dots Background</div>
-</div>
-</details> -->
+          {
+            animationSections.map((section) => (
+              <details open>
+                <summary class="sidebar-sub-item subtitle">{section.title}</summary>
+                <div class="component-list">
+                  {section.items.map((item) => (
+                    <a
+                      href={`/docs/${item.slug}/${versionQuery}`}
+                      data-new-component={item.isNew ? "true" : undefined}
+                      class:list={["sidebar-comp-item", { active: normalizedPath === `/docs/${item.slug}` }]}
+                    >
+                      <span>{item.name}</span>
+                      {item.isNew && <span class="docs-new-pill sidebar-new-pill">NEW</span>}
+                    </a>
+                  ))}
+                </div>
+              </details>
+            ))
+          }
         </div>
       </details>
 
@@ -334,131 +402,32 @@ Background Effects
       <details class="sidebar-category" open>
         <summary>
           <div class="sidebar-nav-item">
-            <svg
-              class="chevron"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><polyline points="9 18 15 12 9 6"></polyline></svg
-            >
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             UI Components
           </div>
         </summary>
-
         <div class="subcategory-list">
-          <!-- Text Animations -->
-          <details open>
-            <summary class="sidebar-sub-item subtitle"> Cards </summary>
-            <div class="component-list">
-              <!-- <div class="sidebar-comp-item">Card Stack</div> -->
-              <a
-                href="/docs/expandable-card/"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/expandable-card" },
-                ]}>Expandable Card</a
-              >
-              <a
-                href="/docs/animated-card/"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/animated-card" },
-                ]}>Animated Card</a
-              >
-              <!-- <div class="sidebar-comp-item">Expandable Card</div> -->
-              <a
-                href="/docs/glass-card/"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/glass-card" },
-                ]}>Glass Card</a
-              >
-              <!-- <div class="sidebar-comp-item">Liquid Glass card</div> -->
-            </div>
-          </details>
-
-          <!-- Card Components -->
-          <details open>
-            <summary class="sidebar-sub-item subtitle">
-              Loaders & Feedback
-            </summary>
-            <div class="component-list">
-              <a
-                href="/docs/loader/"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/loader" },
-                ]}>Loader</a
-              >
-              <a
-                href="/docs/progress-bar/"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/progress-bar" },
-                ]}>Progress Bar</a
-              >
-              <!-- <div class="sidebar-comp-item">Skeleton</div> -->
-            </div>
-          </details>
-
-          <!-- <details open>
-<summary class="sidebar-sub-item subtitle">
-Navigation
-</summary>
-<div class="component-list">
-<div class="sidebar-comp-item">Dock</div>
-<div class="sidebar-comp-item">Animated Tabs</div>
-<div class="sidebar-comp-item">Dropdown</div>
-</div>
-</details> -->
-
-          <details open>
-            <summary class="sidebar-sub-item subtitle"> Buttons </summary>
-            <div class="component-list">
-              <a
-                href="/docs/animated-button/"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/animated-button" },
-                ]}>Animated Button</a
-              >
-              <!-- <div class="sidebar-comp-item">Sliding Text Button</div> -->
-              <!-- <div class="sidebar-comp-item">Social Button</div> -->
-            </div>
-          </details>
-
-          <details open>
-            <summary class="sidebar-sub-item subtitle">
-              OverLays & popovers
-            </summary>
-            <div class="component-list">
-              <!-- <div class="sidebar-comp-item">Toast</div> -->
-              <a
-                href="/docs/tooltip/"
-                class:list={[
-                  "sidebar-comp-item",
-                  { active: pathname === "/docs/tooltip" },
-                ]}>Tool Tip</a
-              >
-            </div>
-          </details>
-
-          <!-- <details open>
-<summary class="sidebar-sub-item subtitle">
-Data display
-</summary>
-<div class="component-list">
-<div class="sidebar-comp-item">Count Up</div>
-<div class="sidebar-comp-item">Infinite Marquee</div>
-<div class="sidebar-comp-item">Page Transition</div>
-</div>
-</details> -->
+          {
+            uiSections.map((section) => (
+              <details open>
+                <summary class="sidebar-sub-item subtitle">{section.title}</summary>
+                <div class="component-list">
+                  {section.items.map((item) => (
+                    <a
+                      href={`/docs/${item.slug}/${versionQuery}`}
+                      data-new-component={item.isNew ? "true" : undefined}
+                      class:list={["sidebar-comp-item", { active: normalizedPath === `/docs/${item.slug}` }]}
+                    >
+                      <span>{item.name}</span>
+                      {item.isNew && <span class="docs-new-pill sidebar-new-pill">NEW</span>}
+                    </a>
+                  ))}
+                </div>
+              </details>
+            ))
+          }
         </div>
       </details>
-
       <!-- Section: Advance UI -->
 
       <!-- <details class="sidebar-category" open>
@@ -608,7 +577,7 @@ TEMPLATES
                 />
               </a>
               <a
-                href="https://github.com/astroanimate/astroanimate-site"
+                href="https://github.com/astroanimate/astroanimate"
                 target="_blank"
                 class="global-follow-icon"
               >
@@ -829,8 +798,11 @@ TEMPLATES
             image.setAttribute("height", image.getAttribute("height") || "16");
           }
 
+          shareButton.dataset.tooltip = "Link copied";
+
           resetTimer = window.setTimeout(() => {
             shareButton.classList.remove("copied");
+            shareButton.removeAttribute("data-tooltip");
             shareButton.setAttribute("aria-label", "Copy page link");
             if (image) image.setAttribute("src", originalSrc);
           }, 1400);
@@ -937,7 +909,7 @@ TEMPLATES
             copyTrigger.classList.remove("copied");
             copyTrigger.setAttribute("aria-label", "Copy code");
             restoreCopyIcon();
-          }, 5000);
+          }, 1400);
         };
 
         copyTrigger.addEventListener("click", runCopy);

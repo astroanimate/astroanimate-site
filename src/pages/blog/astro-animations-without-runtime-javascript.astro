@@ -1,0 +1,957 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import NavBar from "../../components/NavBar.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles/Global.css";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: "Astro Animations Without Runtime JavaScript",
+  description:
+    "Learn how to build Astro animations with minimal or zero runtime JavaScript using CSS-first patterns, Astro islands, and lightweight components.",
+  url: "https://www.astroanimate.com/blog/astro-animations-without-runtime-javascript/",
+  image: "https://www.astroanimate.com/images/blog-2-cover.png",
+  articleSection: "Guide",
+  keywords: ["Astro", "CSS animations", "Astro components", "AstroAnimate"],
+  author: {
+    "@type": "Person",
+    name: "Prashanth ks",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AstroAnimate",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://www.astroanimate.com/images/Logo.png",
+    },
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id":
+      "https://www.astroanimate.com/blog/astro-animations-without-runtime-javascript/",
+  },
+  datePublished: "2026-05-24",
+  dateModified: "2026-05-24",
+};
+---
+
+<Layout
+  title="Astro Animations Without Runtime JavaScript | AstroAnimate"
+  description="Learn how to build Astro animations with minimal or zero runtime JavaScript using CSS-first patterns, Astro islands, and lightweight components."
+  canonical="https://www.astroanimate.com/blog/astro-animations-without-runtime-javascript/"
+  schema={schema}
+>
+  <NavBar />
+
+  <main class="article-container">
+    <header class="article-header">
+      <div class="blog-nav">
+        <a href="/blog/" class="back-link">&larr; Go Back</a>
+      </div>
+
+      <div class="article-title-section">
+        <span class="article-category-tag">// Guide</span>
+
+        <div class="article-title-wrapper">
+          <div class="blog-title-left">
+            <h1 class="blog-title">
+             How to Add Animations in Astro Without Runtime JavaScript
+            </h1>
+
+            <div class="article-meta-wrapper">
+              <div class="article-meta">
+                <span class="blog-date">MAY 24, 2026</span>
+                <span class="blog-read-time">5 MIN READ</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="blog-title-image">
+            <div class="blog-featured-image">
+              <img
+                src="/images/blog-2-cover.png"
+                alt="CSS-first animation component cover"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="400"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="article-author-section">
+          <div class="author-info">
+            <img
+              src="/images/prashanth.png"
+              alt="Prashanth ks"
+              class="author-avatar"
+              width="40"
+              height="40"
+            />
+            <span class="author-name">Prashanth ks</span>
+          </div>
+          <button class="copy-link-btn" type="button">Copy Link</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="article-layout">
+      <aside class="table-of-contents">
+        <nav class="toc-nav">
+          <ul class="toc-list">
+            <li class="toc-item">
+              <a href="#intro" class="toc-link active">Runtime-free Astro animations</a>
+            </li>
+            <li class="toc-item">
+              <a href="#tldr" class="toc-link">TL;DR</a>
+            </li>
+            <li class="toc-item">
+              <a href="#runtime-cost" class="toc-link">Runtime JS cost</a>
+            </li>
+            <li class="toc-item">
+              <a href="#astro-css-first" class="toc-link">Astro CSS-first motion</a>
+            </li>
+            <li class="toc-item">
+              <a href="#islands" class="toc-link">Islands architecture</a>
+            </li>
+            <li class="toc-item">
+              <a href="#server-rendering" class="toc-link">Server-first rendering</a>
+            </li>
+            <li class="toc-item">
+              <a href="#progressive-enhancement" class="toc-link">Progressive enhancement</a>
+            </li>
+            <li class="toc-item">
+              <a href="#fadein-example" class="toc-link">FadeIn example</a>
+            </li>
+            <li class="toc-item">
+              <a href="#slidein-example" class="toc-link">SlideIn example</a>
+            </li>
+            <li class="toc-item">
+              <a href="#scroll-reveal-example" class="toc-link">Scroll reveal</a>
+            </li>
+            <li class="toc-item">
+              <a href="#view-transitions" class="toc-link">View Transitions</a>
+            </li>
+            <li class="toc-item">
+              <a href="#when-js-makes-sense" class="toc-link">When JS makes sense</a>
+            </li>
+            <li class="toc-item">
+              <a href="#reduced-motion" class="toc-link">Reduced motion</a>
+            </li>
+            <li class="toc-item">
+              <a href="#performance-comparison" class="toc-link">Performance comparison</a>
+            </li>
+            <li class="toc-item">
+              <a href="#practical-guidelines" class="toc-link">Practical guidelines</a>
+            </li>
+            <li class="toc-item">
+              <a href="#faq" class="toc-link">FAQ</a>
+            </li>
+            <li class="toc-item">
+              <a href="#conclusion" class="toc-link">Conclusion</a>
+            </li>
+            <li class="toc-item">
+              <a href="#internal-links" class="toc-link">Internal links</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <article class="article-body">
+        <section id="intro" class="content-section">
+          <h2>How to Add Animations in Astro Without Runtime JavaScript</h2>
+          <p>
+            Can Astro animations work without runtime JavaScript?
+          </p>
+          <p>
+            Yes — in many cases, they can. Thanks to Astro’s server-first rendering model and islands architecture, developers can build transitions, reveals, fades, and component-level motion using mostly CSS and progressive enhancement instead of shipping large client-side animation runtimes.
+          </p>
+          <p>That approach reduces hydration overhead, keeps bundle sizes smaller, and helps maintain good Lighthouse scores while still delivering polished UI interactions.</p>
+        </section>
+
+        <section id="tldr" class="content-section">
+          <h2>TL;DR</h2>
+          <p>
+            If your animation needs are mostly: 
+            </p>
+               
+              <ul class="content-list">
+              <li>
+                <span class="diamond"></span>
+                fades,
+              </li>
+              <li>
+                <span class="diamond"></span>
+                slide-ins,
+              </li>
+              <li>
+                <span class="diamond"></span>
+                staggered reveals,
+              </li>
+              <li>
+                <span class="diamond"></span>
+                page transitions,
+              </li>
+              <li>
+                <span class="diamond"></span>
+                hover interactions,
+              </li>
+              <li>
+                <span class="diamond"></span>
+                or scroll-triggered effects,
+              </li>
+            </ul>
+            <p>then you often do not need a heavy runtime animation engine.</p>
+          
+          <p>
+            A lightweight, CSS-first approach works well with:
+          </p>
+         
+              <ul class="content-list">
+              <li>
+                <span class="diamond"></span>
+               Astro islands,
+              </li>
+              <li>
+                <span class="diamond"></span>
+                server-rendered components,
+              </li>
+              <li>
+                <span class="diamond"></span>
+               View Transitions,
+              </li>
+              <li>
+                <span class="diamond"></span>
+                and progressive enhancement patterns.
+              </li>
+            </ul>
+            <p>Useful starting points:</p>
+         
+              <ul class="content-list">
+              <li>
+                <span class="diamond"></span>
+                <a href="/docs/installation/" class="why-link">/docs/installation/</a>
+              </li>
+              <li>
+                <span class="diamond"></span>
+                <a href="/docs/quick-start/" class="why-link">/docs/quick-start/</a>
+              </li>
+              <li>
+                <span class="diamond"></span>
+                <a href="/docs/all-components/" class="why-link">/examples/</a>
+              </li>
+            </ul>
+           
+        </section>
+
+        <section id="runtime-cost" class="content-section">
+          <h2>Why Runtime JavaScript Can Hurt Performance</h2>
+          <p>
+            Modern animation libraries are powerful, but they can introduce unnecessary client-side cost when used for simple UI transitions.
+          </p>
+          <p>
+           This becomes especially noticeable on content-heavy or static-first sites built with Astro.
+          </p>
+          <h3 class="privacy-sub">Hydration Cost</h3>
+          <p>Hydration means attaching JavaScript behavior to server-rendered HTML.</p>
+          <p>If animations depend entirely on runtime JS:</p>
+          <ul class="content-list">
+            
+            <li>
+               <span class="diamond"></span>
+              components must hydrate,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              animation state must initialize,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              observers and timelines must run in the browser.
+            </li>
+          </ul>
+          <p>For small interactions, this can become unnecessary overhead.</p>
+
+           <h3 class="privacy-sub">Larger Client Bundles</h3>
+          <p>Many JS animation systems require:</p>
+          <ul class="content-list">
+            <li>
+               <span class="diamond"></span>
+              runtime engines,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              gesture handling,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              state synchronization,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              timeline orchestration.
+            </li>
+          </ul>
+          <p>Even when tree-shaken properly, this still adds more browser work than CSS transitions or keyframes.</p>
+          <p>A CSS-first approach avoids shipping animation logic for effects the browser already handles efficiently.</p>
+
+            <h3 class="privacy-sub">Layout Shift (CLS)</h3>
+          <p>Improperly initialized client animations can cause:</p>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
+              content jumps,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              flash-of-unstyled motion,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              delayed positioning,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              hydration mismatch artifacts.
+            </li>
+          </ul>
+          <p>Server-rendered animation states reduce these issues because the initial visual state already exists in HTML and CSS before JavaScript loads.</p>
+
+           <h3 class="privacy-sub">Unnecessary Client JavaScript)</h3>
+          <p>A common anti-pattern:</p>
+          <p>Using a full animation runtime for:</p>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
+              fade-ins,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              hover transitions,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              opacity transitions.
+            </li>
+            <li>
+              <span class="diamond"></span>
+              simple reveals.
+            </li>
+          </ul>
+          <p>Those interactions usually work better with:</p>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
+              CSS transitions,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              transforms,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              keyframes,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              intersection-based progressive enhancement.
+            </li>
+          </ul>
+        </section>
+       
+
+        <section id="astro-css-first" class="content-section">
+          <h2>How Astro Enables CSS-First Animations</h2>
+          <p>
+            Astro is well-suited for lightweight motion because of its architecture.
+          </p>
+        </section>
+
+        <section id="islands" class="content-section">
+          <h2>What Is Astro Islands Architecture?</h2>
+          <p>
+        Astro islands architecture allows pages to remain mostly static HTML while hydrating only the interactive parts that actually need JavaScript.
+          </p>
+          <p>
+            That means:
+          </p>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
+             non-interactive animations can remain server-rendered,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              components can avoid hydration entirely,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              motion can stay CSS-driven by default.
+            </li>
+          </ul>
+          <p>This aligns naturally with a zero runtime javascript mindset.</p>
+        </section>
+
+
+        <section id="server-rendering" class="content-section">
+          <h2>Server-First Rendering Helps Motion Performance</h2>
+          <p>
+            Because Astro renders HTML on the server:
+          </p>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
+             initial animation states can exist immediately,
+
+
+            </li>
+            <li>
+              <span class="diamond"></span>
+              the browser paints faster,
+            </li>
+            <li>
+              <span class="diamond"></span>
+            animations begin without waiting for JS bootstrapping.
+            </li>
+          </ul>
+          <p>This is especially useful for:</p>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
+            hero reveals,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              section transitions,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              staggered entrances,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              component animations.
+            </li>
+          </ul>
+        </section>
+
+
+        <section id="progressive-enhancement" class="content-section">
+          <h2>Progressive Enhancement Instead of Mandatory JS</h2>
+          <p>
+            Progressive enhancement means:
+          </p>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
+            Start with accessible HTML and CSS.
+
+            </li>
+            <li>
+              <span class="diamond"></span>
+             Add JavaScript only when necessary.
+            </li>
+          </ul>
+          <p>For motion systems, this usually means:</p>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
+           CSS handles baseline animation,
+            </li>
+            <li>
+              <span class="diamond"></span>
+              JS only enhances advanced interactions.
+            </li>
+          </ul>
+          <p>Examples:</p>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
+             scroll-triggered reveals,
+            </li>
+            <li>
+              <span class="diamond"></span>
+            dynamic orchestration,
+            </li>
+            <li>
+               <span class="diamond"></span>
+              conditional animation states.</li>
+          </ul>
+          <p>This keeps the experience resilient and lightweight.</p>
+        </section>
+
+           <section id="fadein-example" class="content-section">
+          <h2>Example: FadeIn Animation Component</h2>
+          <p>
+           A simple FadeIn component can work entirely with CSS.
+          </p>
+         <pre
+            class="article-code-block"><code>---
+// FadeIn.astro
+interface Props &#123;
+  delay?: string;
+&#125;
+
+const &#123; delay = "0ms" &#125; = Astro.props;
+---
+
+&lt;div class="fade-in" style=&#123;`--delay:$&#123;delay&#125;`&#125;&gt;
+  &lt;slot /&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.fade-in &#123;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeIn 600ms ease forwards;
+  animation-delay: var(--delay);
+&#125;
+
+@keyframes fadeIn &#123;
+  to &#123;
+    opacity: 1;
+    transform: translateY(0);
+  &#125;
+&#125;
+&lt;/style&gt;</code></pre>
+          <p>Usage:</p>
+          <pre
+            class="article-code-block"><code>&lt;FadeIn delay="150ms"&gt;
+  &lt;h2&gt;Server-rendered animation&lt;/h2&gt;
+&lt;/FadeIn&gt;</code></pre>
+<p>This requires no client runtime.</p>
+<p>Related docs:</p>
+ <ul class="content-list">
+              <li>
+                <span class="diamond"></span>
+                <a href="/docs/quick-start/" class="why-link">/docs/quick-start/</a>
+              </li>
+              <li>
+                <span class="diamond"></span>
+                <a href="/docs/fade-in-text/" class="why-link">/docs/fadein/</a>
+              </li>
+            </ul>
+          <h2 id="slidein-example">Example: SlideIn Component</h2>
+          <p>
+            Slide-based motion is another good fit for CSS-first patterns.
+          </p>
+          <pre
+            class="article-code-block"><code>---
+// SlideIn.astro
+interface Props &#123;
+  direction?: "left" | "right";
+&#125;
+
+const &#123; direction = "left" &#125; = Astro.props;
+
+const offset =
+  direction === "left"
+    ? "-24px"
+    : "24px";
+---
+
+&lt;div
+  class="slide-in"
+  style=&#123;`--offset:$&#123;offset&#125;`&#125;
+&gt;
+  &lt;slot /&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.slide-in &#123;
+  opacity: 0;
+  transform: translateX(var(--offset));
+  animation: slideIn 500ms ease forwards;
+&#125;
+
+@keyframes slideIn &#123;
+  to &#123;
+    opacity: 1;
+    transform: translateX(0);
+  &#125;
+&#125;
+&lt;/style&gt;</code></pre>
+          <p>Usage:</p>
+          <pre
+            class="article-code-block"><code>&lt;SlideIn direction="right"&gt;
+  &lt;Card /&gt;
+&lt;/SlideIn&gt;</code></pre>
+          <p>Useful related resources:</p>
+          <ul class="content-list">
+            <li>
+              <span class="diamond"></span>
+              <a href="/examples/" class="why-link">/examples/</a>
+            </li>
+            <li>
+              <span class="diamond"></span>
+              SlideIn
+            </li>
+          </ul>
+
+          <h2 id="view-transitions">How Astro View Transitions Fit In</h2>
+          <p>
+            Astro also supports View Transitions compatibility through the
+            browser View Transitions API.
+          </p>
+          <p>
+            This allows smooth page navigation effects while preserving
+            server-first rendering patterns.
+          </p>
+          <p>Typical use cases:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>route transitions,</li>
+            <li><span class="diamond"></span>shared element animations,</li>
+            <li><span class="diamond"></span>navigation fades,</li>
+            <li><span class="diamond"></span>layout continuity.</li>
+          </ul>
+          <p>
+            Because transitions integrate with browser-native APIs, they can
+            often avoid large client animation runtimes.
+          </p>
+          <p>Related topic:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>astro page transitions</li>
+            <li><span class="diamond"></span>astro view transitions</li>
+          </ul>
+          <p>Example resources:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span><a href="/examples/" class="why-link">/examples/</a></li>
+            <li><span class="diamond"></span><a href="/playground/" class="why-link">/playground/</a></li>
+          </ul>
+
+          <h2 id="when-js-makes-sense">When JavaScript Animations Still Make Sense</h2>
+          <p>
+            CSS-first motion is not the correct solution for everything.
+          </p>
+          <p>
+            There are legitimate cases where runtime JS animation engines are
+            the better option.
+          </p>
+          <h3 class="privacy-sub">Complex Timelines</h3>
+          <p>
+            Multi-stage sequencing often benefits from dedicated animation
+            systems.
+          </p>
+          <p>Examples:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>synchronized choreography,</li>
+            <li><span class="diamond"></span>timeline scrubbing,</li>
+            <li><span class="diamond"></span>scroll-linked storytelling,</li>
+            <li><span class="diamond"></span>nested orchestration.</li>
+          </ul>
+          <p>
+            Libraries like GSAP are designed for these workflows.
+          </p>
+          <h3 class="privacy-sub">Drag Interactions</h3>
+          <p>Drag-and-drop interfaces usually require:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>pointer tracking,</li>
+            <li><span class="diamond"></span>velocity handling,</li>
+            <li><span class="diamond"></span>collision logic,</li>
+            <li><span class="diamond"></span>spring calculations.</li>
+          </ul>
+          <p>
+            These are difficult to implement cleanly with CSS alone.
+          </p>
+          <h3 class="privacy-sub">Advanced Physics</h3>
+          <p>Physics-driven animation systems may require:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>spring solvers,</li>
+            <li><span class="diamond"></span>inertia,</li>
+            <li><span class="diamond"></span>interpolation,</li>
+            <li><span class="diamond"></span>gesture synchronization.</li>
+          </ul>
+          <p>
+            In those cases, integrating with a runtime animation library makes
+            sense.
+          </p>
+          <p>The important distinction is:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>use JS where interaction complexity requires it,</li>
+            <li><span class="diamond"></span>avoid shipping it for simple visual transitions.</li>
+          </ul>
+
+          <h2 id="reduced-motion">Accessibility and Reduced Motion</h2>
+          <p>
+            Animations should always respect user accessibility preferences.
+          </p>
+          <p>
+            The most important baseline is: <code>prefers-reduced-motion</code>.
+          </p>
+          <p>Example:</p>
+          <pre
+            class="article-code-block"><code>@media (prefers-reduced-motion: reduce) &#123;
+ 
+    animation: none !important;
+    transition: none !important;
+  &#125;
+&#125;</code></pre>
+          <p>This helps:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>reduce vestibular discomfort,</li>
+            <li><span class="diamond"></span>improve accessibility,</li>
+            <li><span class="diamond"></span>create more inclusive UI systems.</li>
+          </ul>
+          <p>
+            Motion should support usability rather than distract from content.
+          </p>
+
+          <h2 id="performance-comparison">Performance Comparison</h2>
+          <p>
+            Here is a simplified comparison between CSS-first animation systems
+            and JS-heavy runtime approaches.
+          </p>
+           <div class="table-wrapper article-table-wrapper">
+          <table class="docs-table article-comparison-table">
+            <thead>
+              <tr>
+                <th>Approach</th>
+                <th>Runtime JS</th>
+                <th>Bundle Impact</th>
+                <th>Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CSS-only animations</td>
+                <td>Minimal</td>
+                <td>Very low</td>
+                <td>UI transitions</td>
+              </tr>
+              <tr>
+                <td>Progressive enhancement</td>
+                <td>Low</td>
+                <td>Low</td>
+                <td>Scroll reveals</td>
+              </tr>
+              <tr>
+                <td>Full JS animation runtime</td>
+                <td>High</td>
+                <td>Medium-High</td>
+                <td>Complex orchestration</td>
+              </tr>
+              <tr>
+                <td>Physics engines</td>
+                <td>High</td>
+                <td>High</td>
+                <td>Interactive systems</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <p>
+            For most documentation sites, marketing pages, and content-driven
+            experiences, lightweight motion usually provides a better
+            performance tradeoff.
+          </p>
+
+          <h2 id="practical-guidelines">Practical Guidelines for Lightweight Motion</h2>
+          <p>A good default workflow:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>Start with CSS.</li>
+            <li><span class="diamond"></span>Add transitions and transforms.</li>
+            <li><span class="diamond"></span>Use progressive enhancement for scroll behaviors.</li>
+            <li><span class="diamond"></span>Hydrate only interactive islands.</li>
+            <li><span class="diamond"></span>Introduce runtime animation libraries only when interaction complexity requires them.</li>
+          </ul>
+          <p>
+            This keeps the rendering model aligned with how Astro is designed
+            to work.
+          </p>
+
+          <h2 id="faq">Frequently Asked Questions</h2>
+          <h3 class="privacy-sub">Can Astro animations work without JavaScript?</h3>
+          <p>
+            Yes. Many animations can run entirely through CSS transitions and
+            keyframes without shipping runtime animation logic to the browser.
+          </p>
+          <h3 class="privacy-sub">Are CSS animations better for performance?</h3>
+          <p>
+            For simple UI motion, CSS animations are often more efficient
+            because they avoid hydration and reduce client bundle size.
+          </p>
+          <h3 class="privacy-sub">When should I use a JavaScript animation library?</h3>
+          <p>Use one when you need:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>advanced timelines,</li>
+            <li><span class="diamond"></span>gesture systems,</li>
+            <li><span class="diamond"></span>drag interactions,</li>
+            <li><span class="diamond"></span>physics,</li>
+            <li><span class="diamond"></span>or highly dynamic animation orchestration.</li>
+          </ul>
+          <h3 class="privacy-sub">Do Astro View Transitions require a heavy runtime?</h3>
+          <p>
+            No. Browser-native View Transitions can work with minimal
+            additional JavaScript compared to traditional SPA animation systems.
+          </p>
+          <h3 class="privacy-sub">How do I reduce animation-related CLS?</h3>
+          <p>
+           Avoid layout-changing animations and prefer:
+          </p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>opacity,</li>
+            <li><span class="diamond"></span>transform,</li>
+            <li><span class="diamond"></span>scale,</li>
+            <li><span class="diamond"></span>translate.</li>
+          </ul>
+          <p>These are usually more stable and GPU-friendly.</p>
+
+          <h2 id="conclusion">Conclusion</h2>
+          <p>
+            You do not need a heavy runtime animation engine for every UI
+            interaction.
+          </p>
+          <p>With Astro, many animation patterns work well through:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>CSS-first motion,</li>
+            <li><span class="diamond"></span>progressive enhancement,</li>
+            <li><span class="diamond"></span>islands architecture,</li>
+            <li><span class="diamond"></span>and selective hydration.</li>
+          </ul>
+          <p>That results in:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>smaller bundles,</li>
+            <li><span class="diamond"></span>faster rendering,</li>
+            <li><span class="diamond"></span>lower hydration cost,</li>
+            <li><span class="diamond"></span>and better performance consistency.</li>
+          </ul>
+          <p>Next steps:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>View <a href="/docs/installation/" class="why-link">/docs/installation/</a></li>
+            <li><span class="diamond"></span>Read <a href="/docs/quick-start/" class="why-link">/docs/quick-start/</a></li>
+            <li><span class="diamond"></span>Explore <a href="/examples/" class="why-link">/examples/</a></li>
+            <li><span class="diamond"></span>Test components in <a href="/playground/" class="why-link">/playground/</a></li>
+            <li><span class="diamond"></span>Review <a href="/docs/guides/performance/" class="why-link">/docs/guides/performance/</a></li>
+          </ul>
+          <p>Install example:</p>
+          <pre
+            class="article-code-block"><code>npm install astroanimate</code></pre>
+          <h2 id="internal-links">Internal Links</h2>
+          <ul class="content-list">
+            <li><span class="diamond"></span><a href="/docs/installation/" class="why-link">/docs/installation/</a></li>
+            <li><span class="diamond"></span><a href="/docs/quick-start/" class="why-link">/docs/quick-start/</a></li>
+            <li><span class="diamond"></span><a href="/docs/guides/performance/" class="why-link">/docs/guides/performance/</a></li>
+            <li><span class="diamond"></span><a href="/examples/" class="why-link">/examples/</a></li>
+            <li><span class="diamond"></span><a href="/playground/" class="why-link">/playground/</a></li>
+            <li><span class="diamond"></span>FadeIn</li>
+            <li><span class="diamond"></span>SlideIn</li>
+            <li><span class="diamond"></span>Stagger</li>
+          </ul>
+        </section>
+
+
+      </article>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  function initArticleInteractions() {
+    const article = document.querySelector<HTMLElement>(".article-container");
+    if (!article || article.dataset.articleReady === "true") return;
+    article.dataset.articleReady = "true";
+
+    const copyButton =
+      document.querySelector<HTMLButtonElement>(".copy-link-btn");
+    const tocLinks = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>(
+        ".table-of-contents .toc-link",
+      ),
+    );
+    const sections = tocLinks
+      .map((link) => {
+        const id = link.getAttribute("href")?.replace("#", "");
+        return id ? document.getElementById(id) : null;
+      })
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    copyButton?.addEventListener("click", async () => {
+      const pageUrl = window.location.href;
+
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(pageUrl);
+        } else {
+          throw new Error("Clipboard API unavailable");
+        }
+      } catch {
+        const fallback = document.createElement("textarea");
+        fallback.value = pageUrl;
+        fallback.setAttribute("readonly", "");
+        fallback.style.position = "fixed";
+        fallback.style.opacity = "0";
+        document.body.appendChild(fallback);
+        fallback.select();
+        document.execCommand("copy");
+        fallback.remove();
+      }
+
+      copyButton.classList.add("copied");
+      copyButton.textContent = "Copied";
+
+      window.setTimeout(() => {
+        copyButton.classList.remove("copied");
+        copyButton.textContent = "Copy Link";
+      }, 1800);
+    });
+
+    tocLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const id = link.getAttribute("href")?.replace("#", "");
+        const target = id ? document.getElementById(id) : null;
+        if (!target) return;
+
+        event.preventDefault();
+        tocLinks.forEach((item) => item.classList.remove("active"));
+        link.classList.add("active");
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, "", `#${id}`);
+      });
+    });
+
+    if (!sections.length) return;
+
+    const setActiveTocLink = (activeId: string) => {
+      tocLinks.forEach((link) => {
+        link.classList.toggle(
+          "active",
+          link.getAttribute("href") === `#${activeId}`,
+        );
+      });
+    };
+
+    const updateActiveTocLink = () => {
+      const activationLine = 160;
+      const currentSection =
+        sections
+          .filter((section) => section.getBoundingClientRect().top <= activationLine)
+          .at(-1) || sections[0];
+
+      setActiveTocLink(currentSection.id);
+    };
+
+    let ticking = false;
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (ticking) return;
+        ticking = true;
+
+        requestAnimationFrame(() => {
+          updateActiveTocLink();
+          ticking = false;
+        });
+      },
+      { passive: true },
+    );
+
+    updateActiveTocLink();
+  }
+
+  document.addEventListener("DOMContentLoaded", initArticleInteractions);
+  document.addEventListener("astro:page-load", initArticleInteractions);
+</script>

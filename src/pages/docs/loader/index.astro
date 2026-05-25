@@ -20,12 +20,6 @@ import Loader from "@astroanimate/core/Loader";
         <div class="docs-intro-section" id="preview-playground">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
                 <h2 class="docs-subtitle" style="margin: 0;">Preview/Playground</h2>
-                <button onclick="location.reload()" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #FF7F1F; border-radius: 6px; background: #15191E; color: #FF7F1F; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#FF7F1F'; this.style.color='#15191E'" onmouseout="this.style.background='#15191E'; this.style.color='#FF7F1F'" aria-label="Refresh preview">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M21 12a9 9 0 1 1-2.64-6.36" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M21 4v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
             </div>
             <div class="created-by">
                 <span class="created-by-label">Created by</span>
@@ -40,6 +34,17 @@ import Loader from "@astroanimate/core/Loader";
             </div>
             <div class="playground-container">
                 <div class="playground-preview">
+                    <button
+                        type="button"
+                        class="preview-reload-btn"
+                        onclick="location.reload()"
+                        aria-label="Refresh preview"
+                    >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M21 12a9 9 0 1 1-2.64-6.36" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M21 4v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
                     <div
                         class="loader-showcase"
                         style="padding: 40px; min-height: 200px; display: flex; align-items: center; justify-content: center; width: 100%;"
@@ -224,7 +229,7 @@ import Loader from "@astroanimate/core/Loader";
         <RelatedComponents items={[{ name: "ProgressBar", href: "/docs/progress-bar", image: "/images/progressbar.png" }]} />
 
         <div class="docs-footer-nav" style="justify-content: space-between;">
-            <a href="/docs/glass-card" class="prev-link">
+            <a href="/docs/newsletter-popup-card/" class="prev-link">
                 <span class="label">PREVIOUS</span>
                 <span class="title">
                     <svg
@@ -240,7 +245,7 @@ import Loader from "@astroanimate/core/Loader";
                         ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
                             points="12 5 19 12 12 19"></polyline></svg
                     >
-                    GlassCard
+                    News Letter Popup Card
                 </span>
             </a>
             <a href="/docs/progress-bar" class="next-link">

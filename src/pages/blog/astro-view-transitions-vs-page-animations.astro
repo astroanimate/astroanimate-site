@@ -1,0 +1,840 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import NavBar from "../../components/NavBar.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles/Global.css";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      headline: "Astro View Transitions vs SPA Page Animations",
+      description:
+        "Compare Astro View Transitions with traditional SPA page animations, including hydration cost, browser support, rendering, and performance tradeoffs.",
+      url:
+        "https://www.astroanimate.com/blog/astro-view-transitions-vs-spa-page-animations/",
+      image: "https://www.astroanimate.com/images/blog-3-cover.png",
+      articleSection: "Performance",
+      keywords: [
+        "Astro View Transitions",
+        "page transitions",
+        "SPA animations",
+        "Astro animations",
+        "View Transitions API",
+      ],
+      author: {
+        "@type": "Person",
+        name: "Prashanth ks",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "AstroAnimate",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://www.astroanimate.com/images/Logo.png",
+        },
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id":
+          "https://www.astroanimate.com/blog/astro-view-transitions-vs-page-animations/",
+      },
+      datePublished: "2026-05-24",
+      dateModified: "2026-05-24",
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Are Astro View Transitions the same as SPA transitions?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. SPA transitions typically rely on persistent client-side runtimes, while Astro transitions build on server-first rendering and browser-native APIs.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do Astro transitions require hydration?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Not necessarily. Many transition behaviors can work with minimal or selective hydration instead of hydrating the full application.",
+          },
+        },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Blog",
+          item: "https://www.astroanimate.com/blog/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Astro View Transitions vs SPA Page Animations",
+          item:
+            "https://www.astroanimate.com/blog/astro-view-transitions-vs-page-animations/",
+        },
+      ],
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: "AstroAnimate",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Web",
+      url: "https://www.astroanimate.com/",
+    },
+  ],
+};
+---
+
+<Layout
+  title="Astro View Transitions vs SPA Page Animations | AstroAnimate"
+  description="Compare Astro View Transitions with traditional SPA page animation systems, including hydration cost, browser support, performance, and when JavaScript animation runtimes still make sense."
+  canonical="https://www.astroanimate.com/blog/astro-view-transitions-vs-page-animations/"
+  schema={schema}
+>
+  <NavBar />
+
+  <main class="article-container">
+    <header class="article-header">
+      <div class="blog-nav">
+        <a href="/blog/" class="back-link">&larr; Go Back</a>
+      </div>
+
+      <div class="article-title-section">
+        <span class="article-category-tag">// Performance</span>
+
+        <div class="article-title-wrapper">
+          <div class="blog-title-left">
+            <h1 class="blog-title">
+              Astro View Transitions vs Traditional Page Animations
+            </h1>
+
+            <div class="article-meta-wrapper">
+              <div class="article-meta">
+                <span class="blog-date">MAY 24, 2026</span>
+                <span class="blog-read-time">6 MIN READ</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="blog-title-image">
+            <div class="blog-featured-image">
+              <img
+                src="/images/blog-3-cover.png"
+                alt="Astro View Transitions cover"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="400"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="article-author-section">
+          <div class="author-info">
+            <img
+              src="/images/prashanth.png"
+              alt="Prashanth ks"
+              class="author-avatar"
+              width="40"
+              height="40"
+            />
+            <span class="author-name">Prashanth ks</span>
+          </div>
+          <button class="copy-link-btn" type="button">Copy Link</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="article-layout">
+      <aside class="table-of-contents">
+        <nav class="toc-nav">
+          <ul class="toc-list">
+            <li class="toc-item"><a href="#what-are-astro-view-transitions" class="toc-link active">Astro View Transitions vs Traditional Page Animations</a></li>
+            <li class="toc-item"><a href="#tldr" class="toc-link">TL;DR</a></li>
+            <li class="toc-item"><a href="#traditional-spa-page-animations" class="toc-link">Traditional SPA animations</a></li>
+            <li class="toc-item"><a href="#how-spa-transitions-usually-work" class="toc-link">How SPA transitions work</a></li>
+            <li class="toc-item"><a href="#framer-motion-style-approaches" class="toc-link">Framer Motion style approaches</a></li>
+            <li class="toc-item"><a href="#hydration-heavy-navigation-systems" class="toc-link">Hydration-heavy navigation</a></li>
+            <li class="toc-item"><a href="#how-astro-view-transitions-work" class="toc-link">How Astro transitions work</a></li>
+            <li class="toc-item"><a href="#native-browser-api-foundation" class="toc-link">Native Browser API Foundation</a></li>
+            <li class="toc-item"><a href="#server-first-rendering" class="toc-link">Server-first rendering</a></li>
+            <li class="toc-item"><a href="#using-transition-name" class="toc-link">Using transition:name</a></li>
+            <li class="toc-item"><a href="#using-transition-persist" class="toc-link">Using transition:persist</a></li>
+            <li class="toc-item"><a href="#performance-differences" class="toc-link">Performance differences</a></li>
+            <li class="toc-item"><a href="#navigation-speed" class="toc-link">Navigation speed</a></li>
+            <li class="toc-item"><a href="#browser-support-reality" class="toc-link">Browser support</a></li>
+            <li class="toc-item"><a href="#chromium-support" class="toc-link">Chromium support</a></li>
+            <li class="toc-item"><a href="#safari-and-firefox-limitations" class="toc-link">Safari and Firefox</a></li>
+            <li class="toc-item"><a href="#fallback-simulation" class="toc-link">Fallback simulation</a></li>
+            <li class="toc-item"><a href="#when-to-use-astro-view-transitions" class="toc-link">When to use Astro transitions</a></li>
+            <li class="toc-item"><a href="#documentation-sites" class="toc-link">Documentation sites</a></li>
+            <li class="toc-item"><a href="#content-websites-and-blogs" class="toc-link">Content websites and blogs</a></li>
+            <li class="toc-item"><a href="#portfolios" class="toc-link">Portfolios</a></li>
+            <li class="toc-item"><a href="#marketing-sites" class="toc-link">Marketing sites</a></li>
+            <li class="toc-item"><a href="#when-traditional-js-animations-still-make-sense" class="toc-link">When JS still makes sense</a></li>
+            <li class="toc-item"><a href="#highly-interactive-applications" class="toc-link">Highly interactive apps</a></li>
+            <li class="toc-item"><a href="#drag-and-gesture-systems" class="toc-link">Drag and gesture systems</a></li>
+            <li class="toc-item"><a href="#complex-timelines-and-choreography" class="toc-link">Complex timelines</a></li>
+            <li class="toc-item"><a href="#how-astroanimate-fits-in" class="toc-link">How AstroAnimate fits in</a></li>
+            <li class="toc-item"><a href="#css-first-transitions" class="toc-link">CSS-first transitions</a></li>
+            <li class="toc-item"><a href="#optional-motion-and-gsap-adapters" class="toc-link">Motion and GSAP adapters</a></li>
+            <li class="toc-item"><a href="#faq" class="toc-link">FAQ</a></li>
+            <li class="toc-item"><a href="#conclusion" class="toc-link">Conclusion</a></li>
+            <li class="toc-item"><a href="#schema-markup" class="toc-link">Schema markup</a></li>
+            <li class="toc-item"><a href="#internal-links" class="toc-link">Internal links</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <article class="article-body">
+        <section id="what-are-astro-view-transitions" class="content-section">
+          <h2>Astro View Transitions vs Traditional Page Animations</h2>
+          <p>What are Astro View Transitions?</p>
+          <p>
+            Astro View Transitions are a browser-powered navigation system that
+            allows page transitions to animate between routes without requiring
+            a fully client-rendered SPA architecture.
+          </p>
+          <p>
+            Instead of hydrating the entire application to coordinate route
+            animations, Astro can use the browser's native View Transitions API
+            together with server-rendered pages and selective hydration.
+          </p>
+          <p>
+            For many content-focused sites, this creates a simpler performance
+            profile than traditional SPA transition systems.
+          </p>
+        </section>
+
+        <section id="tldr" class="content-section">
+          <h2>TL;DR</h2>
+          <p>Traditional SPA page animations typically rely on:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>client-side routing,</li>
+            <li><span class="diamond"></span>hydration,</li>
+            <li><span class="diamond"></span>runtime animation state,</li>
+            <li><span class="diamond"></span>and persistent JavaScript execution.</li>
+          </ul>
+          <p>Astro's transition system instead leans on:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>server-first rendering,</li>
+            <li><span class="diamond"></span>browser-native APIs,</li>
+            <li><span class="diamond"></span>progressive enhancement,</li>
+            <li><span class="diamond"></span>and selective hydration.</li>
+          </ul>
+          <p>This makes it especially useful for:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>documentation sites,</li>
+            <li><span class="diamond"></span>portfolios,</li>
+            <li><span class="diamond"></span>blogs,</li>
+            <li><span class="diamond"></span>and marketing pages.</li>
+          </ul>
+          <p>Useful resources:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span><a href="/docs/guides/page-transitions/" class="why-link">/docs/guides/page-transitions/</a></li>
+            <li><span class="diamond"></span><a href="/docs/browser-support/" class="why-link">/docs/browser-support/</a></li>
+            <li><span class="diamond"></span><a href="/docs/guides/performance/" class="why-link">/docs/guides/performance/</a></li>
+            <li><span class="diamond"></span><a href="/examples/" class="why-link">/examples/</a></li>
+          </ul>
+        </section>
+
+        <section id="traditional-spa-page-animations" class="content-section">
+          <h2>Traditional SPA Page Animations</h2>
+          <p>
+            Before browser-native transitions became more practical, page
+            animation systems were usually implemented inside single-page
+            applications.
+          </p>
+          <p>That approach is still common in frameworks like:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>React,</li>
+            <li><span class="diamond"></span>Next.js,</li>
+            <li><span class="diamond"></span>and client-heavy routing systems.</li>
+          </ul>
+        </section>
+
+        <section id="how-spa-transitions-usually-work" class="content-section">
+          <h2>How SPA Transitions Usually Work</h2>
+          <p>Traditional SPA transitions generally depend on:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>client-side routing,</li>
+            <li><span class="diamond"></span>persistent runtime state,</li>
+            <li><span class="diamond"></span>mounted component trees,</li>
+            <li><span class="diamond"></span>animation orchestration in JavaScript.</li>
+          </ul>
+          <p>
+            The router intercepts navigation, updates state, and animation
+            libraries coordinate entering and exiting views.
+          </p>
+          <p>A typical flow:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>current page animates out,</li>
+            <li><span class="diamond"></span>next route mounts,</li>
+            <li><span class="diamond"></span>transition timelines run,</li>
+            <li><span class="diamond"></span>state persists during navigation.</li>
+          </ul>
+          <p>This is flexible, but it also increases client-side complexity.</p>
+        </section>
+
+        <section id="framer-motion-style-approaches" class="content-section">
+          <h2>Framer Motion Style Approaches</h2>
+          <p>Libraries like Framer Motion provide highly expressive transition systems.</p>
+          <p>Common capabilities include:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>shared layout animations,</li>
+            <li><span class="diamond"></span>gesture systems,</li>
+            <li><span class="diamond"></span>spring physics,</li>
+            <li><span class="diamond"></span>timeline orchestration,</li>
+            <li><span class="diamond"></span>component lifecycle animation hooks.</li>
+          </ul>
+          <p>These systems work well for:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>dashboards,</li>
+            <li><span class="diamond"></span>interactive applications,</li>
+            <li><span class="diamond"></span>dynamic interfaces,</li>
+            <li><span class="diamond"></span>heavily stateful UIs.</li>
+          </ul>
+          <p>However, they generally require:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>hydration,</li>
+            <li><span class="diamond"></span>persistent runtime execution,</li>
+            <li><span class="diamond"></span>client-side routing,</li>
+            <li><span class="diamond"></span>additional JavaScript bundles.</li>
+          </ul>
+        </section>
+
+        <section id="hydration-heavy-navigation-systems" class="content-section">
+          <h2>Hydration-Heavy Navigation Systems</h2>
+          <p>In many SPA transition architectures:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>the router stays alive,</li>
+            <li><span class="diamond"></span>animation state persists globally,</li>
+            <li><span class="diamond"></span>transitions execute entirely in the client runtime.</li>
+          </ul>
+          <p>This can increase:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>hydration cost,</li>
+            <li><span class="diamond"></span>memory usage,</li>
+            <li><span class="diamond"></span>client bundle size,</li>
+            <li><span class="diamond"></span>navigation complexity.</li>
+          </ul>
+          <p>For highly interactive applications, this tradeoff is often acceptable.</p>
+          <p>For mostly static or content-driven websites, it may be unnecessary overhead.</p>
+        </section>
+
+        <section id="how-astro-view-transitions-work" class="content-section">
+          <h2>How Astro View Transitions Work</h2>
+          <p>
+            Astro takes a different approach.
+          </p>
+          <p>Instead of treating the entire website as a persistent client application, Astro keeps server-rendered navigation as the default model and layers transitions on top through progressive enhancement.</p>
+        </section>
+
+        <section id="native-browser-api-foundation" class="content-section">
+          <h2>Native Browser API Foundation</h2>
+          <p>Astro transitions are built around the browser's View Transitions API.</p>
+          <p>The browser can:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>snapshot visual states,</li>
+            <li><span class="diamond"></span>animate DOM continuity,</li>
+            <li><span class="diamond"></span>preserve transition timing,</li>
+            <li><span class="diamond"></span>coordinate rendering internally.</li>
+          </ul>
+          <p>Because much of the work happens natively, less orchestration logic needs to run in JavaScript.</p>
+          <p>Related concept:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>View Transitions API</li>
+          </ul>
+        </section>
+
+        <section id="server-first-rendering" class="content-section">
+          <h2>Server-First Rendering</h2>
+          <p>Astro keeps its server-first rendering model during navigation.</p>
+          <p>That means:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>pages still render as HTML,</li>
+            <li><span class="diamond"></span>routes remain server-driven,</li>
+            <li><span class="diamond"></span>hydration stays selective,</li>
+            <li><span class="diamond"></span>transitions enhance navigation rather than replace rendering.</li>
+          </ul>
+          <p>This is very different from traditional SPA transitions where the application shell persists permanently in memory.</p>
+        </section>
+
+        <section id="using-transition-name" class="content-section">
+          <h2>Using transition:name</h2>
+          <p>Astro supports named transition targets that help the browser match elements between navigations.</p>
+          <pre class="article-code-block"><code>&lt;h1 transition:name="hero-title"&gt;
+  AstroAnimate
+&lt;/h1&gt;</code></pre>
+          <p>This allows matching elements across route changes so the browser can animate continuity between pages.</p>
+          <p>Useful for:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>hero sections,</li>
+            <li><span class="diamond"></span>shared cards,</li>
+            <li><span class="diamond"></span>navigation indicators,</li>
+            <li><span class="diamond"></span>image continuity.</li>
+          </ul>
+        </section>
+
+        <section id="using-transition-persist" class="content-section">
+          <h2>Using transition:persist</h2>
+          <p>Persistent transitions help preserve elements across navigations.</p>
+          <pre class="article-code-block"><code>&lt;header transition:persist&gt;
+  &lt;Navigation /&gt;
+&lt;/header&gt;</code></pre>
+          <p>This prevents the element from fully resetting between route changes.</p>
+          <p>Common use cases:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>sticky navigation,</li>
+            <li><span class="diamond"></span>media players,</li>
+            <li><span class="diamond"></span>shared layout shells,</li>
+            <li><span class="diamond"></span>persistent UI chrome.</li>
+          </ul>
+        </section>
+
+        <section id="performance-differences" class="content-section">
+          <h2>Performance Differences</h2>
+          <p>The biggest difference between these systems is not visual quality.</p>
+          <p>It is architectural cost.</p>
+          <h3>Hydration Comparison</h3>
+          <p>SPA transitions typically require:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>client-side routers,</li>
+            <li><span class="diamond"></span>persistent component trees,</li>
+            <li><span class="diamond"></span>mounted animation runtimes.</li>
+          </ul>
+          <p>Astro transitions can avoid hydrating large portions of the page entirely.</p>
+          <p>That reduces:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>initial JavaScript execution,</li>
+            <li><span class="diamond"></span>hydration work,</li>
+            <li><span class="diamond"></span>memory pressure.</li>
+          </ul>
+          <h3>JavaScript Bundle Size</h3>
+          <p>Traditional client-side animation systems often ship:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>routing logic,</li>
+            <li><span class="diamond"></span>animation orchestration,</li>
+            <li><span class="diamond"></span>runtime physics,</li>
+            <li><span class="diamond"></span>interaction state.</li>
+          </ul>
+          <p>Astro’s model can keep transitions closer to:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>browser-native behavior,</li>
+            <li><span class="diamond"></span>CSS-first motion,</li>
+            <li><span class="diamond"></span>progressive enhancement.</li>
+          </ul>
+          <p>This usually reduces overall bundle size for content-oriented sites.</p>
+          <p>Related performance guide: <a href="/docs/guides/performance/" class="why-link">/docs/guides/performance/</a></p>
+          <h3>Page Rendering Model</h3>
+          <p>SPA transitions:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>preserve a persistent app runtime,</li>
+            <li><span class="diamond"></span>swap component state internally.</li>
+          </ul>
+          <p>Astro transitions:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>continue rendering pages server-first,</li>
+            <li><span class="diamond"></span>progressively enhance navigation visuals.</li>
+          </ul>
+          <p>This aligns well with:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>blogs,</li>
+            <li><span class="diamond"></span>documentation,</li>
+            <li><span class="diamond"></span>content-heavy websites,</li>
+            <li><span class="diamond"></span>portfolios.</li>
+          </ul>
+        </section>
+
+        <section id="navigation-speed" class="content-section">
+          <h2>Navigation Speed</h2>
+          <p>Perceived speed and actual speed are not always the same thing.</p>
+          <p>Transitions improve perceived continuity by:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>smoothing route changes,</li>
+            <li><span class="diamond"></span>reducing visual flashes,</li>
+            <li><span class="diamond"></span>maintaining layout context.</li>
+          </ul>
+          <p>However, transition systems should remain lightweight enough that the animation itself does not become the performance bottleneck.</p>
+        </section>
+
+        <section id="browser-support-reality" class="content-section">
+          <h2>Browser Support Reality</h2>
+          <p>Browser support is important to discuss honestly.</p>
+          <p> The View Transitions API is still evolving</p>
+        </section>
+
+        <section id="chromium-support" class="content-section">
+          <h2>Chromium Support</h2>
+          <p>Currently, View Transitions work best in Chromium-based browsers.</p>
+          <p>That includes:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>Google Chrome,</li>
+            <li><span class="diamond"></span>Microsoft Edge,</li>
+            <li><span class="diamond"></span>Brave,</li>
+            <li><span class="diamond"></span>Opera,</li>
+            <li><span class="diamond"></span>and other Chromium-based browsers.</li>
+          </ul>
+          <p>This is where native transition behavior is most complete today.</p>
+        </section>
+
+        <section id="safari-and-firefox-limitations" class="content-section">
+          <h2>Safari and Firefox Limitations</h2>
+          <p>Support in:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>Safari,</li>
+            <li><span class="diamond"></span>and Firefox,</li>
+          </ul>
+          <p>is still more limited depending on the specific API features being used.</p>
+          <p>That means developers should treat transitions as progressive enhancement rather than mandatory UI behavior.</p>
+        </section>
+
+        <section id="fallback-simulation" class="content-section">
+          <h2>Fallback Simulation</h2>
+          <p>A practical strategy is:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>Use native transitions where available,</li>
+            <li><span class="diamond"></span>Gracefully fall back elsewhere.</li>
+          </ul>
+          <p>Astro supports fallback behavior so navigation remains functional even when full transition APIs are unavailable.</p>
+          <p>This is important because:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>accessibility matters,</li>
+            <li><span class="diamond"></span>rendering consistency matters,</li>
+            <li><span class="diamond"></span>navigation should never depend entirely on animation support.</li>
+          </ul>
+          <p>Browser support reference: <a href="/docs/support/" class="why-link">/docs/browser-support/</a></p>
+        </section>
+
+        <section id="when-to-use-astro-view-transitions" class="content-section">
+          <h2>When To Use Astro View Transitions</h2>
+          <p>This model works especially well for websites that prioritize:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>performance,</li>
+            <li><span class="diamond"></span>readability,</li>
+            <li><span class="diamond"></span>content delivery,</li>
+            <li><span class="diamond"></span>and minimal client JS.</li>
+          </ul>
+        </section>
+
+        <section id="documentation-sites" class="content-section">
+          <h2>Documentation Sites</h2>
+          <p>Documentation sites benefit from:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>lightweight navigation,</li>
+            <li><span class="diamond"></span>persistent layout continuity,</li>
+            <li><span class="diamond"></span>fast rendering,</li>
+            <li><span class="diamond"></span>lower hydration overhead.</li>
+          </ul>
+          <p>This fits naturally with Astro’s rendering model.</p>
+        </section>
+
+        <section id="content-websites-and-blogs" class="content-section">
+          <h2>Content Websites and Blogs</h2>
+          <p>For blogs and publishing systems:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>improve perceived smoothness,</li>
+            <li><span class="diamond"></span>without converting the entire site into a SPA.</li>
+          </ul>
+          <p>This preserves:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>static rendering efficiency,</li>
+            <li><span class="diamond"></span>caching simplicity,</li>
+            <li><span class="diamond"></span>lightweight navigation.</li>
+          </ul>
+        </section>
+
+        <section id="portfolios" class="content-section">
+          <h2>Portfolios</h2>
+          <p>Portfolios often need:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>polished navigation,</li>
+            <li><span class="diamond"></span>subtle motion,</li>
+            <li><span class="diamond"></span>page continuity,</li>
+            <li><span class="diamond"></span>without complex runtime interaction systems.</li>
+          </ul>
+          <p>Browser-native transitions work well here.</p>
+        </section>
+
+        <section id="marketing-sites" class="content-section">
+          <h2>Marketing Sites</h2>
+          <p>Marketing pages usually benefit more from:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>fast loading,</li>
+            <li><span class="diamond"></span>lightweight rendering,</li>
+            <li><span class="diamond"></span>visual continuity,</li>
+            <li><span class="diamond"></span>without fully interactive SPA infrastructure.</li>
+          </ul>
+        </section>
+
+        <section id="when-traditional-js-animations-still-make-sense" class="content-section">
+          <h2>When Traditional JS Animations Still Make Sense</h2>
+          <p>Traditional animation runtimes are still the better choice for some applications.</p>
+        </section>
+
+        <section id="highly-interactive-applications" class="content-section">
+          <h2>Highly Interactive Applications</h2>
+          <p>Applications with:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>live dashboards,</li>
+            <li><span class="diamond"></span>collaborative state,</li>
+            <li><span class="diamond"></span>complex interactions,</li>
+            <li><span class="diamond"></span>drag systems.</li>
+          </ul>
+          <p>often benefit from persistent client runtimes.</p>
+        </section>
+
+        <section id="drag-and-gesture-systems" class="content-section">
+          <h2>Drag and Gesture Systems</h2>
+          <p>Gesture-driven interfaces require:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>pointer tracking,</li>
+            <li><span class="diamond"></span>velocity calculations,</li>
+            <li><span class="diamond"></span>interaction synchronization.</li>
+          </ul>
+          <p>These are not the primary goal of browser-native page transitions.</p>
+        </section>
+
+        <section id="complex-timelines-and-choreography" class="content-section">
+          <h2>Complex Timelines and Choreography</h2>
+          <p>Advanced animation systems may need:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>multi-stage sequencing,</li>
+            <li><span class="diamond"></span>synchronized timelines,</li>
+            <li><span class="diamond"></span>spring physics,</li>
+            <li><span class="diamond"></span>procedural choreography.</li>
+          </ul>
+          <p>Libraries like GSAP remain strong tools for those scenarios.</p>
+          <p>The key point is choosing the correct architecture for the actual interaction complexity.</p>
+        </section>
+
+        <section id="how-astroanimate-fits-in" class="content-section">
+          <h2>How AstroAnimate Fits In</h2>
+          <p>AstroAnimate is designed around lightweight motion patterns that align with Astro's rendering philosophy.</p>
+        </section>
+
+        <section id="css-first-transitions" class="content-section">
+          <h2>CSS-First Transitions</h2>
+          <p>Many transition patterns can work through:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>CSS transforms,</li>
+            <li><span class="diamond"></span>opacity transitions,</li>
+            <li><span class="diamond"></span>keyframes,</li>
+            <li><span class="diamond"></span>browser-native APIs.</li>
+          </ul>
+          <p>This keeps runtime cost low.</p>
+          <p>Related components:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>PageTransition</li>
+            <li><span class="diamond"></span>FadeIn</li>
+            <li><span class="diamond"></span>SlideIn</li>
+          </ul>
+          <h3 class="privacy-sub">Progressive Enhancement</h3>
+          <p>Instead of assuming all pages need hydration, AstroAnimate can progressively enhance motion only where useful.</p>
+          <p>Examples:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>Route fades,</li>
+            <li><span class="diamond"></span>scroll reveals,</li>
+            <li><span class="diamond"></span>staggered entrances,</li>
+            <li><span class="diamond"></span>shared layout continuity.</li>
+          </ul>
+        </section>
+
+        <section id="optional-motion-and-gsap-adapters" class="content-section">
+          <h2>Optional Motion and GSAP Adapters</h2>
+          <p>There are still legitimate cases for runtime animation engines.</p>
+          <p>A practical approach is:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>Default to lightweight CSS transitions,</li>
+            <li><span class="diamond"></span>Integrate Motion or GSAP selectively when interaction complexity requires them,</li>
+          </ul>
+          <p>This keeps the baseline experience fast while preserving flexibility.</p>
+        </section>
+
+        <section id="faq" class="content-section">
+          <h2>Frequently Asked Questions</h2>
+          <h3 class="privacy-sub">Are Astro View Transitions the same as SPA transitions?</h3>
+          <p>No. SPA transitions typically rely on persistent client-side runtimes, while Astro transitions build on server-first rendering and browser-native APIs.</p>
+          <h3 class="privacy-sub">Do Astro transitions require hydration?</h3>
+          <p>Not necessarily. Many transition behaviors can work with minimal or selective hydration instead of hydrating the full application.</p>
+          <h3 class="privacy-sub">Are browser-native transitions faster?</h3>
+          <p>They can reduce client runtime overhead because more coordination happens inside the browser rather than inside JavaScript animation orchestration.</p>
+          <h3 class="privacy-sub">Should I replace all JS animation libraries?</h3>
+          <p>No. Runtime animation libraries still make sense for advanced choreography, drag interactions, physics systems, and highly interactive applications.</p>
+          <h3 class="privacy-sub">Do View Transitions work everywhere?</h3>
+          <p>No. Chromium browsers currently provide the strongest support. Fallback behavior is still important for broader compatibility.</p>
+        </section>
+
+        <section id="conclusion" class="content-section">
+          <h2>Conclusion</h2>
+          <p>Astro's transition model offers a different tradeoff from traditional SPA page animation systems.</p>
+          <p>Instead of prioritizing persistent client runtimes, it focuses on:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>Server-first rendering,</li>
+            <li><span class="diamond"></span>Progressive enhancement,</li>
+            <li><span class="diamond"></span>Browser-native transitions,</li>
+            <li><span class="diamond"></span>Selective hydration.</li>
+          </ul>
+          <p>For:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>Documentation sites,</li>
+            <li><span class="diamond"></span>Portfolios,</li>
+            <li><span class="diamond"></span>Blogs,</li>
+            <li><span class="diamond"></span>Marketing pages.</li>
+          </ul>
+          <p>This often creates a simpler and more performance-friendly architecture.</p>
+          <p>Next steps:</p>
+          <ul class="content-list">
+            <li><span class="diamond"></span>View <a href="/docs/guides/page-transitions/" class="why-link">/docs/guides/page-transitions/</a></li>
+            <li><span class="diamond"></span>Read <a href="/docs/browser-support/" class="why-link">/docs/browser-support/</a></li>
+            <li><span class="diamond"></span>Review <a href="/docs/guides/performance/" class="why-link">/docs/guides/performance/</a></li>
+            <li><span class="diamond"></span>Explore <a href="/examples/" class="why-link">/examples/</a></li>
+          </ul>
+          <p>Install example:</p>
+          <pre class="article-code-block"><code>npm install @astroanimate/core</code></pre>
+        </section>
+
+        <section id="schema-markup" class="content-section">
+          <h2>Recommended Schema Markup</h2>
+          <ul class="content-list">
+            <li><span class="diamond"></span>Article</li>
+            <li><span class="diamond"></span>FAQPage</li>
+            <li><span class="diamond"></span>BreadcrumbList</li>
+            <li><span class="diamond"></span>SoftwareApplication</li>
+          </ul>
+        </section>
+
+        <section id="internal-links" class="content-section">
+          <h2>Internal Links</h2>
+          <ul class="content-list">
+            <li><span class="diamond"></span><a href="/docs/guides/page-transitions/" class="why-link">/docs/guides/page-transitions/</a></li>
+            <li><span class="diamond"></span><a href="/docs/browser-support/" class="why-link">/docs/browser-support/</a></li>
+            <li><span class="diamond"></span><a href="/docs/guides/performance/" class="why-link">/docs/guides/performance/</a></li>
+            <li><span class="diamond"></span><a href="/examples/" class="why-link">/examples/</a></li>
+            <li><span class="diamond"></span>PageTransition</li>
+            <li><span class="diamond"></span>FadeIn</li>
+            <li><span class="diamond"></span>SlideIn</li>
+          </ul>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  function initArticleInteractions() {
+    const article = document.querySelector<HTMLElement>(".article-container");
+    if (!article || article.dataset.articleReady === "true") return;
+    article.dataset.articleReady = "true";
+
+    const copyButton =
+      document.querySelector<HTMLButtonElement>(".copy-link-btn");
+    const tocLinks = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>(
+        ".table-of-contents .toc-link",
+      ),
+    );
+    const sections = tocLinks
+      .map((link) => {
+        const id = link.getAttribute("href")?.replace("#", "");
+        return id ? document.getElementById(id) : null;
+      })
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    copyButton?.addEventListener("click", async () => {
+      const pageUrl = window.location.href;
+
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(pageUrl);
+        } else {
+          throw new Error("Clipboard API unavailable");
+        }
+      } catch {
+        const fallback = document.createElement("textarea");
+        fallback.value = pageUrl;
+        fallback.setAttribute("readonly", "");
+        fallback.style.position = "fixed";
+        fallback.style.opacity = "0";
+        document.body.appendChild(fallback);
+        fallback.select();
+        document.execCommand("copy");
+        fallback.remove();
+      }
+
+      copyButton.classList.add("copied");
+      copyButton.textContent = "Copied";
+
+      window.setTimeout(() => {
+        copyButton.classList.remove("copied");
+        copyButton.textContent = "Copy Link";
+      }, 1800);
+    });
+
+    tocLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const id = link.getAttribute("href")?.replace("#", "");
+        const target = id ? document.getElementById(id) : null;
+        if (!target) return;
+
+        event.preventDefault();
+        tocLinks.forEach((item) => item.classList.remove("active"));
+        link.classList.add("active");
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, "", `#${id}`);
+      });
+    });
+
+    if (!sections.length) return;
+
+    const setActiveTocLink = (activeId: string) => {
+      tocLinks.forEach((link) => {
+        link.classList.toggle(
+          "active",
+          link.getAttribute("href") === `#${activeId}`,
+        );
+      });
+    };
+
+    const updateActiveTocLink = () => {
+      const activationLine = 160;
+      const currentSection =
+        sections
+          .filter((section) => section.getBoundingClientRect().top <= activationLine)
+          .at(-1) || sections[0];
+
+      setActiveTocLink(currentSection.id);
+    };
+
+    let ticking = false;
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (ticking) return;
+        ticking = true;
+
+        requestAnimationFrame(() => {
+          updateActiveTocLink();
+          ticking = false;
+        });
+      },
+      { passive: true },
+    );
+
+    updateActiveTocLink();
+  }
+
+  document.addEventListener("DOMContentLoaded", initArticleInteractions);
+  document.addEventListener("astro:page-load", initArticleInteractions);
+</script>

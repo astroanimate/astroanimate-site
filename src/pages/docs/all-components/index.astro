@@ -1,6 +1,30 @@
 ---
 import DocLayout from "../../../layouts/DocLayout.astro";
 import "../../../styles/Global.css";
+import { allNewComponentDocs } from "../../../data/newComponentDocs";
+
+const isLatestDocsVersion = Astro.url.searchParams.get("version") !== "0.1.1";
+const versionQuery = isLatestDocsVersion ? "" : "?version=0.1.1";
+const newComponentImages = {
+  "count-up": "/images/countup.png",
+  "highlight-text": "/images/highlighttext.png",
+  "grid-dots-background": "/images/griddotsbackground.png",
+  "animated-tabs": "/images/animatedtabs.png",
+  "dropdown": "/images/dropdown.png",
+  "card-stack": "/images/cardstack.png",
+  "liquid-glass-card": "/images/liquidglasscard.png",
+  "product-review-card": "/images/productreviewcard.png",
+  "article-card": "/images/articlecard.png",
+  "newsletter-popup-card": "/images/newsletterpopupcard.png",
+  "animated-border-button": "/images/animatedborderbtn.png",
+  "sliding-overlay-button": "/images/slidingoverlaybtn.png",
+  "github-shine-button": "/images/githubshinebtn.png",
+  "stagger-text-button": "/images/staggertextbtn.png",
+  "arrow-cta-button": "/images/arrowctabtn.png",
+  "fill-hover-button": "/images/fillhoverbtn.png",
+  "infinite-marquee": "/images/infinitemarquee.png",
+  "dock": "/images/dock.png",
+};
 
 const sections = [
   {
@@ -10,12 +34,15 @@ const sections = [
         name: "Fade In Text",
         href: "/docs/fade-in-text/",
         image: "/images/fadein.png",
+        isNew: false,
       },
       {
         name: "Typewriter text",
         href: "/docs/typewriter/",
         image: "/images/typewriter.png",
+        isNew: false,
       },
+      
     ],
   },
   {
@@ -25,11 +52,13 @@ const sections = [
         name: "Scale In",
         href: "/docs/scale-in/",
         image: "/images/scalein-demo.png",
+        isNew: false,
       },
       {
         name: "Reveal Image",
         href: "/docs/reveal-image/",
         image: "/images/revealimage.png",
+        isNew: false,
       },
     ],
   },
@@ -40,27 +69,31 @@ const sections = [
         name: "Expandable Card",
         href: "/docs/expandable-card/",
         image: "/images/expandable-card-black.png",
+        isNew: false,
       },
       {
         name: "Animated Card",
         href: "/docs/animated-card/",
         image: "/images/animatedcard.png",
+        isNew: false,
       },
       {
         name: "Glass Card",
         href: "/docs/glass-card/",
         image: "/images/glasscard.png",
+        isNew: false,
       },
     ],
   },
   {
     title: "Loaders & Feedback",
     items: [
-      { name: "Loader", href: "/docs/loader/", image: "/images/loader.png" },
+      { name: "Loader", href: "/docs/loader/", image: "/images/loader.png", isNew: false },
       {
         name: "Progress Bar",
         href: "/docs/progress-bar/",
         image: "/images/progressbar.png",
+        isNew: false,
       },
     ],
   },
@@ -71,6 +104,7 @@ const sections = [
         name: "Animated Button",
         href: "/docs/animated-button/",
         image: "/images/animated-btn.png",
+        isNew: false,
       },
     ],
   },
@@ -81,10 +115,47 @@ const sections = [
         name: "Tool Tip",
         href: "/docs/tooltip/",
         image: "/images/tooltip.png",
+        isNew: false,
       },
     ],
   },
-];
+].map((section) => ({
+  ...section,
+  items: [
+    ...section.items,
+    ...(isLatestDocsVersion
+      ? allNewComponentDocs
+          .filter((item) => item.section === section.title)
+          .map((item) => ({
+            name: item.name,
+            href: `/docs/${item.slug}/`,
+            image: newComponentImages[item.slug] || "",
+            isNew: true,
+          }))
+      : []),
+  ],
+})).filter((section) => section.items.length > 0);
+
+if (isLatestDocsVersion) {
+  for (const component of allNewComponentDocs) {
+    if (sections.some((section) => section.items.some((item) => item.name === component.name))) {
+      continue;
+    }
+
+    let section = sections.find((item) => item.title === component.section);
+    if (!section) {
+      section = { title: component.section, items: [] };
+      sections.push(section);
+    }
+
+    section.items.push({
+      name: component.name,
+      href: `/docs/${component.slug}/`,
+      image: newComponentImages[component.slug] || "",
+      isNew: true,
+    });
+  }
+}
 ---
 
 <DocLayout title="All Components">
@@ -145,16 +216,21 @@ const sections = [
             <div class="all-components-grid">
               {section.items.map((item) => (
                 <a
-                  href={item.href}
+                  href={`${item.href}${versionQuery}`}
                   class="all-component-card"
                   data-component-card
+                  data-new-component={item.isNew ? "true" : undefined}
+                  data-has-image={item.image ? "true" : undefined}
                 >
                   <span class="all-component-preview">
                     {item.image ? (
                       <img src={item.image} alt="" loading="lazy" />
                     ) : null}
                   </span>
-                  <span class="all-component-name">{item.name}</span>
+                  <span class="all-component-name">
+                    {item.name}
+                    {item.isNew && <span class="docs-new-pill">NEW</span>}
+                  </span>
                 </a>
               ))}
             </div>
@@ -331,16 +407,21 @@ const sections = [
 
   .all-components-grid {
     display: grid;
-    grid-template-columns: repeat(2, 345px);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0;
     width: 100%;
+    padding-top: 1px;
+    padding-left: 1px;
+    background: transparent;
   }
 
   .all-component-card {
-    width: 345px;
-    height: 355px;
-    padding: 26px;
+    width: 100%;
+    min-height: 220px;
+    padding: 19px;
     border: 1px solid #1f2937;
+    margin-top: -1px;
+    margin-left: -1px;
     text-decoration: none;
     color: #f9fafb;
     background: #000;
@@ -363,9 +444,9 @@ const sections = [
   .all-component-preview {
     display: block;
     width: 100%;
-    aspect-ratio: 1.16 / 1;
+    aspect-ratio: 1.15 / 1;
     background: #171b22;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     overflow: hidden;
   }
 
@@ -376,8 +457,27 @@ const sections = [
     object-fit: cover;
   }
 
+  .all-component-card[data-new-component="true"][data-has-image="true"] .all-component-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: #fff;
+    box-sizing: border-box;
+  }
+
+  .all-component-card[data-new-component="true"][data-has-image="true"] .all-component-preview img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
   .all-component-name {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     color: #f9fafb;
     font-family: "Inter", sans-serif;
     font-size: 14px;
@@ -398,6 +498,12 @@ const sections = [
     gap: 16px;
   }
 
+  @media (max-width: 1180px) {
+    .all-components-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
   @media (max-width: 980px) {
     .all-components-header {
       grid-template-columns: 1fr;
@@ -409,19 +515,18 @@ const sections = [
       margin-bottom: 21px;
     }
 
-    .all-components-grid {
-      grid-template-columns: repeat(2, 345px);
-    }
-
     .all-components-content {
       align-items: flex-start;
       flex-direction: column;
       gap: 10px;
     }
 
+    .all-components-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .all-component-card {
-      width: 345px;
-      height: 355px;
+      width: 100%;
       padding: 22px;
     }
   }
@@ -433,7 +538,6 @@ const sections = [
 
     .all-component-card {
       width: 100%;
-      height: 355px;
       padding: 18px;
     }
   }
@@ -457,6 +561,23 @@ const sections = [
     const noResults = root.querySelector<HTMLElement>(
       ".all-components-no-results",
     );
+    const isOldDocsVersion =
+      new URLSearchParams(window.location.search).get("version") === "0.1.1";
+
+    const syncVersionGroups = () => {
+      if (!isOldDocsVersion) return;
+      groups.forEach((group) => {
+        const groupCards = Array.from(
+          group.querySelectorAll<HTMLElement>("[data-component-card]"),
+        );
+        const hasVisibleCard = groupCards.some(
+          (card) => window.getComputedStyle(card).display !== "none",
+        );
+        group.style.display = hasVisibleCard ? "" : "none";
+      });
+    };
+
+    syncVersionGroups();
 
     searchInput?.addEventListener("input", () => {
       const term = searchInput.value.trim().toLowerCase();
@@ -489,6 +610,8 @@ const sections = [
         noResults.style.display =
           term && totalVisibleCards === 0 ? "block" : "none";
       }
+
+      syncVersionGroups();
     });
   }
 

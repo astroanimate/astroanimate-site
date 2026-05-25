@@ -12,7 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astroanimate/core": "^0.1.1",
+    "@astroanimate/core": "^0.1.2",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/vercel": "^10.0.6",
     "@vercel/analytics": "^2.0.1",
