@@ -5,7 +5,7 @@ import { allNewComponentDocs } from "../../../data/newComponentDocs";
 
 const isLatestDocsVersion = Astro.url.searchParams.get("version") !== "0.1.1";
 const versionQuery = isLatestDocsVersion ? "" : "?version=0.1.1";
-const newComponentImages = {
+const newComponentImages: Record<string, string> = {
   "count-up": "/images/countup.png",
   "highlight-text": "/images/highlighttext.png",
   "grid-dots-background": "/images/griddotsbackground.png",
