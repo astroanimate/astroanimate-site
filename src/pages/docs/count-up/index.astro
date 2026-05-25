@@ -84,7 +84,7 @@ import CountUp from "@astroanimate/core/CountUp";
             </div>
           </div><div class="code-content">
             <pre><code><span class="comment">---</span>
-<span class="keyword">import</span> CountUp <span class="keyword">from</span> <span class="string">"@astroanimate/core/CountUp"</span>;
+<span class="keyword">import</span> <span class="component-name">CountUp</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/CountUp"</span>;
 <span class="comment">---</span>
 
 &lt;<span class="component">CountUp</span>
@@ -123,7 +123,7 @@ import CountUp from "@astroanimate/core/CountUp";
                         ></path>
                     </svg>
                 </div>
-                <pre><code><span class="keyword">npm</span> install <span class="string">@astro-animate/card</span></code></pre>
+                <pre><code><span class="keyword">npm</span> install <span class="string">@astro-animate/core</span></code></pre>
             </div>
         </div>
     <!-- QUICK START SECTION -->
@@ -292,8 +292,14 @@ import CountUp from "@astroanimate/core/CountUp";
     <!-- CREDITS SECTION -->
     <div class="docs-intro-section" id="credits">
       <h2 class="docs-subtitle">Credits</h2><ul class="docs-list">
-        <li>Credit to Barsan</li>
-      </ul>
+                <li>
+                    Credit to <a
+                        href="https://github.com/Barsaan"
+                        target="_blank"
+                        class="credits-link">@Barsan</a
+                    >
+                </li>
+            </ul>
     </div>
 
     <RelatedComponents
@@ -365,7 +371,7 @@ import CountUp from "@astroanimate/core/CountUp";
         align-items: center;
         gap: 12px;
         margin-bottom: 20px;
-        padding: 12px 16px;
+        padding: 0;
         justify-content: right;
         border-radius: 8px;
     }
@@ -416,7 +422,7 @@ import CountUp from "@astroanimate/core/CountUp";
     }
 
     .playground-preview {
-        padding: 40px;
+        padding: 12px 16px;
         background: #fff;
         border-right: 1px solid #1f2937;
         display: flex;
@@ -725,7 +731,7 @@ import CountUp from "@astroanimate/core/CountUp";
         .playground-preview {
             border-right: none;
             border-bottom: 1px solid #1f2937;
-            padding: 32px 24px;
+            padding: 12px 16px;
         }
 
         .animated-card-container {
@@ -749,7 +755,7 @@ import CountUp from "@astroanimate/core/CountUp";
         .playground-preview {
             width: 100%;
             max-width: 100%;
-            padding: 24px 14px;
+            padding: 12px 16px;
         }
 
         .animated-card-container {

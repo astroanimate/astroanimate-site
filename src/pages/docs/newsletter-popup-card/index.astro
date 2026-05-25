@@ -87,10 +87,15 @@ import NewsletterPopupCard from "@astroanimate/core/NewsletterPopupCard";
                         </div>
                     </div><div class="code-content">
                         <pre><code><span class="comment">---</span>
-<span class="keyword">import</span> NewsletterPopupCard <span class="keyword">from</span> <span class="string">"@astroanimate/core/NewsletterPopupCard"</span>;
+<span class="keyword">import</span> <span class="component-name">NewsletterPopupCard</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/NewsletterPopupCard"</span>;
 <span class="comment">---</span>
 
-&lt;<span class="component">NewsletterPopupCard</span> /&gt;</code></pre>
+&lt;<span class="component">NewsletterPopupCard</span>
+  <span class="prop">title</span>=<span class="string">"Join the Club"</span>
+  <span class="prop">description</span>=<span class="string">"Get the latest AstroAnimate components delivered straight to your inbox."</span>
+  <span class="prop">submitLabel</span>=<span class="string">"Subscribe Now"</span>
+  <span class="prop">actionUrl</span>=<span class="string">"/api/newsletter"</span>
+/&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -300,7 +305,7 @@ import NewsletterPopupCard from "@astroanimate/core/NewsletterPopupCard";
         align-items: center;
         gap: 12px;
         margin-bottom: 20px;
-        padding: 12px 16px;
+        padding: 0;
         justify-content: right;
         border-radius: 8px;
     }
@@ -351,7 +356,7 @@ import NewsletterPopupCard from "@astroanimate/core/NewsletterPopupCard";
     }
 
     .playground-preview {
-        padding: 40px;
+        padding: 12px 16px;
         background: #fff;
         border-right: 1px solid #1f2937;
         display: flex;
@@ -699,7 +704,7 @@ import NewsletterPopupCard from "@astroanimate/core/NewsletterPopupCard";
         .playground-preview {
             border-right: none;
             border-bottom: 1px solid #1f2937;
-            padding: 32px 24px;
+            padding: 12px 16px;
         }
 
         .animated-card-container {
@@ -723,7 +728,7 @@ import NewsletterPopupCard from "@astroanimate/core/NewsletterPopupCard";
         .playground-preview {
             width: 100%;
             max-width: 100%;
-            padding: 24px 14px;
+            padding: 12px 16px;
         }
 
         .animated-card-container {

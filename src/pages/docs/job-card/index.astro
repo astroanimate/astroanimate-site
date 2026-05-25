@@ -90,10 +90,19 @@ import JobCard from "@astroanimate/core/JobCard";
                         </div>
                     </div><div class="code-content">
                         <pre><code><span class="comment">---</span>
-<span class="keyword">import</span> JobCard <span class="keyword">from</span> <span class="string">"@astroanimate/core/JobCard"</span>;
+<span class="keyword">import</span> <span class="component-name">JobCard</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/JobCard"</span>;
 <span class="comment">---</span>
 
-&lt;<span class="component">JobCard</span> /&gt;</code></pre>
+&lt;<span class="component">JobCard</span>
+  <span class="prop">title</span>=<span class="string">"Senior Frontend Engineer"</span>
+  <span class="prop">rate</span>=<span class="string">"<div class="code-content">
+                        <pre><code>20k - <div class="code-content">
+                        <pre><code>50k / yr"</span>
+  <span class="prop">company</span>=<span class="string">"AstroAnimate"</span>
+  <span class="prop">buttonLabel</span>=<span class="string">"Apply Now"</span>
+  <span class="prop">as</span>=<span class="string">"a"</span>
+  <span class="prop">href</span>=<span class="string">"/jobs/frontend"</span>
+/&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -353,7 +362,7 @@ import JobCard from "@astroanimate/core/JobCard";
         align-items: center;
         gap: 12px;
         margin-bottom: 20px;
-        padding: 12px 16px;
+        padding: 0;
         justify-content: right;
         border-radius: 8px;
     }
@@ -404,7 +413,7 @@ import JobCard from "@astroanimate/core/JobCard";
     }
 
     .playground-preview {
-        padding: 40px;
+        padding: 12px 16px;
         background: #fff;
         border-right: 1px solid #1f2937;
         display: flex;
@@ -752,7 +761,7 @@ import JobCard from "@astroanimate/core/JobCard";
         .playground-preview {
             border-right: none;
             border-bottom: 1px solid #1f2937;
-            padding: 32px 24px;
+            padding: 12px 16px;
         }
 
         .animated-card-container {
@@ -776,7 +785,7 @@ import JobCard from "@astroanimate/core/JobCard";
         .playground-preview {
             width: 100%;
             max-width: 100%;
-            padding: 24px 14px;
+            padding: 12px 16px;
         }
 
         .animated-card-container {

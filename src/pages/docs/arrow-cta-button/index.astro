@@ -82,10 +82,10 @@ import ArrowCTAButton from "@astroanimate/core/ArrowCTAButton";
                         </div>
                     </div><div class="code-content">
                         <pre><code><span class="comment">---</span>
-<span class="keyword">import</span> ArrowCTAButton <span class="keyword">from</span> <span class="string">"@astroanimate/core/ArrowCTAButton"</span>;
+<span class="keyword">import</span> <span class="component-name">ArrowCTAButton</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/ArrowCTAButton"</span>;
 <span class="comment">---</span>
 
-&lt;<span class="component">ArrowCTAButton</span> /&gt;</code></pre>
+&lt;<span class="component">ArrowCTAButton</span> <span class="prop">label</span>=<span class="string">"Explore"</span> /&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -293,7 +293,7 @@ import ArrowCTAButton from "@astroanimate/core/ArrowCTAButton";
         align-items: center;
         gap: 12px;
         margin-bottom: 20px;
-        padding: 12px 16px;
+        padding: 0;
         justify-content: right;
         border-radius: 8px;
     }
@@ -344,7 +344,7 @@ import ArrowCTAButton from "@astroanimate/core/ArrowCTAButton";
     }
 
     .playground-preview {
-        padding: 40px;
+        padding: 12px 16px;
         background: #fff;
         border-right: 1px solid #1f2937;
         display: flex;
@@ -353,6 +353,12 @@ import ArrowCTAButton from "@astroanimate/core/ArrowCTAButton";
         min-width: 0;
         overflow: hidden;
         box-sizing: border-box;
+    }
+
+    .component-preview-stage :global([data-acta]),
+    .component-preview-stage :global([data-acta] .label),
+    .component-preview-stage :global([data-acta] .arrow) {
+        color: #000 !important;
     }
 
     .playground-code {
@@ -692,7 +698,7 @@ import ArrowCTAButton from "@astroanimate/core/ArrowCTAButton";
         .playground-preview {
             border-right: none;
             border-bottom: 1px solid #1f2937;
-            padding: 32px 24px;
+            padding: 12px 16px;
         }
 
         .animated-card-container {
@@ -716,7 +722,7 @@ import ArrowCTAButton from "@astroanimate/core/ArrowCTAButton";
         .playground-preview {
             width: 100%;
             max-width: 100%;
-            padding: 24px 14px;
+            padding: 12px 16px;
         }
 
         .animated-card-container {

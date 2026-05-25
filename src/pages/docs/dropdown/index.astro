@@ -93,10 +93,21 @@ import Dropdown from "@astroanimate/core/Dropdown";
                         </div>
                     </div><div class="code-content">
                         <pre><code><span class="comment">---</span>
-<span class="keyword">import</span> Dropdown <span class="keyword">from</span> <span class="string">"@astroanimate/core/Dropdown"</span>;
+<span class="keyword">import</span> <span class="component-name">Dropdown</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/Dropdown"</span>;
 <span class="comment">---</span>
 
-&lt;<span class="component">Dropdown</span> /&gt;</code></pre>
+&lt;<span class="component">Dropdown</span>
+  <span class="prop">label</span>=<span class="string">"Options"</span>
+  <span class="prop">items</span>=&#123;[<span class="string">"Profile"</span>, <span class="string">"Settings"</span>, <span class="string">"Logout"</span>]&#125;
+  <span class="prop">enhance</span>=&#123;true&#125;
+/&gt;
+
+&lt;<span class="component">Dropdown</span>
+  <span class="prop">label</span>=<span class="string">"Hover Trigger"</span>
+  <span class="prop">items</span>=&#123;[<span class="string">"Profile"</span>, <span class="string">"Settings"</span>, <span class="string">"Logout"</span>]&#125;
+  <span class="prop">enhance</span>=&#123;true&#125;
+  <span class="prop">trigger</span>=<span class="string">"hover"</span>
+/&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -314,7 +325,7 @@ import Dropdown from "@astroanimate/core/Dropdown";
         align-items: center;
         gap: 12px;
         margin-bottom: 20px;
-        padding: 12px 16px;
+        padding: 0;
         justify-content: right;
         border-radius: 8px;
     }
@@ -365,7 +376,7 @@ import Dropdown from "@astroanimate/core/Dropdown";
     }
 
     .playground-preview {
-        padding: 40px;
+        padding: 12px 16px;
         background: #fff;
         border-right: 1px solid #1f2937;
         display: flex;
@@ -718,7 +729,7 @@ import Dropdown from "@astroanimate/core/Dropdown";
         .playground-preview {
             border-right: none;
             border-bottom: 1px solid #1f2937;
-            padding: 32px 24px;
+            padding: 12px 16px;
         }
 
         .related-grid {
@@ -737,7 +748,7 @@ import Dropdown from "@astroanimate/core/Dropdown";
         .playground-preview {
             width: 100%;
             max-width: 100%;
-            padding: 24px 14px;
+            padding: 12px 16px;
         }
     }
 </style>

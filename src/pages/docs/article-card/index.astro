@@ -95,10 +95,21 @@ import ArticleCard from "@astroanimate/core/ArticleCard";
                         </div>
                     </div><div class="code-content">
                         <pre><code><span class="comment">---</span>
-<span class="keyword">import</span> ArticleCard <span class="keyword">from</span> <span class="string">"@astroanimate/core/ArticleCard"</span>;
+<span class="keyword">import</span> <span class="component-name">ArticleCard</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/ArticleCard"</span>;
 <span class="comment">---</span>
 
-&lt;<span class="component">ArticleCard</span> /&gt;</code></pre>
+&lt;<span class="component">ArticleCard</span>
+  <span class="prop">title</span>=<span class="string">"UI Animation Patterns"</span>
+  <span class="prop">description</span>=<span class="string">"Interaction ideas for modern interfaces."</span>
+  <span class="prop">image</span>=<span class="string">"/images/article-cover.jpg"</span>
+  <span class="prop">href</span>=<span class="string">"/blog/ui-animation"</span>
+/&gt;
+
+&lt;<span class="component">ArticleCard</span>
+  <span class="prop">title</span>=<span class="string">"Building Scalable Design Systems with Astro"</span>
+  <span class="prop">description</span>=<span class="string">"Learn how to create reusable, accessible, and performance-first UI components in Astro."</span>
+  <span class="prop">href</span>=<span class="string">"/blog/design-systems"</span>
+/&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -311,7 +322,7 @@ import ArticleCard from "@astroanimate/core/ArticleCard";
         align-items: center;
         gap: 12px;
         margin-bottom: 20px;
-        padding: 12px 16px;
+        padding: 0;
         justify-content: right;
         border-radius: 8px;
     }
@@ -362,7 +373,7 @@ import ArticleCard from "@astroanimate/core/ArticleCard";
     }
 
     .playground-preview {
-        padding: 40px;
+        padding: 12px 16px;
         background: #fff;
         border-right: 1px solid #1f2937;
         display: flex;
@@ -715,7 +726,7 @@ import ArticleCard from "@astroanimate/core/ArticleCard";
         .playground-preview {
             border-right: none;
             border-bottom: 1px solid #1f2937;
-            padding: 32px 24px;
+            padding: 12px 16px;
         }
 
         .animated-card-container {
@@ -739,7 +750,7 @@ import ArticleCard from "@astroanimate/core/ArticleCard";
         .playground-preview {
             width: 100%;
             max-width: 100%;
-            padding: 24px 14px;
+            padding: 12px 16px;
         }
 
         .animated-card-container {

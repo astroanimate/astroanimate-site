@@ -91,10 +91,19 @@ import LiquidGlassCard from "@astroanimate/core/LiquidGlassCard";
                         </div>
                     </div><div class="code-content">
                         <pre><code><span class="comment">---</span>
-<span class="keyword">import</span> LiquidGlassCard <span class="keyword">from</span> <span class="string">"@astroanimate/core/LiquidGlassCard"</span>;
+<span class="keyword">import</span> <span class="component-name">LiquidGlassCard</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/LiquidGlassCard"</span>;
 <span class="comment">---</span>
 
-&lt;<span class="component">LiquidGlassCard</span> /&gt;</code></pre>
+&lt;<span class="component">LiquidGlassCard</span>
+  <span class="prop">draggable</span>=&#123;true&#125;
+  <span class="prop">expandable</span>=&#123;true&#125;
+  <span class="prop">blurIntensity</span>=<span class="string">"lg"</span>
+&gt;
+  &lt;<span class="tag">div</span>&gt;
+    &lt;<span class="tag">h3</span>&gt;Interactive Widget&lt;/<span class="tag">h3</span>&gt;
+    &lt;<span class="tag">p</span>&gt;Click to expand, or drag me around.&lt;/<span class="tag">p</span>&gt;
+  &lt;/<span class="tag">div</span>&gt;
+&lt;/<span class="component">LiquidGlassCard</span>&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -365,7 +374,7 @@ import LiquidGlassCard from "@astroanimate/core/LiquidGlassCard";
         align-items: center;
         gap: 12px;
         margin-bottom: 20px;
-        padding: 12px 16px;
+        padding: 0;
         justify-content: right;
         border-radius: 8px;
     }
@@ -416,10 +425,10 @@ import LiquidGlassCard from "@astroanimate/core/LiquidGlassCard";
     }
 
     .playground-preview {
-        padding: 40px;
+        padding: 12px 16px;
         background:
             linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)),
-            url("/images/blog-2-cover.png") center / cover no-repeat;
+            url("/images/mac-bg.jpg") center / cover no-repeat;
         border-right: 1px solid #1f2937;
         display: flex;
         align-items: center;
@@ -766,7 +775,7 @@ import LiquidGlassCard from "@astroanimate/core/LiquidGlassCard";
         .playground-preview {
             border-right: none;
             border-bottom: 1px solid #1f2937;
-            padding: 32px 24px;
+            padding: 12px 16px;
         }
 
         .animated-card-container {
@@ -790,7 +799,7 @@ import LiquidGlassCard from "@astroanimate/core/LiquidGlassCard";
         .playground-preview {
             width: 100%;
             max-width: 100%;
-            padding: 24px 14px;
+            padding: 12px 16px;
         }
 
         .animated-card-container {

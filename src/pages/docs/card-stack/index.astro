@@ -114,15 +114,25 @@ const previewCards = [
                         </div>
                     </div><div class="code-content">
                         <pre><code><span class="comment">---</span>
-<span class="keyword">import</span> CardStack <span class="keyword">from</span> <span class="string">"@astroanimate/core/CardStack"</span>;
+<span class="keyword">import</span> <span class="component-name">CardStack</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/CardStack"</span>;
 
-<span class="keyword">const</span> myCards = [
-  &#123; title: <span class="string">"Great UI"</span>, content: <span class="string">"Love the stack effect!"</span>, name: <span class="string">"Alice"</span>, role: <span class="string">"Designer"</span> &#125;,
-  &#123; title: <span class="string">"Smooth"</span>, content: <span class="string">"Animations are flawless."</span>, name: <span class="string">"Bob"</span>, role: <span class="string">"Dev"</span> &#125;
+<span class="keyword">const</span> cards = [
+  &#123;
+    title: <span class="string">"Smooth Developer Experience"</span>,
+    content: <span class="string">"AstroAnimate helped us add polished interactions without slowing down the site."</span>,
+    name: <span class="string">"Sarah Jenkins"</span>,
+    role: <span class="string">"Frontend Lead, PixelForge"</span>
+  &#125;,
+  &#123;
+    title: <span class="string">"Performance Stayed Excellent"</span>,
+    content: <span class="string">"The setup felt simple, and the interactions stayed fast."</span>,
+    name: <span class="string">"Alex Rivera"</span>,
+    role: <span class="string">"Product Engineer"</span>
+  &#125;
 ];
 <span class="comment">---</span>
 
-&lt;<span class="component">CardStack</span> <span class="prop">cards</span>=&#123;myCards&#125; /&gt;</code></pre>
+&lt;<span class="component">CardStack</span> <span class="prop">cards</span>=&#123;cards&#125; /&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -394,7 +404,7 @@ const previewCards = [
         align-items: center;
         gap: 12px;
         margin-bottom: 20px;
-        padding: 12px 16px;
+        padding: 0;
         justify-content: right;
         border-radius: 8px;
     }
@@ -445,7 +455,7 @@ const previewCards = [
     }
 
     .playground-preview {
-        padding: 40px;
+        padding: 12px 16px;
         background: #fff;
         border-right: 1px solid #1f2937;
         display: flex;
@@ -801,7 +811,7 @@ const previewCards = [
     .card-stack-preview-stage :global(.name) {
         color: #374151 !important;
         font-family: "Inter", sans-serif !important;
-        font-size: 25px;
+        font-size: 22px;
         line-height: 1.05;
         font-weight: 800;
     }
@@ -864,7 +874,7 @@ const previewCards = [
         .playground-preview {
             border-right: none;
             border-bottom: 1px solid #1f2937;
-            padding: 32px 24px;
+            padding: 12px 16px;
         }
 
         .animated-card-container {
@@ -888,7 +898,7 @@ const previewCards = [
         .playground-preview {
             width: 100%;
             max-width: 100%;
-            padding: 24px 14px;
+            padding: 12px 16px;
         }
 
         .card-stack-preview-stage :global(.astro-card-stack-container) {

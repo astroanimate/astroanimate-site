@@ -1915,7 +1915,7 @@ h2 span {
     color: #F9FAFB;
 }
 
-.icon-box {
+.structure-icon-box {
     width: 48px;
     height: 48px;
     background: #15191E;
@@ -1946,7 +1946,7 @@ h2 span {
     filter: brightness(0) saturate(100%) invert(56%) sepia(87%) saturate(3015%) hue-rotate(349deg) brightness(101%) contrast(102%);
 }
 
-.sidebar-item.active .icon-box {
+.sidebar-item.active .structure-icon-box {
     border-color: #FF7F1F;
     color: #FF7F1F;
 }
@@ -3913,7 +3913,7 @@ h2 span {
 .author-avatar {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 4px;
     object-fit: cover;
 }
 
@@ -4738,10 +4738,10 @@ details[open] .sidebar-nav-item .chevron {
     border-radius: 6px;
     color: #000;
     background: #FF7F1F;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     line-height: 1;
-    padding: 8px 14px;
+    padding: 5px 8px;
     font-weight: 400;
     text-transform: uppercase;
     vertical-align: middle;
@@ -6067,5 +6067,5 @@ details[open] .sidebar-nav-item .chevron {
 }
 
 .created-by-label {
-    color: #4B5563 !important;
+    color: #9CA3AF !important;
 }
