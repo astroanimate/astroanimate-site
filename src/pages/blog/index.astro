@@ -418,11 +418,12 @@ const schema = {
 <style>
   .blog-container {
     --blog-line: #1F2937;
-    max-width: 1462px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0 var(--side-padding);
     padding: 0;
     border-left: 1px solid var(--blog-line);
     border-right: 1px solid var(--blog-line);
+    border-bottom: 1px solid var(--blog-line);
   }
 
   .featured-grid {
@@ -638,8 +639,15 @@ const schema = {
     }
 
     .filter-section {
-      grid-template-columns: 1fr;
+      flex-direction: column;
+      align-items: stretch;
       padding: 36px 32px;
+    }
+
+    .search-wrap,
+    .search-input {
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .blog-item {
@@ -652,11 +660,37 @@ const schema = {
   }
 
   @media (max-width: 768px) {
+    .blog-container {
+      margin: 0;
+      border-left: 0;
+      border-right: 0;
+    }
+
+    .featured-grid {
+      display: block;
+    }
+
     .main-featured,
     .side-card,
     .filter-section {
       padding-left: 20px;
       padding-right: 20px;
+    }
+
+    .main-featured {
+      padding-top: 28px;
+    }
+
+    .featured-content {
+      padding-bottom: 32px;
+    }
+
+    .main-featured h2 {
+      font-size: 24px;
+    }
+
+    .main-featured p {
+      font-size: 14px;
     }
 
     .featured-footer {
@@ -668,6 +702,18 @@ const schema = {
     .categories-wrap {
       align-items: flex-start;
       flex-direction: column;
+      width: 100%;
+    }
+
+    .category-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      width: 100%;
+    }
+
+    .category-buttons button {
+      width: 100%;
+      min-width: 0;
     }
 
     .blog-item {
@@ -676,8 +722,9 @@ const schema = {
     }
 
     .item-image-box {
-      padding-left: 0;
+      padding: 20px;
       border-right: 0;
+      border-bottom: 1px solid var(--blog-line);
     }
 
     .item-content {
@@ -694,6 +741,35 @@ const schema = {
       padding: 0;
       border-left: 0;
       margin-top: 8px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .standard-header {
+      height: 52px;
+    }
+
+    .badge-top {
+      font-size: 24px;
+    }
+
+    .main-featured,
+    .side-card,
+    .filter-section {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .category-buttons {
+      grid-template-columns: 1fr;
+    }
+
+    .item-image-box {
+      padding: 16px;
+    }
+
+    .blog-item h3 {
+      font-size: 18px;
     }
   }
 </style>
