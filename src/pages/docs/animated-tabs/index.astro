@@ -67,7 +67,7 @@ import AnimatedTabs from "@astroanimate/core/AnimatedTabs";
                                 stroke-linecap="round"
                                 stroke-linejoin="round"></path></svg
                         ></button
-                    ><div class="component-preview-stage">
+                    ><div class="component-preview-stage animated-tabs-preview-stage">
                         <AnimatedTabs
                             tabs={[
                                 { id: "profile", label: "Profile" },
@@ -472,6 +472,30 @@ import AnimatedTabs from "@astroanimate/core/AnimatedTabs";
         min-width: 0;
         max-width: 100%;
         overflow: hidden;
+    }
+
+    .animated-tabs-preview-stage {
+        width: 100%;
+    }
+
+    .animated-tabs-preview-stage :global(.astro-animated-tabs) {
+        width: 100%;
+    }
+
+    .animated-tabs-preview-stage :global(.indicator) {
+        display: none !important;
+    }
+
+    .animated-tabs-preview-stage :global(.tab) {
+        flex: 1 1 0 !important;
+        width: auto !important;
+        min-width: 0 !important;
+    }
+
+    .animated-tabs-preview-stage :global(.tab[data-active="true"]) {
+        background: var(--tab-accent);
+        color: var(--tab-text-active);
+        border-radius: 0.375rem;
     }
 
     .code-header {

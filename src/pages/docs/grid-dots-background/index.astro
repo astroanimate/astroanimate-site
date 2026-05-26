@@ -72,9 +72,9 @@ import GridDotsBackground from "@astroanimate/core/GridDotsBackground";
                             variant="dots"
                             animate={true}
                             mask={true}
-                            bgColor="#fff"
-                            dotColor="#000"
-                            
+                            bgColor="#000"
+                            dotColor="#737373"
+                            dotSize="1px"
                         >
                             <div
                                 style="position: relative; z-index: 10; display: grid; min-height: 300px; place-items: center; color: white; font-family: Inter, sans-serif;"
@@ -393,13 +393,14 @@ import GridDotsBackground from "@astroanimate/core/GridDotsBackground";
     }
 
     .playground-preview {
-        padding: 12px 16px;
+        padding: 0;
         background: #fff;
         border-right: 1px solid #1f2937;
         display: flex;
         align-items: center;
         justify-content: center;
         min-width: 0;
+        min-height: 0;
         overflow: hidden;
         box-sizing: border-box;
     }
@@ -741,7 +742,8 @@ import GridDotsBackground from "@astroanimate/core/GridDotsBackground";
         .playground-preview {
             border-right: none;
             border-bottom: 1px solid #1f2937;
-            padding: 12px 16px;
+            padding: 0;
+            min-height: 0;
         }
 
         .animated-card-container {
@@ -765,7 +767,8 @@ import GridDotsBackground from "@astroanimate/core/GridDotsBackground";
         .playground-preview {
             width: 100%;
             max-width: 100%;
-            padding: 12px 16px;
+            padding: 0;
+            min-height: 0;
         }
 
         .animated-card-container {

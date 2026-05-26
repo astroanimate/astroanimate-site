@@ -8,14 +8,14 @@ const versionQuery = isLatestDocsVersion ? "" : "?version=0.1.1";
 const newComponentImages: Record<string, string> = {
   "count-up": "/images/countup.png",
   "highlight-text": "/images/highlighttext.png",
-  "grid-dots-background": "/images/griddotsbackground.png",
+  "grid-dots-background": "/images/griddotbackground.png",
   "animated-tabs": "/images/animatedtabs.png",
   "dropdown": "/images/dropdown.png",
   "card-stack": "/images/cardstack.png",
   "liquid-glass-card": "/images/liquidglasscard.png",
   "product-review-card": "/images/productreviewcard.png",
   "article-card": "/images/articlecard.png",
-  "newsletter-popup-card": "/images/newsletterpopupcard.png",
+  "newsletter-popup-card": "/images/newsletterpopcard.png",
   "animated-border-button": "/images/animatedborderbtn.png",
   "sliding-overlay-button": "/images/slidingoverlaybtn.png",
   "github-shine-button": "/images/githubshinebtn.png",
@@ -24,6 +24,7 @@ const newComponentImages: Record<string, string> = {
   "fill-hover-button": "/images/fillhoverbtn.png",
   "infinite-marquee": "/images/infinitemarquee.png",
   "dock": "/images/dock.png",
+  "job-card": "/images/jobcard.png",
 };
 
 const sections = [
@@ -34,6 +35,7 @@ const sections = [
         name: "Fade In Text",
         href: "/docs/fade-in-text/",
         image: "/images/fadein.png",
+        // video: "/videos/fadein-demo.mov",
         isNew: false,
       },
       {
@@ -83,6 +85,7 @@ const sections = [
         image: "/images/glasscard.png",
         isNew: false,
       },
+      
     ],
   },
   {
@@ -221,9 +224,18 @@ if (isLatestDocsVersion) {
                   data-component-card
                   data-new-component={item.isNew ? "true" : undefined}
                   data-has-image={item.image ? "true" : undefined}
+                  data-has-video={item.video ? "true" : undefined}
                 >
                   <span class="all-component-preview">
-                    {item.image ? (
+                    {item.video ? (
+                      <video
+                        src={item.video}
+                        muted
+                        loop
+                        playsinline
+                        preload="metadata"
+                      />
+                    ) : item.image ? (
                       <img src={item.image} alt="" loading="lazy" />
                     ) : null}
                   </span>
@@ -410,8 +422,8 @@ if (isLatestDocsVersion) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0;
     width: 100%;
-    padding-top: 1px;
-    padding-left: 1px;
+    border-top: 1px solid #1f2937;
+    border-left: 1px solid #1f2937;
     background: transparent;
   }
 
@@ -419,9 +431,9 @@ if (isLatestDocsVersion) {
     width: 100%;
     min-height: 220px;
     padding: 19px;
-    border: 1px solid #1f2937;
-    margin-top: -1px;
-    margin-left: -1px;
+    border: 0;
+    border-right: 1px solid #1f2937;
+    border-bottom: 1px solid #1f2937;
     text-decoration: none;
     color: #f9fafb;
     background: #000;
@@ -451,6 +463,13 @@ if (isLatestDocsVersion) {
   }
 
   .all-component-preview img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .all-component-preview video {
     display: block;
     width: 100%;
     height: 100%;
@@ -555,6 +574,9 @@ if (isLatestDocsVersion) {
     const cards = Array.from(
       root.querySelectorAll<HTMLElement>("[data-component-card]"),
     );
+    const videos = Array.from(
+      root.querySelectorAll<HTMLVideoElement>(".all-component-preview video"),
+    );
     const groups = Array.from(
       root.querySelectorAll<HTMLElement>("[data-component-group]"),
     );
@@ -578,6 +600,20 @@ if (isLatestDocsVersion) {
     };
 
     syncVersionGroups();
+
+    videos.forEach((video) => {
+      const card = video.closest<HTMLElement>("[data-component-card]");
+      if (!card) return;
+
+      card.addEventListener("mouseenter", () => {
+        video.play().catch(() => {});
+      });
+
+      card.addEventListener("mouseleave", () => {
+        video.pause();
+        video.currentTime = 0;
+      });
+    });
 
     searchInput?.addEventListener("input", () => {
       const term = searchInput.value.trim().toLowerCase();

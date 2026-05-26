@@ -69,7 +69,7 @@ import Dock from "@astroanimate/core/Dock";
                                 stroke-linejoin="round"></path></svg
                         ></button
                     ><div class="component-preview-stage">
-                        <Dock enhance={true} position="bottom" size="lg" color="#EAEAEA" blur="20px" >
+                        <Dock enhance={true} position="bottom" size="lg" class="dock" color="" blur="20px" >
                             <button class="dock-item">
                                 <span class="dock-label">Finder</span>
                                 <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853981255cc36b3a37af_finder.png" alt="Finder" />
@@ -79,12 +79,40 @@ import Dock from "@astroanimate/core/Dock";
                                 <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853ff3bafbac60495771_siri.png" alt="Siri" />
                             </button>
                             <button class="dock-item">
-                                <span class="dock-label">Safari</span>
-                                <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853ddd826358438eda6d_safari.png" alt="Safari" />
+                                <span class="dock-label">Launchpad</span>
+                                <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853943597517f128b9b4_launchpad.png" alt="Launchpad" />
+                            </button>
+                            <button class="dock-item">
+                                <span class="dock-label">Contacts</span>
+                                <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853743597518c528b9b3_contacts.png" alt="Contacts" />
+                            </button>
+                            <button class="dock-item">
+                                <span class="dock-label">Notes</span>
+                                <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853c849ec3735b52cef9_notes.png" alt="Notes" />
+                            </button>
+                            <button class="dock-item">
+                                <span class="dock-label">Reminders</span>
+                                <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853d44d99641ce69afeb_reminders.png" alt="Reminders" />
                             </button>
                             <button class="dock-item">
                                 <span class="dock-label">Photos</span>
                                 <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853c55558a2e1192ee09_photos.png" alt="Photos" />
+                            </button>
+                            <button class="dock-item">
+                                <span class="dock-label">Messages</span>
+                                <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853a55558a68e192ee08_messages.png" alt="Messages" />
+                            </button>
+                            <button class="dock-item">
+                                <span class="dock-label">FaceTime</span>
+                                <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f708537f18e2cb27247c904_facetime.png" alt="FaceTime" />
+                            </button>
+                            <button class="dock-item">
+                                <span class="dock-label">Music</span>
+                                <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853ba0782d6ff2aca6b3_music.png" alt="Music" />
+                            </button>
+                            <button class="dock-item">
+                                <span class="dock-label">Safari</span>
+                                <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853ddd826358438eda6d_safari.png" alt="Safari" />
                             </button>
                         </Dock>
                     </div>
@@ -103,10 +131,19 @@ import Dock from "@astroanimate/core/Dock";
 <span class="keyword">import</span> <span class="component-name">Dock</span> <span class="keyword">from</span> <span class="string">"@astroanimate/core/Dock"</span>;
 <span class="comment">---</span>
 
-&lt;<span class="component">Dock</span> <span class="prop">enhance</span>=&#123;true&#125; <span class="prop">position</span>=<span class="string">"bottom"</span> <span class="prop">size</span>=<span class="string">"lg"</span>&gt;
-  &lt;<span class="tag">button</span> <span class="prop">class</span>=<span class="string">"dock-item"</span>&gt;Home&lt;/<span class="tag">button</span>&gt;
-  &lt;<span class="tag">button</span> <span class="prop">class</span>=<span class="string">"dock-item"</span>&gt;Search&lt;/<span class="tag">button</span>&gt;
-  &lt;<span class="tag">button</span> <span class="prop">class</span>=<span class="string">"dock-item"</span>&gt;Settings&lt;/<span class="tag">button</span>&gt;
+&lt;<span class="component">Dock</span> <span class="prop">enhance</span>=&#123;false&#125; <span class="prop">position</span>=<span class="string">"bottom"</span> <span class="prop">size</span>=<span class="string">"lg"</span>&gt;
+  &lt;<span class="tag">button</span> <span class="prop">class</span>=<span class="string">"dock-item"</span>&gt;
+    &lt;<span class="tag">span</span> <span class="prop">class</span>=<span class="string">"dock-label"</span>&gt;Finder&lt;/<span class="tag">span</span>&gt;
+    &lt;<span class="tag">img</span> <span class="prop">src</span>=<span class="string">"/icons/finder.png"</span> <span class="prop">alt</span>=<span class="string">"Finder"</span> /&gt;
+  &lt;/<span class="tag">button</span>&gt;
+  &lt;<span class="tag">button</span> <span class="prop">class</span>=<span class="string">"dock-item"</span>&gt;
+    &lt;<span class="tag">span</span> <span class="prop">class</span>=<span class="string">"dock-label"</span>&gt;Safari&lt;/<span class="tag">span</span>&gt;
+    &lt;<span class="tag">img</span> <span class="prop">src</span>=<span class="string">"/icons/safari.png"</span> <span class="prop">alt</span>=<span class="string">"Safari"</span> /&gt;
+  &lt;/<span class="tag">button</span>&gt;
+  &lt;<span class="tag">button</span> <span class="prop">class</span>=<span class="string">"dock-item"</span>&gt;
+    &lt;<span class="tag">span</span> <span class="prop">class</span>=<span class="string">"dock-label"</span>&gt;Mail&lt;/<span class="tag">span</span>&gt;
+    &lt;<span class="tag">img</span> <span class="prop">src</span>=<span class="string">"/icons/mail.png"</span> <span class="prop">alt</span>=<span class="string">"Mail"</span> /&gt;
+  &lt;/<span class="tag">button</span>&gt;
 &lt;/<span class="component">Dock</span>&gt;</code></pre>
                     </div>
                 </div>
@@ -423,7 +460,7 @@ import Dock from "@astroanimate/core/Dock";
     }
 
     .playground-preview {
-        padding: 12px 16px;
+        padding: 0;
         background: url("/images/mac-bg.jpg") center / cover no-repeat;
         border-right: 1px solid #1f2937;
         display: flex;
@@ -435,7 +472,44 @@ import Dock from "@astroanimate/core/Dock";
     }
     
     .component-preview-stage :global(.dock-item) {
+        --dock-item-margin: 2px !important;
         border: none !important;
+        margin: 0px !important;
+
+    }
+
+    .component-preview-stage :global(.astro-dock[data-size="lg"]) {
+        --item-size: 3rem;
+        --dock-height: 3rem;
+        --dock-padding: 0rem;
+    }
+
+    .component-preview-stage :global(.astro-dock-container[data-position="bottom"]) {
+        padding-bottom: 0;
+    }
+
+    .component-preview-stage :global([data-enhance="false"] .dock-item:hover) {
+        --dock-item-scale: 1 !important;
+        --dock-label-scale: 1 !important;
+        --dock-item-y: 0px !important;
+        --dock-item-margin: 4px !important;
+    }
+
+    .component-preview-stage :global(.dock-item:hover img) {
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) !important;
+    }
+
+    .component-preview-stage :global(.dock-item:hover::before),
+    .component-preview-stage :global(.dock-item:hover::after) {
+        opacity: 0 !important;
+    }
+
+    .component-preview-stage :global(.dock-item:hover .dock-icon) {
+        transform: none !important;
+    }
+
+    .dock {
+        padding: 0;
     }
     .playground-code {
         background: #0d0d0d;
@@ -774,7 +848,7 @@ import Dock from "@astroanimate/core/Dock";
         .playground-preview {
             border-right: none;
             border-bottom: 1px solid #1f2937;
-            padding: 12px 16px;
+            padding: 0;
         }
 
         .animated-card-container {
@@ -798,7 +872,7 @@ import Dock from "@astroanimate/core/Dock";
         .playground-preview {
             width: 100%;
             max-width: 100%;
-            padding: 12px 16px;
+            padding: 0;
         }
 
         .animated-card-container {

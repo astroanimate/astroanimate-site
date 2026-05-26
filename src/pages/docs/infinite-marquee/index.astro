@@ -3,6 +3,72 @@ import DocLayout from "../../../layouts/DocLayout.astro";
 import RelatedComponents from "../../../components/RelatedComponents.astro";
 import "../../../styles/Global.css";
 import InfiniteMarquee from "@astroanimate/core/InfiniteMarquee";
+
+const topTestimonials = [
+    {
+        name: "Sarah",
+        handle: "@sarah",
+        quote: "This is absolutely incredible. The setup felt simple, and the final interaction looked polished right away.",
+        img: "https://i.pravatar.cc/80?img=47",
+    },
+    {
+        name: "John",
+        handle: "@john",
+        quote: "I'm at a loss for words. This is smooth, fast, and exactly the kind of detail our landing page needed.",
+        img: "https://i.pravatar.cc/80?img=12",
+    },
+    {
+        name: "Jack",
+        handle: "@jack",
+        quote: "I've never seen anything like this before. It makes the page feel alive without slowing anything down.",
+        img: "https://i.pravatar.cc/80?img=32",
+    },
+    {
+        name: "James",
+        handle: "@james",
+        quote: "The components dropped in cleanly, and the motion felt refined across desktop and mobile screens.",
+        img: "https://i.pravatar.cc/80?img=56",
+    },
+    {
+        name: "Jane",
+        handle: "@jane",
+        quote: "A clean, elegant, and powerful experience. It helped our product page feel more premium instantly.",
+        img: "https://i.pravatar.cc/80?img=44",
+    },
+];
+
+const bottomTestimonials = [
+    {
+        name: "Anna",
+        handle: "@anna",
+        quote: "Beautiful, elegant, and powerful. The animation quality feels intentional instead of distracting.",
+        img: "https://i.pravatar.cc/80?img=5",
+    },
+    {
+        name: "David",
+        handle: "@david",
+        quote: "Best investment we've made this year. Our team shipped a better interface with far less custom CSS.",
+        img: "https://i.pravatar.cc/80?img=33",
+    },
+    {
+        name: "Mike",
+        handle: "@mike",
+        quote: "Outstanding work! Highly recommended for teams that want delightful UI without a heavy runtime.",
+        img: "https://i.pravatar.cc/80?img=61",
+    },
+    {
+        name: "Lisa",
+        handle: "@lisa",
+        quote: "Beyond expectations. Simply beautiful, easy to customize, and stable enough for production docs.",
+        img: "https://i.pravatar.cc/80?img=16",
+    },
+    {
+        name: "Tom",
+        handle: "@tom",
+        quote: "A game changer for our team. The marquee gave our customer stories a much stronger visual rhythm.",
+        img: "https://i.pravatar.cc/80?img=7",
+    },
+];
 ---
 
 <DocLayout title="InfiniteMarquee">
@@ -68,23 +134,23 @@ import InfiniteMarquee from "@astroanimate/core/InfiniteMarquee";
                                 stroke-linejoin="round"></path></svg
                         ></button
                     ><div class="component-preview-stage infinite-container">
-                      
-<!-- Card Mode for Testimonials -->
-<InfiniteMarquee
-  cardMode={true}
-  testimonials={[
-    { name: "Alice", handle: "@alice", quote: "This is amazing!", img: "https://x.tax/wp-content/uploads/2026/02/219-150x150.jpg" }
-  ]}
-  speed="7s"
-/>
-<InfiniteMarquee
-  cardMode={true}
-  testimonials={[
-    { name: "John Doe", handle: "@johndoe", quote: "This is amazing!", img: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR1ddElrY90Caq7L52GJdQnd4P7HPe5pZgYL4KSOdQvAuPmu4WF" }
-  ]}
-  speed="6s"
-  direction="right"
-/>
+                        <InfiniteMarquee
+                            cardMode={true}
+                            testimonials={topTestimonials}
+                            speed="28s"
+                            gap="1.5rem"
+                            cardWidth="330px"
+                            fade={true}
+                        />
+                        <InfiniteMarquee
+                            cardMode={true}
+                            testimonials={bottomTestimonials}
+                            speed="26s"
+                            direction="right"
+                            gap="1.5rem"
+                            cardWidth="330px"
+                            fade={true}
+                        />
                     </div>
                 </div><div class="playground-code">
                     <div class="code-header">
@@ -104,18 +170,24 @@ import InfiniteMarquee from "@astroanimate/core/InfiniteMarquee";
 &lt;<span class="component">InfiniteMarquee</span>
   <span class="prop">cardMode</span>=&#123;true&#125;
   <span class="prop">testimonials</span>=&#123;[
-    &#123; name: <span class="string">"Alice"</span>, handle: <span class="string">"@alice"</span>, quote: <span class="string">"This is amazing!"</span> &#125;
+    &#123; name: <span class="string">"Sarah"</span>, handle: <span class="string">"@sarah"</span>, quote: <span class="string">"This is absolutely incredible."</span>, img: <span class="string">"/avatars/sarah.jpg"</span> &#125;,
+    &#123; name: <span class="string">"John"</span>, handle: <span class="string">"@john"</span>, quote: <span class="string">"I'm at a loss for words."</span>, img: <span class="string">"/avatars/john.jpg"</span> &#125;,
+    &#123; name: <span class="string">"Jack"</span>, handle: <span class="string">"@jack"</span>, quote: <span class="string">"I've never seen anything like this."</span>, img: <span class="string">"/avatars/jack.jpg"</span> &#125;
   ]&#125;
-  <span class="prop">speed</span>=<span class="string">"7s"</span>
+  <span class="prop">speed</span>=<span class="string">"28s"</span>
+  <span class="prop">cardWidth</span>=<span class="string">"330px"</span>
 /&gt;
 
 &lt;<span class="component">InfiniteMarquee</span>
   <span class="prop">cardMode</span>=&#123;true&#125;
   <span class="prop">testimonials</span>=&#123;[
-    &#123; name: <span class="string">"John Doe"</span>, handle: <span class="string">"@johndoe"</span>, quote: <span class="string">"This is amazing!"</span> &#125;
+    &#123; name: <span class="string">"Anna"</span>, handle: <span class="string">"@anna"</span>, quote: <span class="string">"Beautiful and powerful."</span>, img: <span class="string">"/avatars/anna.jpg"</span> &#125;,
+    &#123; name: <span class="string">"David"</span>, handle: <span class="string">"@david"</span>, quote: <span class="string">"Best investment we've made."</span>, img: <span class="string">"/avatars/david.jpg"</span> &#125;,
+    &#123; name: <span class="string">"Lisa"</span>, handle: <span class="string">"@lisa"</span>, quote: <span class="string">"Beyond expectations."</span>, img: <span class="string">"/avatars/lisa.jpg"</span> &#125;
   ]&#125;
-  <span class="prop">speed</span>=<span class="string">"6s"</span>
+  <span class="prop">speed</span>=<span class="string">"26s"</span>
   <span class="prop">direction</span>=<span class="string">"right"</span>
+  <span class="prop">cardWidth</span>=<span class="string">"330px"</span>
 /&gt;</code></pre>
                     </div>
                 </div>
@@ -763,6 +835,50 @@ import InfiniteMarquee from "@astroanimate/core/InfiniteMarquee";
     .infinite-container {
         display: flex;
         flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        padding: 10px 0;
+        overflow: hidden;
+        /* background: #f8fafc; */
+    }
+
+    .infinite-container :global(.marquee-container) {
+        width: 100%;
+    }
+
+    .infinite-container :global(.marquee-card) {
+        /* min-height: 148px; */
+        border-color: #e5e7eb;
+        box-shadow: 0 1px 5px rgba(15, 23, 42, 0.08);
+    }
+
+    .infinite-container :global(.marquee-card-header) {
+        gap: 12px;
+    }
+
+    .infinite-container :global(.marquee-card-avatar) {
+        width: 40px;
+        height: 40px;
+    }
+
+    .infinite-container :global(.marquee-card-name) {
+        color: #374151;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .infinite-container :global(.marquee-card-handle) {
+        color: #6b7280;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+    }
+
+    .infinite-container :global(.marquee-card-content) {
+        color: #374151;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
     }
 
     @media (max-width: 760px) {

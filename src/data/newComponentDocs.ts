@@ -358,7 +358,6 @@ const additionalDocs: ComponentDoc[] = [
   ["GitHubShineButton", "github-shine-button", "Buttons", "A premium, CSS-only GitHub button featuring a sleek hover shine effect and integrated star count."],
   ["StaggerTextButton", "stagger-text-button", "Buttons", "A zero-JS, CSS-only button that animates its text character-by-character on hover for a playful micro-interaction."],
   ["JobCard", "job-card", "Cards", "A clean, responsive, CSS-only summary card optimized for job boards and opportunity listings."],
-  ["LiquidGlassCard", "liquid-glass-card", "Cards", "A glass-style card component with a liquid visual treatment for modern UI surfaces."],
   ["ArrowCTAButton", "arrow-cta-button", "Buttons", "Button/link with animated underline and sliding arrow hover effect."],
   ["FillHoverButton", "fill-hover-button", "Buttons", "Button/link with animated underline and background fill hover effect."],
   ["ProductReviewCard", "product-review-card", "Cards", "A clean, responsive, CSS-only product review card featuring a subtle ambient glow and hover scale effect."],
