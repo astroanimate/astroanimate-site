@@ -25,7 +25,7 @@ const schema = {
 >
   <NavBar />
 
-  <main class="blog-container">
+  <main class="blog-page">
     <!-- HEADER -->
     <header class="standard-header">
       <div class="header-overlay"></div>
@@ -250,6 +250,13 @@ const schema = {
         </div>
       </article>
 
+      <img
+        src="/images/about-dash.png"
+        alt=""
+        class="blog-dash"
+        aria-hidden="true"
+      />
+
       <article class="blog-item" data-category="guide">
         <div class="item-image-box">
           <a
@@ -297,6 +304,13 @@ const schema = {
           </div>
         </div>
       </article>
+
+      <img
+        src="/images/about-dash.png"
+        alt=""
+        class="blog-dash"
+        aria-hidden="true"
+      />
 
       <article class="blog-item" data-category="guide">
         <div class="item-image-box">
@@ -357,7 +371,7 @@ const schema = {
 <script>
   function initBlogFilters() {
     const blogContainer =
-      document.querySelector<HTMLElement>(".blog-container");
+      document.querySelector<HTMLElement>(".blog-page");
     if (!blogContainer || blogContainer.dataset.blogFiltersReady === "true") return;
     blogContainer.dataset.blogFiltersReady = "true";
 
@@ -369,6 +383,9 @@ const schema = {
     );
     const blogItems = Array.from(
       document.querySelectorAll<HTMLElement>(".blog-list .blog-item"),
+    );
+    const blogDashes = Array.from(
+      document.querySelectorAll<HTMLImageElement>(".blog-list .blog-dash"),
     );
     const noResults = document.getElementById("blog-no-results");
     let activeCategory = "all";
@@ -390,6 +407,21 @@ const schema = {
 
         item.style.display = isVisible ? "" : "none";
         if (isVisible) visibleCount += 1;
+      });
+
+      blogDashes.forEach((dash) => {
+        dash.style.display = "none";
+      });
+
+      const visibleItems = blogItems.filter((item) => item.style.display !== "none");
+      visibleItems.slice(0, -1).forEach((item) => {
+        let sibling = item.nextElementSibling;
+        while (sibling && !sibling.classList.contains("blog-dash")) {
+          sibling = sibling.nextElementSibling;
+        }
+        if (sibling instanceof HTMLImageElement) {
+          sibling.style.display = "block";
+        }
       });
 
       if (noResults) {
@@ -416,14 +448,14 @@ const schema = {
 </script>
 
 <style>
-  .blog-container {
+  .blog-page {
     --blog-line: #1F2937;
     max-width: none;
     margin: 0 var(--side-padding);
     padding: 0;
     border-left: 1px solid var(--blog-line);
     border-right: 1px solid var(--blog-line);
-    border-bottom: 1px solid var(--blog-line);
+    /* border-bottom: 1px solid var(--blog-line); */
   }
 
   .featured-grid {
@@ -548,17 +580,28 @@ const schema = {
   }
 
   .blog-list {
+    width: min(100%, 1280px);
+    margin: 0 auto;
+    border-left: 1px solid var(--blog-line);
+    border-right: 1px solid var(--blog-line);
     border-bottom: 0;
   }
 
   .blog-item {
-    grid-template-columns: 350px minmax(0, 1fr) 164px;
-    gap: 0;
-    padding: 0;
+    position: relative;
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: 20px;
+    min-height: 176px;
+    padding: 20px;
     border-left: 0;
     border-right: 0;
-    border-bottom: 1px solid var(--blog-line);
+    border-bottom: 0;
   }
+
+  .blog-item:not(:last-child) {
+    margin-bottom: 0;
+  }
+
 
   .blog-item:last-child {
     border-bottom: 0;
@@ -568,20 +611,22 @@ const schema = {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 32px;
-    border-right: 1px solid var(--blog-line);
+    padding: 0;
+    border-right: 0;
   }
 
   .item-image {
     display: block;
     width: 100%;
-    aspect-ratio: 2 / 1;
+    height: 138px;
+    aspect-ratio: auto;
+    background: #171b22;
   }
 
   .item-content {
     position: relative;
-    min-height: 176px;
-    padding: 34px 24px;
+    min-height: 138px;
+    padding: 0;
     justify-content: center;
   }
 
@@ -591,21 +636,26 @@ const schema = {
 
   .item-meta {
     position: static;
-    transform: none;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
     gap: 2px;
-    /* padding: 0 24px; */
+    width: 100%;
+    margin-top: 10px;
     text-transform: uppercase;
   }
 
+  .item-meta .read-time {
+    position: absolute;
+    top: 26px;
+    right: 0;
+  }
+
   .blog-item h3 {
-    margin: 12px 0 10px;
-    max-width: 720px;
-    font-size: 21px;
-    line-height: 1.3;
+    margin: 18px 0 12px;
+    max-width: 440px;
+    font-size: 16px;
+    line-height: 1.45;
   }
 
   .author-simple {
@@ -651,16 +701,16 @@ const schema = {
     }
 
     .blog-item {
-      grid-template-columns: 280px minmax(0, 1fr) 140px;
+      grid-template-columns: 210px minmax(0, 1fr);
     }
 
     .item-image-box {
-      padding: 0 24px;
+      padding: 0;
     }
   }
 
   @media (max-width: 768px) {
-    .blog-container {
+    .blog-page {
       margin: 0;
       border-left: 0;
       border-right: 0;
@@ -719,28 +769,39 @@ const schema = {
     .blog-item {
       grid-template-columns: 1fr;
       gap: 0;
+      padding: 16px;
     }
 
     .item-image-box {
-      padding: 20px;
+      padding: 0;
       border-right: 0;
-      border-bottom: 1px solid var(--blog-line);
+      border-bottom: 0;
+      margin-bottom: 16px;
+    }
+
+    .item-image {
+      height: auto;
+      aspect-ratio: 16 / 9;
     }
 
     .item-content {
       min-height: auto;
-      padding: 24px 20px;
+      padding: 0;
     }
 
     .item-meta {
       position: static;
       transform: none;
       flex-direction: row;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
       padding: 0;
       border-left: 0;
       margin-top: 8px;
+    }
+
+    .item-meta .read-time {
+      position: static;
     }
   }
 
