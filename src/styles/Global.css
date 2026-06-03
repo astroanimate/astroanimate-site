@@ -3089,10 +3089,6 @@ h2 span {
     opacity: 1;
 }
 
-/* ARCHITECTURE ICON HOVER FILTER */
-.archi-card .archi-icon {
-    /* Filter transitions cause intermediate color flashing, so we swap instantly */
-}
 
 .archi-card:hover .archi-icon {
     filter: brightness(0) saturate(100%) invert(56%) sepia(87%) saturate(3015%) hue-rotate(349deg) brightness(101%) contrast(102%);

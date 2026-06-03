@@ -27,6 +27,24 @@ const newComponentImages: Record<string, string> = {
   "job-card": "/images/jobcard.png",
 };
 
+const newComponentVideos: Record<string, string> = {
+  "animated-border-button": "/videos/animatedborder-demo.mov",
+  "animated-tabs": "/videos/animatedtab-demo.mov",
+  "arrow-cta-button": "/videos/arrowcta-demo.mov",
+  "card-stack": "/videos/cardstack-demo.mov",
+  "count-up": "/videos/countup-demo.mov",
+  "dock": "/videos/dock-demo.mov",
+  "dropdown": "/videos/dropdown-demo.mov",
+  "fill-hover-button": "/videos/fillhover-demo.mov",
+  "github-shine-button": "/videos/githubshinebtn-demo.mov",
+  "highlight-text": "/videos/highlight-demo.mov",
+  "infinite-marquee": "/videos/marquee-demo.mov",
+  "grid-dots-background": "/videos/griddotbg-demo.mov",
+  "product-review-card": "/videos/productcard-demo.mov",
+  "sliding-overlay-button": "/videos/slidingbtn-demo.mov",
+  "stagger-text-button": "/videos/staggertext-demo.mov",
+};
+
 const sections = [
   {
     title: "Text Animations",
@@ -35,13 +53,14 @@ const sections = [
         name: "Fade In Text",
         href: "/docs/fade-in-text/",
         image: "/images/fadein.png",
-        // video: "/videos/fadein-demo.mov",
+        video: "/videos/fadein-demo.mp4",
         isNew: false,
       },
       {
         name: "Typewriter text",
         href: "/docs/typewriter/",
         image: "/images/typewriter.png",
+        video: "/videos/typewritter-demo.mp4",
         isNew: false,
       },
       
@@ -54,12 +73,14 @@ const sections = [
         name: "Scale In",
         href: "/docs/scale-in/",
         image: "/images/scalein-demo.png",
+        video: "/videos/scalein-demo.mov",
         isNew: false,
       },
       {
         name: "Reveal Image",
         href: "/docs/reveal-image/",
         image: "/images/revealimage.png",
+        video: "/videos/revealimage-demo.mov",
         isNew: false,
       },
     ],
@@ -70,19 +91,23 @@ const sections = [
       {
         name: "Expandable Card",
         href: "/docs/expandable-card/",
-        image: "/images/expandable-card-black.png",
+        image: "/images/expandable-demo.png",
+        // video: "/videos/expandablecard-demo.mov",
         isNew: false,
       },
       {
         name: "Animated Card",
         href: "/docs/animated-card/",
         image: "/images/animatedcard.png",
+        video: "/videos/animatedcard-btn.mov",
         isNew: false,
       },
       {
         name: "Glass Card",
         href: "/docs/glass-card/",
         image: "/images/glasscard.png",
+        video: "/videos/morphisam-demo.mov",
+        previewBg: "morphism",
         isNew: false,
       },
       
@@ -91,11 +116,18 @@ const sections = [
   {
     title: "Loaders & Feedback",
     items: [
-      { name: "Loader", href: "/docs/loader/", image: "/images/loader.png", isNew: false },
+      {
+        name: "Loader",
+        href: "/docs/loader/",
+        image: "/images/loader.png",
+        video: "/videos/loader-demo.mov",
+        isNew: false,
+      },
       {
         name: "Progress Bar",
         href: "/docs/progress-bar/",
         image: "/images/progressbar.png",
+        previewBg: "white",
         isNew: false,
       },
     ],
@@ -107,6 +139,7 @@ const sections = [
         name: "Animated Button",
         href: "/docs/animated-button/",
         image: "/images/animated-btn.png",
+        video: "/videos/animated-btn-demo.mov",
         isNew: false,
       },
     ],
@@ -118,6 +151,7 @@ const sections = [
         name: "Tool Tip",
         href: "/docs/tooltip/",
         image: "/images/tooltip.png",
+        video: "/videos/tooltip-demo.mov",
         isNew: false,
       },
     ],
@@ -133,6 +167,8 @@ const sections = [
             name: item.name,
             href: `/docs/${item.slug}/`,
             image: newComponentImages[item.slug] || "",
+            video: newComponentVideos[item.slug] || "",
+            previewBg: item.slug === "grid-dots-background" ? "black" : undefined,
             isNew: true,
           }))
       : []),
@@ -155,6 +191,8 @@ if (isLatestDocsVersion) {
       name: component.name,
       href: `/docs/${component.slug}/`,
       image: newComponentImages[component.slug] || "",
+      video: newComponentVideos[component.slug] || "",
+      previewBg: component.slug === "grid-dots-background" ? "black" : undefined,
       isNew: true,
     });
   }
@@ -225,6 +263,7 @@ if (isLatestDocsVersion) {
                   data-new-component={item.isNew ? "true" : undefined}
                   data-has-image={item.image ? "true" : undefined}
                   data-has-video={item.video ? "true" : undefined}
+                  data-preview-bg={item.previewBg}
                 >
                   <span class="all-component-preview">
                     {item.video ? (
@@ -419,7 +458,7 @@ if (isLatestDocsVersion) {
 
   .all-components-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0;
     width: 100%;
     border-top: 1px solid #1f2937;
@@ -466,14 +505,35 @@ if (isLatestDocsVersion) {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+  }
+
+  .all-component-card[data-has-video="true"] .all-component-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+  }
+
+  .all-component-card[data-preview-bg="white"] .all-component-preview {
+    background: #fff;
+  }
+
+  .all-component-card[data-preview-bg="morphism"] .all-component-preview {
+    background: #111722;
+  }
+
+  .all-component-card[data-preview-bg="black"] .all-component-preview {
+    background: #000;
   }
 
   .all-component-preview video {
     display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
   }
 
   .all-component-card[data-new-component="true"][data-has-image="true"] .all-component-preview {
@@ -483,6 +543,10 @@ if (isLatestDocsVersion) {
     padding: 18px;
     background: #fff;
     box-sizing: border-box;
+  }
+
+  .all-component-card[data-preview-bg="black"] .all-component-preview {
+    background: #000 !important;
   }
 
   .all-component-card[data-new-component="true"][data-has-image="true"] .all-component-preview img {
