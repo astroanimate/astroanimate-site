@@ -1033,4 +1033,85 @@ TEMPLATES
     initCodeCopyButtons();
     initSearch();
   </script>
+
+  <script is:inline>
+    function initDocsPreviewThemeControls() {
+      const storageKey = "astroanimate-docs-preview-theme";
+      let savedTheme = "";
+      try {
+        savedTheme = window.localStorage.getItem(storageKey) || "";
+      } catch (error) {
+        savedTheme = "";
+      }
+
+      const moonIcon = `<svg viewBox="0 0 24 24" fill="none"><path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
+      const sunIcon = `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>`;
+
+      const previews = Array.from(document.querySelectorAll(".playground-preview"));
+      previews.forEach((preview) => {
+        preview.classList.add("has-preview-theme-controls");
+        if (!preview.getAttribute("data-preview-theme")) {
+          preview.setAttribute(
+            "data-preview-theme",
+            savedTheme === "dark" || savedTheme === "light" ? savedTheme : "light",
+          );
+        }
+
+        let controls = preview.querySelector(".docs-preview-theme-controls");
+        if (!controls) {
+          controls = document.createElement("div");
+          controls.className = "docs-preview-theme-controls";
+          controls.innerHTML = `
+            <span class="docs-preview-theme-value">#FFFFFF</span>
+            <button type="button" class="docs-preview-theme-toggle" aria-label="Toggle preview theme" aria-pressed="false">
+              <span class="docs-preview-theme-thumb" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"></circle>
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+              </span>
+            </button>
+            <span class="docs-preview-theme-swatch" aria-hidden="true"></span>
+          `;
+          preview.appendChild(controls);
+        }
+
+        const value = controls.querySelector(".docs-preview-theme-value");
+        const toggle = controls.querySelector(".docs-preview-theme-toggle");
+        if (!value || !toggle) return;
+
+        const sync = () => {
+          const isDark = preview.getAttribute("data-preview-theme") === "dark";
+          value.textContent = isDark ? "#000000" : "#FFFFFF";
+          toggle.setAttribute("aria-pressed", String(isDark));
+          const thumb = toggle.querySelector(".docs-preview-theme-thumb");
+          if (thumb) {
+            thumb.innerHTML = isDark ? sunIcon : moonIcon;
+          }
+          preview.style.backgroundColor = isDark ? "#000000" : "#FFFFFF";
+        };
+
+        if (toggle.getAttribute("data-theme-bound") !== "true") {
+          toggle.setAttribute("data-theme-bound", "true");
+          toggle.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            const isDark = preview.getAttribute("data-preview-theme") === "dark";
+            const nextTheme = isDark ? "light" : "dark";
+            preview.setAttribute("data-preview-theme", nextTheme);
+            try {
+              window.localStorage.setItem(storageKey, nextTheme);
+            } catch (error) {}
+            sync();
+          });
+        }
+
+        sync();
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", initDocsPreviewThemeControls);
+    document.addEventListener("astro:page-load", initDocsPreviewThemeControls);
+    initDocsPreviewThemeControls();
+  </script>
 </Layout>

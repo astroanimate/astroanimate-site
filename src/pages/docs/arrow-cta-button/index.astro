@@ -67,7 +67,19 @@ import ArrowCTAButton from "@astroanimate/core/ArrowCTAButton";
                                 stroke-linecap="round"
                                 stroke-linejoin="round"></path></svg
                         ></button
-                    ><div class="component-preview-stage">
+                    >
+                    <div class="docs-preview-theme-controls" data-preview-theme-controls>
+                        <span class="docs-preview-theme-value">#FFFFFF</span>
+                        <button type="button" class="docs-preview-theme-toggle" aria-label="Toggle preview theme" aria-pressed="false">
+                            <span class="docs-preview-theme-thumb" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"></circle>
+                                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <span class="docs-preview-theme-swatch" aria-hidden="true"></span>
+                    </div><div class="component-preview-stage">
                         <ArrowCTAButton label="Explore" />
                     </div>
                 </div><div class="playground-code">
@@ -359,6 +371,12 @@ import ArrowCTAButton from "@astroanimate/core/ArrowCTAButton";
     .component-preview-stage :global([data-acta] .label),
     .component-preview-stage :global([data-acta] .arrow) {
         color: #000 !important;
+    }
+
+    .playground-preview[data-preview-theme="dark"] .component-preview-stage :global([data-acta]),
+    .playground-preview[data-preview-theme="dark"] .component-preview-stage :global([data-acta] .label),
+    .playground-preview[data-preview-theme="dark"] .component-preview-stage :global([data-acta] .arrow) {
+        color: #fff !important;
     }
 
     .playground-code {
